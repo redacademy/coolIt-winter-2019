@@ -8,7 +8,6 @@ import ActivityScreen from "../screens/Activities/Activities";
 import HerosScreen from "../screens/Heroes/Heroes";
 import ImpactScreen from "../screens/Impact/Impact";
 import PlanetScreen from "../screens/Planet/Planet";
-// import Ionicons from "react-native-vector-icons/Ionicons";
 import { Image, View } from "react-native";
 import { sharedNavigationOptions } from "./config";
 
@@ -99,8 +98,7 @@ export default createBottomTabNavigator(
         } else if (routeName === "Account" && !focused) {
           iconUrl = require("../assets/icons/account-inactive.png");
         }
-        // return <Ionicons name={iconName} size={30} color={iconColor} />;
-        console.log(iconUrl);
+
         return <Image source={iconUrl} />;
       }
     }),

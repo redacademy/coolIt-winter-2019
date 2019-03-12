@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { Header } from "react-navigation";
 
 const StyledHeader = props => (
