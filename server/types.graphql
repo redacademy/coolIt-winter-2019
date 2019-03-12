@@ -1,53 +1,48 @@
-# The following types define the data model of the example service
-# based on which the GraphQL API is generated
 
 type User @model {
   id: ID! @isUnique
-  name: String
+  name: String!
   email: String! @isUnique
   password: String! 
-  schoolInfo: SchoolInfo
+  schoolInfo: SchoolInfo @relation(name: "SchoolInfo")
   programCode: String
-  activityDate: [Date]
-  point: Number 
+  activityDate: [Date!]! @relation(name:"UserToDates")
+  point: Int @defaultValue(value:0)
   isActive: Boolean @defaultValue(value: "false")
-
-  # Uncomment below - you can declare relations between models like this
-
-  # posts: [Post!]! @relation(name: "UserPosts")
+  quizScore: Int
 }
+
 type SchoolInfo @model {
+  id: ID! @isUnique
   school: String
   teacher: String
-  division: String
-  grade: String
-  code: String
-
-  # Uncomment below - you can declare relations between models like this
-
-  # posts: [Post!]! @relation(name: "UserPosts")
+  division: Int
+  grade: Int
+  user: User @relation(name:"SchoolInfo")
 }
+
 type Date @model {
-  date: DateTime
-  activities: [Activity]
-
-  # Uncomment below - you can declare relations between models like this
-
-  # posts: [Post!]! @relation(name: "UserPosts")
+  user: User! @relation(name:"UserToDates")
+  id: ID! @isUnique
+  date: DateTime!
+  activities: [Activity!]! @relation(name:"ActivityToDate")
 }
 
 type Activity @model {
   id: ID! @isUnique
-  value: Number
+  value: Int!
   name: String!
   description: String!
+  date: Date! @relation(name:"ActivityToDate")
+  category: Category! @relation(name:"CategoryToActivities")
   
-
-  # Uncomment below - you can declare relations between models like this
-
-  # posts: [Post!]! @relation(name: "UserPosts")
 }
 
+type Category @model {
+  id: ID! @isUnique
+  name: String!
+  activity: [Activity!]! @relation(name:"CategoryToActivities")
+}
 
 
 ## TODO:
@@ -56,6 +51,7 @@ type Activity @model {
 ## filter date in user to display each activities
 ## mutation to add date with list of activities to user
 ## mutation to change date with list of activities to user
+## mutation to add finalscore to the user data 
 ## user signup mutation
 ## user change status(deactivate/delink) mutation
 ##
