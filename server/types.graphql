@@ -4,7 +4,44 @@
 type User @model {
   id: ID! @isUnique
   name: String
-  dateOfBirth: DateTime
+  email: String! @isUnique
+  password: String! 
+  schoolInfo: SchoolInfo
+  programCode: String
+  activityDate: [Date]
+  point: Number 
+  isActive: Boolean @defaultValue(value: "false")
+
+  # Uncomment below - you can declare relations between models like this
+
+  # posts: [Post!]! @relation(name: "UserPosts")
+}
+type SchoolInfo @model {
+  school: String
+  teacher: String
+  division: String
+  grade: String
+  code: String
+
+  # Uncomment below - you can declare relations between models like this
+
+  # posts: [Post!]! @relation(name: "UserPosts")
+}
+type Date @model {
+  date: DateTime
+  activities: [Activity]
+
+  # Uncomment below - you can declare relations between models like this
+
+  # posts: [Post!]! @relation(name: "UserPosts")
+}
+
+type Activity @model {
+  id: ID! @isUnique
+  value: Number
+  name: String!
+  description: String!
+  
 
   # Uncomment below - you can declare relations between models like this
 
@@ -12,12 +49,13 @@ type User @model {
 }
 
 
-# Uncomment the model below as well
 
-# type Post @model {
-#   id: ID! @isUnique
-#   title: String!
-#
-#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-#   author: User! @relation(name: "UserPosts")
-# }
+## TODO:
+## filter user using programcode > sort 
+## function that addes up point for each user
+## filter date in user to display each activities
+## mutation to add date with list of activities to user
+## mutation to change date with list of activities to user
+## user signup mutation
+## user change status(deactivate/delink) mutation
+##
