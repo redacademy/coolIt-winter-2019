@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {formatSessionData} from "../../lib/helpers/dataFormatHelpers";
 import Activities from "./Activities";
+import PropTypes from "prop-types";
 
 class ActivitiesContainer extends Component {
   render() {
@@ -28,11 +29,17 @@ class ActivitiesContainer extends Component {
       }
     ];
 
-    console.log(formatSessionData(allActivities));
-    return <Activities data={formatSessionData(allActivities)} />;
+    return (
+      <Activities
+        data={formatSessionData(allActivities)}
+        navigation={this.props.navigation}
+      />
+    );
   }
 }
 
-ActivitiesContainer.propTypes = {};
+ActivitiesContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default ActivitiesContainer;

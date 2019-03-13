@@ -1,10 +1,8 @@
 import React from "react";
-import {Text, View, SectionList} from "react-native";
+import {Text, View, SectionList, TouchableHighlight} from "react-native";
 import styles from "./styles";
 
-const Activities = ({data}) => {
-  console.log(data);
-
+const Activities = ({data, navigation}) => {
   return (
     <View style={styles.container}>
       <SectionList
@@ -15,12 +13,19 @@ const Activities = ({data}) => {
           <Text style={styles.header}>{section.title}</Text>
         )}
         renderItem={({item, index}) => (
-          console.log(item),
-          (
+          <TouchableHighlight
+            onPress={() => {
+              navigation.navigate("Activity", {
+                activity: item
+              });
+            }}
+            activeOpacity={0.5}
+            underlayColor={"#e6e6e6"}
+          >
             <View style={styles.items} key={index}>
               <Text style={styles.title}>{item.name}</Text>
             </View>
-          )
+          </TouchableHighlight>
         )}
         ItemSeparatorComponent={() => {
           return <View style={styles.itemSeparator} />;
@@ -31,4 +36,3 @@ const Activities = ({data}) => {
 };
 
 export default Activities;
-
