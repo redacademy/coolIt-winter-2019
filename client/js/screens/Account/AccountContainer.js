@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View } from "react-native";
 import Account from "./Account";
 
-export default class AboutContainer extends Component {
+export default class AccountContainer extends Component {
   static navigationOptions = {
     title: "Account"
   };

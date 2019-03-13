@@ -9,7 +9,6 @@ export default class ImpactContainer extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <View>
         <Impact />

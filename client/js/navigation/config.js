@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from "react-native";
 import { Header } from "react-navigation";
-import { withNavigation } from "react-navigation";
 
 const StyledHeader = props => (
   <View style={{ backgroundColor: "green", overflow: "hidden" }}>
@@ -12,7 +11,6 @@ const StyledHeader = props => (
 export const sharedNavigationOptions = navigation => ({
   headerBackTitle: null,
   header: props => {
-    console.log(props);
     return <StyledHeader {...props} />;
   },
   headerStyle: {
@@ -20,4 +18,4 @@ export const sharedNavigationOptions = navigation => ({
   }
 });
 
-export default withNavigation(StyledHeader);
+export default StyledHeader;

@@ -8,7 +8,6 @@ export default class HeroesContainer extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <View>
         <Heroes />
