@@ -5,6 +5,7 @@ import {ActivityIndicator} from "react-native";
 import {Query} from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
+import styles from "./styles";
 
 class ActivitiesContainer extends Component {
   render() {
@@ -24,16 +25,7 @@ class ActivitiesContainer extends Component {
         `}
       >
         {({loading, error, data}) => {
-          if (loading)
-            return (
-              <ActivityIndicator
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              />
-            );
+          if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return console.log(error);
           return (
             <Activities

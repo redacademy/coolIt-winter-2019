@@ -6,6 +6,11 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "red"
+  },
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
