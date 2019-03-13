@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-const Accounts = props => {
+const Activities = props => {
   return (
     <View>
       <Text> Hi im activity</Text>
@@ -9,4 +9,4 @@ const Accounts = props => {
   );
 };
 
-export default Accounts;
+export default Activities;

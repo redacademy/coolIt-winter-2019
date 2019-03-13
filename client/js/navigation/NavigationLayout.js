@@ -3,12 +3,12 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import React from "react";
-import AccountScreen from "../screens/Account/Account";
-import ActivityScreen from "../screens/Activities/Activities";
-import HerosScreen from "../screens/Heroes/Heroes";
-import ImpactScreen from "../screens/Impact/Impact";
-import PlanetScreen from "../screens/Planet/Planet";
-import { Image, View } from "react-native";
+import AccountScreen from "../screens/Account";
+import ActivityScreen from "../screens/Activities";
+import HerosScreen from "../screens/Heroes";
+import ImpactScreen from "../screens/Impact";
+import PlanetScreen from "../screens/Planet";
+import { Image } from "react-native";
 import { sharedNavigationOptions } from "./config";
 
 const AccountStack = createStackNavigator(
@@ -72,7 +72,7 @@ export default createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;
 
         let iconUrl;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import RootStackNavigator from "./js/navigation/RootStackNavigator";
+import RootStackNavigator from "./navigation/RootStackNavigator";
 import { StatusBar } from "react-native";
 
 export default class App extends Component {
