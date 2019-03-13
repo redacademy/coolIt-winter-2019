@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 
 class ActivitiesContainer extends Component {
   render() {
-
     return (
       <Query
         query={gql`
@@ -25,7 +24,6 @@ class ActivitiesContainer extends Component {
         `}
       >
         {({loading, error, data}) => {
-          console.log(data);
           if (loading)
             return (
               <ActivityIndicator
