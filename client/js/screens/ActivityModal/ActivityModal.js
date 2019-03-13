@@ -13,7 +13,6 @@ import PropTypes from "prop-types";
 const ActivityModal = ({data, navigation}) => (
   <View style={styles.container}>
     <TouchableHighlight
-      style={{marginTop: 50}}
       onPress={() => {
         navigation.goBack();
       }}
@@ -45,7 +44,7 @@ const ActivityModal = ({data, navigation}) => (
 );
 
 ActivityModal.propTypes = {
-  activity: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired
 };
 
