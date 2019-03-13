@@ -4,7 +4,6 @@ import Activities from "./Activities";
 
 export default class ActivitiesContainer extends Component {
   render() {
-    console.log(this.props);
     return (
       <View>
         <Activities />
