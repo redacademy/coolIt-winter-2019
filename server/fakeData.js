@@ -7,8 +7,11 @@ export const user1 = {
     division: "1"
   },
   programCode: 1231,
-  activityDate: [1, 3, 2, 5],
-  point: 5120,
+  activityDate: [
+    { date: "01/01/2019", activities: [3, 2, 1, 5] },
+    { date: "01/02/2019", activities: [1, 3, 5] }
+  ],
+  point: 0,
   isActive: true,
   quizScore: 1231
 };

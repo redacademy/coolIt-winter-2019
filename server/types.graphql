@@ -1,12 +1,11 @@
-
 type User @model {
   id: ID! @isUnique
   name: String!
   email: String! @isUnique
   password: String! 
-  schoolInfo: SchoolInfo @relation(name: "SchoolInfo")
+  schoolInfo: SchoolInfo @relation(name: "SchoolUsers")
   programCode: String
-  activityDate: [Date!]! @relation(name:"UserToDates")
+  activityLog: [Date!]! @relation(name:"UserActivities")
   point: Int @defaultValue(value:0)
   isActive: Boolean @defaultValue(value: "false")
   quizScore: Int
@@ -18,14 +17,15 @@ type SchoolInfo @model {
   teacher: String
   division: Int
   grade: Int
-  user: User @relation(name:"SchoolInfo")
+  users: [User!]! @relation(name:"SchoolUsers")
+  programCode: String!
 }
 
 type Date @model {
-  user: User! @relation(name:"UserToDates")
   id: ID! @isUnique
+  user: User! @relation(name:"UserActivities")
   date: DateTime!
-  activities: [Activity!]! @relation(name:"ActivityToDate")
+  activities: [Activity!]! @relation(name:"DateActivities")
 }
 
 type Activity @model {
@@ -33,15 +33,15 @@ type Activity @model {
   value: Int!
   name: String!
   description: String!
-  date: Date! @relation(name:"ActivityToDate")
-  category: Category! @relation(name:"CategoryToActivities")
+  date: Date @relation(name:"DateActivities")
+  category: Category! @relation(name:"CategoryActivities")
   
 }
 
 type Category @model {
   id: ID! @isUnique
-  name: String!
-  activity: [Activity!]! @relation(name:"CategoryToActivities")
+  name: String! 
+  activities: [Activity!]! @relation(name:"CategoryActivities")
 }
 
 
@@ -52,6 +52,5 @@ type Category @model {
 ## mutation to add date with list of activities to user
 ## mutation to change date with list of activities to user
 ## mutation to add finalscore to the user data 
-## user signup mutation
 ## user change status(deactivate/delink) mutation
 ##
