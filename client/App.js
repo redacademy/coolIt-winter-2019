@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-
-import RootStackNavigator from "./js/navigation/RootStackNavigator";
-import { StatusBar } from "react-native";
+import { View } from "react-native";
+import Landing from "./js/screens/Landing";
 
 export default class App extends Component {
   render() {
-    StatusBar.setBarStyle("light-content", true);
-    return <RootStackNavigator />;
-  }
-}
+    return (
+      <View>
+        <Landing />
+      </View>
+    );
+    }}
