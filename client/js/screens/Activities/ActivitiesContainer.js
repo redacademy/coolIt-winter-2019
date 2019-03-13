@@ -1,39 +1,50 @@
 import React, {Component} from "react";
 import {formatSessionData} from "../../lib/helpers/dataFormatHelpers";
 import Activities from "./Activities";
+import {ActivityIndicator} from "react-native";
+import {Query} from "react-apollo";
+import gql from "graphql-tag";
 import PropTypes from "prop-types";
 
 class ActivitiesContainer extends Component {
   render() {
-    const allActivities = [
-      {
-        id: 1,
-        value: 50,
-        name: "Walking",
-        description: "Walking for the environment",
-        category: "Travel Smart"
-      },
-      {
-        id: 2,
-        value: 50,
-        name: "Biking",
-        description: "Biking for the environment",
-        category: "Travel Smart"
-      },
-      {
-        id: 3,
-        value: 50,
-        name: "Idle Free",
-        description: "Save Gases for Your Vehicle",
-        category: "Vehicle"
-      }
-    ];
 
     return (
-      <Activities
-        data={formatSessionData(allActivities)}
-        navigation={this.props.navigation}
-      />
+      <Query
+        query={gql`
+          {
+            allActivities {
+              id
+              name
+              description
+              category {
+                name
+              }
+            }
+          }
+        `}
+      >
+        {({loading, error, data}) => {
+          console.log(data);
+          if (loading)
+            return (
+              <ActivityIndicator
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              />
+            );
+          if (error) return console.log(error);
+          return (
+            <Activities
+              navigation={this.props.navigation}
+              data={formatSessionData(data.allActivities)}
+            />
+          );
+        }}
+      </Query>
     );
   }
 }

@@ -1,5 +1,11 @@
 import React from "react";
-import {Text, View, TouchableHighlight, ScrollView} from "react-native";
+import {
+  Text,
+  View,
+  TouchableHighlight,
+  ScrollView,
+  TouchableOpacity
+} from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 import PropTypes from "prop-types";
@@ -20,6 +26,19 @@ const ActivityModal = ({data, navigation}) => (
           <Text>{data.name}</Text>
         </View>
         <Text>{data.description}</Text>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => {
+            console.log("activity added");
+          }}
+        >
+          <Ionicons
+            style={styles.addIcon}
+            name="ios-add-circle-outline"
+            size={50}
+            color="red"
+          />
+        </TouchableOpacity>
       </ScrollView>
     </View>
   </View>

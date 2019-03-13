@@ -1,11 +1,16 @@
-import React, { Component } from "react";
-
+import React, {Component} from "react";
+import client from "./js/config/api";
+import {ApolloProvider} from "react-apollo";
 import RootStackNavigator from "./js/navigation/RootStackNavigator";
-import { StatusBar } from "react-native";
+import {StatusBar} from "react-native";
 
 export default class App extends Component {
   render() {
     StatusBar.setBarStyle("light-content", true);
-    return <RootStackNavigator />;
+    return (
+      <ApolloProvider client={client}>
+        <RootStackNavigator />
+      </ApolloProvider>
+    );
   }
 }
