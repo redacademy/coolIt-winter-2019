@@ -1,32 +1,29 @@
-import {
-  createStackNavigator,
-  createBottomTabNavigator
-} from "react-navigation";
+import {createStackNavigator, createBottomTabNavigator} from "react-navigation";
 import React from "react";
 import AccountScreen from "../screens/Account/Account";
-import ActivityScreen from "../screens/Activities/Activities";
+import ActivitiesScreen from "../screens/Activities";
 import HerosScreen from "../screens/Heroes/Heroes";
 import ImpactScreen from "../screens/Impact/Impact";
 import PlanetScreen from "../screens/Planet/Planet";
-import { Image, View } from "react-native";
-import { sharedNavigationOptions } from "./config";
+import {Image, View} from "react-native";
+import {sharedNavigationOptions} from "./config";
 
 const AccountStack = createStackNavigator(
   {
     Account: AccountScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation)
     })
   }
 );
-const ActivityStack = createStackNavigator(
+const ActivitiesStack = createStackNavigator(
   {
-    Activity: ActivityScreen
+    Activities: ActivitiesScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation)
     })
   }
@@ -36,7 +33,7 @@ const HerosStack = createStackNavigator(
     Heros: HerosScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation)
     })
   }
@@ -46,7 +43,7 @@ const ImpactStack = createStackNavigator(
     Impact: ImpactScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation)
     })
   }
@@ -56,7 +53,7 @@ const PlanetStack = createStackNavigator(
     Planet: PlanetScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation)
     })
   }
@@ -66,14 +63,14 @@ export default createBottomTabNavigator(
   {
     Impact: ImpactStack,
     Planet: PlanetStack,
-    Activity: ActivityStack,
+    Activities: ActivitiesStack,
     Heros: HerosStack,
     Account: AccountStack
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
-        const { routeName } = navigation.state;
+    defaultNavigationOptions: ({navigation}) => ({
+      tabBarIcon: ({focused, horizontal, tintColor}) => {
+        const {routeName} = navigation.state;
 
         let iconUrl;
 
@@ -85,9 +82,9 @@ export default createBottomTabNavigator(
           iconUrl = require("../assets/icons/planet-active.png");
         } else if (routeName === "Planet" && !focused) {
           iconUrl = require("../assets/icons/planet-inactive.png");
-        } else if (routeName === "Activity" && focused) {
+        } else if (routeName === "Activities" && focused) {
           iconUrl = require("../assets/icons/activity-active.png");
-        } else if (routeName === "Activity" && !focused) {
+        } else if (routeName === "Activities" && !focused) {
           iconUrl = require("../assets/icons/activity-inactive.png");
         } else if (routeName === "Heros" && focused) {
           iconUrl = require("../assets/icons/heros-active.png");
