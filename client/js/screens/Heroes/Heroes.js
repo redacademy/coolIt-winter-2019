@@ -13,9 +13,13 @@ const Heroes = ({data}) => {
           data={data}
           renderItem={({item, index}) => (
             <View style={styles.items} key={index}>
-              <Text style={styles.rank}>{index + 1}</Text>
-              <Text style={styles.hero}>{item.name}</Text>
-              <Text style={styles.point}>{item.point}</Text>
+              <View style={styles.hero}>
+                <Text style={styles.rank}>{index + 1}</Text>
+                <Text style={styles.name}>{item.name}</Text>
+              </View>
+              <View style={styles.score}>
+                <Text style={styles.point}>{item.point}</Text>
+              </View>
             </View>
           )}
           keyExtractor={(item, index) => item + index}
