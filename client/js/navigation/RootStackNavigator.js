@@ -7,6 +7,7 @@ import NavigationLayout from "./NavigationLayout";
 import ActivityModal from "../screens/ActivityModal";
 import JoinUs from "../screens/JoinUs";
 import AuthLoadingScreen from "../components/AutheticationLoadingScreen/AuthenticationLoadingScreen";
+import { sharedNavigationOptions } from "./config";
 const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout,
@@ -18,7 +19,14 @@ const AppStack = createStackNavigator(
   }
 );
 
-const AuthStack = createStackNavigator({ SignIn: JoinUs });
+const AuthStack = createStackNavigator(
+  { SignIn: JoinUs },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
 
 export default createAppContainer(
   createSwitchNavigator(

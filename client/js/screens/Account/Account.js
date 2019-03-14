@@ -4,7 +4,7 @@ import { View, Text, Button, AsyncStorage } from "react-native";
 const Accounts = props => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
-    this.props.navigation.navigate("Auth");
+    props.navigation.navigate("Auth");
   };
 
   return (
