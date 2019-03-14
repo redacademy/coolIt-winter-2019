@@ -1,10 +1,12 @@
-type Student @model {
-  id: ID! @isUnique
-  name: String!
+type User @model {
+  id: ID! @isUnique # read-only (managed by Graphcool)
+  email: String! @isUnique
+  password: String!
+  name: String
   schoolInfo: SchoolInfo @relation(name: "SchoolUsers")
   programCode: String
   activityLog: [Date!]! @relation(name:"UserActivities")
-  point: Int @defaultValue(value:0)
+  point: Int @defaultValue(value:"0")
   isActive: Boolean @defaultValue(value: "false")
   quizScore: Int
 }
@@ -15,13 +17,13 @@ type SchoolInfo @model {
   teacher: String
   division: Int
   grade: Int
-  users: [Student!]! @relation(name:"SchoolUsers")
+  users: [User!]! @relation(name:"SchoolUsers")
   programCode: String!
 }
 
 type Date @model {
   id: ID! @isUnique
-  user: Student! @relation(name:"UserActivities")
+  user: User! @relation(name:"UserActivities")
   date: DateTime!
   activities: [Activity!]! @relation(name:"DateActivities")
 }
@@ -43,9 +45,4 @@ type Category @model {
 }
 
 
-type User @model {
-  # Required system field:
-  id: ID! @isUnique # read-only (managed by Graphcool)
-  email: String! @isUnique
-  password: String!
-}
+
