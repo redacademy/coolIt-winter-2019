@@ -1,10 +1,15 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button, AsyncStorage } from "react-native";
 
 const Accounts = props => {
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate("Auth");
+  };
+
   return (
     <View>
-      <Text> Hi im accounts</Text>
+      <Button title="Actually, sign me out :)" onPress={_signOutAsync} />
     </View>
   );
 };

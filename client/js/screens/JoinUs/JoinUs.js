@@ -1,16 +1,22 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button, AsyncStorage } from "react-native";
 import styles from "./styles";
 // import PropTypes from "prop-types";
 
-const JoinUs = () => {
-  return (
-    <View>
-      <Text>JoinUs Screen!</Text>
-    </View>
-  );
-};
+export default class JoinUs extends React.Component {
+  static navigationOptions = {
+    title: "Please sign in"
+  };
 
-// JoinUs.propTypes = {};
+  render() {
+    return (
+      <View>
+        <Button title="Sign in!" onPress={this._signInAsync} />
+      </View>
+    );
+  }
 
-export default JoinUs;
+  _signInAsync = async () => {
+    await AsyncStorage.setItem("userToken", "abc");
+  };
+}
