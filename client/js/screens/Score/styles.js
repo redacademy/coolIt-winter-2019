@@ -7,20 +7,43 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 240,
+    height: 240,
+    paddingBottom: 25
+  },
+  container: {
+    position: "relative",
+    textAlign: "center"
+  },
+  absoluteText: {
+    position: "absolute",
+    top: "33%",
+    left: "20%",
+    fontFamily: fonts.light,
+    fontSize: 20
+  },
+  absoluteNumber: {
+    position: "absolute",
+    top: "42%",
+    left: "26%",
+    fontFamily: fonts.light,
+    fontWeight: 'bold', 
+    fontSize: 42
   },
   great: {
     fontFamily: fonts.light,
     fontWeight: "bold",
     textAlign: "center",
-    fontSize: 30
+    fontSize: 30,
+    padding: 20,
+    paddingTop: 25
   },
   text: {
     fontFamily: fonts.light,
     textAlign: "center",
     fontSize: 14,
-    width: 300
+    width: 300,
+    paddingBottom: 40
   },
   button: {
     width: "70%",
@@ -31,16 +54,16 @@ const styles = StyleSheet.create({
   buttonText: {
     alignSelf: "center",
     fontFamily: fonts.light,
-    fontWeight: 'normal',
+    fontWeight: "normal",
     fontSize: 18,
     color: colors.white,
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingTop: 8,
+    paddingBottom: 8
   },
   flex: {
     alignItems: "center",
     flex: 1,
-    justifyContent: "space-around"
+    justifyContent: "center"
   }
 });
 

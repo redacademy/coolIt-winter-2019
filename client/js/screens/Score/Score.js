@@ -17,10 +17,14 @@ const Score = () => {
         style={styles.background}
       >
         <View style={styles.flex}>
+        <View style={styles.container}>
           <Image
-            source={require("../../assets/images/main-logo.png")}
+            source={require("../../assets/images/circle-quiz.png")}
             style={styles.logo}
           />
+          <Text style={styles.absoluteText}>Your Score</Text>
+          <Text style={styles.absoluteNumber}>55</Text>
+          </View>
           <Text style={styles.great}>Great Job!</Text>
           <Text style={styles.text}>
             You've mastered many important ways to save energy and reduce waste.
