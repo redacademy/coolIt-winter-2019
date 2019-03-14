@@ -684,6 +684,7 @@
 				00E356EF1AD99517003FC87E /* coolItWinter2019Tests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				EC7CED676D094E79A8C53B01 /* Resources */,
 				C614621A0FD4434E97933867 /* Resources */,
 				578EB187223ABFAC0023CD9F /* Recovered References */,
 			);
@@ -712,6 +713,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EC7CED676D094E79A8C53B01 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				0267FE72A60E496EAF952C11 /* OpenSans-Bold.ttf */,
+				48122B3741714919B7B5EE46 /* OpenSans-BoldItalic.ttf */,
+				7FA59E7A41F645EBA63C53A9 /* OpenSans-Italic.ttf */,
+				F289E1DF5E8E4141B98397C8 /* OpenSans-Light.ttf */,
+				3D4E8397DA3F442F82F3E1A8 /* OpenSans-LightItalic.ttf */,
+				52FE5996603942F197256C57 /* OpenSans-Regular.ttf */,
+				925C18DCFF0C45239382A91F /* OpenSans-Semibold.ttf */,
+				B1207034B3F341B487ACB5A7 /* OpenSans-SemiboldItalic.ttf */,
 		C614621A0FD4434E97933867 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1216,6 +1228,14 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				E5CF401F36E647CDA05444CE /* OpenSans-Bold.ttf in Resources */,
+				6B1B8AF6BDF74AFC974320A6 /* OpenSans-BoldItalic.ttf in Resources */,
+				8406E42F292F422BB95BC9F0 /* OpenSans-Italic.ttf in Resources */,
+				5C156F83ECDD4E189201E7B5 /* OpenSans-Light.ttf in Resources */,
+				3220DE2132514048B4844BB9 /* OpenSans-LightItalic.ttf in Resources */,
+				3C33FEF2637643F88F930274 /* OpenSans-Regular.ttf in Resources */,
+				266C0C0936F949E6B63ECB3F /* OpenSans-Semibold.ttf in Resources */,
+				56BF62976E9B47DA8FE58A2F /* OpenSans-SemiboldItalic.ttf in Resources */,
 				42E465673F2140A1BDEA35B6 /* AntDesign.ttf in Resources */,
 				04EF4FD85EE94ACCAEB587AC /* Entypo.ttf in Resources */,
 				9E70A71B4A3948009D1FB26B /* EvilIcons.ttf in Resources */,
