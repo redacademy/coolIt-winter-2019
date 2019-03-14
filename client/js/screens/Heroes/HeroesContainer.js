@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Heroes from "./Heroes";
+import PropTypes from "prop-types";
 
 class HeroesContainer extends Component {
   render() {
@@ -45,6 +46,7 @@ class HeroesContainer extends Component {
   }
 }
 
-HeroesContainer.propTypes = {};
-
+HeroesContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 export default HeroesContainer;

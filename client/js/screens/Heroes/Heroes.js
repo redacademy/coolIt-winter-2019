@@ -1,6 +1,7 @@
 import React from "react";
 import {Text, ScrollView, View, FlatList} from "react-native";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const Heroes = ({data}) => {
   return (
@@ -12,9 +13,9 @@ const Heroes = ({data}) => {
           data={data}
           renderItem={({item, index}) => (
             <View style={styles.items} key={index}>
-              <Text style={styles.title}>{index + 1}</Text>
-              <Text style={styles.title}>{item.name}</Text>
-              <Text style={styles.title}>{item.point}</Text>
+              <Text style={styles.rank}>{index + 1}</Text>
+              <Text style={styles.hero}>{item.name}</Text>
+              <Text style={styles.point}>{item.point}</Text>
             </View>
           )}
           keyExtractor={(item, index) => item + index}
@@ -22,6 +23,10 @@ const Heroes = ({data}) => {
       </View>
     </ScrollView>
   );
+};
+
+Heroes.propTypes = {
+  data: PropTypes.array.isRequired
 };
 
 export default Heroes;
