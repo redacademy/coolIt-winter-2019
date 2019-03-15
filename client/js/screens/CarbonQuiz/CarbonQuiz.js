@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { View, Text } from "react-native";
+import React, { Component, createRef } from "react";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { ViewPager } from "rn-viewpager";
 import styles from "./styles";
-
+import QuizSection from "../../components/QuizSection";
 import StepIndicator from "react-native-step-indicator";
 
 // const PAGES = ["Page 1", "Page 2", "Page 3", "Page 4", "Page 5"];
@@ -65,38 +65,50 @@ export default class CarbonQuiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 0
+      currentPage: 0,
+      totalPoints: 0
     };
+    this.viewPager = createRef();
   }
 
-  componentWillReceiveProps(nextProps, nextState) {
-    if (nextState.currentPage != this.state.currentPage) {
-      if (this.viewPager) {
-        this.viewPager.setPage(nextState.currentPage);
-      }
-    }
-  }
+  // componentWillReceiveProps(nextProps, nextState) {
+  //   if (nextState.currentPage != this.state.currentPage) {
+  //     if (this.viewPager) {
+  //       console.log(this.viewPager);
+  //       this.viewPager.setPage(nextState.currentPage);
+  //     }
+  //   }
+  // }
 
   render() {
-    const group1 = this.props.data.questions.slice(0, 5);
-    const group2 = this.props.data.questions.slice(5, 10);
-    const group3 = this.props.data.questions.slice(10, 15);
-    const group4 = this.props.data.questions.slice(15, 20);
-    const group5 = this.props.data.questions.slice(20, 25);
-    console.log(this.props);
-    console.log(group1);
+    const group1 = this.props.data.questions.slice(0, 3);
+    const group2 = this.props.data.questions.slice(3, 7);
+    const group3 = this.props.data.questions.slice(7, 12);
+    const group4 = this.props.data.questions.slice(12, 16);
+    const group5 = this.props.data.questions.slice(16, 20);
+    const group6 = this.props.data.questions.slice(20);
+
+    console.log(this.state.totalPoints);
     return (
       <View style={styles.container}>
         <View style={styles.stepIndicator}>
           <StepIndicator
             customStyles={firstIndicatorStyles}
             currentPosition={this.state.currentPage}
-            labels={["Part 1", "Part 2", "Part 3", "Part 4", "Part 5"]}
+            stepCount={6}
+            labels={[
+              "Part 1",
+              "Part 2",
+              "Part 3",
+              "Part 4",
+              "Part 5",
+              "Part 6"
+            ]}
           />
         </View>
 
         <ViewPager
-          // scrollEnabled={false}
+          scrollEnabled={false}
           style={{ flexGrow: 1 }}
           ref={viewPager => {
             this.viewPager = viewPager;
@@ -110,21 +122,90 @@ export default class CarbonQuiz extends Component {
           {this.renderViewPagerPage(group3)}
           {this.renderViewPagerPage(group4)}
           {this.renderViewPagerPage(group5)}
+          {this.renderViewPagerPage(group6)}
         </ViewPager>
+        {this.state.currentPage === 0 ? (
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({ currentPage: this.state.currentPage + 1 });
+              this.viewPager.setPage(this.state.currentPage + 1);
+            }}
+          >
+            <Text>next</Text>
+          </TouchableOpacity>
+        ) : this.state.currentPage === 5 ? (
+          <View>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ currentPage: this.state.currentPage - 1 });
+                this.viewPager.setPage(this.state.currentPage - 1);
+              }}
+            >
+              <Text>back</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {}}>
+              <Text>submit</Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ currentPage: this.state.currentPage + 1 });
+                this.viewPager.setPage(this.state.currentPage + 1);
+              }}
+            >
+              <Text>next</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ currentPage: this.state.currentPage - 1 });
+                this.viewPager.setPage(this.state.currentPage - 1);
+              }}
+            >
+              <Text>back</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     );
   }
 
-  renderViewPagerPage = questions => {
-    console.log(questions);
+  renderViewPagerPage = section => {
+    console.log(section);
     return (
-      <View style={styles.page}>
-        <Text>{questions.map(question => question.question)}</Text>
-        {/* <Text>a.{questions.options.map(option => option.a)}</Text>
-        <Text>b.{questions.options.map(option => option.b)}</Text>
-        <Text>c.{questions.options.map(option => option.c)}</Text>
-        <Text>d.{questions.options.map(option => option.d)}</Text> */}
-      </View>
+      // <View style={styles.page}>
+      //   <QuizSection data={section} />
+      // </View>
+      <ScrollView>
+        {section.map(question => (
+          <View>
+            <Text>{question.question}</Text>
+            <View>
+              {question.options.map(option => (
+                <View
+                  style={{
+                    paddingTop: 15,
+                    paddingBottom: 15,
+                    borderWidth: 0.5,
+                    borderRadius: 10
+                  }}
+                >
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.setState({
+                        totalPoints: this.state.totalPoints + option.points
+                      });
+                    }}
+                  >
+                    <Text>{option.option}</Text>
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </View>
+          </View>
+        ))}
+      </ScrollView>
     );
   };
 
