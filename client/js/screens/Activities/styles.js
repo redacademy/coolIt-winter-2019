@@ -2,7 +2,7 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
   header: {
-    color: "red"
+    color: "blue"
   },
   title: {
     color: "red"
