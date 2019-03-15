@@ -1,12 +1,35 @@
 import React from "react";
-import { View, Text } from "react-native";
+import {ScrollView, View, Image, FlatList, ImageBackground} from "react-native";
+import styles from "./styles";
 
-const Accounts = props => {
+const Planet = ({data}) => {
+  console.log(data);
   return (
-    <View>
-      <Text> Hi im planet</Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.contentContainer}>
+      <View style={styles.mainContent}>
+        <ImageBackground
+          source={require("../../assets/images/earth.png")}
+          style={styles.background}
+        >
+          <FlatList
+            style={styles.list}
+            data={data}
+            numColumns={4}
+            renderItem={({item, index}) => {
+              return (
+                <View style={styles.items} key={index}>
+                  <View style={styles.imageContainer}>
+                    <Image style={styles.image} source={item} />
+                  </View>
+                </View>
+              );
+            }}
+            keyExtractor={(item, index) => "" + index}
+          />
+        </ImageBackground>
+      </View>
+    </ScrollView>
   );
 };
 
-export default Accounts;
+export default Planet;
