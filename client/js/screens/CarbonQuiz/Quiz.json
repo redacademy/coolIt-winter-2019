@@ -1,0 +1,469 @@
+{
+  "questions": [
+    {
+      "question": "When travelling to school I mostly:",
+      "options": [
+        {
+          "a": "walk or bike",
+          "points": 1
+        },
+        {
+          "b": "bus / skytrain",
+          "points": 2
+        },
+        {
+          "c": "carpool",
+          "points": 4
+        },
+        {
+          "d": "drive alone",
+          "points": 6
+        }
+      ]
+    },
+    {
+      "question": "When travelling to other places I mostly:",
+      "options": [
+        {
+          "a": "walk or bike",
+          "points": 1
+        },
+        {
+          "b": "bus / skytrain",
+          "points": 2
+        },
+        {
+          "c": "carpool",
+          "points": 4
+        },
+        {
+          "d": "drive alone",
+          "points": 6
+        }
+      ]
+    },
+    {
+      "question": "When waiting to pick someone up in our car, we:",
+      "options": [
+        {
+          "a": "turn the engine off",
+          "points": 1
+        },
+        {
+          "b": "sometimes leave it running",
+          "points": 2
+        },
+        {
+          "c": "always leave it running",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "question": "When I am cold at home, I",
+      "options": [
+        {
+          "a": "Put on my sweater and/or socks",
+          "points": 1
+        },
+        {
+          "b": "turn the heat up 1 degree",
+          "points": 2
+        },
+        {
+          "c": "turn the heat up 2-4 degrees",
+          "points": 4
+        },
+        {
+          "d": "Nothing - Our house is always really warm",
+          "points": 6
+        }
+      ]
+    },
+    {
+      "question": "We control our home heat with a:",
+      "options": [
+        {
+          "a": "Smart thermostat",
+          "points": 1
+        },
+        {
+          "b": "Programmable thermostat",
+          "points": 2
+        },
+        {
+          "c": "Regular thermostat",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "At night, we:",
+      "options": [
+        {
+          "a": "draw our curtains closed to conserve heat",
+          "points": 1
+        },
+        {
+          "b": "sometimes draw our curtains closed",
+          "points": 2
+        },
+        {
+          "c": "Go to bed",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "When we wash our clothes the washing machine is mostly set to",
+      "options": [
+        {
+          "a": "cold water",
+          "points": 1
+        },
+        {
+          "b": "warm water",
+          "points": 2
+        },
+        {
+          "c": "hot water",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "In spring summer and fall we often dry our clothes",
+      "options": [
+        {
+          "a": "on a clothes-line or drying rack ",
+          "points": 1
+        },
+        {
+          "b": "Sometimes in the tumble-dryer, sometimes on the clothes-line",
+          "points": 2
+        },
+        {
+          "c": "In the tumble dryer - like always",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "We eat meat:",
+      "options": [
+        {
+          "a": "Never or very rarely",
+          "points": 1
+        },
+        {
+          "b": "rarely, but only organic and/or local",
+          "points": 2
+        },
+        {
+          "c": "3-4 days per week ",
+          "points": 3
+        },
+        {
+          "d": "Everyday",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "question": "When shoppin gfor food we buy BC or local region grown",
+      "options": [
+        {
+          "a": "Only",
+          "points": 1
+        },
+        {
+          "b": "Often",
+          "points": 2
+        },
+        {
+          "c": "Sometimes",
+          "points": 3
+        },
+        {
+          "d": "Rarely",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "question": "We _______ grown our own food (vegetables/fruit)",
+      "options": [
+        {
+          "a": "Always",
+          "points": 1
+        },
+        {
+          "b": "Sometimes",
+          "points": 2
+        },
+        {
+          "c": "Never",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "When i wash myself i have a:",
+      "options": [
+        {
+          "a": "Short shower(< 3 minutes)",
+          "points": 1
+        },
+        {
+          "b": "Regular shower (5 minutes)",
+          "points": 2
+        },
+        {
+          "c": "Long shower (8 minutes +) ",
+          "points": 3
+        },
+        {
+          "d": "Bath",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "question": "When brushing my teeth I ",
+      "options": [
+        {
+          "a": "Only turn water on to web my brush and rinse it at the end",
+          "points": 1
+        },
+        {
+          "b": "turn it on and off sometimes",
+          "points": 2
+        },
+        {
+          "c": "leave the tap running",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "We have a (or several)",
+      "options": [
+        {
+          "a": "Low flow showerhead",
+          "points": 1
+        },
+        {
+          "b": "Regular showerhead",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "question": "When packing school lunch/snacks the containers are",
+      "options": [
+        {
+          "a": "Always reused",
+          "points": 1
+        },
+        {
+          "b": "Sometimes resued",
+          "points": 2
+        },
+        {
+          "c": "One time use only",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "At home we recycle - paper, tin, glass, plastic & refundables",
+      "options": [
+        {
+          "a": "Always",
+          "points": 1
+        },
+        {
+          "b": "Most of the time",
+          "points": 2
+        },
+        {
+          "c": "Sometimes",
+          "points": 3
+        },
+        {
+          "c": "Never",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "question": "When I have used one side of writing and printer paper, I ",
+      "options": [
+        {
+          "a": "Reuse back of paper and then recycle it ",
+          "points": 1
+        },
+        {
+          "b": "Recycle it",
+          "points": 2
+        },
+        {
+          "c": "Throw it in the garbage",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "We _______ our kitchen fruit/vegetable/food left overs after making a meal ",
+      "options": [
+        {
+          "a": "Regularly compost (worm-bin / curb-size pickup / backyard compost)",
+          "points": 1
+        },
+        {
+          "b": "Sometimes compost or wash down sink",
+          "points": 2
+        },
+        {
+          "c": "Throw out with garbage",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "______ of the bulbs in my home are LED or CFL",
+      "options": [
+        {
+          "a": "All",
+          "points": 1
+        },
+        {
+          "b": "Most",
+          "points": 2
+        },
+        {
+          "c": "Some",
+          "points": 3
+        },
+        {
+          "c": "None",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "question": "When I leave my room or my home, I ______ turn off lights and electronics",
+      "options": [
+        {
+          "a": "Always",
+          "points": 1
+        },
+        {
+          "b": "Most times",
+          "points": 2
+        },
+        {
+          "c": "Sometimes",
+          "points": 3
+        },
+        {
+          "c": "Never",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "question": "To reduce energy waste in our home, several electronics are plugged into a powerbar, which is turned off",
+      "options": [
+        {
+          "a": "Automatically (on a timer) or regularly",
+          "points": 1
+        },
+        {
+          "b": "By hand sometimes",
+          "points": 2
+        },
+        {
+          "c": "rarely",
+          "points": 3
+        },
+        {
+          "c": "Never OR we do not own powerbars with a switch",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "question": "When our electronics (kitchen appliances, cel-smartphones, electric tools) reach the end of their life, we",
+      "options": [
+        {
+          "a": "recycle them locally",
+          "points": 1
+        },
+        {
+          "b": "sometimes recycle them",
+          "points": 2
+        },
+        {
+          "c": "throw them out",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "We buy 100% biodegradable, organic and non-toxic kitchen, bathroom and laundry cleaning products",
+      "options": [
+        {
+          "a": "always",
+          "points": 1
+        },
+        {
+          "b": "sometimes",
+          "points": 2
+        },
+        {
+          "c": "never",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "question": "We have an Energy Star - Dishwasher, Laundry Machine, Fridge",
+      "options": [
+        {
+          "a": "All three",
+          "points": 1
+        },
+        {
+          "b": "2 of them ",
+          "points": 2
+        },
+        {
+          "c": "1 of them",
+          "points": 3
+        },
+        {
+          "c": "none",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "question": "We remind each other at home, to conserve energy, water and resources",
+      "options": [
+        {
+          "a": "Regularly",
+          "points": 1
+        },
+        {
+          "b": "Sometimes",
+          "points": 2
+        },
+        {
+          "c": "Never",
+          "points": 3
+        }
+      ]
+    }
+  ]
+}
