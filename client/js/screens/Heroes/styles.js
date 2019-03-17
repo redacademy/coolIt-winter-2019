@@ -3,20 +3,15 @@ import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
   description: {
-    fontSize: 32,
+    fontSize: 26,
     fontWeight: "400",
-    textAlign: "center"
-    // paddingBottom: 25
+    textAlign: "center",
+    fontFamily: fonts.bold
   },
   list: {
-    paddingTop: 25,
+    paddingTop: 25
+  },
 
-  },
-  items: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    padding: 5
-  },
   hero: {
     flexDirection: "row",
     paddingLeft: 10
@@ -26,19 +21,26 @@ const styles = StyleSheet.create({
   },
   rank: {
     fontSize: 20,
+    fontFamily: fonts.light,
+
     padding: 5
   },
   name: {
-    fontSize: 20,
+    fontSize: 18,
+    fontFamily: fonts.light,
     padding: 5
   },
   point: {
     padding: 5,
     fontWeight: "bold",
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: fonts.light,
+    left: 20
   },
   pointLabel: {
-    fontSize: 14
+    fontSize: 15,
+    fontFamily: fonts.light,
+    right: 20
   },
   background: {
     flex: 1,
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
   mainContent: {
     alignItems: "stretch",
     paddingTop: 25,
-    paddingBottom: 140
+    paddingBottom: 120
   }
 });
 
