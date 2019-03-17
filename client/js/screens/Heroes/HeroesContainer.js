@@ -8,28 +8,28 @@ class HeroesContainer extends Component {
       {
         id: 1,
         point: 2000,
-        name: "Tim",
+        name: "Tim Nguyen",
         programCode: "12345"
       },
       {
         id: 2,
         point: 1000,
-        name: "Steve",
+        name: "Steve Choi",
         programCode: "12345"
       },
       {
         id: 3,
         point: 500,
-        name: "Victor",
+        name: "Victor Guo",
         programCode: "12345"
       },
       {
         id: 4,
         point: 1500,
-        name: "Sophie",
+        name: "Sophie Virtue",
         programCode: "12345"
       },
-      {id: 5, point: 400, name: "Jen", programCode: "12345"},
+      {id: 5, point: 400, name: "Jennifer Lam", programCode: "12345"},
       {id: 6, point: 300, name: "Jennifer", programCode: "12345"},
       {id: 7, point: 500, name: "Alex", programCode: "12344"}
     ];

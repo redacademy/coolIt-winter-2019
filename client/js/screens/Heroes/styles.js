@@ -1,15 +1,21 @@
 import {StyleSheet} from "react-native";
+import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
   description: {
-    fontSize: 30,
+    fontSize: 32,
     fontWeight: "400",
-    textAlign: "center",
-    paddingTop: 25
+    textAlign: "center"
+    // paddingBottom: 25
+  },
+  list: {
+    paddingTop: 25,
+
   },
   items: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    padding: 5
   },
   hero: {
     flexDirection: "row",
@@ -19,17 +25,48 @@ const styles = StyleSheet.create({
     paddingRight: 10
   },
   rank: {
-    fontSize: 22,
+    fontSize: 20,
     padding: 5
   },
   name: {
-    fontSize: 22,
+    fontSize: 20,
     padding: 5
   },
   point: {
-      padding: 5,
-      fontWeight: "400",
-      fontSize: 22
+    padding: 5,
+    fontWeight: "bold",
+    fontSize: 16
+  },
+  pointLabel: {
+    fontSize: 14
+  },
+  background: {
+    flex: 1,
+    width: "100%"
+  },
+  valley: {
+    width: "100%",
+    paddingTop: 25
+  },
+  itemSeparator: {
+    height: 5,
+    backgroundColor: colors.green,
+    paddingTop: 5,
+    width: "70%%"
+  },
+  itemBottomSeparator: {
+    height: 5,
+    backgroundColor: colors.green,
+    width: "70%%",
+    position: "absolute",
+    right: 0,
+    top: 70
+  },
+
+  mainContent: {
+    alignItems: "stretch",
+    paddingTop: 25,
+    paddingBottom: 140
   }
 });
 
