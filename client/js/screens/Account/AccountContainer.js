@@ -1,11 +1,6 @@
-import React, { Component } from "react";
-import { formatSessionData } from "../../lib/helpers/dataFormatHelpers";
+import React, {Component} from "react";
 import Account from "./Account";
-import { ActivityIndicator } from "react-native";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
 import PropTypes from "prop-types";
-import styles from "./styles";
 
 class AccountContainer extends Component {
   render() {
@@ -16,5 +11,4 @@ class AccountContainer extends Component {
 AccountContainer.propTypes = {
   navigation: PropTypes.object.isRequired
 };
-
 export default AccountContainer;
