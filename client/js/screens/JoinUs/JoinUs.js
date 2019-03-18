@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  Button,
   AsyncStorage,
   TextInput,
   TouchableOpacity
@@ -11,9 +10,9 @@ import { Form, Field } from "react-final-form";
 import { withNavigation } from "react-navigation";
 import styles from "./styles";
 // import PropTypes from "prop-types";
-
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
+import DateDisplay from "../../components/DateDisplay";
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
     authenticateUser(email: $email, password: $password) {
@@ -37,16 +36,21 @@ class JoinUs extends Component {
         <Text>Login Form</Text>
         <Form
           onSubmit={async value => {
-            const result = await this.props.loginMutation({
-              variables: { email: value.email, password: value.password }
-            });
-            const user = result.data.authenticateUser;
-            console.log(user);
-            // await authenticateUser({
-            //   variables: { email: value.email, password: value.password }
-            // });
-            await AsyncStorage.setItem(user.id, user.token);
-            this.props.navigation.navigate("App");
+            try {
+              const result = await this.props.loginMutation({
+                variables: { email: value.email, password: value.password }
+              });
+              console.log(result);
+              const user = result.data.authenticateUser;
+              console.log(user);
+              // await authenticateUser({
+              //   variables: { email: value.email, password: value.password }
+              // });
+              await AsyncStorage.setItem(user.id, user.token);
+              this.props.navigation.navigate("App");
+            } catch (e) {
+              console.log(e);
+            }
           }}
           render={({ handleSubmit, value, reset }) => (
             <View>
@@ -80,15 +84,11 @@ class JoinUs extends Component {
             </View>
           )}
         />
+        <DateDisplay />
       </View>
     );
   }
 }
-
-_signInAsync = async () => {
-  await AsyncStorage.setItem("userToken", "abc");
-  this.props.navigation.navigate("App");
-};
 
 export default compose(
   graphql(AUTHENTICATE_USER, { name: "loginMutation" }),

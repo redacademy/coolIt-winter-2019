@@ -9,7 +9,26 @@ const Accounts = props => {
 
   return (
     <View>
-      <Button title="Actually, sign me out :)" onPress={_signOutAsync} />
+      <Button
+        style={{ borderStyle: "solid", borderWidth: "1" }}
+        title="Change Password"
+        onPress={_signOutAsync}
+      />
+      <Button
+        style={{ borderStyle: "solid", borderWidth: "1" }}
+        title="Disconnet from Cool It Program"
+        onPress={_signOutAsync}
+      />
+      <Button
+        style={{ borderStyle: "solid", borderWidth: "1" }}
+        title="Deactivate Account"
+        onPress={_signOutAsync}
+      />
+      <Button
+        style={{ borderStyle: "solid", borderWidth: "1" }}
+        title="Sign Out"
+        onPress={_signOutAsync}
+      />
     </View>
   );
 };
