@@ -5,10 +5,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 export const DateDisplay = props => {
   const today = new Date();
-  console.log(today);
 
-  // let tomorrow = new Date();
-  // tomorrow.setDate(today.getDate() + 1);
   return (
     <View>
       <Icon name={"ios-arrow-dropleft"} />

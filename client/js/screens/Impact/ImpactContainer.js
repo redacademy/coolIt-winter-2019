@@ -25,13 +25,12 @@ export default class ImpactContainer extends Component {
     this.setState({ userID });
   };
   render() {
-    console.log(this.state.userID);
     return (
       <Query query={USER_INFO} variables={{ id: this.state.userID }}>
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>Error</Text>;
-          console.log(data.allUsers[0]);
+
           return (
             <View>
               <Text>{data.allUsers[0].email}</Text>
