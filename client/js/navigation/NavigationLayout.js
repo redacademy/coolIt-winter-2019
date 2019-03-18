@@ -4,10 +4,10 @@ import {
 } from "react-navigation";
 import React from "react";
 import AccountScreen from "../screens/Account";
-import ActivitiesScreen from "../screens";
-import HerosScreen from "../screens/Heroes";
+import ActivitiesScreen from "../screens/Activities";
+import HeroesScreen from "../screens/Heroes";
 import ImpactScreen from "../screens/Impact";
-import PlanetScreen from "../screens/Planet";
+import PlanetScreen from "../screens/Planet/Planet";
 import { Image, View } from "react-native";
 import { sharedNavigationOptions } from "./config";
 
