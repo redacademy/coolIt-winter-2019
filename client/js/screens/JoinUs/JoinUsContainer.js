@@ -3,8 +3,6 @@ import JoinUs from "./JoinUs";
 
 export default class JoinUsContainer extends Component {
   render() {
-    return (
-      <JoinUs />
-    );
+    return <JoinUs navigation={this.props.navigation} />;
   }
 }
