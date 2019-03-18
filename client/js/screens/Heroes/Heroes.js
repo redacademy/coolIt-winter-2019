@@ -1,29 +1,51 @@
 import React from "react";
-import {Text, ScrollView, View, FlatList} from "react-native";
+import {Text, ScrollView, View, FlatList, Image} from "react-native";
 import styles from "./styles";
 import PropTypes from "prop-types";
+import {colors} from "../../config/styles";
+
+const alternateColors = [colors.white, "#96a687"];
 
 const Heroes = ({data}) => {
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
-      <View style={styles.mainContent}>
-        <Text style={styles.description}>Heroes</Text>
-        <FlatList
-          style={styles.list}
-          data={data}
-          renderItem={({item, index}) => (
-            <View style={styles.items} key={index}>
-              <View style={styles.hero}>
-                <Text style={styles.rank}>{index + 1}</Text>
-                <Text style={styles.name}>{item.name}</Text>
+      <View style={styles.container}>
+        <View style={styles.mainContent}>
+          <View style={styles.itemSeparator} />
+          <Text style={styles.description}>Heroes</Text>
+          <View style={styles.itemBottomSeparator} />
+
+          <FlatList
+            style={styles.list}
+            data={data}
+            renderItem={({item, index}) => (
+              <View
+                style={{
+                  backgroundColor:
+                    alternateColors[index % alternateColors.length],
+                  ...styles.rankingView
+                }}
+                key={index}
+              >
+                <View style={styles.hero}>
+                  <Text style={styles.rank}>{index + 1}.</Text>
+                  <Text style={styles.name}>{item.name}</Text>
+                </View>
+                <View style={styles.score}>
+                  <Text style={styles.point}>{item.point}</Text>
+                  <Text style={styles.pointLabel}>GHC savings</Text>
+                </View>
               </View>
-              <View style={styles.score}>
-                <Text style={styles.point}>{item.point}</Text>
-              </View>
-            </View>
-          )}
-          keyExtractor={(item, index) => item + index}
-        />
+            )}
+            keyExtractor={(item, index) => item + index}
+          />
+        </View>
+        <View style={styles.bottom}>
+          <Image
+            source={require("../../assets/images/valley.png")}
+            style={styles.valley}
+          />
+        </View>
       </View>
     </ScrollView>
   );
