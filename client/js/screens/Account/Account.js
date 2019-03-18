@@ -12,17 +12,17 @@ const Accounts = props => {
       <Button
         style={{ borderStyle: "solid", borderWidth: "1" }}
         title="Change Password"
-        onPress={_signOutAsync}
+        onPress={() => {}}
       />
       <Button
         style={{ borderStyle: "solid", borderWidth: "1" }}
         title="Disconnet from Cool It Program"
-        onPress={_signOutAsync}
+        onPress={() => {}}
       />
       <Button
         style={{ borderStyle: "solid", borderWidth: "1" }}
         title="Deactivate Account"
-        onPress={_signOutAsync}
+        onPress={() => {}}
       />
       <Button
         style={{ borderStyle: "solid", borderWidth: "1" }}

@@ -42,12 +42,9 @@ class JoinUs extends Component {
               const result = await this.props.loginMutation({
                 variables: { email: value.email, password: value.password }
               });
-              console.log(result);
+
               const user = result.data.authenticateUser;
-              console.log(user);
-              // await authenticateUser({
-              //   variables: { email: value.email, password: value.password }
-              // });
+
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
