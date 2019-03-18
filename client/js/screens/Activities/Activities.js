@@ -1,19 +1,19 @@
 import React from "react";
-import {Text, View, SectionList, TouchableHighlight} from "react-native";
+import { Text, View, SectionList, TouchableHighlight } from "react-native";
 import styles from "./styles";
 import PropTypes from "prop-types";
 
-const Activities = ({data, navigation}) => {
+const Activities = ({ data, navigation }) => {
   return (
     <View style={styles.container}>
       <SectionList
         style={styles.sectionList}
         sections={data}
         keyExtractor={(item, index) => item + index}
-        renderSectionHeader={({section}) => (
+        renderSectionHeader={({ section }) => (
           <Text style={styles.header}>{section.title}</Text>
         )}
-        renderItem={({item, index}) => (
+        renderItem={({ item, index }) => (
           <TouchableHighlight
             onPress={() => {
               navigation.navigate("Activity", {

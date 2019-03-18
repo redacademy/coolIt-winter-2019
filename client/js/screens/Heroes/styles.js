@@ -1,16 +1,17 @@
-import {StyleSheet} from "react-native";
+import {StyleSheet, Dimensions} from "react-native";
+import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
   description: {
-    fontSize: 30,
+    fontSize: 26,
     fontWeight: "400",
     textAlign: "center",
+    fontFamily: fonts.bold
+  },
+  list: {
     paddingTop: 25
   },
-  items: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
+
   hero: {
     flexDirection: "row",
     paddingLeft: 10
@@ -19,17 +20,61 @@ const styles = StyleSheet.create({
     paddingRight: 10
   },
   rank: {
-    fontSize: 22,
+    fontSize: 20,
+    fontFamily: fonts.light,
+    padding: 3
+  },
+  rankingView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     padding: 5
   },
   name: {
-    fontSize: 22,
-    padding: 5
+    fontSize: 18,
+    fontFamily: fonts.light,
+    padding: 3
   },
   point: {
-      padding: 5,
-      fontWeight: "400",
-      fontSize: 22
+    padding: 3,
+    fontWeight: "bold",
+    fontSize: 16,
+    fontFamily: fonts.light,
+    left: 20
+  },
+  pointLabel: {
+    fontSize: 15,
+    fontFamily: fonts.light,
+    right: 20
+  },
+
+  itemSeparator: {
+    height: 5,
+    backgroundColor: colors.green,
+    paddingTop: 5,
+    width: "70%"
+  },
+  itemBottomSeparator: {
+    height: 5,
+    backgroundColor: colors.green,
+    width: "70%",
+    position: "absolute",
+    right: 0,
+    top: 60
+  },
+
+  mainContent: {
+    paddingTop: 15
+  },
+
+  bottom: {
+    flex: 1,
+    justifyContent: "space-around"
+  },
+  valley: {
+    resizeMode: "cover"
+  },
+  container: {
+    height: Dimensions.get("window").height
   }
 });
 

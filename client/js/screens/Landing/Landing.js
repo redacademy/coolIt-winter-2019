@@ -17,7 +17,6 @@ const Landing = () => {
         source={require("../../assets/images/background.png")}
         style={styles.background}
       >
-        {/* <View style={styles.container}> */}
           <View style={styles.center}>
             <Image
               source={require("../../assets/images/logo.png")}
@@ -53,7 +52,6 @@ const Landing = () => {
               style={styles.valley}
             />
           </View>
-        {/* </View> */}
       </ImageBackground>
     </View>
   );
