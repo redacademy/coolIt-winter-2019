@@ -3,11 +3,11 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import React from "react";
-import AccountScreen from "../screens/Account/Account";
-import ActivitiesScreen from "../screens/Activities";
-import HeroesScreen from "../screens/Heroes";
-import ImpactScreen from "../screens/Impact/Impact";
-import PlanetScreen from "../screens/Planet/Planet";
+import AccountScreen from "../screens/Account";
+import ActivitiesScreen from "../screens";
+import HerosScreen from "../screens/Heroes";
+import ImpactScreen from "../screens/Impact";
+import PlanetScreen from "../screens/Planet";
 import { Image, View } from "react-native";
 import { sharedNavigationOptions } from "./config";
 

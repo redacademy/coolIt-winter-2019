@@ -24,7 +24,7 @@ const AUTHENTICATE_USER = gql`
 class JoinUs extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: "" };
+    this.state = { text: "", loading: false };
   }
   static navigationOptions = {
     title: "Please sign in"
@@ -33,10 +33,12 @@ class JoinUs extends Component {
   render() {
     return (
       <View style={{ justifyContent: "center", alignContent: "center" }}>
+        {this.state.loading ? <Text>Loading</Text> : null}
         <Text>Login Form</Text>
         <Form
           onSubmit={async value => {
             try {
+              this.setState({ loading: true });
               const result = await this.props.loginMutation({
                 variables: { email: value.email, password: value.password }
               });
@@ -46,7 +48,9 @@ class JoinUs extends Component {
               // await authenticateUser({
               //   variables: { email: value.email, password: value.password }
               // });
-              await AsyncStorage.setItem(user.id, user.token);
+              await AsyncStorage.setItem("token", user.token);
+              await AsyncStorage.setItem("id", user.id);
+
               this.props.navigation.navigate("App");
             } catch (e) {
               console.log(e);
