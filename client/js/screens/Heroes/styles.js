@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
     height: 5,
     backgroundColor: colors.green,
     paddingTop: 5,
-    width: "70%%"
+    width: "70%"
   },
   itemBottomSeparator: {
     height: 5,
     backgroundColor: colors.green,
-    width: "70%%",
+    width: "70%",
     position: "absolute",
     right: 0,
     top: 60
