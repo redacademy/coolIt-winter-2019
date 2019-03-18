@@ -1,6 +1,7 @@
 import React from "react";
 import {Text, View, SectionList, TouchableHighlight} from "react-native";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const Activities = ({data, navigation}) => {
   return (
@@ -33,6 +34,11 @@ const Activities = ({data, navigation}) => {
       />
     </View>
   );
+};
+
+Activities.propTypes = {
+  data: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 
 export default Activities;
