@@ -1,14 +1,16 @@
 import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import { colors, fonts, spacing } from "../../config/styles";
 
 const styles = StyleSheet.create({
+  screen: {
+    alignSelf: 'center',
+    justifyContent: 'center'
+  },
   background: {
     width: "100%",
     height: "100%"
   },
   logo: {
-    width: 240,
-    height: 240,
     paddingBottom: 25
   },
   container: {
@@ -18,14 +20,14 @@ const styles = StyleSheet.create({
   absoluteText: {
     position: "absolute",
     top: "33%",
-    left: "20%",
+    left: "27%",
     fontFamily: fonts.light,
     fontSize: 20
   },
   absoluteNumber: {
     position: "absolute",
     top: "42%",
-    left: "26%",
+    left: "35%",
     fontFamily: fonts.light,
     fontWeight: 'bold', 
     fontSize: 42
@@ -35,18 +37,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 30,
-    padding: 20,
-    paddingTop: 25
+    paddingTop: 20
   },
   text: {
     fontFamily: fonts.light,
     textAlign: "center",
     fontSize: 14,
-    width: 300,
-    paddingBottom: 40
+    paddingBottom: 25
   },
   button: {
-    width: "70%",
+    width: '100%',
     alignSelf: "center",
     backgroundColor: colors.green,
     borderRadius: 13
@@ -58,12 +58,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.white,
     paddingTop: 8,
-    paddingBottom: 8
+    paddingBottom: 8,
+    paddingRight: spacing.single*6,
+    paddingLeft: spacing.single*6
   },
   flex: {
     alignItems: "center",
-    flex: 1,
-    justifyContent: "center"
+    flex: 0.8,
+    justifyContent: "space-around",
+    width: '80%'
   }
 });
 

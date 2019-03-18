@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { colors, fonts } from "../../config/styles";
 
 const styles = StyleSheet.create({
@@ -6,27 +6,29 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%"
   },
+  container: {
+    height: Dimensions.get("window").height
+  },
   valley: {
     width: "100%",
-    height: "47%"
+    height: "80%"
   },
   bottom: {
     flex: 1,
     justifyContent: "flex-end"
   },
   logo: {
-    width: 110,
-    height: 110,
-    marginTop: 150
+    height: "30%",
+    resizeMode: "contain",
+    alignSelf: 'center'
   },
   text: {
     fontFamily: fonts.light,
     textAlign: "center",
     fontSize: 16,
-    width: 300
   },
   button: {
-    width: "70%",
+    width: "80%",
     alignSelf: "center",
     backgroundColor: colors.green,
     borderRadius: 13
@@ -34,15 +36,21 @@ const styles = StyleSheet.create({
   buttonText: {
     alignSelf: "center",
     fontFamily: fonts.light,
-    fontSize: 16,
+    fontSize: 18,
     color: colors.white,
     paddingTop: 10,
     paddingBottom: 10
   }, 
   flex: {
     alignItems: "center",
-    flex: 1.9,
-    justifyContent: "space-around"
+    justifyContent: "center",
+    height: '80%'
+  },
+  center: {
+    alignSelf: 'center',
+    justifyContent: 'space-around',
+    flexGrow: 0.3,
+    width: '80%'
   }
 });
 

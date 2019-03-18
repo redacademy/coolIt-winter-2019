@@ -11,19 +11,19 @@ import styles from "./styles";
 
 const Score = () => {
   return (
-    <View>
-      <ImageBackground
-        source={require("../../assets/images/background.png")}
-        style={styles.background}
-      >
+    <ImageBackground
+      source={require("../../assets/images/background.png")}
+      style={styles.background}
+    >
+      <View style={styles.screen}>
         <View style={styles.flex}>
-        <View style={styles.container}>
-          <Image
-            source={require("../../assets/images/circle-quiz.png")}
-            style={styles.logo}
-          />
-          <Text style={styles.absoluteText}>Your Score</Text>
-          <Text style={styles.absoluteNumber}>55</Text>
+          <View style={styles.container}>
+            <Image
+              source={require("../../assets/images/circle-quiz.png")}
+              style={styles.logo}
+            />
+            <Text style={styles.absoluteText}>Your Score</Text>
+            <Text style={styles.absoluteNumber}>55</Text>
           </View>
           <Text style={styles.great}>Great Job!</Text>
           <Text style={styles.text}>
@@ -31,12 +31,13 @@ const Score = () => {
             There are probably more things you can do to help. Start the
             challenge to learn more.
           </Text>
-          <TouchableOpacity onPress={() => {}} style={styles.button}>
+          
+        </View>
+        <TouchableOpacity onPress={() => {}} style={styles.button}>
             <Text style={styles.buttonText}>Start Challenge</Text>
           </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </View>
+      </View>
+    </ImageBackground>
   );
 };
 

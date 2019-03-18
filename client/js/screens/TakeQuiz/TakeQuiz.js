@@ -11,12 +11,13 @@ import styles from "./styles";
 
 const TakeQuiz = () => {
   return (
-    <View>
-      <ImageBackground
-        source={require("../../assets/images/background.png")}
-        style={styles.background}
-      >
+    <ImageBackground
+      source={require("../../assets/images/background.png")}
+      style={styles.background}
+    >
+      <View style={styles.container}>
         <View style={styles.flex}>
+        <View style={styles.center}>
           <Image
             source={require("../../assets/images/main-logo.png")}
             style={styles.logo}
@@ -32,14 +33,15 @@ const TakeQuiz = () => {
             <Text style={styles.buttonText}>Take the Carbon Quiz</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.bottom}>
-          <Image
-            source={require("../../assets/images/valley.png")}
-            style={styles.valley}
-          />
-        </View>
-      </ImageBackground>
-    </View>
+      </View>
+      <View style={styles.bottom}>
+        <Image
+          source={require("../../assets/images/valley.png")}
+          style={styles.valley}
+        />
+      </View>
+      </View>
+    </ImageBackground>
   );
 };
 

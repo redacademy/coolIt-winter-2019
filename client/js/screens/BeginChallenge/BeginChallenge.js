@@ -11,35 +11,38 @@ import styles from "./styles";
 
 const BeginChallenge = () => {
   return (
-    <View>
-      <ImageBackground
-        source={require("../../assets/images/background.png")}
-        style={styles.background}
-      >
-        <View style={styles.center}>
-          <Image
-            source={require("../../assets/images/logo.png")}
-            style={styles.logo}
-          />
-
-          <Text style={styles.challenge}>Challenge</Text>
-          <View style={styles.flexText}>
-            <Text style={styles.text}>
-              You're ready to begin the challenge!
-            </Text>
-            <Text style={styles.text}>
-              The Cool It! Challenge encourages users to reduce their greenhouse
-              gas (GHG) emissions by changing habits, which usually takes one
-              month of continuous practice.
-            </Text>
-            <Text style={styles.text}>
-              Record all your actions. Points are awarded according to GHG
-              savings and effort required.
-            </Text>
+    <ImageBackground
+      source={require("../../assets/images/background.png")}
+      style={styles.background}
+    >
+      <View style={styles.container}>
+        <View style={styles.flex}>
+          <View style={styles.center}>
+            <View>
+              <Image
+                source={require("../../assets/images/logo.png")}
+                style={styles.logo}
+              />
+              <Text style={styles.challenge}>Challenge</Text>
+            </View>
+            <View style={styles.flexText}>
+              <Text style={styles.text}>
+                You're ready to begin the challenge!
+              </Text>
+              <Text style={styles.text}>
+                The Cool It! Challenge encourages users to reduce their
+                greenhouse gas (GHG) emissions by changing habits, which usually
+                takes one month of continuous practice.
+              </Text>
+              <Text style={styles.text}>
+                Record all your actions. Points are awarded according to GHG
+                savings and effort required.
+              </Text>
+            </View>
+            <TouchableOpacity onPress={() => {}} style={styles.button}>
+              <Text style={styles.buttonText}>Let's begin</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={() => {}} style={styles.button}>
-            <Text style={styles.buttonText}>Let's begin</Text>
-          </TouchableOpacity>
         </View>
         <View style={styles.bottom}>
           <Image
@@ -47,8 +50,8 @@ const BeginChallenge = () => {
             style={styles.valley}
           />
         </View>
-      </ImageBackground>
-    </View>
+      </View>
+    </ImageBackground>
   );
 };
 

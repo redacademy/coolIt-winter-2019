@@ -1,50 +1,54 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { colors, fonts } from "../../config/styles";
 
 const styles = StyleSheet.create({
+  container: {
+    height: Dimensions.get("window").height
+  },
   center: {
+    flexGrow: 0.5,
     alignItems: "center",
-    flex: 1.25,
-    justifyContent: "space-around",
-    paddingTop: 120
+    justifyContent: "space-around"
+  },
+  flex: {
+    alignSelf: 'center',
+    justifyContent: 'center'
   },
   flexText: {
     alignItems: "center",
-    flex: 0.9,
-    justifyContent: "space-between",
-    paddingBottom: 60,
-    paddingTop: 30
+    flexGrow: 0.2,
+    justifyContent: "space-around",
+    width: "90%"
   },
   background: {
-    width: "100%",
-    height: "100%"
+    height: "100%",
+    resizeMode: "cover"
   },
   text: {
     fontFamily: fonts.light,
     textAlign: "center",
-    fontSize: 14,
-    width: 300
+    fontSize: 14
   },
   logo: {
-    width: 180,
-    height: 30,
-    paddingBottom: 0
+    resizeMode: "contain"
   },
   challenge: {
     fontFamily: fonts.light,
-    fontWeight: 'bold',
-    fontSize: 20
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "center",
+    paddingTop: 15
   },
   valley: {
-    width: "100%",
-    height: "47%"
+    height: "60%",
+    resizeMode: "cover"
   },
   bottom: {
     flex: 1,
     justifyContent: "flex-end"
   },
   button: {
-    width: "60%",
+    width: "70%",
     alignSelf: "center",
     backgroundColor: colors.green,
     borderRadius: 13
@@ -52,6 +56,7 @@ const styles = StyleSheet.create({
   buttonText: {
     alignSelf: "center",
     fontFamily: fonts.light,
+    fontWeight: "normal",
     fontSize: 18,
     color: colors.white,
     paddingTop: 8,
