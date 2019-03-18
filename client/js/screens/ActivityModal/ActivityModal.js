@@ -9,39 +9,70 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 import PropTypes from "prop-types";
+import {colors} from "../../config/styles";
 
-const ActivityModal = ({data, navigation}) => (
-  <View style={styles.container}>
-    <TouchableHighlight
-      onPress={() => {
-        navigation.goBack();
-      }}
-    >
-      <Ionicons style={styles.icon} name="ios-close" size={30} color="red" />
-    </TouchableHighlight>
-    <View style={styles.info}>
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        <View style={styles.activityContainer}>
-          <Text>{data.name}</Text>
-        </View>
-        <Text>{data.description}</Text>
-        <TouchableOpacity
-          style={styles.buttonContainer}
+const ActivityModal = ({data, navigation}) => {
+  console.log(data);
+  return (
+    <View style={styles.container}>
+      <View style={styles.modal}>
+        <TouchableHighlight
           onPress={() => {
-            console.log("activity added");
+            navigation.goBack();
           }}
+          underlayColor={colors.white}
         >
           <Ionicons
-            style={styles.addIcon}
-            name="ios-add-circle-outline"
+            style={styles.icon}
+            name="ios-close"
             size={50}
-            color="red"
+            color={colors.blue}
           />
-        </TouchableOpacity>
-      </ScrollView>
+        </TouchableHighlight>
+        <View style={styles.info}>
+          <ScrollView contentContainerStyle={styles.scrollView}>
+            <View style={styles.mainContainer}>
+              <View style={styles.nameContainer}>
+                <Text style={styles.name}>{data.name}</Text>
+              </View>
+              <View style={styles.descriptionContainer}>
+                <Text style={styles.description}>{data.description}</Text>
+              </View>
+              {data.category.name != "Community Actions" ? (
+                <View style={styles.icon}>
+                  <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={() => {
+                      console.log("activity added");
+                    }}
+                  >
+                    <Ionicons
+                      style={styles.addIcon}
+                      name="ios-add-circle-outline"
+                      size={75}
+                      color={colors.blue}
+                    />
+                  </TouchableOpacity>
+                </View>
+              ) : (
+                <View style={styles.icon}>
+                  <TouchableOpacity
+                    style={styles.dismiss}
+                    onPress={() => {
+                      console.log("activity closed");
+                    }}
+                  >
+                    <Text style={styles.buttonText}>Dismiss</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+            </View>
+          </ScrollView>
+        </View>
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
 ActivityModal.propTypes = {
   data: PropTypes.object.isRequired,
