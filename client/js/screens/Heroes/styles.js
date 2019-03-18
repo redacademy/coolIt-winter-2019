@@ -1,4 +1,4 @@
-import {StyleSheet} from "react-native";
+import {StyleSheet, Dimensions} from "react-native";
 import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
@@ -22,16 +22,20 @@ const styles = StyleSheet.create({
   rank: {
     fontSize: 20,
     fontFamily: fonts.light,
-
+    padding: 3
+  },
+  rankingView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     padding: 5
   },
   name: {
     fontSize: 18,
     fontFamily: fonts.light,
-    padding: 5
+    padding: 3
   },
   point: {
-    padding: 5,
+    padding: 3,
     fontWeight: "bold",
     fontSize: 16,
     fontFamily: fonts.light,
@@ -42,14 +46,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.light,
     right: 20
   },
-  background: {
-    flex: 1,
-    width: "100%"
-  },
-  valley: {
-    width: "100%",
-    paddingTop: 25
-  },
+
   itemSeparator: {
     height: 5,
     backgroundColor: colors.green,
@@ -62,13 +59,22 @@ const styles = StyleSheet.create({
     width: "70%%",
     position: "absolute",
     right: 0,
-    top: 70
+    top: 60
   },
 
   mainContent: {
-    alignItems: "stretch",
-    paddingTop: 25,
-    paddingBottom: 120
+    paddingTop: 15
+  },
+
+  bottom: {
+    flex: 1,
+    justifyContent: "space-around"
+  },
+  valley: {
+    resizeMode: "cover"
+  },
+  container: {
+    height: Dimensions.get("window").height
   }
 });
 
