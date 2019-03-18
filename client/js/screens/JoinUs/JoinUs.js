@@ -32,21 +32,21 @@ class JoinUs extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
-      <View>
+      <View style={{ justifyContent: "center", alignContent: "center" }}>
         <Text>Login Form</Text>
         <Form
-          onSubmit={value => {
-            this.props.loginMutation();
+          onSubmit={async value => {
+            const result = await this.props.loginMutation({
+              variables: { email: value.email, password: value.password }
+            });
+            const user = result.data.authenticateUser;
+            console.log(user);
             // await authenticateUser({
             //   variables: { email: value.email, password: value.password }
             // });
-            // await AsyncStorage.setItem(
-            //   "userToken",
-            //   data.authenticateUser.token
-            // );
-            // this.props.navigation.navigate("App");
+            await AsyncStorage.setItem(user.id, user.token);
+            this.props.navigation.navigate("App");
           }}
           render={({ handleSubmit, value, reset }) => (
             <View>
@@ -54,6 +54,7 @@ class JoinUs extends Component {
               <Field name="email">
                 {({ input, meta }) => (
                   <TextInput
+                    style={{ borderStyle: "solid", borderWidth: 1 }}
                     editable={true}
                     {...input}
                     onChangeText={text => this.setState({ text })}
@@ -64,6 +65,7 @@ class JoinUs extends Component {
               <Field name="password">
                 {({ input, meta }) => (
                   <TextInput
+                    style={{ borderStyle: "solid", borderWidth: 1 }}
                     editable={true}
                     {...input}
                     secureTextEntry={true}
