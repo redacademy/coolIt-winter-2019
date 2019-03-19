@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 class AccountContainer extends Component {
   render() {
-    return <Account />;
+    return <Account navigation={this.props.navigation} />;
   }
 }
 

@@ -8,12 +8,11 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
-import {withNavigation} from "react-navigation";
 
-const Accounts = props => {
+const Account = ({navigation}) => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
-    props.navigation.navigate("Auth");
+    navigation.navigate("Auth");
   };
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -63,4 +62,4 @@ const Accounts = props => {
   );
 };
 
-export default withNavigation(Accounts);
+export default Account;
