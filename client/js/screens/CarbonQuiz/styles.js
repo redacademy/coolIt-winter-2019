@@ -13,6 +13,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  selected: {
+    borderColor: "#4aae4f"
+  },
+  normal: {
+    borderColor: "#ffffff"
   }
 });
 

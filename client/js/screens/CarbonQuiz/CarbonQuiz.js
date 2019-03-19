@@ -5,8 +5,6 @@ import styles from "./styles";
 import QuizSection from "../../components/QuizSection";
 import StepIndicator from "react-native-step-indicator";
 
-// const PAGES = ["Page 1", "Page 2", "Page 3", "Page 4", "Page 5"];
-
 const firstIndicatorStyles = {
   stepIndicatorSize: 30,
   currentStepIndicatorSize: 40,
@@ -27,58 +25,43 @@ const firstIndicatorStyles = {
   currentStepLabelColor: "#4aae4f"
 };
 
-// const getStepIndicatorIconConfig = ({ position, stepStatus }) => {
-//   const iconConfig = {
-//     name: "feed",
-//     color: stepStatus === "finished" ? "#ffffff" : "#fe7013",
-//     size: 15
-//   };
-//   switch (position) {
-//     case 0: {
-//       iconConfig.name = "shopping-cart";
-//       break;
-//     }
-//     case 1: {
-//       iconConfig.name = "location-on";
-//       break;
-//     }
-//     case 2: {
-//       iconConfig.name = "assessment";
-//       break;
-//     }
-//     case 3: {
-//       iconConfig.name = "payment";
-//       break;
-//     }
-//     case 4: {
-//       iconConfig.name = "track-changes";
-//       break;
-//     }
-//     default: {
-//       break;
-//     }
-//   }
-//   return iconConfig;
-// };
-
 export default class CarbonQuiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentPage: 0,
-      totalPoints: 0
+      totalPoints: 0,
+      selected: null,
+      userSelection: []
     };
     this.viewPager = createRef();
   }
 
-  // componentWillReceiveProps(nextProps, nextState) {
-  //   if (nextState.currentPage != this.state.currentPage) {
-  //     if (this.viewPager) {
-  //       console.log(this.viewPager);
-  //       this.viewPager.setPage(nextState.currentPage);
-  //     }
-  //   }
-  // }
+  userSelectionHandler = obj => {
+    const question = () => {
+      return obj.question;
+    };
+
+    let answered = this.state.userSelection.findIndex(
+      selection => selection.question === question()
+    );
+    const updatedQuestion = this.state.userSelection;
+
+    if (answered >= 0) {
+      updatedQuestion[answered].point = obj.point;
+      this.setState({ userSelection: updatedQuestion });
+    } else {
+      this.setState({ userSelection: [...this.state.userSelection, obj] });
+    }
+  };
+
+  handleSubmit = () => {
+    let initialValue = 0;
+    return this.state.userSelection.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.point,
+      initialValue
+    );
+  };
 
   render() {
     const group1 = this.props.data.questions.slice(0, 3);
@@ -87,8 +70,10 @@ export default class CarbonQuiz extends Component {
     const group4 = this.props.data.questions.slice(12, 16);
     const group5 = this.props.data.questions.slice(16, 20);
     const group6 = this.props.data.questions.slice(20);
+    const disabledSubmit =
+      this.state.userSelection.length === 25 ? false : true;
+    console.log(this.state.userSelection);
 
-    console.log(this.state.totalPoints);
     return (
       <View style={styles.container}>
         <View style={styles.stepIndicator}>
@@ -143,7 +128,12 @@ export default class CarbonQuiz extends Component {
             >
               <Text>back</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity
+              onPress={() => {
+                console.log(this.handleSubmit());
+              }}
+              disabled={disabledSubmit}
+            >
               <Text>submit</Text>
             </TouchableOpacity>
           </View>
@@ -172,44 +162,13 @@ export default class CarbonQuiz extends Component {
   }
 
   renderViewPagerPage = section => {
-    console.log(section);
     return (
-      // <View style={styles.page}>
-      //   <QuizSection data={section} />
-      // </View>
-      <ScrollView>
-        {section.map(question => (
-          <View>
-            <Text>{question.question}</Text>
-            <View>
-              {question.options.map(option => (
-                <View
-                  style={{
-                    paddingTop: 15,
-                    paddingBottom: 15,
-                    borderWidth: 0.5,
-                    borderRadius: 10
-                  }}
-                >
-                  <TouchableOpacity
-                    onPress={() => {
-                      this.setState({
-                        totalPoints: this.state.totalPoints + option.points
-                      });
-                    }}
-                  >
-                    <Text>{option.option}</Text>
-                  </TouchableOpacity>
-                </View>
-              ))}
-            </View>
-          </View>
-        ))}
-      </ScrollView>
+      <View style={styles.page}>
+        <QuizSection
+          data={section}
+          userSelectionHandler={this.userSelectionHandler}
+        />
+      </View>
     );
   };
-
-  // renderStepIndicator = params => (
-  //   <MaterialIcon {...getStepIndicatorIconConfig(params)} />
-  // );
 }
