@@ -78,14 +78,12 @@ class JoinUs extends Component {
                   />
                 )}
               </Field>
-
               <TouchableOpacity onPress={handleSubmit}>
                 <Text>Submit</Text>
               </TouchableOpacity>
             </View>
           )}
         />
-        <DateDisplay />
       </View>
     );
   }
