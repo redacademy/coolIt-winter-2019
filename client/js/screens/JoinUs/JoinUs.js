@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   View,
   Text,
+  Image,
   AsyncStorage,
   TextInput,
   TouchableOpacity
@@ -12,10 +13,9 @@ import styles from "./styles";
 // import PropTypes from "prop-types";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import DateDisplay from "../../components/DateDisplay";
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
-    authenticateUser(email: $email, password: $password) {
+    signupUser(email: $email, password: $password) {
       id
       token
     }
@@ -27,14 +27,18 @@ class JoinUs extends Component {
     this.state = { text: "", loading: false };
   }
   static navigationOptions = {
-    title: "Please sign in"
+    title: "Please sign up"
   };
 
   render() {
     return (
-      <View style={{ justifyContent: "center", alignContent: "center" }}>
-        {this.state.loading ? <Text>Loading</Text> : null}
-        <Text>Login Form</Text>
+      <View style={styles.container}>
+        <View style={styles.backgroundTop}>
+          <Image
+            source={require("../../assets/images/background2-top.png")}
+            style={styles.top}
+          />
+        </View>
         <Form
           onSubmit={async value => {
             try {
@@ -43,7 +47,7 @@ class JoinUs extends Component {
                 variables: { email: value.email, password: value.password }
               });
 
-              const user = result.data.authenticateUser;
+              const user = result.data.signupUser;
 
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
@@ -54,38 +58,55 @@ class JoinUs extends Component {
             }
           }}
           render={({ handleSubmit, value, reset }) => (
-            <View>
-              <Text>email</Text>
-              <Field name="email">
+            <View style={styles.flexContent}>
+              <Text style={styles.text}>Join us</Text>
+              <Field name="name">
                 {({ input, meta }) => (
                   <TextInput
-                    style={{ borderStyle: "solid", borderWidth: 1 }}
+                    style={styles.form}
                     editable={true}
                     {...input}
+                    placeholder="Name"
                     onChangeText={text => this.setState({ text })}
                   />
                 )}
               </Field>
-              <Text>password</Text>
+              <Field name="email">
+                {({ input, meta }) => (
+                  <TextInput
+                    style={styles.form}
+                    editable={true}
+                    {...input}
+                    placeholder="Email"
+                    onChangeText={text => this.setState({ text })}
+                  />
+                )}
+              </Field>
               <Field name="password">
                 {({ input, meta }) => (
                   <TextInput
-                    style={{ borderStyle: "solid", borderWidth: 1 }}
+                    style={styles.form}
                     editable={true}
                     {...input}
+                    placeholder="Password"
                     secureTextEntry={true}
                     onChangeText={text => this.setState({ text })}
                   />
                 )}
               </Field>
-
-              <TouchableOpacity onPress={handleSubmit}>
-                <Text>Submit</Text>
+              <TouchableOpacity onPress={handleSubmit} style={styles.button}>
+                <Text style={styles.buttonText}>Join</Text>
               </TouchableOpacity>
             </View>
           )}
         />
-        <DateDisplay />
+        <View style={styles.backgroundBottom}>
+          <Image
+            source={require("../../assets/images/background2-bottom.png")}
+            style={styles.bottom}
+          />
+        </View>
+        {/* <DateDisplay /> */}
       </View>
     );
   }
