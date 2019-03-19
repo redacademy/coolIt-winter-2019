@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
   },
   topBackground: {
     width: "100%"
-    // height: "100%"
   },
   impact: {
     width: "60%",
@@ -27,11 +26,11 @@ const styles = StyleSheet.create({
     paddingBottom: 10
   },
   headerText: {
-    paddingTop: 70,
+    paddingTop: 25,
     paddingLeft: 25
   },
   headerWelcome: {
-    paddingTop: 75,
+    paddingTop: 25,
     fontFamily: fonts.bold,
     fontSize: 18
   },
