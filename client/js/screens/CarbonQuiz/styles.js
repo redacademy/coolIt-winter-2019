@@ -15,10 +15,18 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   selected: {
-    borderColor: "#4aae4f"
+    borderColor: "#4aae4f",
+    paddingTop: 15,
+    paddingBottom: 15,
+    borderWidth: 0.5,
+    borderRadius: 10
   },
   normal: {
-    borderColor: "#ffffff"
+    borderColor: "#ffffff",
+    paddingTop: 15,
+    paddingBottom: 15,
+    borderWidth: 0.5,
+    borderRadius: 10
   }
 });
 
