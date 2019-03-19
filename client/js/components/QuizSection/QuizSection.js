@@ -16,7 +16,7 @@ export default class QuizSection extends Component {
   render() {
     console.log(this.state.selected);
     return (
-      <ScrollView>
+      <View>
         {this.props.data.map((question, index) => (
           <View key={index}>
             <Text key={index}>{question.question}</Text>
@@ -50,7 +50,7 @@ export default class QuizSection extends Component {
             </View>
           </View>
         ))}
-      </ScrollView>
+      </View>
     );
   }
 }

@@ -5,7 +5,7 @@ import styles from "./styles";
 import QuizSection from "../../components/QuizSection";
 import StepIndicator from "react-native-step-indicator";
 
-const firstIndicatorStyles = {
+const StepIndicatorStyles = {
   stepIndicatorSize: 30,
   currentStepIndicatorSize: 40,
   separatorStrokeWidth: 3,
@@ -70,25 +70,32 @@ export default class CarbonQuiz extends Component {
     const group4 = this.props.data.questions.slice(12, 16);
     const group5 = this.props.data.questions.slice(16, 20);
     const group6 = this.props.data.questions.slice(20);
-    const disabledSubmit =
-      this.state.userSelection.length === 25 ? false : true;
+
     console.log(this.state.userSelection);
 
     return (
       <View style={styles.container}>
+        <View>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: "bold",
+              paddingLeft: 10,
+              paddingBottom: 10
+            }}
+          >
+            Carbon Quiz
+          </Text>
+          <Text style={{ paddingLeft: 10 }}>
+            Choose one answer for each of the following that best fits your
+            travel habits.
+          </Text>
+        </View>
         <View style={styles.stepIndicator}>
           <StepIndicator
-            customStyles={firstIndicatorStyles}
+            customStyles={StepIndicatorStyles}
             currentPosition={this.state.currentPage}
             stepCount={6}
-            labels={[
-              "Part 1",
-              "Part 2",
-              "Part 3",
-              "Part 4",
-              "Part 5",
-              "Part 6"
-            ]}
           />
         </View>
 
@@ -109,37 +116,28 @@ export default class CarbonQuiz extends Component {
           {this.renderViewPagerPage(group5)}
           {this.renderViewPagerPage(group6)}
         </ViewPager>
-        {this.state.currentPage === 0 ? (
-          <TouchableOpacity
-            onPress={() => {
-              this.setState({ currentPage: this.state.currentPage + 1 });
-              this.viewPager.setPage(this.state.currentPage + 1);
-            }}
-          >
-            <Text>next</Text>
-          </TouchableOpacity>
-        ) : this.state.currentPage === 5 ? (
-          <View>
+      </View>
+    );
+  }
+
+  renderViewPagerPage = section => {
+    const disabledSubmit =
+      this.state.userSelection.length === 25 ? false : true;
+    const handleSubmit = this.handleSubmit();
+    return (
+      <View>
+        <ScrollView>
+          <QuizSection
+            data={section}
+            userSelectionHandler={this.userSelectionHandler}
+          />
+          {this.state.currentPage === 0 ? (
             <TouchableOpacity
-              onPress={() => {
-                this.setState({ currentPage: this.state.currentPage - 1 });
-                this.viewPager.setPage(this.state.currentPage - 1);
+              style={{
+                flex: 0,
+                flexDirection: "row",
+                justifyContent: "center"
               }}
-            >
-              <Text>back</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                console.log(this.handleSubmit());
-              }}
-              disabled={disabledSubmit}
-            >
-              <Text>submit</Text>
-            </TouchableOpacity>
-          </View>
-        ) : (
-          <View>
-            <TouchableOpacity
               onPress={() => {
                 this.setState({ currentPage: this.state.currentPage + 1 });
                 this.viewPager.setPage(this.state.currentPage + 1);
@@ -147,27 +145,58 @@ export default class CarbonQuiz extends Component {
             >
               <Text>next</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                this.setState({ currentPage: this.state.currentPage - 1 });
-                this.viewPager.setPage(this.state.currentPage - 1);
+          ) : this.state.currentPage === 5 ? (
+            <View
+              style={{
+                flex: 0,
+                flexDirection: "row",
+                justifyContent: "center"
               }}
             >
-              <Text>back</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      </View>
-    );
-  }
-
-  renderViewPagerPage = section => {
-    return (
-      <View style={styles.page}>
-        <QuizSection
-          data={section}
-          userSelectionHandler={this.userSelectionHandler}
-        />
+              <TouchableOpacity
+                onPress={() => {
+                  this.setState({ currentPage: this.state.currentPage - 1 });
+                  this.viewPager.setPage(this.state.currentPage - 1);
+                }}
+              >
+                <Text>back</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  console.log(handleSubmit);
+                }}
+                disabled={disabledSubmit}
+              >
+                <Text>submit</Text>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View
+              style={{
+                flex: 0,
+                flexDirection: "row-reverse",
+                justifyContent: "center"
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => {
+                  this.setState({ currentPage: this.state.currentPage + 1 });
+                  this.viewPager.setPage(this.state.currentPage + 1);
+                }}
+              >
+                <Text>next</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  this.setState({ currentPage: this.state.currentPage - 1 });
+                  this.viewPager.setPage(this.state.currentPage - 1);
+                }}
+              >
+                <Text>back</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </ScrollView>
       </View>
     );
   };
