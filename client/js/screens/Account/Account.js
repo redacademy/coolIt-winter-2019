@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, Button, AsyncStorage } from "react-native";
-
+import { View, Button, AsyncStorage } from "react-native";
+import { withNavigation } from "react-navigation";
 const Accounts = props => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
@@ -33,4 +33,4 @@ const Accounts = props => {
   );
 };
 
-export default Accounts;
+export default withNavigation(Accounts);
