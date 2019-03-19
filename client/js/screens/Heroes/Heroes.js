@@ -12,7 +12,6 @@ const Heroes = ({data}) => {
       <View style={styles.container}>
         <View style={styles.mainContent}>
           <View style={styles.itemSeparator} />
-
           <Text style={styles.description}>Heroes</Text>
           <View style={styles.itemBottomSeparator} />
 
@@ -21,13 +20,10 @@ const Heroes = ({data}) => {
             data={data}
             renderItem={({item, index}) => (
               <View
-                style={styles.items}
                 style={{
                   backgroundColor:
                     alternateColors[index % alternateColors.length],
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  padding: 5
+                  ...styles.rankingView
                 }}
                 key={index}
               >

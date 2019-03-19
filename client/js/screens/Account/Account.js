@@ -1,10 +1,34 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button, AsyncStorage } from "react-native";
 
 const Accounts = props => {
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    props.navigation.navigate("Auth");
+  };
+
   return (
     <View>
-      <Text> Hi im accounts</Text>
+      <Button
+        style={{ borderStyle: "solid", borderWidth: "1" }}
+        title="Change Password"
+        onPress={() => {}}
+      />
+      <Button
+        style={{ borderStyle: "solid", borderWidth: "1" }}
+        title="Disconnet from Cool It Program"
+        onPress={() => {}}
+      />
+      <Button
+        style={{ borderStyle: "solid", borderWidth: "1" }}
+        title="Deactivate Account"
+        onPress={() => {}}
+      />
+      <Button
+        style={{ borderStyle: "solid", borderWidth: "1" }}
+        title="Sign Out"
+        onPress={_signOutAsync}
+      />
     </View>
   );
 };

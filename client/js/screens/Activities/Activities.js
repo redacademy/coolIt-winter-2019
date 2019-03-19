@@ -12,7 +12,7 @@ import {
 import styles from "./styles";
 import PropTypes from "prop-types";
 
-const Activities = ({data, navigation}) => {
+const Activities = ({ data, navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.topContainer} />
@@ -36,7 +36,7 @@ const Activities = ({data, navigation}) => {
         renderSectionHeader={({section}) => (
           <Text style={styles.section}>{section.title}</Text>
         )}
-        renderItem={({item, index}) => (
+        renderItem={({ item, index }) => (
           <TouchableHighlight
             onPress={() => {
               navigation.navigate("Activity", {

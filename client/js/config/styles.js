@@ -11,3 +11,7 @@ export const fonts = {
   bold: "OpenSans-Bold",
   italic: "OpenSans-Italic"
 };
+
+export const spacing = {
+  single: 10
+};
