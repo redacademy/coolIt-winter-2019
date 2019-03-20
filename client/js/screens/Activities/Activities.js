@@ -3,10 +3,10 @@ import { Text, View, SectionList, TouchableHighlight } from "react-native";
 import styles from "./styles";
 import PropTypes from "prop-types";
 import DateDisplay from "../../components/DateDisplay";
-const Activities = ({ data, navigation, date, dateHandler }) => {
+const Activities = ({ data, navigation, date, dateChangeHandler }) => {
   return (
     <View style={styles.container}>
-      <DateDisplay date={date} dateHandler={dateHandler} />
+      <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
       <SectionList
         style={styles.sectionList}
         sections={data}

@@ -4,26 +4,25 @@ import moment from "moment";
 import Icon from "react-native-vector-icons/Ionicons";
 
 export const DateDisplay = props => {
-  const today = new Date();
-
   return (
-    <View>
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItem: "center"
+      }}
+    >
       <TouchableOpacity
         onPress={() => {
-          let previousDay = new Date();
-          previousDay.setDate(props.date.getDate() - 1);
-          props.dateHandler(previousDay);
+          props.dateChangeHandler(false);
         }}
       >
         <Icon name={"ios-arrow-dropleft"} />
       </TouchableOpacity>
-
-      <Text>{moment(props.date).format("MMMM Do")}</Text>
+      <Text>{moment().format("MMMM Do")}</Text>
       <TouchableOpacity
         onPress={() => {
-          let nextDay = new Date();
-          nextDay.setDate(props.date.getDate() + 1);
-          props.dateHandler(nextDay);
+          props.dateChangeHandler(true);
         }}
       >
         <Icon name={"ios-arrow-dropright"} />

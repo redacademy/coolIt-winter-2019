@@ -11,15 +11,18 @@ class ActivitiesContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: null
+      date: new Date()
     };
   }
-  componentDidMount() {
-    const today = new Date();
-    this.setState({ date: today });
-  }
-  dateHandler = date => {
-    this.setState({ date });
+  // componentDidMount() {
+  //   const today = this.setState({ date: today });
+  // }
+  dateChangeHandler = getNextDay => {
+    let newDay = new Date();
+    getNextDay
+      ? newDay.setDate(this.state.date.getDate() + 1)
+      : newDay.setDate(this.state.date.getDate() - 1);
+    this.setState({ date: newDay });
   };
   render() {
     return (
@@ -40,12 +43,13 @@ class ActivitiesContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return console.log(error);
+          // console.log(this.state.date);
           return (
             <Activities
               navigation={this.props.navigation}
               data={formatSessionData(data.allActivities)}
               date={this.state.date}
-              dateHandler={this.dateHandler}
+              dateChangeHandler={this.dateChangeHandler}
             />
           );
         }}
