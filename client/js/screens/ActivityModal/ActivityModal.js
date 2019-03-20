@@ -4,13 +4,24 @@ import {
   View,
   TouchableHighlight,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
+import { withNavigation } from "react-navigation";
 import PropTypes from "prop-types";
+import { graphql, compose } from "react-apollo";
+import gql from "graphql-tag";
 
-const ActivityModal = ({data, navigation}) => (
+const ADD_ACTIVITY = gql`
+  mutation Authenticate($userId: ID!, $date: DateTime!, $activityId: ID!) {
+    createActivityLog(userId: $userId, date: $date, activityId: $activityId) {
+      id
+    }
+  }
+`;
+const ActivityModal = ({ data, navigation, addActivity }) => (
   <View style={styles.container}>
     <TouchableHighlight
       onPress={() => {
@@ -27,7 +38,15 @@ const ActivityModal = ({data, navigation}) => (
         <Text>{data.description}</Text>
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => {
+          onPress={async () => {
+            const userId = await AsyncStorage.getItem("id");
+            console.log(userId);
+            console.log(data.date);
+            console.log(data.id);
+            addActivity({
+              variables: { date: data.date, userId, activityId: data.id }
+            });
+
             console.log("activity added");
           }}
         >
@@ -48,4 +67,7 @@ ActivityModal.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
-export default ActivityModal;
+export default compose(
+  graphql(ADD_ACTIVITY, { name: "addActivity" }),
+  withNavigation
+)(ActivityModal);

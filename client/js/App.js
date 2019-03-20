@@ -10,7 +10,7 @@ export default class App extends Component {
     StatusBar.setBarStyle("dark-content", true);
     return (
       <ApolloProvider client={client}>
-        <ProgramCode />
+        <RootStackNavigator />
       </ApolloProvider>
     );
   }

@@ -19,7 +19,7 @@ export const DateDisplay = props => {
       >
         <Icon name={"ios-arrow-dropleft"} />
       </TouchableOpacity>
-      <Text>{moment().format("MMMM Do")}</Text>
+      <Text>{moment(props.date).format("MMMM Do")}</Text>
       <TouchableOpacity
         onPress={() => {
           props.dateChangeHandler(true);

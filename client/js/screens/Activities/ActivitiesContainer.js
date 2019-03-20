@@ -11,18 +11,34 @@ class ActivitiesContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date()
+      date: null
     };
+  }
+  componentDidMount() {
+    const today = new Date();
+    today.setHours(0);
+    today.setMinutes(0);
+    today.setSeconds(0);
+    today.setMilliseconds(0);
+    console.log(today);
+    this.setState({ date: today });
   }
   // componentDidMount() {
   //   const today = this.setState({ date: today });
   // }
   dateChangeHandler = getNextDay => {
-    let newDay = new Date();
+    console.log("pressed");
+    let ms;
     getNextDay
-      ? newDay.setDate(this.state.date.getDate() + 1)
-      : newDay.setDate(this.state.date.getDate() - 1);
+      ? (ms = this.state.date.getTime() + 86400000)
+      : (ms = this.state.date.getTime() - 86400000);
+
+    let newDay = new Date(ms);
     this.setState({ date: newDay });
+    // getNextDay
+    //   ? newDay.setDate(this.state.date.getDate() + 1)
+    //   : newDay.setDate(this.state.date.getDate() - 1);
+    // this.setState({ date: newDay });
   };
   render() {
     return (

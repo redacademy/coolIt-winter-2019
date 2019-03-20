@@ -1,5 +1,4 @@
 import React from "react";
-import { View, Button, AsyncStorage } from "react-native";
 import { withNavigation } from "react-navigation";
 import {
   View,
@@ -64,4 +63,4 @@ const Account = ({ navigation }) => {
   );
 };
 
-export default withNavigation(Accounts);
+export default withNavigation(Account);

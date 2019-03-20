@@ -10,7 +10,6 @@ import {
 import { Form, Field } from "react-final-form";
 import { withNavigation } from "react-navigation";
 import styles from "./styles";
-// import PropTypes from "prop-types";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 const AUTHENTICATE_USER = gql`
@@ -94,19 +93,12 @@ class JoinUs extends Component {
                   />
                 )}
               </Field>
-<<<<<<< HEAD
-              <TouchableOpacity onPress={handleSubmit}>
-                <Text>Submit</Text>
-=======
               <TouchableOpacity onPress={handleSubmit} style={styles.button}>
                 <Text style={styles.buttonText}>Join</Text>
->>>>>>> develop
               </TouchableOpacity>
             </View>
           )}
         />
-<<<<<<< HEAD
-=======
         <View style={styles.backgroundBottom}>
           <Image
             source={require("../../assets/images/background2-bottom.png")}
@@ -114,7 +106,6 @@ class JoinUs extends Component {
           />
         </View>
         {/* <DateDisplay /> */}
->>>>>>> develop
       </View>
     );
   }
