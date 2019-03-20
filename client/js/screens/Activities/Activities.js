@@ -1,18 +1,40 @@
 import React from "react";
-import { Text, View, SectionList, TouchableHighlight } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  SectionList,
+  ScrollView,
+  Image,
+  ImageBackground,
+  TouchableHighlight
+} from "react-native";
 import styles from "./styles";
 import PropTypes from "prop-types";
 import DateDisplay from "../../components/DateDisplay";
 const Activities = ({ data, navigation, date, dateChangeHandler }) => {
   return (
-    <View style={styles.container}>
-      <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
+    <ScrollView style={styles.container}>
+      <View style={styles.topContainer} />
+      <View style={styles.top}>
+        <ImageBackground
+          source={require("../../assets/images/background2-top.png")}
+          style={styles.topBackground}
+        >
+          <View style={styles.headerText}>
+            <Text style={styles.headerWelcome}>Welcome back!</Text>
+            <Text style={styles.headerAction}>
+              Log your sustainable activities here.
+            </Text>
+          </View>
+        </ImageBackground>
+      </View>
       <SectionList
         style={styles.sectionList}
         sections={data}
         keyExtractor={(item, index) => item + index}
         renderSectionHeader={({ section }) => (
-          <Text style={styles.header}>{section.title}</Text>
+          <Text style={styles.section}>{section.title}</Text>
         )}
         renderItem={({ item, index }) => (
           <TouchableHighlight
@@ -33,7 +55,16 @@ const Activities = ({ data, navigation, date, dateChangeHandler }) => {
           return <View style={styles.itemSeparator} />;
         }}
       />
-    </View>
+      <TouchableOpacity onPress={() => {}} style={styles.impact}>
+        <Text style={styles.buttonText}>Calculate My Impact</Text>
+      </TouchableOpacity>
+      <View style={styles.bottom}>
+        <Image
+          source={require("../../assets/images/valley.png")}
+          style={styles.valley}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
