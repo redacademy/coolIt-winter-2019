@@ -4,10 +4,11 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 10,
     backgroundColor: "#ffffff"
   },
   stepIndicator: {
-    marginVertical: 50
+    marginBottom: 20
   },
   page: {
     flex: 1,
@@ -27,6 +28,26 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     borderWidth: 0.5,
     borderRadius: 10
+  },
+  button: {
+    backgroundColor: "#4F6638",
+    width: "35%",
+    borderRadius: 25,
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    marginVertical: 15
+  },
+  buttonText: {
+    color: "#ffffff",
+    textAlign: "center"
+  },
+  disabledButton: {
+    backgroundColor: "#B9C2AF",
+    width: "35%",
+    borderRadius: 25,
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    marginVertical: 15
   }
 });
 

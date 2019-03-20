@@ -6,14 +6,19 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     borderWidth: 0.5,
-    borderRadius: 10
+    borderRadius: 10,
+    marginBottom: 10
   },
   normal: {
-    borderColor: "#000000",
+    borderColor: "grey",
     paddingTop: 15,
     paddingBottom: 15,
     borderWidth: 0.5,
-    borderRadius: 10
+    borderRadius: 10,
+    marginBottom: 10
+  },
+  optionText: {
+    marginLeft: 10
   }
 });
 

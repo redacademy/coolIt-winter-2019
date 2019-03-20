@@ -1,5 +1,11 @@
 import React, { Component, createRef } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  ImageBackground
+} from "react-native";
 import { ViewPager } from "rn-viewpager";
 import styles from "./styles";
 import QuizSection from "../../components/QuizSection";
@@ -7,22 +13,30 @@ import StepIndicator from "react-native-step-indicator";
 
 const StepIndicatorStyles = {
   stepIndicatorSize: 30,
+
+  stepStrokeCurrentColor: "#6F9C41",
+  stepStrokeFinishedColor: "#4F6638",
+  stepStrokeUnFinishedColor: "#4F6638",
+  stepStrokeWidth: 2,
+
   currentStepIndicatorSize: 40,
-  separatorStrokeWidth: 3,
+
+  separatorStrokeWidth: 1,
   currentStepStrokeWidth: 5,
-  separatorFinishedColor: "#4aae4f",
-  separatorUnFinishedColor: "#a4d4a5",
-  stepIndicatorFinishedColor: "#4aae4f",
-  stepIndicatorUnFinishedColor: "#a4d4a5",
-  stepIndicatorCurrentColor: "#ffffff",
+  separatorFinishedColor: "#4F6638",
+  separatorUnFinishedColor: "#4F6638",
+
+  stepIndicatorFinishedColor: "#ffffff",
+  stepIndicatorUnFinishedColor: "#ffffff",
+  stepIndicatorCurrentColor: "#4F6638",
   stepIndicatorLabelFontSize: 15,
+
   currentStepIndicatorLabelFontSize: 15,
-  stepIndicatorLabelCurrentColor: "#000000",
-  stepIndicatorLabelFinishedColor: "#ffffff",
-  stepIndicatorLabelUnFinishedColor: "rgba(255,255,255,0.5)",
-  labelColor: "#666666",
-  labelSize: 12,
-  currentStepLabelColor: "#4aae4f"
+
+  currentStepLabelColor: "#4F6638",
+  stepIndicatorLabelFinishedColor: "#4F6638",
+  stepIndicatorLabelUnFinishedColor: "#4F6638",
+  stepIndicatorLabelCurrentColor: "#ffffff"
 };
 
 export default class CarbonQuiz extends Component {
@@ -75,22 +89,28 @@ export default class CarbonQuiz extends Component {
 
     return (
       <View style={styles.container}>
-        <View>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: "bold",
-              paddingLeft: 10,
-              paddingBottom: 10
-            }}
-          >
-            Carbon Quiz
-          </Text>
-          <Text style={{ paddingLeft: 10 }}>
-            Choose one answer for each of the following that best fits your
-            travel habits.
-          </Text>
-        </View>
+        <ImageBackground
+          source={require("../../assets/images/background2-top.png")}
+          style={{ width: 379, height: 133 }}
+        >
+          <View>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "bold",
+                paddingLeft: 10,
+                paddingBottom: 10,
+                paddingTop: 40
+              }}
+            >
+              Carbon Quiz
+            </Text>
+            <Text style={{ paddingLeft: 10, width: 275, color: "grey" }}>
+              Choose one answer for each of the following that best fits your
+              travel habits.
+            </Text>
+          </View>
+        </ImageBackground>
         <View style={styles.stepIndicator}>
           <StepIndicator
             customStyles={StepIndicatorStyles}
@@ -132,20 +152,6 @@ export default class CarbonQuiz extends Component {
             userSelectionHandler={this.userSelectionHandler}
           />
           {this.state.currentPage === 0 ? (
-            <TouchableOpacity
-              style={{
-                flex: 0,
-                flexDirection: "row",
-                justifyContent: "center"
-              }}
-              onPress={() => {
-                this.setState({ currentPage: this.state.currentPage + 1 });
-                this.viewPager.setPage(this.state.currentPage + 1);
-              }}
-            >
-              <Text>next</Text>
-            </TouchableOpacity>
-          ) : this.state.currentPage === 5 ? (
             <View
               style={{
                 flex: 0,
@@ -154,20 +160,40 @@ export default class CarbonQuiz extends Component {
               }}
             >
               <TouchableOpacity
+                style={styles.button}
+                onPress={() => {
+                  this.setState({ currentPage: this.state.currentPage + 1 });
+                  this.viewPager.setPage(this.state.currentPage + 1);
+                }}
+              >
+                <Text style={styles.buttonText}>next</Text>
+              </TouchableOpacity>
+            </View>
+          ) : this.state.currentPage === 5 ? (
+            <View
+              style={{
+                flex: 0,
+                flexDirection: "row",
+                justifyContent: "space-around"
+              }}
+            >
+              <TouchableOpacity
+                style={styles.button}
                 onPress={() => {
                   this.setState({ currentPage: this.state.currentPage - 1 });
                   this.viewPager.setPage(this.state.currentPage - 1);
                 }}
               >
-                <Text>back</Text>
+                <Text style={styles.buttonText}>back</Text>
               </TouchableOpacity>
               <TouchableOpacity
+                style={disabledSubmit ? styles.disabledButton : styles.button}
                 onPress={() => {
                   console.log(handleSubmit);
                 }}
                 disabled={disabledSubmit}
               >
-                <Text>submit</Text>
+                <Text style={styles.buttonText}>submit</Text>
               </TouchableOpacity>
             </View>
           ) : (
@@ -175,24 +201,26 @@ export default class CarbonQuiz extends Component {
               style={{
                 flex: 0,
                 flexDirection: "row-reverse",
-                justifyContent: "center"
+                justifyContent: "space-around"
               }}
             >
               <TouchableOpacity
+                style={styles.button}
                 onPress={() => {
                   this.setState({ currentPage: this.state.currentPage + 1 });
                   this.viewPager.setPage(this.state.currentPage + 1);
                 }}
               >
-                <Text>next</Text>
+                <Text style={styles.buttonText}>next</Text>
               </TouchableOpacity>
               <TouchableOpacity
+                style={styles.button}
                 onPress={() => {
                   this.setState({ currentPage: this.state.currentPage - 1 });
                   this.viewPager.setPage(this.state.currentPage - 1);
                 }}
               >
-                <Text>back</Text>
+                <Text style={styles.buttonText}>back</Text>
               </TouchableOpacity>
             </View>
           )}
