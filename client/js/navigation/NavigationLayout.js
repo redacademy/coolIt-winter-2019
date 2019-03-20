@@ -3,7 +3,7 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import React from "react";
-import AccountScreen from "../screens/Account";
+import AccountScreen from "../screens/CarbonQuiz";
 import ActivitiesScreen from "../screens/Activities";
 import HeroesScreen from "../screens/Heroes";
 import ImpactScreen from "../screens/Impact";
@@ -16,6 +16,7 @@ const AccountStack = createStackNavigator(
     Account: AccountScreen
   },
   {
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -102,6 +103,7 @@ export default createBottomTabNavigator(
         return <Image source={iconUrl} />;
       }
     }),
+
     tabBarOptions: {
       activeTintColor: "#000000",
       inactiveTintColor: "#000000",
