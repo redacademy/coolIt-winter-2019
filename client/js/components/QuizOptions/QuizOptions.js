@@ -1,23 +1,43 @@
-import React from "react";
+import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import styles from "./styles";
 
-const QuizOptions = props => {
-  console.log(props.data);
-  return props.data.map(option => (
-    <View
-      style={{
-        paddingTop: 15,
-        paddingBottom: 15,
-        borderWidth: 0.5,
-        borderRadius: 10
-      }}
-    >
-      <TouchableOpacity>
-        <Text>{option.option}</Text>
-      </TouchableOpacity>
-    </View>
-  ));
-};
+class QuizOptions extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: null
+    };
+  }
+
+  render() {
+    return this.props.data.map((option, index) => {
+      const optionSelectedStyle =
+        this.state.selected === option.option ? styles.selected : styles.normal;
+      return (
+        <View key={index}>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({
+                selected: option.option
+              });
+              this.props.userSelectionHandler({
+                question: this.props.question,
+                point: option.points
+              });
+            }}
+            key={index}
+            style={optionSelectedStyle}
+          >
+            <Text style={{ paddingLeft: 10 }} key={index}>
+              {option.option}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      );
+    });
+  }
+}
 
 export default QuizOptions;

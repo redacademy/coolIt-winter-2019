@@ -91,7 +91,7 @@ export default class CarbonQuiz extends Component {
       <View style={styles.container}>
         <ImageBackground
           source={require("../../assets/images/background2-top.png")}
-          style={{ width: 379, height: 133 }}
+          style={{ width: 375, height: 173 }}
         >
           <View>
             <Text
@@ -100,7 +100,7 @@ export default class CarbonQuiz extends Component {
                 fontWeight: "bold",
                 paddingLeft: 10,
                 paddingBottom: 10,
-                paddingTop: 40
+                paddingTop: 80
               }}
             >
               Carbon Quiz

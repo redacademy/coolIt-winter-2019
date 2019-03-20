@@ -8,7 +8,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff"
   },
   stepIndicator: {
-    marginBottom: 20
+    marginBottom: 20,
+    marginTop: 0,
+    paddingTop: 0
   },
   page: {
     flex: 1,

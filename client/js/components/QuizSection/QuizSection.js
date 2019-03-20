@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { TouchableOpacity, View, Text } from "react-native";
 
 import styles from "./styles";
+import QuizOptions from "../QuizOptions/QuizOptions";
 
 export default class QuizSection extends Component {
   constructor(props) {
@@ -21,33 +22,11 @@ export default class QuizSection extends Component {
               {question.question}
             </Text>
             <View>
-              {question.options.map((option, index) => {
-                const optionSelectedStyle =
-                  this.state.selected === option.option
-                    ? styles.selected
-                    : styles.normal;
-                return (
-                  <View key={index}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        this.setState({
-                          selected: option.option
-                        });
-                        this.props.userSelectionHandler({
-                          question: question.question,
-                          point: option.points
-                        });
-                      }}
-                      key={index}
-                      style={optionSelectedStyle}
-                    >
-                      <Text style={{ paddingLeft: 10 }} key={index}>
-                        {option.option}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                );
-              })}
+              <QuizOptions
+                data={question.options}
+                userSelectionHandler={this.props.userSelectionHandler}
+                question={question.question}
+              />
             </View>
           </View>
         ))}

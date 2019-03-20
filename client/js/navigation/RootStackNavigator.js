@@ -1,4 +1,4 @@
-import {createStackNavigator, createAppContainer} from "react-navigation";
+import { createStackNavigator, createAppContainer } from "react-navigation";
 import NavigationLayout from "./NavigationLayout";
 import ActivityModal from "../screens/ActivityModal";
 
@@ -10,7 +10,10 @@ export default createAppContainer(
     },
     {
       mode: "modal",
-      headerMode: "none"
+      headerMode: "none",
+      navigationOptions: {
+        headerVisible: false
+      }
     }
   )
 );

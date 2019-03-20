@@ -9,6 +9,7 @@ const StyledHeader = props => (
 );
 
 export const sharedNavigationOptions = navigation => ({
+  // headerMode: "none"
   // headerBackTitle: null,
   // header: props => <StyledHeader {...props} />,
   // headerStyle: {
