@@ -17,9 +17,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10
   },
-  optionText: {
-    marginLeft: 10
-  }
+  optionText: { paddingLeft: 10 }
 });
 
 export default styles;

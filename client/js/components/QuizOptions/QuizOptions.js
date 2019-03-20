@@ -30,7 +30,7 @@ class QuizOptions extends Component {
             key={index}
             style={optionSelectedStyle}
           >
-            <Text style={{ paddingLeft: 10 }} key={index}>
+            <Text style={styles.optionText} key={index}>
               {option.option}
             </Text>
           </TouchableOpacity>

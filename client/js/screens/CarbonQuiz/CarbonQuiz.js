@@ -85,8 +85,6 @@ export default class CarbonQuiz extends Component {
     const group5 = this.props.data.questions.slice(16, 20);
     const group6 = this.props.data.questions.slice(20);
 
-    console.log(this.state.userSelection);
-
     return (
       <View style={styles.container}>
         <ImageBackground
@@ -94,18 +92,8 @@ export default class CarbonQuiz extends Component {
           style={{ width: 375, height: 173 }}
         >
           <View>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: "bold",
-                paddingLeft: 10,
-                paddingBottom: 10,
-                paddingTop: 80
-              }}
-            >
-              Carbon Quiz
-            </Text>
-            <Text style={{ paddingLeft: 10, width: 275, color: "grey" }}>
+            <Text style={styles.header}>Carbon Quiz</Text>
+            <Text style={styles.subHeader}>
               Choose one answer for each of the following that best fits your
               travel habits.
             </Text>
@@ -152,13 +140,7 @@ export default class CarbonQuiz extends Component {
             userSelectionHandler={this.userSelectionHandler}
           />
           {this.state.currentPage === 0 ? (
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-                justifyContent: "center"
-              }}
-            >
+            <View style={styles.singleButtonContainer}>
               <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
@@ -170,13 +152,7 @@ export default class CarbonQuiz extends Component {
               </TouchableOpacity>
             </View>
           ) : this.state.currentPage === 5 ? (
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row",
-                justifyContent: "space-around"
-              }}
-            >
+            <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
@@ -197,22 +173,7 @@ export default class CarbonQuiz extends Component {
               </TouchableOpacity>
             </View>
           ) : (
-            <View
-              style={{
-                flex: 0,
-                flexDirection: "row-reverse",
-                justifyContent: "space-around"
-              }}
-            >
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => {
-                  this.setState({ currentPage: this.state.currentPage + 1 });
-                  this.viewPager.setPage(this.state.currentPage + 1);
-                }}
-              >
-                <Text style={styles.buttonText}>next</Text>
-              </TouchableOpacity>
+            <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
@@ -221,6 +182,15 @@ export default class CarbonQuiz extends Component {
                 }}
               >
                 <Text style={styles.buttonText}>back</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => {
+                  this.setState({ currentPage: this.state.currentPage + 1 });
+                  this.viewPager.setPage(this.state.currentPage + 1);
+                }}
+              >
+                <Text style={styles.buttonText}>next</Text>
               </TouchableOpacity>
             </View>
           )}

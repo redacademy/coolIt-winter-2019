@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-// import { colors, fonts } from "../../config/styles";
 
 const styles = StyleSheet.create({
   container: {
@@ -7,6 +6,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: "#ffffff"
   },
+  header: {
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingLeft: 10,
+    paddingBottom: 10,
+    paddingTop: 80
+  },
+  subHeader: { paddingLeft: 10, width: 275, color: "grey" },
   stepIndicator: {
     marginBottom: 20,
     marginTop: 0,
@@ -50,6 +57,16 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 25,
     marginVertical: 15
+  },
+  buttonContainer: {
+    flex: 0,
+    flexDirection: "row",
+    justifyContent: "space-around"
+  },
+  singleButtonContainer: {
+    flex: 0,
+    flexDirection: "row",
+    justifyContent: "center"
   }
 });
 

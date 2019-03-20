@@ -13,12 +13,11 @@ export default class QuizSection extends Component {
   }
 
   render() {
-    console.log(this.state.selected);
     return (
-      <View style={{ paddingHorizontal: 15 }}>
+      <View style={styles.contentContainer}>
         {this.props.data.map((question, index) => (
-          <View style={{ paddingBottom: 15 }} key={index}>
-            <Text style={{ paddingBottom: 10, fontWeight: "bold" }} key={index}>
+          <View style={styles.questionContainer} key={index}>
+            <Text style={styles.questionText} key={index}>
               {question.question}
             </Text>
             <View>
