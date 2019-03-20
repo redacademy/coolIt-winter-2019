@@ -3,8 +3,6 @@ import LogIn from "./LogIn";
 
 export default class LogInContainer extends Component {
   render() {
-    return (
-      <LogIn />
-    );
+    return <LogIn navigation={this.props.navigation} />;
   }
 }

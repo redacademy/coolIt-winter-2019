@@ -1,19 +1,42 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import {
+  createStackNavigator,
+  createSwitchNavigator,
+  createAppContainer
+} from "react-navigation";
 import NavigationLayout from "./NavigationLayout";
 import ActivityModal from "../screens/ActivityModal";
+import JoinUs from "../screens/JoinUs";
+import AuthLoadingScreen from "../screens/AutheticationLoadingScreen";
+import { sharedNavigationOptions } from "./config";
+const AppStack = createStackNavigator(
+  {
+    Layout: NavigationLayout,
+    Activity: ActivityModal
+  },
+  {
+    mode: "modal",
+    headerMode: "none"
+  }
+);
+
+const AuthStack = createStackNavigator(
+  { SignIn: JoinUs },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
 
 export default createAppContainer(
-  createStackNavigator(
+  createSwitchNavigator(
     {
-      Layout: NavigationLayout,
-      Activity: ActivityModal
+      AuthLoading: AuthLoadingScreen,
+      App: AppStack,
+      Auth: AuthStack
     },
     {
-      mode: "modal",
-      headerMode: "none",
-      navigationOptions: {
-        headerVisible: false
-      }
+      initialRouteName: "AuthLoading"
     }
   )
 );

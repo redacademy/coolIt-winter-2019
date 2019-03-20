@@ -5,8 +5,8 @@ import {
 import React from "react";
 import AccountScreen from "../screens/CarbonQuiz";
 import ActivitiesScreen from "../screens/Activities";
-import HerosScreen from "../screens/Heroes/Heroes";
-import ImpactScreen from "../screens/Impact/Impact";
+import HeroesScreen from "../screens/Heroes";
+import ImpactScreen from "../screens/Impact";
 import PlanetScreen from "../screens/Planet/Planet";
 import { Image, View } from "react-native";
 import { sharedNavigationOptions } from "./config";
@@ -32,9 +32,9 @@ const ActivitiesStack = createStackNavigator(
     })
   }
 );
-const HerosStack = createStackNavigator(
+const HeroesStack = createStackNavigator(
   {
-    Heros: HerosScreen
+    Heroes: HeroesScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -68,7 +68,7 @@ export default createBottomTabNavigator(
     Impact: ImpactStack,
     Planet: PlanetStack,
     Activities: ActivitiesStack,
-    Heros: HerosStack,
+    Heroes: HeroesStack,
     Account: AccountStack
   },
   {
@@ -90,9 +90,9 @@ export default createBottomTabNavigator(
           iconUrl = require("../assets/icons/activity-active.png");
         } else if (routeName === "Activities" && !focused) {
           iconUrl = require("../assets/icons/activity-inactive.png");
-        } else if (routeName === "Heros" && focused) {
+        } else if (routeName === "Heroes" && focused) {
           iconUrl = require("../assets/icons/heros-active.png");
-        } else if (routeName === "Heros" && !focused) {
+        } else if (routeName === "Heroes" && !focused) {
           iconUrl = require("../assets/icons/heros-inactive.png");
         } else if (routeName === "Account" && focused) {
           iconUrl = require("../assets/icons/account-active.png");

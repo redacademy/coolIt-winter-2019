@@ -1,23 +1,48 @@
-# The following types define the data model of the example service
-# based on which the GraphQL API is generated
-
 type User @model {
-  id: ID! @isUnique
+  id: ID! @isUnique # read-only (managed by Graphcool)
+  email: String! @isUnique
+  password: String!
   name: String
-  dateOfBirth: DateTime
+  schoolInfo: SchoolInfo @relation(name: "SchoolUsers")
+  programCode: String
+  activityLog: [Date!]! @relation(name:"UserActivities")
+  point: Int @defaultValue(value:"0")
+  isActive: Boolean @defaultValue(value: "false")
+  quizScore: Int
+}
 
-  # Uncomment below - you can declare relations between models like this
+type SchoolInfo @model {
+  id: ID! @isUnique
+  school: String
+  teacher: String
+  division: Int
+  grade: Int
+  users: [User!]! @relation(name:"SchoolUsers")
+  programCode: String!
+}
 
-  # posts: [Post!]! @relation(name: "UserPosts")
+type Date @model {
+  id: ID! @isUnique
+  user: User! @relation(name:"UserActivities")
+  date: DateTime!
+  activities: [Activity!]! @relation(name:"DateActivities")
+}
+
+type Activity @model {
+  id: ID! @isUnique
+  value: Int!
+  name: String!
+  description: String!
+  date: Date @relation(name:"DateActivities")
+  category: Category! @relation(name:"CategoryActivities")
+  
+}
+
+type Category @model {
+  id: ID! @isUnique
+  name: String! 
+  activities: [Activity!]! @relation(name:"CategoryActivities")
 }
 
 
-# Uncomment the model below as well
 
-# type Post @model {
-#   id: ID! @isUnique
-#   title: String!
-#
-#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-#   author: User! @relation(name: "UserPosts")
-# }
