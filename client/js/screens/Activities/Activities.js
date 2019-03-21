@@ -31,7 +31,7 @@ const Activities = ({data, categories, image, navigation}) => {
         {categories.map(category => {
           return (
             <View key={category.id}>
-              <View>
+              <View style={styles.topSection}>
                 <Image style={styles.image} source={image[category.name]} />
                 <Text style={styles.section}>{category.name}</Text>
               </View>

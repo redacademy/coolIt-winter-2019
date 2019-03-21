@@ -15,7 +15,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: colors.green,
     borderRadius: 13,
-    marginBottom: 25
+    marginBottom: 25,
+    marginTop: 25,
+    padding: 5
   },
   buttonText: {
     alignSelf: "center",
@@ -39,11 +41,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.light
   },
   section: {
-    padding: 18,
     textTransform: "uppercase",
     fontFamily: fonts.light,
     fontWeight: "500",
-    fontSize: 14
+    fontSize: 14,
+    paddingLeft: 10
   },
   title: {
     padding: 18,
@@ -61,6 +63,10 @@ const styles = StyleSheet.create({
     borderColor: colors.green,
     borderWidth: 2,
     marginHorizontal: 5,
+  },
+  topSection: {
+    flexDirection: "row",
+    padding: 25
   }
 });
 
