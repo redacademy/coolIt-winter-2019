@@ -62,20 +62,23 @@ const ActivityModal = ({ data, navigation, addActivity, addPoint, allLog }) => (
             style={styles.buttonContainer}
             onPress={async () => {
               const userId = await AsyncStorage.getItem("id");
-              console.log(userId);
-              console.log(data.date);
-              console.log(data.id);
-              console.log(data);
-              console.log(allLog);
+              // console.log(userId);
+              // console.log(data.date);
+              // console.log(data.id);
+              // console.log(data);
+
+              // console.log(allLog);
+
               // const totalPoint = await allLog.updateQuery({
               //   variables: { id: userId }
               // });
               // console.log(totalPoint);
+              console.log(data.currentPoint);
               await addActivity({
                 variables: { date: data.date, userId, activityId: data.id }
               });
               await addPoint({
-                variables: { id: userId, point: data.totalPoint + data.value }
+                variables: { id: userId, point: data.currentPoint + data.value }
               });
 
               console.log("activity added");

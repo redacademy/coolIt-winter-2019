@@ -1,9 +1,12 @@
 import React from "react";
-import { View, Text, AsyncStorage } from "react-native";
+import { View, Text } from "react-native";
 
-const Accounts = props => {
+const Accounts = ({ data }) => {
   return (
     <View>
+      <Text>
+        {data.email},{data.point}
+      </Text>
       <Text> Hi im impact</Text>
     </View>
   );

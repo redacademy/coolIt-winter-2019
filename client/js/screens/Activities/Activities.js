@@ -20,7 +20,8 @@ const Activities = ({
   image,
   filteredActivity,
   refetch,
-  totalPoint
+  totalPoint,
+  currentPoint
 }) => {
   const filtered = filteredActivity.map(filteredActivity => {
     return filteredActivity.activity.name;
@@ -66,7 +67,8 @@ const Activities = ({
                               date,
                               refetch,
                               added: false,
-                              totalPoint
+                              totalPoint,
+                              currentPoint
                             }
                           });
                         }}

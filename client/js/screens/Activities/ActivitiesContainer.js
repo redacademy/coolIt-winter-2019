@@ -94,6 +94,9 @@ class ActivitiesContainer extends Component {
                 value
               }
             }
+            allUsers(filter: { id: $id }) {
+              point
+            }
           }
         `}
         variables={{ id: this.state.userId, date: this.state.date }}
@@ -103,7 +106,7 @@ class ActivitiesContainer extends Component {
           if (error) return console.log(error);
           let totalPoint = 0;
           let pointArray = data.allActivityLogs.map(a => a.activity.value);
-          console.log(data);
+          let currentPoint = data.allUsers[0].point;
           if (pointArray.length > 1) {
             console.log("okay");
             totalPoint = pointArray.reduce((arr, cur) => {
@@ -123,6 +126,7 @@ class ActivitiesContainer extends Component {
               filteredActivity={data.allActivityLogs}
               refetch={refetch}
               totalPoint={totalPoint}
+              currentPoint={currentPoint}
             />
           );
         }}
