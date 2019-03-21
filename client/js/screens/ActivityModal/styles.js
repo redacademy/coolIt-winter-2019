@@ -27,7 +27,24 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginTop: 25,
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center"
+  },
+  dismiss: {
+    width: "60%",
+    alignSelf: "center",
+    backgroundColor: colors.green,
+    borderRadius: 13,
+    marginBottom: 25,
+    marginTop: 25,
+    padding: 5
+  },
+  buttonText: {
+    alignSelf: "center",
+    fontFamily: "Arial",
+    fontSize: 16,
+    color: colors.white,
+    paddingTop: 10,
+    paddingBottom: 10
   }
 });
 

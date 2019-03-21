@@ -25,19 +25,25 @@ const ActivityModal = ({data, navigation}) => (
           <Text style={styles.name}>{data.name}</Text>
         </View>
         <Text style={styles.description}>{data.description}</Text>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => {
-            console.log("activity added");
-          }}
-        >
-          <Ionicons
-            style={styles.addIcon}
-            name="ios-add-circle-outline"
-            size={70}
-            color="blue"
-          />
-        </TouchableOpacity>
+        {data.category.name !== "Community Actions" ? (
+          <TouchableOpacity
+            style={styles.buttonContainer}
+            onPress={() => {
+              console.log("activity added");
+            }}
+          >
+            <Ionicons
+              style={styles.addIcon}
+              name="ios-add-circle-outline"
+              size={70}
+              color="blue"
+            />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={() => {}} style={styles.dismiss}>
+            <Text style={styles.buttonText}>Dismiss</Text>
+          </TouchableOpacity>
+        )}
       </ScrollView>
     </View>
   </View>
