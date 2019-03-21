@@ -11,15 +11,18 @@ import {
 import styles from "./styles";
 import PropTypes from "prop-types";
 import DateDisplay from "../../components/DateDisplay";
-
 const Activities = ({
   data,
   navigation,
   date,
   categories,
   dateChangeHandler,
-  image
+  image,
+  filteredActivity
 }) => {
+  const filtered = filteredActivity.map(filteredActivity => {
+    return filteredActivity.activity.name;
+  });
   return (
     <View>
       <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
@@ -51,7 +54,7 @@ const Activities = ({
                     return activities.category.name === category.name;
                   })
                   .map(activity => {
-                    return (
+                    return !filtered.includes(activity.name) ? (
                       <TouchableHighlight
                         onPress={() => {
                           navigation.navigate("Activity", {
@@ -64,6 +67,24 @@ const Activities = ({
                         style={styles.buttonContainer}
                       >
                         <View style={styles.items}>
+                          <Text style={styles.title}>{activity.name}</Text>
+                        </View>
+                      </TouchableHighlight>
+                    ) : (
+                      <TouchableHighlight
+                        onPress={() => {
+                          navigation.navigate("Activity", {
+                            data: { ...activity, date }
+                          });
+                        }}
+                        key={activity.id}
+                        activeOpacity={0.5}
+                        underlayColor={"#e6e6e6"}
+                        style={styles.buttonContainer}
+                      >
+                        <View
+                          style={{ ...styles.items, backgroundColor: "green" }}
+                        >
                           <Text style={styles.title}>{activity.name}</Text>
                         </View>
                       </TouchableHighlight>

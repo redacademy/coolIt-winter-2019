@@ -1,5 +1,5 @@
-import {StyleSheet} from "react-native";
-import {colors, fonts} from "../../config/styles";
+import { StyleSheet } from "react-native";
+import { colors, fonts } from "../../config/styles";
 
 const styles = StyleSheet.create({
   loader: {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     borderColor: colors.green,
     borderWidth: 2,
-    marginHorizontal: 5,
+    marginHorizontal: 5
   },
   topSection: {
     flexDirection: "row",

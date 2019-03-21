@@ -50,7 +50,7 @@ class ActivitiesContainer extends Component {
     return (
       <Query
         query={gql`
-          {
+          query Activities($id: ID!, $date: DateTime!) {
             allActivities {
               id
               name
@@ -63,13 +63,23 @@ class ActivitiesContainer extends Component {
               id
               name
             }
+            allActivityLogs(
+              filter: { user: { id: $id }, AND: { date: $date } }
+            ) {
+              id
+              activity {
+                name
+              }
+            }
           }
         `}
         variables={{ id: this.state.userId, date: this.state.date }}
+        refetchQueries={}
       >
         {({ loading, error, data }) => {
           if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return console.log(error);
+          console.log(data);
           return (
             <Activities
               navigation={this.props.navigation}
@@ -78,6 +88,7 @@ class ActivitiesContainer extends Component {
               data={data.allActivities}
               categories={data.allCategories}
               image={imageRelation}
+              filteredActivity={data.allActivityLogs}
             />
           );
         }}

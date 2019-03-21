@@ -49,6 +49,7 @@ const ActivityModal = ({ data, navigation, addActivity }) => (
               });
 
               console.log("activity added");
+              navigation.goBack();
             }}
           >
             <Ionicons
@@ -74,6 +75,9 @@ ActivityModal.propTypes = {
 };
 
 export default compose(
-  graphql(ADD_ACTIVITY, { name: "addActivity" }),
+  graphql(ADD_ACTIVITY, {
+    name: "addActivity",
+    refetchQueries: [`ADD_ACTIVITY`]
+  }),
   withNavigation
 )(ActivityModal);
