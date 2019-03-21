@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import {StyleSheet} from "react-native";
+import {colors, fonts} from "../../config/styles";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    width: "84%",
+    minWidth: "70%",
     padding: 5,
     paddingLeft: 15,
     fontSize: 16,
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    width: "39%",
+    minWidth: "39%",
     padding: 5,
     paddingLeft: 15,
     fontSize: 16,
@@ -66,11 +66,11 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     alignSelf: "center",
-    fontFamily: fonts.light,
+    fontFamily: "Arial",
     fontSize: 16,
     color: colors.white,
-    paddingTop: 8,
-    paddingBottom: 8
+    paddingTop: 10,
+    paddingBottom: 10
   },
   skipText: {
     alignSelf: "center",
@@ -79,6 +79,30 @@ const styles = StyleSheet.create({
     color: colors.black,
     paddingTop: 8,
     paddingBottom: 8
+  },
+  error: {
+    color: colors.green,
+    fontFamily: fonts.light,
+    fontSize: 14,
+    paddingLeft: 12
+  },
+  errorMessage: {
+    color: colors.green,
+    fontFamily: fonts.light,
+    fontSize: 16
+  },
+  buttonContainer: {
+    width: '45%',
+    backgroundColor: colors.green,
+    borderRadius: 15,
+    marginBottom: 25,
+    marginTop: 25,
+    marginHorizontal: 5,
+    padding: 5
+  },
+  buttonAligner: {
+    flexDirection: "row",
+    flexWrap: "wrap"
   }
 });
 export default styles;
