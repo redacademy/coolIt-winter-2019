@@ -6,26 +6,15 @@ import gql from "graphql-tag";
 import PropTypes from "prop-types";
 import styles from "./styles";
 
-const allCategories = [
-  {id: 1, name: "Getting Around"},
-  {id: 2, name: "Food Choices"},
-  {id: 3, name: "Home Heating"},
-  {id: 4, name: "Refuse, Reduce, Reuse"},
-  {id: 5, name: "Water Wise"},
-  {id: 6, name: "Lighting and Appliances"},
-  {id: 7, name: "Toxic"},
-  {id: 8, name: "Community Actions"}
-];
-
 const imageRelation = {
   "Getting Around": require("../../assets/icons/bike.png"),
-  "Vehicle": require("../../assets/icons/car.png"),
+  Vehicle: require("../../assets/icons/car.png"),
   "Food Choices": require("../../assets/icons/apple.png"),
   "Home Heating": require("../../assets/icons/temp.png"),
   "Refuse, Reduce, Reuse": require("../../assets/icons/recycle.png"),
   "Water Wise": require("../../assets/icons/water.png"),
   "Lighting and Appliances": require("../../assets/icons/light.png"),
-  "Toxic": require("../../assets/icons/toxic.png"),
+  Toxic: require("../../assets/icons/toxic.png"),
   "Community Actions": require("../../assets/icons/community.png")
 };
 
@@ -43,6 +32,10 @@ class ActivitiesContainer extends Component {
                 name
               }
             }
+            allCategories {
+              id
+              name
+            }
           }
         `}
       >
@@ -53,7 +46,7 @@ class ActivitiesContainer extends Component {
             <Activities
               navigation={this.props.navigation}
               data={data.allActivities}
-              categories={allCategories}
+              categories={data.allCategories}
               image={imageRelation}
             />
           );
@@ -68,4 +61,3 @@ ActivitiesContainer.propTypes = {
 };
 
 export default ActivitiesContainer;
-
