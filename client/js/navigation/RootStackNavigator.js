@@ -67,8 +67,8 @@ export default createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoadingScreen,
-      Auth: AppStack,
-      App: OnboardingStack,
+      App: AppStack,
+      Auth: OnboardingStack,
 
       Login: LoginStack
     },

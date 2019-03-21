@@ -9,6 +9,7 @@ const USER_INFO = gql`
     allUsers(filter: { id: $id }) {
       id
       email
+      point
     }
   }
 `;
@@ -30,10 +31,11 @@ export default class ImpactContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>Error</Text>;
-
+          console.log(data);
           return (
             <View>
               <Text>{data.allUsers[0].email}</Text>
+              <Text>{data.allUsers[0].point}</Text>
               <Impact />
             </View>
           );

@@ -21,8 +21,27 @@ const ADD_ACTIVITY = gql`
     }
   }
 `;
+const ADD_POINT = gql`
+  mutation Authenticate($id: ID!, $point: Int!) {
+    updateUser(id: $id, point: $point) {
+      id
+      point
+    }
+  }
+`;
+const ALL_LOG = gql`
+  query Authenticate($id: ID!) {
+    allActivityLogs(filter: { user: { id: $id } }) {
+      id
+      activity {
+        name
+        value
+      }
+    }
+  }
+`;
 
-const ActivityModal = ({ data, navigation, addActivity }) => (
+const ActivityModal = ({ data, navigation, addActivity, addPoint, allLog }) => (
   <View style={styles.container}>
     <TouchableHighlight
       onPress={() => {
@@ -47,9 +66,18 @@ const ActivityModal = ({ data, navigation, addActivity }) => (
               console.log(data.date);
               console.log(data.id);
               console.log(data);
+              console.log(allLog);
+              // const totalPoint = await allLog.updateQuery({
+              //   variables: { id: userId }
+              // });
+              // console.log(totalPoint);
               await addActivity({
                 variables: { date: data.date, userId, activityId: data.id }
               });
+              await addPoint({
+                variables: { id: userId, point: data.totalPoint + data.value }
+              });
+
               console.log("activity added");
               await data.refetch();
               navigation.goBack();
@@ -79,8 +107,13 @@ ActivityModal.propTypes = {
 
 export default compose(
   graphql(ADD_ACTIVITY, {
-    name: "addActivity",
-    refetchQueries: [`ADD_ACTIVITY`]
+    name: "addActivity"
+  }),
+  graphql(ADD_POINT, {
+    name: "addPoint"
+  }),
+  graphql(ALL_LOG, {
+    name: "allLog"
   }),
   withNavigation
 )(ActivityModal);

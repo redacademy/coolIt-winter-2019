@@ -79,6 +79,7 @@ class ActivitiesContainer extends Component {
               category {
                 name
               }
+              value
             }
             allCategories {
               id
@@ -90,6 +91,7 @@ class ActivitiesContainer extends Component {
               id
               activity {
                 name
+                value
               }
             }
           }
@@ -99,6 +101,16 @@ class ActivitiesContainer extends Component {
         {({ loading, error, data, refetch }) => {
           if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return console.log(error);
+          let totalPoint = 0;
+          let pointArray = data.allActivityLogs.map(a => a.activity.value);
+          console.log(data);
+          if (pointArray.length > 1) {
+            console.log("okay");
+            totalPoint = pointArray.reduce((arr, cur) => {
+              return arr + cur;
+            });
+          }
+
           refetch();
           return (
             <Activities
@@ -110,6 +122,7 @@ class ActivitiesContainer extends Component {
               image={imageRelation}
               filteredActivity={data.allActivityLogs}
               refetch={refetch}
+              totalPoint={totalPoint}
             />
           );
         }}
