@@ -17,14 +17,14 @@ const ActivityModal = ({data, navigation}) => (
         navigation.goBack();
       }}
     >
-      <Ionicons style={styles.icon} name="ios-close" size={30} color="red" />
+      <Ionicons style={styles.icon} name="ios-close" size={30} color="blue" />
     </TouchableHighlight>
     <View style={styles.info}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.activityContainer}>
-          <Text>{data.name}</Text>
+          <Text style={styles.name}>{data.name}</Text>
         </View>
-        <Text>{data.description}</Text>
+        <Text style={styles.description}>{data.description}</Text>
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={() => {
@@ -34,8 +34,8 @@ const ActivityModal = ({data, navigation}) => (
           <Ionicons
             style={styles.addIcon}
             name="ios-add-circle-outline"
-            size={50}
-            color="red"
+            size={70}
+            color="blue"
           />
         </TouchableOpacity>
       </ScrollView>
