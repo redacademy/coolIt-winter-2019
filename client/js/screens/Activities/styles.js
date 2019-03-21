@@ -49,6 +49,18 @@ const styles = StyleSheet.create({
     padding: 18,
     fontFamily: fonts.light,
     fontSize: 14
+  },
+  list: {
+    backgroundColor: colors.lightGreen,
+    opacity: 0.7,
+    padding: 10
+  },
+  buttonContainer: {
+    backgroundColor: colors.white,
+    borderRadius: 13,
+    borderColor: colors.green,
+    borderWidth: 2,
+    marginHorizontal: 5,
   }
 });
 
