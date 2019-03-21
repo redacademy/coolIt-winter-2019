@@ -5,13 +5,16 @@ import {
   Image,
   AsyncStorage,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  ImageBackground
 } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
 // import PropTypes from "prop-types";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
+import { withNavigation } from "react-navigation";
+
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
     authenticateUser(email: $email, password: $password) {
@@ -33,10 +36,21 @@ class LogIn extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.backgroundTop}>
-          <Image
+          <ImageBackground
             source={require("../../assets/images/background2-top.png")}
             style={styles.top}
-          />
+          >
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.goBack();
+              }}
+            >
+              <Image
+                source={require("../../assets/images/back.png")}
+                style={styles.back}
+              />
+            </TouchableOpacity>
+          </ImageBackground>
         </View>
         <Form
           onSubmit={async value => {
@@ -51,7 +65,7 @@ class LogIn extends Component {
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("App");
+              this.props.navigation.navigate("Activities");
             } catch (e) {
               console.log(e);
             }
@@ -99,6 +113,7 @@ class LogIn extends Component {
   }
 }
 
-export default compose(graphql(AUTHENTICATE_USER, { name: "loginMutation" }))(
-  LogIn
-);
+export default compose(
+  graphql(AUTHENTICATE_USER, { name: "loginMutation" }),
+  withNavigation
+)(LogIn);

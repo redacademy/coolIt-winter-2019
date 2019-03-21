@@ -7,9 +7,11 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
+import { withNavigation } from "react-navigation";
 // import PropTypes from "prop-types";
 
-const Score = () => {
+const Score = props => {
+  let { navigate } = props.navigation;
   return (
     <ImageBackground
       source={require("../../assets/images/background.png")}
@@ -31,11 +33,13 @@ const Score = () => {
             There are probably more things you can do to help. Start the
             challenge to learn more.
           </Text>
-          
         </View>
-        <TouchableOpacity onPress={() => {}} style={styles.button}>
-            <Text style={styles.buttonText}>Start Challenge</Text>
-          </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigate("BeginChallenge")}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Start Challenge</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -43,4 +47,4 @@ const Score = () => {
 
 // Score.propTypes = {};
 
-export default Score;
+export default withNavigation(Score);
