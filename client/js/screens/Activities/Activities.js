@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  SectionList,
   ScrollView,
   Image,
   ImageBackground,
@@ -13,7 +12,14 @@ import styles from "./styles";
 import PropTypes from "prop-types";
 import DateDisplay from "../../components/DateDisplay";
 
-const Activities = ({ data, navigation, date, dateChangeHandler }) => {
+const Activities = ({
+  data,
+  navigation,
+  date,
+  categories,
+  dateChangeHandler,
+  image
+}) => {
   return (
     <View>
       <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
@@ -32,32 +38,41 @@ const Activities = ({ data, navigation, date, dateChangeHandler }) => {
             </View>
           </ImageBackground>
         </View>
-        <SectionList
-          style={styles.sectionList}
-          sections={data}
-          keyExtractor={(item, index) => item + index}
-          renderSectionHeader={({ section }) => (
-            <Text style={styles.section}>{section.title}</Text>
-          )}
-          renderItem={({ item, index }) => (
-            <TouchableHighlight
-              onPress={() => {
-                navigation.navigate("Activity", {
-                  activity: { ...item, date: date }
-                });
-              }}
-              activeOpacity={0.5}
-              underlayColor={"#e6e6e6"}
-            >
-              <View style={styles.items} key={index}>
-                <Text style={styles.title}>{item.name}</Text>
+        {categories.map(category => {
+          return (
+            <View key={category.id}>
+              <View style={styles.topSection}>
+                <Image style={styles.image} source={image[category.name]} />
+                <Text style={styles.section}>{category.name}</Text>
               </View>
-            </TouchableHighlight>
-          )}
-          ItemSeparatorComponent={() => {
-            return <View style={styles.itemSeparator} />;
-          }}
-        />
+              <ScrollView style={styles.list} horizontal={true}>
+                {data
+                  .filter(activities => {
+                    return activities.category.name === category.name;
+                  })
+                  .map(activity => {
+                    return (
+                      <TouchableHighlight
+                        onPress={() => {
+                          navigation.navigate("Activity", {
+                            data: { ...activity, date }
+                          });
+                        }}
+                        key={activity.id}
+                        activeOpacity={0.5}
+                        underlayColor={"#e6e6e6"}
+                        style={styles.buttonContainer}
+                      >
+                        <View style={styles.items}>
+                          <Text style={styles.title}>{activity.name}</Text>
+                        </View>
+                      </TouchableHighlight>
+                    );
+                  })}
+              </ScrollView>
+            </View>
+          );
+        })}
         <TouchableOpacity onPress={() => {}} style={styles.impact}>
           <Text style={styles.buttonText}>Calculate My Impact</Text>
         </TouchableOpacity>

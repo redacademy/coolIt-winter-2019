@@ -7,9 +7,11 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
+import { withNavigation } from "react-navigation";
 // import PropTypes from "prop-types";
 
-const BeginChallenge = () => {
+const BeginChallenge = props => {
+  let { navigate } = props.navigation;
   return (
     <ImageBackground
       source={require("../../assets/images/background.png")}
@@ -39,7 +41,7 @@ const BeginChallenge = () => {
                 savings and effort required.
               </Text>
             </View>
-            <TouchableOpacity onPress={() => {}} style={styles.button}>
+            <TouchableOpacity onPress={() => navigate('Activities')} style={styles.button}>
               <Text style={styles.buttonText}>Let's begin</Text>
             </TouchableOpacity>
           </View>
@@ -57,4 +59,4 @@ const BeginChallenge = () => {
 
 // BeginChallenge.propTypes = {};
 
-export default BeginChallenge;
+export default withNavigation(BeginChallenge);

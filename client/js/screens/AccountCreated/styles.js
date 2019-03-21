@@ -33,12 +33,26 @@ const styles = StyleSheet.create({
   },
   welcome: {
     fontSize: 24,
-    fontFamily: fonts.light, 
-    fontWeight: 'normal',
+    fontFamily: fonts.light,
+    fontWeight: "normal"
   },
   created: {
     fontFamily: fonts.light,
     fontSize: 20
+  },
+  button: {
+    width: "40%",
+    alignSelf: "center",
+    backgroundColor: colors.green,
+    borderRadius: 13
+  },
+  buttonText: {
+    alignSelf: "center",
+    fontFamily: fonts.light,
+    fontSize: 18,
+    color: colors.white,
+    paddingTop: 10,
+    paddingBottom: 10
   }
 });
 export default styles;

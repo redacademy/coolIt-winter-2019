@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  Image,
+  ImageBackground,
   AsyncStorage,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from "react-native";
 import { Form, Field } from "react-final-form";
+import { colors } from "../../config/styles";
 import { withNavigation } from "react-navigation";
 import styles from "./styles";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
+
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
     signupUser(email: $email, password: $password) {
@@ -33,10 +36,21 @@ class JoinUs extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.backgroundTop}>
-          <Image
+          <ImageBackground
             source={require("../../assets/images/background2-top.png")}
             style={styles.top}
-          />
+          >
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.goBack();
+              }}
+            >
+              <Image
+                source={require("../../assets/images/back.png")}
+                style={styles.back}
+              />
+            </TouchableOpacity>
+          </ImageBackground>
         </View>
         <Form
           onSubmit={async value => {
@@ -51,7 +65,7 @@ class JoinUs extends Component {
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("App");
+              this.props.navigation.navigate("AccountCreated");
             } catch (e) {
               console.log(e);
             }
