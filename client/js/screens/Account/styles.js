@@ -58,28 +58,6 @@ const styles = StyleSheet.create({
   menu: {
     paddingTop: 25
   }
-
-  //   bottom: {
-  //     flex: 1,
-  //     justifyContent: "space-around"
-  //     justifyContent: "space-around",
-  //     paddingTop: 25
-  //   },
-  //   valley: {
-  //     resizeMode: "cover"
-  //     resizeMode: "cover",
-  //     paddingTop: 25,
-  //     marginTop: 25
-  //   },
-  //   container: {
-  //     height: Dimensions.get("window").height
-  //     height: Dimensions.get("window").height,
-  //     paddingTop: 25
-  //   },
-  //   contentContainer: {
-  //     paddingTop: 25
-  //   }
-  // });
 });
 
 export default styles;

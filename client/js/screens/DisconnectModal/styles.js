@@ -7,45 +7,40 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     height: "100%"
   },
-  icon: {
-    marginLeft: 20,
-    marginTop: 20
-  },
-  name: {
-    textTransform: "uppercase",
-    fontFamily: fonts.bold,
-    textAlign: "center",
-    fontSize: 20,
-    fontWeight: "600"
-  },
-  description: {
+
+  header: {
     fontFamily: fonts.light,
     fontWeight: "400",
     padding: 15,
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 16
   },
-  addIcon: {
-    textAlign: "center"
-  },
+
   buttonText: {
     alignSelf: "center",
     fontFamily: "Arial",
     fontSize: 16,
-    color: colors.white,
     paddingTop: 10,
     paddingBottom: 10
   },
-  dismiss: {
-    width: "60%",
-    alignSelf: "center",
-    backgroundColor: colors.green,
+  disconnect: {
+    width: "40%",
+    backgroundColor: colors.white,
     borderRadius: 13,
-    marginBottom: 25
+    borderColor: colors.blue,
+    borderWidth: 2,
+    marginBottom: 25,
+    
   },
   scrollView: {
     paddingTop: "50%",
     flexDirection: "column",
     justifyContent: "space-around"
+  },
+  buttonAligner: {
+    flexDirection: "row",
+    justifyContent: "space-around"
+
   }
 });
 

@@ -24,13 +24,13 @@ const DisconnectModal = ({navigation, disconnect}) => {
       <View style={styles.modal}>
         <View style={styles.info}>
           <ScrollView contentContainerStyle={styles.scrollView}>
-            <Text>
+            <Text style={styles.header}>
               Are you sure you want to disconnect your account from the Cool It!
               Program?
             </Text>
-
+            <View style={styles.buttonAligner}>
             <TouchableOpacity
-              style={styles.dismiss}
+              style={styles.disconnect}
               onPress={async () => {
                 try {
                   const userId = await AsyncStorage.getItem("id");
@@ -44,13 +44,14 @@ const DisconnectModal = ({navigation, disconnect}) => {
               <Text style={styles.buttonText}>Confirm</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.dismiss}
+              style={styles.disconnect}
               onPress={() => {
                 navigation.navigate("Account");
               }}
             >
               <Text style={styles.buttonText}>Cancel</Text>
             </TouchableOpacity>
+            </View>
           </ScrollView>
         </View>
       </View>
