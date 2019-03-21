@@ -37,7 +37,8 @@ const ActivityModal = ({ data, navigation, addActivity }) => (
           <Text style={styles.name}>{data.name}</Text>
         </View>
         <Text style={styles.description}>{data.description}</Text>
-        {data.category.name !== "Community Actions" ? (
+
+        {data.added ? null : data.category.name !== "Community Actions" ? (
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={async () => {
