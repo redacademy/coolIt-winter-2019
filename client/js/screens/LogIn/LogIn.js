@@ -12,7 +12,6 @@ import {Form, Field} from "react-final-form";
 import styles from "./styles";
 import {graphql, compose} from "react-apollo";
 import gql from "graphql-tag";
-import {withNavigation} from "react-navigation";
 import {FORM_ERROR} from "final-form";
 
 const AUTHENTICATE_USER = gql`
@@ -154,5 +153,4 @@ class LogIn extends Component {
 
 export default compose(
   graphql(AUTHENTICATE_USER, {name: "loginMutation"}),
-  withNavigation
 )(LogIn);
