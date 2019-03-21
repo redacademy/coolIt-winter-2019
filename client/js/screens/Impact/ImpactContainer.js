@@ -20,25 +20,12 @@ export default class ImpactContainer extends Component {
       userID: null
     };
   }
-  componentWillMount = async () => {
-    const userID = await AsyncStorage.getItem("id");
-    this.setState({ userID });
-  };
+
   render() {
     return (
-      <Query query={USER_INFO} variables={{ id: this.state.userID }}>
-        {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
-          if (error) return <Text>Error</Text>;
-
-          return (
-            <View>
-              <Text>{data.allUsers[0].email}</Text>
-              <Impact />
-            </View>
-          );
-        }}
-      </Query>
+      <View>
+        <Impact />
+      </View>
     );
   }
 }
