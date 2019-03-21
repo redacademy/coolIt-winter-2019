@@ -59,6 +59,12 @@ const styles = StyleSheet.create({
     color: colors.white,
     paddingTop: 8,
     paddingBottom: 8
+  },
+  back: {
+    marginTop: 80,
+    marginLeft: 30,
+    height: 40,
+    width: 40
   }
 });
 
