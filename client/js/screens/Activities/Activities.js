@@ -18,11 +18,13 @@ const Activities = ({
   categories,
   dateChangeHandler,
   image,
-  filteredActivity
+  filteredActivity,
+  refetch
 }) => {
   const filtered = filteredActivity.map(filteredActivity => {
     return filteredActivity.activity.name;
   });
+  refetch();
   return (
     <View>
       <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
@@ -57,8 +59,9 @@ const Activities = ({
                     return !filtered.includes(activity.name) ? (
                       <TouchableHighlight
                         onPress={() => {
+                          console.log(refetch);
                           navigation.navigate("Activity", {
-                            data: { ...activity, date }
+                            data: { ...activity, date, refetch }
                           });
                         }}
                         key={activity.id}
@@ -74,7 +77,7 @@ const Activities = ({
                       <TouchableHighlight
                         onPress={() => {
                           navigation.navigate("Activity", {
-                            data: { ...activity, date }
+                            data: { ...activity, date, refetch }
                           });
                         }}
                         key={activity.id}

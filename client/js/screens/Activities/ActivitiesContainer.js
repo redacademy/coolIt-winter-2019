@@ -17,7 +17,28 @@ const imageRelation = {
   Toxic: require("../../assets/icons/toxic.png"),
   "Community Actions": require("../../assets/icons/community.png")
 };
-
+const ALL_ACTIVITIES = gql`
+  query Activities($id: ID!, $date: DateTime!) {
+    allActivities {
+      id
+      name
+      description
+      category {
+        name
+      }
+    }
+    allCategories {
+      id
+      name
+    }
+    allActivityLogs(filter: { user: { id: $id }, AND: { date: $date } }) {
+      id
+      activity {
+        name
+      }
+    }
+  }
+`;
 class ActivitiesContainer extends Component {
   constructor(props) {
     super(props);
@@ -74,12 +95,11 @@ class ActivitiesContainer extends Component {
           }
         `}
         variables={{ id: this.state.userId, date: this.state.date }}
-        refetchQueries={}
       >
-        {({ loading, error, data }) => {
+        {({ loading, error, data, refetch }) => {
           if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return console.log(error);
-          console.log(data);
+          refetch();
           return (
             <Activities
               navigation={this.props.navigation}
@@ -89,6 +109,7 @@ class ActivitiesContainer extends Component {
               categories={data.allCategories}
               image={imageRelation}
               filteredActivity={data.allActivityLogs}
+              refetch={refetch}
             />
           );
         }}

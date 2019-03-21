@@ -11,7 +11,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 import { withNavigation } from "react-navigation";
 import PropTypes from "prop-types";
-import { graphql, compose } from "react-apollo";
+import { graphql, compose, mutate } from "react-apollo";
 import gql from "graphql-tag";
 
 const ADD_ACTIVITY = gql`
@@ -21,6 +21,7 @@ const ADD_ACTIVITY = gql`
     }
   }
 `;
+
 const ActivityModal = ({ data, navigation, addActivity }) => (
   <View style={styles.container}>
     <TouchableHighlight
@@ -44,11 +45,12 @@ const ActivityModal = ({ data, navigation, addActivity }) => (
               console.log(userId);
               console.log(data.date);
               console.log(data.id);
-              addActivity({
+              console.log(data);
+              await addActivity({
                 variables: { date: data.date, userId, activityId: data.id }
               });
-
               console.log("activity added");
+              await data.refetch();
               navigation.goBack();
             }}
           >
