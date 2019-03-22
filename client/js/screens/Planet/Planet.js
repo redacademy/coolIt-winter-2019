@@ -24,7 +24,7 @@ const Planet = ({data}) => {
                 </View>
               );
             }}
-            keyExtractor={(item, index) => "" + index}
+            keyExtractor={(index) => "" + index}
           />
         </ImageBackground>
       </View>
