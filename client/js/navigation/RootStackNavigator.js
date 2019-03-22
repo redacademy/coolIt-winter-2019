@@ -77,7 +77,7 @@ export default createAppContainer(
       Login: LoginStack
     },
     {
-      initialRouteName: "AuthLoading"
+      initialRouteName: "App"
     }
   )
 );
