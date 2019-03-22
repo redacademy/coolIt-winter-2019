@@ -1,11 +1,22 @@
 import React, {Component} from "react";
-import {formatSessionData} from "../../lib/helpers/dataFormatHelpers";
 import Activities from "./Activities";
 import {ActivityIndicator} from "react-native";
 import {Query} from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
 import styles from "./styles";
+
+const imageRelation = {
+  "Getting Around": require("../../assets/icons/bike.png"),
+  Vehicle: require("../../assets/icons/car.png"),
+  "Food Choices": require("../../assets/icons/apple.png"),
+  "Home Heating": require("../../assets/icons/temp.png"),
+  "Refuse, Reduce, Reuse": require("../../assets/icons/recycle.png"),
+  "Water Wise": require("../../assets/icons/water.png"),
+  "Lighting and Appliances": require("../../assets/icons/light.png"),
+  Toxic: require("../../assets/icons/toxic.png"),
+  "Community Actions": require("../../assets/icons/community.png")
+};
 
 class ActivitiesContainer extends Component {
   render() {
@@ -21,6 +32,10 @@ class ActivitiesContainer extends Component {
                 name
               }
             }
+            allCategories {
+              id
+              name
+            }
           }
         `}
       >
@@ -30,7 +45,9 @@ class ActivitiesContainer extends Component {
           return (
             <Activities
               navigation={this.props.navigation}
-              data={formatSessionData(data.allActivities)}
+              data={data.allActivities}
+              categories={data.allCategories}
+              image={imageRelation}
             />
           );
         }}

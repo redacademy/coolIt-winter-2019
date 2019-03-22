@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import {StyleSheet} from "react-native";
+import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    width: "70%",
+    minWidth: "70%",
     padding: 5,
     paddingLeft: 15,
     fontSize: 18
@@ -59,6 +59,22 @@ const styles = StyleSheet.create({
     color: colors.white,
     paddingTop: 8,
     paddingBottom: 8
+  },
+  back: {
+    marginTop: 80,
+    marginLeft: 30,
+    height: 40,
+    width: 40
+  },
+  error: {
+    color: colors.green,
+    fontFamily: fonts.light,
+    fontSize: 16
+  },
+  errorMessage: {
+    color: colors.green,
+    fontFamily: fonts.light,
+    fontSize: 16
   }
 });
 

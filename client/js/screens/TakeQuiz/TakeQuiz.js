@@ -7,9 +7,11 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
+import { withNavigation } from "react-navigation";
 // import PropTypes from "prop-types";
 
-const TakeQuiz = () => {
+const TakeQuiz = props => {
+  let { navigate } = props.navigation;
   return (
     <ImageBackground
       source={require("../../assets/images/background.png")}
@@ -29,7 +31,7 @@ const TakeQuiz = () => {
           <Text style={styles.text}>
             Take the carbon quiz to find out your current impact.
           </Text>
-          <TouchableOpacity onPress={() => {}} style={styles.button}>
+          <TouchableOpacity onPress={() => navigate("CarbonQuiz")} style={styles.button}>
             <Text style={styles.buttonText}>Take the Carbon Quiz</Text>
           </TouchableOpacity>
         </View>
@@ -47,4 +49,4 @@ const TakeQuiz = () => {
 
 // TakeQuiz.propTypes = {};
 
-export default TakeQuiz;
+export default withNavigation(TakeQuiz);

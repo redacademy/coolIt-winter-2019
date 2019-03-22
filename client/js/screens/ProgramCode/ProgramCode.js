@@ -1,17 +1,18 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {
   View,
   Text,
-  ImageBackground,
+  Image,
   TouchableOpacity,
+  ImageBackground,
   TextInput,
   AsyncStorage
 } from "react-native";
-import { Form, Field } from "react-final-form";
+import {Form, Field} from "react-final-form";
 import styles from "./styles";
-// import PropTypes from "prop-types";
-import { graphql, compose } from "react-apollo";
+import {graphql, compose} from "react-apollo";
 import gql from "graphql-tag";
+
 const AUTHENTICATE_USER = gql`
   mutation Authenticate(
     $division: Int
@@ -35,10 +36,30 @@ const AUTHENTICATE_USER = gql`
 class ProgramCode extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: "", loading: false };
+    this.state = {text: "", loading: false};
   }
   static navigationOptions = {
     title: "Please enter your program information"
+  };
+
+  validate = values => {
+    const errors = {};
+    if (!values.school) {
+      errors.school = "School name is required";
+    }
+    if (!values.teacher) {
+      errors.teacher = "Teacher name is required";
+    }
+    if (!values.division) {
+      errors.division = "Division is required";
+    }
+    if (!values.grade) {
+      errors.grade = "Grade info is required";
+    }
+    if (!values.code) {
+      errors.code = "Program code is required";
+    }
+    return errors;
   };
 
   render() {
@@ -57,7 +78,7 @@ class ProgramCode extends Component {
         <Form
           onSubmit={async value => {
             try {
-              this.setState({ loading: true });
+              this.setState({loading: true});
               const result = await this.props.loginMutation({
                 variables: {
                   division: value.division,
@@ -77,84 +98,116 @@ class ProgramCode extends Component {
               console.log(e);
             }
           }}
-          render={({ handleSubmit, value, reset }) => (
+          validate={this.validate}
+          render={({handleSubmit, pristine, invalid}) => (
             <View style={styles.flexContent}>
               <Field name="school">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.form}
-                    editable={true}
-                    {...input}
-                    placeholder="School"
-                    onChangeText={text => this.setState({ text })}
-                  />
+                {({input, meta}) => (
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="School"
+                      onChangeText={text => this.setState({text})}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
               <Field name="teacher">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.form}
-                    editable={true}
-                    {...input}
-                    placeholder="Teacher"
-                    onChangeText={text => this.setState({ text })}
-                  />
+                {({input, meta}) => (
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="Teacher"
+                      onChangeText={text => this.setState({text})}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
               <Field name="division">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.formShort}
-                    editable={true}
-                    {...input}
-                    placeholder="Division"
-                    onChangeText={text => this.setState({ text })}
-                  />
+                {({input, meta}) => (
+                  <View>
+                    <TextInput
+                      style={styles.formShort}
+                      editable={true}
+                      {...input}
+                      placeholder="Division"
+                      onChangeText={text => this.setState({text})}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
               <Field name="grade">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.formShort}
-                    editable={true}
-                    {...input}
-                    placeholder="Grade"
-                    onChangeText={text => this.setState({ text })}
-                  />
+                {({input, meta}) => (
+                  <View>
+                    <TextInput
+                      style={styles.formShort}
+                      editable={true}
+                      {...input}
+                      placeholder="Grade"
+                      onChangeText={text => this.setState({text})}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
               <Field name="code">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.formShort}
-                    editable={true}
-                    {...input}
-                    placeholder="Code"
-                    onChangeText={text => this.setState({ text })}
-                  />
+                {({input, meta}) => (
+                  <View>
+                    <TextInput
+                      style={styles.formShort}
+                      editable={true}
+                      {...input}
+                      placeholder="Code"
+                      onChangeText={text => this.setState({text})}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
+              <View style={styles.buttonAligner}>
+                <TouchableOpacity
+                  onPress={handleSubmit}
+                  disabled={pristine || invalid}
+                  style={styles.buttonContainer}
+                >
+                  <Text style={styles.buttonText}>Continue</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {}}
+                  style={styles.buttonContainer}
+                >
+                  <Text style={styles.buttonText}>Skip</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         />
         <View style={styles.backgroundBottom}>
-          <ImageBackground
+          <Image
             source={require("../../assets/images/background2-bottom.png")}
             style={styles.bottom}
-          >
-            <TouchableOpacity onPress={() => {}} style={styles.button}>
-              <Text style={styles.buttonText}>Continue</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
-              <Text style={styles.skipText}>Skip</Text>
-            </TouchableOpacity>
-          </ImageBackground>
+          />
         </View>
       </View>
     );
   }
 }
-
-// ProgramCode.propTypes = {};
 
 export default compose(graphql(AUTHENTICATE_USER))(ProgramCode);

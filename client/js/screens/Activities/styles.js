@@ -15,7 +15,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: colors.green,
     borderRadius: 13,
-    marginBottom: 25
+    marginBottom: 25,
+    marginTop: 25,
+    padding: 5
   },
   buttonText: {
     alignSelf: "center",
@@ -39,16 +41,32 @@ const styles = StyleSheet.create({
     fontFamily: fonts.light
   },
   section: {
-    padding: 18,
     textTransform: "uppercase",
     fontFamily: fonts.light,
     fontWeight: "500",
-    fontSize: 14
+    fontSize: 14,
+    paddingLeft: 10
   },
   title: {
     padding: 18,
     fontFamily: fonts.light,
     fontSize: 14
+  },
+  list: {
+    backgroundColor: colors.lightGreen,
+    opacity: 0.7,
+    padding: 10
+  },
+  buttonContainer: {
+    backgroundColor: colors.white,
+    borderRadius: 13,
+    borderColor: colors.green,
+    borderWidth: 2,
+    marginHorizontal: 5,
+  },
+  topSection: {
+    flexDirection: "row",
+    padding: 25
   }
 });
 

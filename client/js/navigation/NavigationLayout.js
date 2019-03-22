@@ -3,7 +3,7 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import React from "react";
-import AccountScreen from "../screens/CarbonQuiz";
+import AccountScreen from "../screens/Account";
 import ActivitiesScreen from "../screens/Activities";
 import HeroesScreen from "../screens/Heroes";
 import ImpactScreen from "../screens/Impact";

@@ -1,17 +1,19 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {
   View,
   Text,
   Image,
   AsyncStorage,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  ImageBackground
 } from "react-native";
-import { Form, Field } from "react-final-form";
+import {Form, Field} from "react-final-form";
 import styles from "./styles";
-// import PropTypes from "prop-types";
-import { graphql, compose } from "react-apollo";
+import {graphql, compose} from "react-apollo";
 import gql from "graphql-tag";
+import {FORM_ERROR} from "final-form";
+
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
     authenticateUser(email: $email, password: $password) {
@@ -23,27 +25,51 @@ const AUTHENTICATE_USER = gql`
 class LogIn extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: "", loading: false };
+    this.state = {text: "", loading: false};
   }
   static navigationOptions = {
     title: "Please sign in"
+  };
+
+  validate = values => {
+    const errors = {};
+    if (!values.email || values.email === "") {
+      errors.email = "Email is required";
+    } else if (/.*@.*\..*/.test(values.email) === false) {
+      errors.email = "The email format is invalid";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    }
+    return errors;
   };
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.backgroundTop}>
-          <Image
+          <ImageBackground
             source={require("../../assets/images/background2-top.png")}
             style={styles.top}
-          />
+          >
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.goBack();
+              }}
+            >
+              <Image
+                source={require("../../assets/images/back.png")}
+                style={styles.back}
+              />
+            </TouchableOpacity>
+          </ImageBackground>
         </View>
         <Form
           onSubmit={async value => {
             try {
-              this.setState({ loading: true });
+              this.setState({loading: true});
               const result = await this.props.loginMutation({
-                variables: { email: value.email, password: value.password }
+                variables: {email: value.email, password: value.password}
               });
 
               const user = result.data.authenticateUser;
@@ -51,40 +77,66 @@ class LogIn extends Component {
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("App");
+              this.props.navigation.navigate("Activities");
             } catch (e) {
-              console.log(e);
+              return {
+                [FORM_ERROR]: "Incorrect email and/or password"
+              };
             }
           }}
-          render={({ handleSubmit, value, reset }) => (
+          validate={this.validate}
+          render={({
+            handleSubmit,
+            pristine,
+            invalid,
+            hasSubmitErrors,
+            submitError
+          }) => (
             <View style={styles.flexContent}>
               <Text style={styles.text}>Log In</Text>
               <Field name="email">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.form}
-                    editable={true}
-                    {...input}
-                    placeholder="Email"
-                    onChangeText={text => this.setState({ text })}
-                  />
+                {({input, meta}) => (
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="Email"
+                      onChangeText={text => this.setState({text})}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
               <Field name="password">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.form}
-                    editable={true}
-                    {...input}
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    onChangeText={text => this.setState({ text })}
-                  />
+                {({input, meta}) => (
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="Password"
+                      secureTextEntry={true}
+                      onChangeText={text => this.setState({text})}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
-              <TouchableOpacity onPress={handleSubmit} style={styles.button}>
+              <TouchableOpacity
+                onPress={handleSubmit}
+                style={styles.button}
+                disabled={pristine || invalid}
+              >
                 <Text style={styles.buttonText}>Log In</Text>
               </TouchableOpacity>
+              {hasSubmitErrors && (
+                <Text style={styles.errorMessage}>{submitError}</Text>
+              )}
             </View>
           )}
         />
@@ -99,6 +151,6 @@ class LogIn extends Component {
   }
 }
 
-export default compose(graphql(AUTHENTICATE_USER, { name: "loginMutation" }))(
-  LogIn
-);
+export default compose(
+  graphql(AUTHENTICATE_USER, {name: "loginMutation"}),
+)(LogIn);

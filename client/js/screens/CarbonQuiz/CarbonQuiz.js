@@ -10,6 +10,7 @@ import { ViewPager } from "rn-viewpager";
 import styles from "./styles";
 import QuizSection from "../../components/QuizSection";
 import StepIndicator from "react-native-step-indicator";
+import { withNavigation } from "react-navigation";
 
 const StepIndicatorStyles = {
   stepIndicatorSize: 30,
@@ -39,7 +40,7 @@ const StepIndicatorStyles = {
   stepIndicatorLabelCurrentColor: "#ffffff"
 };
 
-export default class CarbonQuiz extends Component {
+class CarbonQuiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -165,7 +166,8 @@ export default class CarbonQuiz extends Component {
               <TouchableOpacity
                 style={disabledSubmit ? styles.disabledButton : styles.button}
                 onPress={() => {
-                  console.log(handleSubmit);
+                  this.handleSubmit();
+                  this.props.navigation.navigate("Score");
                 }}
                 disabled={disabledSubmit}
               >
@@ -199,3 +201,5 @@ export default class CarbonQuiz extends Component {
     );
   };
 }
+
+export default withNavigation(CarbonQuiz);
