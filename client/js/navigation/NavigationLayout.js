@@ -46,7 +46,7 @@ const ImpactStack = createStackNavigator(
   {
     Impact: ImpactScreen
   },
-  {
+  {headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })

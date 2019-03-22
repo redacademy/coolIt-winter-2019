@@ -9,8 +9,6 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-// import { TouchableOpacity } from "react-native-gesture-handler";
-
 class Impact extends Component {
   constructor(props) {
     super(props);
@@ -30,71 +28,83 @@ class Impact extends Component {
         </View>
         <View style={styles.metricsContainer}>
           <View style={styles.metric}>
-            <Text>2K</Text>
-            <Text> Total Points </Text>
+            <Text style={styles.metricTitle}>2K</Text>
+            <Text style={styles.metricSubtitle}> Total Points </Text>
           </View>
           <View style={styles.metric2}>
-            <Text>50 GHG</Text>
-            <Text>daily average</Text>
-            <Text>greenhouse gas saved</Text>
+            <Text style={styles.metricTitle}>50 GHG</Text>
+            <Text style={styles.metricSubtitle}>daily average</Text>
+            <Text style={styles.metricSubtitle2}>greenhouse gas saved</Text>
           </View>
           <View style={styles.metric}>
-            <Text>55</Text>
-            <Text>Quiz Score</Text>
+            <Text style={styles.metricTitle}>55</Text>
+            <Text style={styles.metricSubtitle}>Quiz Score</Text>
           </View>
         </View>
         <View style={styles.iconsContainer}>
-          <Text style={{ paddingVertical: 25 }}>Track Your Progress</Text>
+          <Text
+            style={{ paddingVertical: 25, paddingLeft: 15, color: "#808080" }}
+          >
+            Track Your Progress
+          </Text>
           <View style={styles.iconGroup}>
             <View style={styles.icon}>
               <Image
-                source={require("../../assets/icons/activity-inactive.png")}
+                source={require("../../assets/images/impact/travel.png")}
                 style={styles.iconImage}
               />
+              <Text>Travel</Text>
             </View>
             <View style={styles.icon}>
               <Image
-                source={require("../../assets/icons/activity-inactive.png")}
+                source={require("../../assets/images/impact/vehicle.png")}
                 style={styles.iconImage}
               />
+              <Text>Vehicle</Text>
             </View>
             <View style={styles.icon}>
               <Image
-                source={require("../../assets/icons/activity-inactive.png")}
+                source={require("../../assets/images/impact/food.png")}
                 style={styles.iconImage}
               />
+              <Text>Food</Text>
             </View>
             <View style={styles.icon}>
               <Image
-                source={require("../../assets/icons/activity-inactive.png")}
+                source={require("../../assets/images/impact/homeHeating.png")}
                 style={styles.iconImage}
               />
+              <Text>Home Heating</Text>
             </View>
           </View>
           <View style={styles.iconGroup}>
             <View style={styles.icon}>
               <Image
-                source={require("../../assets/icons/activity-inactive.png")}
+                source={require("../../assets/images/impact/recycle.png")}
                 style={styles.iconImage}
               />
+              <Text>recycle</Text>
             </View>
             <View style={styles.icon}>
               <Image
-                source={require("../../assets/icons/activity-inactive.png")}
+                source={require("../../assets/images/impact/water.png")}
                 style={styles.iconImage}
               />
+              <Text>Water</Text>
             </View>
             <View style={styles.icon}>
               <Image
-                source={require("../../assets/icons/activity-inactive.png")}
+                source={require("../../assets/images/impact/lighting.png")}
                 style={styles.iconImage}
               />
+              <Text>Lighitng</Text>
             </View>
             <View style={styles.icon}>
               <Image
-                source={require("../../assets/icons/activity-inactive.png")}
+                source={require("../../assets/images/impact/toxic.png")}
                 style={styles.iconImage}
               />
+              <Text>Toxic</Text>
             </View>
           </View>
         </View>
@@ -124,25 +134,29 @@ class Impact extends Component {
             );
           })}
         </View>
-        <View>
+        <View style={styles.graphContainer}>
           {this.state.selected ? (
             <Image
               source={require("../../assets/images/impact/graph-selected.png")}
+              style={styles.graph}
             />
           ) : (
             <Image
               source={require("../../assets/images/impact/graph-emepty.png")}
+              style={styles.graph}
             />
           )}
         </View>
         <View style={styles.footerContainer}>
           <ImageBackground
             source={require("../../assets/images/impact/buttomBanner.png")}
-            style={{ width: "100%", height: 200 }}
+            style={{ width: "100%", height: 170 }}
           >
             <View style={styles.footerContent}>
-              <Text>Share</Text>
-              <Text>Share Your Impact With Friends</Text>
+              <Text style={styles.footerTitle}>Share</Text>
+              <Text style={styles.footerText}>
+                Share Your Impact With Friends
+              </Text>
               <View style={styles.footerIcons}>
                 <Image
                   source={require("../../assets/images/impact/facebook.png")}
@@ -163,9 +177,3 @@ class Impact extends Component {
 }
 
 export default Impact;
-
-{
-  /* <TouchableOpacity style={styles.dateButton}>
-<Text style={styles.buttonText}>Y</Text>
-</TouchableOpacity> */
-}
