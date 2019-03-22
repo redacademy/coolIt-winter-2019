@@ -1,5 +1,4 @@
 import React from "react";
-import { withNavigation } from "react-navigation";
 import {
   View,
   Text,

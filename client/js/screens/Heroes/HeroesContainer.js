@@ -56,29 +56,43 @@ class HeroesContainer extends Component {
     const currentUser = {
       programCode: "12345"
     };
-    console.log(this.props.userProgramQuery);
 
-    const leaderHeroes = allHeroes
-      .filter(heroes => heroes.programCode === currentUser.programCode)
-      .sort((a, b) => b.point - a.point)
-      .slice(0, 5);
+    const leaderHeroes = allHeroes.filter(
+      heroes => heroes.programCode === currentUser.programCode
+    );
 
     return (
       <Query
         query={gql`
-          query User($id: ID!) {
-            allUsers(filter: { id: $id }) {
+          query User {
+            allUsers {
               id
+              programCode
+              name
+              point
             }
           }
         `}
-        variables={{ id: this.state.userID }}
       >
-        {({ loading, error, data, refetch }) => {
+        {({ loading, error, data }) => {
           if (loading) return <ActivityIndicator />;
           if (error) return console.log(error);
-          console.log(data);
-          return <Heroes data={leaderHeroes} />;
+          console.log(data.allUsers);
+          const currentStudent = data.allUsers.filter(
+            a => a.id === this.state.userID
+          );
+          const listOfStudents = data.allUsers.filter(
+            a => a.programCode === currentStudent[0].programCode
+          );
+          console.log(currentStudent[0].programCode);
+          console.log(
+            listOfStudents.sort((a, b) => b.point - a.point).slice(0, 5)
+          );
+          const sortedList = listOfStudents
+            .sort((a, b) => b.point - a.point)
+            .slice(0, 5);
+
+          return <Heroes data={sortedList} />;
         }}
       </Query>
     );

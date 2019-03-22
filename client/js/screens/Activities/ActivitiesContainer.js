@@ -82,6 +82,9 @@ class ActivitiesContainer extends Component {
         {({ loading, error, data, refetch }) => {
           if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return <Text>{error}</Text>;
+          // if (!data.allUsers) {
+          //   refetch();
+          // }
           let currentPoint = data.allUsers[0].point;
 
           return (
