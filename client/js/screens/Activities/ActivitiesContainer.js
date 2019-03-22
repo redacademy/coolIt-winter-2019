@@ -17,7 +17,6 @@ const imageRelation = {
   Toxic: require("../../assets/icons/toxic.png"),
   "Community Actions": require("../../assets/icons/community.png")
 };
-
 class ActivitiesContainer extends Component {
   constructor(props) {
     super(props);
