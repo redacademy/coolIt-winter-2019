@@ -45,6 +45,10 @@ const styles = StyleSheet.create({
     color: colors.white,
     paddingTop: 10,
     paddingBottom: 10
+  },
+  community:{
+    paddingBottom: 25,
+    marginBottom: 25
   }
 });
 

@@ -9,9 +9,8 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
-import { withNavigation } from "react-navigation";
 import PropTypes from "prop-types";
-import { graphql, compose } from "react-apollo";
+import {graphql, compose} from "react-apollo";
 import gql from "graphql-tag";
 
 const ADD_ACTIVITY = gql`
@@ -30,15 +29,19 @@ const ADD_POINT = gql`
   }
 `;
 
-const ActivityModal = ({ data, navigation, addActivity, addPoint }) => (
+const ActivityModal = ({data, navigation, addActivity, addPoint}) => (
   <View style={styles.container}>
-    <TouchableHighlight
-      onPress={() => {
-        navigation.goBack();
-      }}
-    >
-      <Ionicons style={styles.icon} name="ios-close" size={30} color="blue" />
-    </TouchableHighlight>
+    {data.category.name !== "Community Actions" ? (
+      <TouchableHighlight
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <Ionicons style={styles.icon} name="ios-close" size={30} color="blue" />
+      </TouchableHighlight>
+    ) : (
+      <View style={styles.community} />
+    )}
     <View style={styles.info}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.activityContainer}>
@@ -52,10 +55,10 @@ const ActivityModal = ({ data, navigation, addActivity, addPoint }) => (
               const userId = await AsyncStorage.getItem("id");
 
               await addActivity({
-                variables: { date: data.date, userId, activityId: data.id }
+                variables: {date: data.date, userId, activityId: data.id}
               });
               await addPoint({
-                variables: { id: userId, point: data.currentPoint + data.value }
+                variables: {id: userId, point: data.currentPoint + data.value}
               });
 
               await data.refetch();
@@ -70,7 +73,12 @@ const ActivityModal = ({ data, navigation, addActivity, addPoint }) => (
             />
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity onPress={() => {}} style={styles.dismiss}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+            style={styles.dismiss}
+          >
             <Text style={styles.buttonText}>Dismiss</Text>
           </TouchableOpacity>
         )}
@@ -90,6 +98,5 @@ export default compose(
   }),
   graphql(ADD_POINT, {
     name: "addPoint"
-  }),
-  withNavigation
+  })
 )(ActivityModal);

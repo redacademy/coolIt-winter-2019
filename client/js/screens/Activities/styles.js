@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   topBackground: {
-    width: "100%"
+    width: "100%",
   },
   impact: {
     width: "60%",
@@ -40,11 +40,13 @@ const styles = StyleSheet.create({
   },
   headerText: {
     paddingTop: 25,
+    marginTop: 25,
     paddingLeft: 25,
     paddingBottom: 25
   },
   headerWelcome: {
     paddingTop: 25,
+    marginTop: 25,
     fontFamily: fonts.bold,
     fontSize: 18
   },
