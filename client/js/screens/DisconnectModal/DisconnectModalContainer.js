@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import DisconnectModal from "./DisconnectModal";
 import PropTypes from "prop-types";
 
