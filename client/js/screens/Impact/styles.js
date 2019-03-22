@@ -26,18 +26,16 @@ const styles = StyleSheet.create({
   },
   metricsContainer: {
     paddingTop: 45,
-    flex: 0,
+
     flexDirection: "row",
     justifyContent: "space-around"
   },
   metric: {
-    flex: 0,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
   },
   metric2: {
-    flex: 0,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
@@ -50,7 +48,6 @@ const styles = StyleSheet.create({
   metricSubtitle: { color: colors.green },
   metricSubtitle2: { color: "#808080" },
   iconGroup: {
-    flex: 0,
     flexDirection: "row",
     width: "100%",
     justifyContent: "center"
@@ -58,14 +55,13 @@ const styles = StyleSheet.create({
   icon: {
     width: "25%",
     height: 100,
-    flex: 0,
+
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
   },
   iconImage: { paddingHorizontal: 15 },
   dateButtonContainer: {
-    flex: 0,
     flexDirection: "row",
     justifyContent: "space-around",
     paddingBottom: 20
@@ -92,7 +88,6 @@ const styles = StyleSheet.create({
   buttonTextSelected: { width: "100%", textAlign: "center", color: "#ffffff" },
   footerContainer: { paddingTop: 20 },
   footerContent: {
-    flex: 0,
     flexDirection: "column",
     justifyContent: "flex-start",
     paddingLeft: 35,
@@ -105,7 +100,6 @@ const styles = StyleSheet.create({
     paddingBottom: 8
   },
   footerIcons: {
-    flex: 0,
     flexDirection: "row",
     justifyContent: "space-between",
     width: "30%"
@@ -121,7 +115,6 @@ const styles = StyleSheet.create({
   },
   graphSelected: { height: 220 },
   graphContainer: {
-    flex: 0,
     flexDirection: "row",
     justifyContent: "center",
     width: "100%",
