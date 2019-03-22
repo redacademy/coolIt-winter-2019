@@ -66,7 +66,7 @@ class JoinUs extends Component {
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("AccountCreated");
+              this.props.navigation.navigate("ProgramCode");
             } catch (e) {
               console.log(e);
             }

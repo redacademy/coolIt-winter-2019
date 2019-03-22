@@ -33,12 +33,6 @@ const Landing = props => {
             <Text style={styles.join}>
               Join our efforts to make a difference!
             </Text>
-            <View style={styles.flex}>
-              <CheckBox onClick={() => {}} isChecked={false} />
-              <Text style={styles.checkbox}>
-                I am part of the Cool It! program
-              </Text>
-            </View>
           </View>
           <TouchableOpacity
             onPress={() => navigate("JoinUs")}

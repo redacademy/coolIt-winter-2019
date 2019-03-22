@@ -32,8 +32,8 @@ const AppStack = createStackNavigator(
 const OnboardingStack = createStackNavigator(
   {
     Landing: Landing,
-    ProgramCode: ProgramCode,
     JoinUs: JoinUs,
+    ProgramCode: ProgramCode,
     AccountCreated: AccountCreated,
     TakeQuiz: TakeQuiz,
     CarbonQuiz: CarbonQuiz,

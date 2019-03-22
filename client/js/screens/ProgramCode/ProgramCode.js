@@ -12,6 +12,8 @@ import styles from "./styles";
 // import PropTypes from "prop-types";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
+import { withNavigation } from "react-navigation";
+
 const AUTHENTICATE_USER = gql`
   mutation Authenticate(
     $division: Int
@@ -72,7 +74,7 @@ class ProgramCode extends Component {
 
               await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("App");
+              this.props.navigation.navigate("AccountCreated");
             } catch (e) {
               console.log(e);
             }
@@ -142,10 +144,19 @@ class ProgramCode extends Component {
             source={require("../../assets/images/background2-bottom.png")}
             style={styles.bottom}
           >
-            <TouchableOpacity onPress={() => {}} style={styles.button}>
+            <TouchableOpacity
+              onPress={() => {
+                handleSubmit;
+              }}
+              style={styles.button}
+            >
               <Text style={styles.buttonText}>Continue</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity
+              onPress={() => {
+                handleSubmit;
+              }}
+            >
               <Text style={styles.skipText}>Skip</Text>
             </TouchableOpacity>
           </ImageBackground>
@@ -157,4 +168,7 @@ class ProgramCode extends Component {
 
 // ProgramCode.propTypes = {};
 
-export default compose(graphql(AUTHENTICATE_USER))(ProgramCode);
+export default compose(
+  graphql(AUTHENTICATE_USER),
+  withNavigation
+)(ProgramCode);
