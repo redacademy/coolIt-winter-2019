@@ -28,7 +28,6 @@ const Activities = ({
   });
   return (
     <View>
-      <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
       <ScrollView style={styles.container}>
         <View style={styles.topContainer} />
         <View style={styles.top}>
@@ -43,8 +42,8 @@ const Activities = ({
               </Text>
             </View>
             <View style={styles.dateText}>
-              <Text>Your date is</Text>
-              <Text>Your point is 2000</Text>
+            <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
+              <Text style={styles.pointDisplay}>Points earned: {currentPoint} </Text>
             </View>
           </ImageBackground>
         </View>

@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
     marginTop: 25,
     padding: 10
   },
+  dateText: {
+    justifyContent: "center",
+    alignItems: "center"
+
+  },
   buttonText: {
     alignSelf: "center",
     fontFamily: "Arial",
@@ -78,6 +83,12 @@ const styles = StyleSheet.create({
     paddingTop: 25,
     paddingBottom: 10,
     paddingLeft: 25
+  },
+  pointDisplay: {
+    paddingTop: 10,
+    fontSize: 16,
+    fontFamily: fonts.light,
+    fontWeight: "600"
   }
 });
 

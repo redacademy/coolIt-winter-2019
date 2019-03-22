@@ -4,7 +4,8 @@ export const colors = {
   blue: "#3A61AE",
   green: "#3B5327",
   lightGreen: "#96A687",
-  darkGreen: "#4F7627"
+  darkGreen: "#4F7627",
+  gray: "#D8D8D8"
 };
 
 export const fonts = {

@@ -1,31 +1,39 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import {Text, View, TouchableOpacity} from "react-native";
 import moment from "moment";
 import Icon from "react-native-vector-icons/Ionicons";
+import styles from "./styles";
+import {colors} from "../../config/styles";
 
 export const DateDisplay = props => {
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItem: "center"
-      }}
-    >
+    <View style={styles.date}>
       <TouchableOpacity
         onPress={() => {
           props.dateChangeHandler(false);
         }}
       >
-        <Icon name={"ios-arrow-dropleft"} />
+        <Icon
+          style={styles.leftIcon}
+          size={30}
+          name={"ios-arrow-back"}
+          color={colors.gray}
+        />
       </TouchableOpacity>
-      <Text>{moment(props.date).format("MMMM Do")}</Text>
+      <Text style={styles.dateDisplay}>
+        {moment(props.date).format("LLLL")}
+      </Text>
       <TouchableOpacity
         onPress={() => {
           props.dateChangeHandler(true);
         }}
       >
-        <Icon name={"ios-arrow-dropright"} />
+        <Icon
+          style={styles.rightIcon}
+          size={30}
+          name={"ios-arrow-forward"}
+          color={colors.gray}
+        />
       </TouchableOpacity>
     </View>
   );
