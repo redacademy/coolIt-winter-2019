@@ -1,11 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 
-const Impact = ({ data }) => {
+const Impact = props => {
   return (
     <View>
-      <Text>{data.allUsers[0].point}</Text>
-      <Text> Hi im impact</Text>
+      <TouchableOpacity onPress={props.navigation.navigate("Score")}>
+        <Text> Hi im impact</Text>
+      </TouchableOpacity>
     </View>
   );
 };

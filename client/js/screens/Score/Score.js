@@ -27,7 +27,7 @@ const Score = props => {
             />
             <Text style={styles.absoluteText}>Your Score</Text>
             <Text style={styles.absoluteNumber}>
-              {this.props.data.quizScore}
+              {props.data.allUsers[0].quizScore}
             </Text>
           </View>
           <Text style={styles.great}>Great Job!</Text>
