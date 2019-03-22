@@ -13,29 +13,9 @@ export default class ImpactContainer extends Component {
   }
   render() {
     return (
-<<<<<<< HEAD
-      <Impact navigation={this.props.navigation} />
-      // <Query query={USER_INFO} variables={{ id: this.state.userID }}>
-      //   {({ loading, error, data, refetch }) => {
-      //     if (loading) return <ActivityIndicator />;
-      //     if (error) return <Text>error</Text>;
-
-      //     if (data.allUsers) {
-      //       return (
-      //         <View>
-      //           <Impact navigation={this.props.navigation} />
-      //         </View>
-      //       );
-      //     }
-      //     refetch();
-      //     return <ActivityIndicator />;
-      //   }}
-      // </Query>
-=======
       <View>
         <Impact />
       </View>
->>>>>>> develop
     );
   }
 }
