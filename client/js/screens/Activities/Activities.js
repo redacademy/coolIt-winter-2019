@@ -11,6 +11,7 @@ import {
 import styles from "./styles";
 import PropTypes from "prop-types";
 import DateDisplay from "../../components/DateDisplay";
+import {colors} from "../../config/styles";
 const Activities = ({
   data,
   navigation,
@@ -42,13 +43,8 @@ const Activities = ({
               </Text>
             </View>
             <View style={styles.dateText}>
-            <Text>
-              Your date is
-            </Text>
-            <Text>
-              Your point is 2000 
-            </Text>
-
+              <Text>Your date is</Text>
+              <Text>Your point is 2000</Text>
             </View>
           </ImageBackground>
         </View>
@@ -102,12 +98,13 @@ const Activities = ({
                         key={activity.id}
                         activeOpacity={0.5}
                         underlayColor={"#e6e6e6"}
-                        style={styles.buttonContainer}
+                        style={{
+                          ...styles.buttonContainer,
+                          backgroundColor: colors.darkGreen
+                        }}
                       >
-                        <View
-                          style={{ ...styles.items, backgroundColor: "green" }}
-                        >
-                          <Text style={styles.title}>{activity.name}</Text>
+                        <View style={styles.items}>
+                          <Text style={{...styles.title, color: colors.white}}>{activity.name}</Text>
                         </View>
                       </TouchableHighlight>
                     );

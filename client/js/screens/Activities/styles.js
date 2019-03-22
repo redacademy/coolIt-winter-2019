@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
   impact: {
     width: "60%",
     alignSelf: "center",
-    backgroundColor: colors.green,
-    borderRadius: 13,
+    backgroundColor: colors.darkGreen,
+    borderRadius: 20,
     marginBottom: 25,
     marginTop: 25,
     padding: 10
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     padding: 18,
     fontFamily: fonts.light,
     fontSize: 14,
-    color: colors.white
   },
   list: {
     backgroundColor: colors.lightGreen,
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   buttonContainer: {
-    backgroundColor: colors.darkGreen,
+    backgroundColor: colors.white,
     borderRadius: 13,
     borderColor: colors.green,
     borderWidth: 2,
