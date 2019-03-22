@@ -11,7 +11,7 @@ import {
 import styles from "./styles";
 import PropTypes from "prop-types";
 import DateDisplay from "../../components/DateDisplay";
-import {colors} from "../../config/styles";
+import { colors } from "../../config/styles";
 const Activities = ({
   data,
   navigation,
@@ -21,7 +21,8 @@ const Activities = ({
   image,
   filteredActivity,
   refetch,
-  currentPoint
+  currentPoint,
+  dayPoint
 }) => {
   const filtered = filteredActivity.map(filteredActivity => {
     return filteredActivity.activity.name;
@@ -42,8 +43,10 @@ const Activities = ({
               </Text>
             </View>
             <View style={styles.dateText}>
-            <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
-              <Text style={styles.pointDisplay}>Points earned: {currentPoint} </Text>
+              <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
+              <Text style={styles.pointDisplay}>
+                Points earned: {dayPoint}{" "}
+              </Text>
             </View>
           </ImageBackground>
         </View>
@@ -103,7 +106,11 @@ const Activities = ({
                         }}
                       >
                         <View style={styles.items}>
-                          <Text style={{...styles.title, color: colors.white}}>{activity.name}</Text>
+                          <Text
+                            style={{ ...styles.title, color: colors.white }}
+                          >
+                            {activity.name}
+                          </Text>
                         </View>
                       </TouchableHighlight>
                     );
