@@ -11,6 +11,7 @@ import { withNavigation } from "react-navigation";
 // import PropTypes from "prop-types";
 
 const Score = props => {
+  console.log(props);
   let { navigate } = props.navigation;
   return (
     <ImageBackground
@@ -25,7 +26,9 @@ const Score = props => {
               style={styles.logo}
             />
             <Text style={styles.absoluteText}>Your Score</Text>
-            <Text style={styles.absoluteNumber}>55</Text>
+            <Text style={styles.absoluteNumber}>
+              {props.data.allUsers[0].quizScore}
+            </Text>
           </View>
           <Text style={styles.great}>Great Job!</Text>
           <Text style={styles.text}>
