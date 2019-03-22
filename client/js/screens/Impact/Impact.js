@@ -18,6 +18,7 @@ class Impact extends Component {
   }
 
   render() {
+    const user = this.props.data[0];
     const dateSelections = ["D", "W", "M", "Y"];
     return (
       <ScrollView>
@@ -28,7 +29,7 @@ class Impact extends Component {
         </View>
         <View style={styles.metricsContainer}>
           <View style={styles.metric}>
-            <Text style={styles.metricTitle}>2K</Text>
+            <Text style={styles.metricTitle}>{user.point}</Text>
             <Text style={styles.metricSubtitle}> Total Points </Text>
           </View>
           <View style={styles.metric2}>
@@ -37,7 +38,7 @@ class Impact extends Component {
             <Text style={styles.metricSubtitle2}>greenhouse gas saved</Text>
           </View>
           <View style={styles.metric}>
-            <Text style={styles.metricTitle}>55</Text>
+            <Text style={styles.metricTitle}>{user.quizScore}</Text>
             <Text style={styles.metricSubtitle}>Quiz Score</Text>
           </View>
         </View>
