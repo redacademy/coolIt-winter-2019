@@ -12,6 +12,7 @@ import { withNavigation } from "react-navigation";
 // import PropTypes from "prop-types";
 
 const Landing = props => {
+  console.log(props);
   let { navigate } = props.navigation;
   return (
     <View>
@@ -34,14 +35,21 @@ const Landing = props => {
               Join our efforts to make a difference!
             </Text>
             <View style={styles.flex}>
-              <CheckBox onClick={() => {}} isChecked={false} />
+              <CheckBox
+                onClick={() => {
+                  props.checkBox();
+                }}
+                isChecked={props.checked}
+              />
               <Text style={styles.checkbox}>
                 I am part of the Cool It! program
               </Text>
             </View>
           </View>
           <TouchableOpacity
-            onPress={() => navigate("JoinUs")}
+            onPress={() =>
+              !props.checked ? navigate("JoinUs") : navigate("ProgramCode")
+            }
             style={styles.joinUs}
           >
             <Text style={styles.buttonText}>Join us</Text>

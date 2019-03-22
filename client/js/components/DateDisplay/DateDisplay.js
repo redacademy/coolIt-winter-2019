@@ -1,16 +1,32 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import moment from "moment";
 import Icon from "react-native-vector-icons/Ionicons";
 
 export const DateDisplay = props => {
-  const today = new Date();
-
   return (
-    <View>
-      <Icon name={"ios-arrow-dropleft"} />
-      <Text>{moment(today).format("MMMM Do")}</Text>
-      <Icon name={"ios-arrow-dropright"} />
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItem: "center"
+      }}
+    >
+      <TouchableOpacity
+        onPress={() => {
+          props.dateChangeHandler(false);
+        }}
+      >
+        <Icon name={"ios-arrow-dropleft"} />
+      </TouchableOpacity>
+      <Text>{moment(props.date).format("MMMM Do")}</Text>
+      <TouchableOpacity
+        onPress={() => {
+          props.dateChangeHandler(true);
+        }}
+      >
+        <Icon name={"ios-arrow-dropright"} />
+      </TouchableOpacity>
     </View>
   );
 };

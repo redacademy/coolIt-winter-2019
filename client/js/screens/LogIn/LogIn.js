@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -8,11 +8,11 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
-import {Form, Field} from "react-final-form";
+import { Form, Field } from "react-final-form";
 import styles from "./styles";
-import {graphql, compose} from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import {FORM_ERROR} from "final-form";
+import { FORM_ERROR } from "final-form";
 
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
@@ -25,7 +25,7 @@ const AUTHENTICATE_USER = gql`
 class LogIn extends Component {
   constructor(props) {
     super(props);
-    this.state = {text: "", loading: false};
+    this.state = { text: "", loading: false };
   }
   static navigationOptions = {
     title: "Please sign in"
@@ -67,9 +67,9 @@ class LogIn extends Component {
         <Form
           onSubmit={async value => {
             try {
-              this.setState({loading: true});
+              this.setState({ loading: true });
               const result = await this.props.loginMutation({
-                variables: {email: value.email, password: value.password}
+                variables: { email: value.email, password: value.password }
               });
 
               const user = result.data.authenticateUser;
@@ -95,14 +95,14 @@ class LogIn extends Component {
             <View style={styles.flexContent}>
               <Text style={styles.text}>Log In</Text>
               <Field name="email">
-                {({input, meta}) => (
+                {({ input, meta }) => (
                   <View>
                     <TextInput
                       style={styles.form}
                       editable={true}
                       {...input}
                       placeholder="Email"
-                      onChangeText={text => this.setState({text})}
+                      onChangeText={text => this.setState({ text })}
                     />
                     <Text style={styles.error}>
                       {meta.error && meta.touched && meta.error}
@@ -111,7 +111,7 @@ class LogIn extends Component {
                 )}
               </Field>
               <Field name="password">
-                {({input, meta}) => (
+                {({ input, meta }) => (
                   <View>
                     <TextInput
                       style={styles.form}
@@ -119,7 +119,7 @@ class LogIn extends Component {
                       {...input}
                       placeholder="Password"
                       secureTextEntry={true}
-                      onChangeText={text => this.setState({text})}
+                      onChangeText={text => this.setState({ text })}
                     />
                     <Text style={styles.error}>
                       {meta.error && meta.touched && meta.error}
@@ -151,6 +151,6 @@ class LogIn extends Component {
   }
 }
 
-export default compose(
-  graphql(AUTHENTICATE_USER, {name: "loginMutation"}),
-)(LogIn);
+export default compose(graphql(AUTHENTICATE_USER, { name: "loginMutation" }))(
+  LogIn
+);
