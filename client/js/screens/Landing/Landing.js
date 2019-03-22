@@ -12,7 +12,6 @@ import { withNavigation } from "react-navigation";
 // import PropTypes from "prop-types";
 
 const Landing = props => {
-  console.log(props);
   let { navigate } = props.navigation;
   return (
     <View>
