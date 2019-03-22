@@ -32,7 +32,12 @@ const Account = ({ navigation }) => {
           <View style={styles.buttonSeparator} />
 
           <View style={styles.buttonSeparator} />
-          <TouchableOpacity onPress={() => {}} style={styles.logIn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Disconnect");
+            }}
+            style={styles.logIn}
+          >
             <Text style={styles.buttonText}>
               Disconnect My Account From The Cool It Program
             </Text>
