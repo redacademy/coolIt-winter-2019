@@ -11,6 +11,7 @@ import {
 import styles from "./styles";
 import PropTypes from "prop-types";
 import DateDisplay from "../../components/DateDisplay";
+import {colors} from "../../config/styles";
 const Activities = ({
   data,
   navigation,
@@ -27,7 +28,6 @@ const Activities = ({
   });
   return (
     <View>
-      <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
       <ScrollView style={styles.container}>
         <View style={styles.topContainer} />
         <View style={styles.top}>
@@ -41,11 +41,15 @@ const Activities = ({
                 Log your sustainable activities here.
               </Text>
             </View>
+            <View style={styles.dateText}>
+            <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
+              <Text style={styles.pointDisplay}>Points earned: {currentPoint} </Text>
+            </View>
           </ImageBackground>
         </View>
         {categories.map(category => {
           return (
-            <View key={category.id}>
+            <View style={styles.content} key={category.id}>
               <View style={styles.topSection}>
                 <Image style={styles.image} source={image[category.name]} />
                 <Text style={styles.section}>{category.name}</Text>
@@ -93,12 +97,13 @@ const Activities = ({
                         key={activity.id}
                         activeOpacity={0.5}
                         underlayColor={"#e6e6e6"}
-                        style={styles.buttonContainer}
+                        style={{
+                          ...styles.buttonContainer,
+                          backgroundColor: colors.darkGreen
+                        }}
                       >
-                        <View
-                          style={{ ...styles.items, backgroundColor: "green" }}
-                        >
-                          <Text style={styles.title}>{activity.name}</Text>
+                        <View style={styles.items}>
+                          <Text style={{...styles.title, color: colors.white}}>{activity.name}</Text>
                         </View>
                       </TouchableHighlight>
                     );

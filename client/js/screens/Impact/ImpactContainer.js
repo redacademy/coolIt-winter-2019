@@ -1,18 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, AsyncStorage, ActivityIndicator } from "react-native";
 import Impact from "./Impact";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-
-const USER_INFO = gql`
-  query USER($id: ID!) {
-    allUsers(filter: { id: $id }) {
-      id
-      email
-      point
-    }
-  }
-`;
+// import { Query } from "react-apollo";
+// import gql from "graphql-tag";
 
 export default class ImpactContainer extends Component {
   constructor(props) {
@@ -21,13 +11,9 @@ export default class ImpactContainer extends Component {
       userID: null
     };
   }
-  componentDidMount = () => {
-    AsyncStorage.getItem("id").then(value => {
-      this.setState({ userID: value });
-    });
-  };
   render() {
     return (
+<<<<<<< HEAD
       <Impact navigation={this.props.navigation} />
       // <Query query={USER_INFO} variables={{ id: this.state.userID }}>
       //   {({ loading, error, data, refetch }) => {
@@ -45,6 +31,11 @@ export default class ImpactContainer extends Component {
       //     return <ActivityIndicator />;
       //   }}
       // </Query>
+=======
+      <View>
+        <Impact />
+      </View>
+>>>>>>> develop
     );
   }
 }
