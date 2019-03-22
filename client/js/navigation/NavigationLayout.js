@@ -16,6 +16,7 @@ const AccountStack = createStackNavigator(
     Account: AccountScreen
   },
   {
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -26,6 +27,7 @@ const ActivitiesStack = createStackNavigator(
     Activities: ActivitiesScreen
   },
   {
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -46,6 +48,7 @@ const ImpactStack = createStackNavigator(
     Impact: ImpactScreen
   },
   {
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -102,6 +105,7 @@ export default createBottomTabNavigator(
         return <Image source={iconUrl} />;
       }
     }),
+
     tabBarOptions: {
       activeTintColor: "#000000",
       inactiveTintColor: "#000000",

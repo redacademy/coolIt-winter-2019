@@ -2,20 +2,21 @@ import React, { Component } from "react";
 import {
   View,
   Text,
+  ImageBackground,
   AsyncStorage,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from "react-native";
 import { Form, Field } from "react-final-form";
-import { withNavigation } from "react-navigation";
 import styles from "./styles";
-// import PropTypes from "prop-types";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import DateDisplay from "../../components/DateDisplay";
+import { FORM_ERROR } from "final-form";
+
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
-    authenticateUser(email: $email, password: $password) {
+    signupUser(email: $email, password: $password) {
       id
       token
     }
@@ -27,14 +28,46 @@ class JoinUs extends Component {
     this.state = { text: "", loading: false };
   }
   static navigationOptions = {
-    title: "Please sign in"
+    title: "Please sign up"
+  };
+
+  validate = values => {
+    const errors = {};
+    if (!values.name) {
+      errors.name = "Name is required";
+    }
+    if (!values.email || values.email === "") {
+      errors.email = "Email is required";
+    } else if (/.*@.*\..*/.test(values.email) === false) {
+      errors.email = "The email format is invalid";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    }
+
+    return errors;
   };
 
   render() {
     return (
-      <View style={{ justifyContent: "center", alignContent: "center" }}>
-        {this.state.loading ? <Text>Loading</Text> : null}
-        <Text>Login Form</Text>
+      <View style={styles.container}>
+        <View style={styles.backgroundTop}>
+          <ImageBackground
+            source={require("../../assets/images/background2-top.png")}
+            style={styles.top}
+          >
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.goBack();
+              }}
+            >
+              <Image
+                source={require("../../assets/images/back.png")}
+                style={styles.back}
+              />
+            </TouchableOpacity>
+          </ImageBackground>
+        </View>
         <Form
           onSubmit={async value => {
             try {
@@ -43,55 +76,101 @@ class JoinUs extends Component {
                 variables: { email: value.email, password: value.password }
               });
 
-              const user = result.data.authenticateUser;
+              const user = result.data.signupUser;
 
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("App");
+              this.props.navigation.navigate("AccountCreated");
             } catch (e) {
-              console.log(e);
+              return {
+                [FORM_ERROR]: "Email is already registered."
+              };
             }
           }}
-          render={({ handleSubmit, value, reset }) => (
-            <View>
-              <Text>email</Text>
+          validate={this.validate}
+          render={({
+            handleSubmit,
+            pristine,
+            invalid,
+            hasSubmitErrors,
+            submitError
+          }) => (
+            <View style={styles.flexContent}>
+              <Text style={styles.text}>Join us</Text>
+              <Field name="name">
+                {({ input, meta }) => (
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="Name"
+                      onChangeText={text => this.setState({ text })}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
+                )}
+              </Field>
               <Field name="email">
                 {({ input, meta }) => (
-                  <TextInput
-                    style={{ borderStyle: "solid", borderWidth: 1 }}
-                    editable={true}
-                    {...input}
-                    onChangeText={text => this.setState({ text })}
-                  />
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="Email"
+                      onChangeText={text => this.setState({ text })}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
-              <Text>password</Text>
               <Field name="password">
                 {({ input, meta }) => (
-                  <TextInput
-                    style={{ borderStyle: "solid", borderWidth: 1 }}
-                    editable={true}
-                    {...input}
-                    secureTextEntry={true}
-                    onChangeText={text => this.setState({ text })}
-                  />
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="Password"
+                      secureTextEntry={true}
+                      onChangeText={text => this.setState({ text })}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
-
-              <TouchableOpacity onPress={handleSubmit}>
-                <Text>Submit</Text>
+              <TouchableOpacity
+                onPress={handleSubmit}
+                style={styles.button}
+                disabled={pristine || invalid}
+              >
+                <Text style={styles.buttonText}>Join</Text>
               </TouchableOpacity>
+              {hasSubmitErrors && (
+                <Text style={styles.errorMessage}>{submitError}</Text>
+              )}
             </View>
           )}
         />
-        <DateDisplay />
+        <View style={styles.backgroundBottom}>
+          <Image
+            source={require("../../assets/images/background2-bottom.png")}
+            style={styles.bottom}
+          />
+        </View>
       </View>
     );
   }
 }
 
-export default compose(
-  graphql(AUTHENTICATE_USER, { name: "loginMutation" }),
-  withNavigation
-)(JoinUs);
+export default compose(graphql(AUTHENTICATE_USER, { name: "loginMutation" }))(
+  JoinUs
+);
