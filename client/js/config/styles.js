@@ -1,9 +1,10 @@
 export const colors = {
   white: "#fff",
   black: "#000",
-  blue: '#3A61AE',
-  green: '#3B5327',
-  lightGreen: "#96a687"
+  blue: "#3A61AE",
+  green: "#3B5327",
+  lightGreen: "#96A687",
+  darkGreen: "#4F7627"
 };
 
 export const fonts = {

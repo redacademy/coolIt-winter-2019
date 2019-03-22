@@ -26,11 +26,20 @@ const Activities = ({data, categories, image, navigation}) => {
                 Log your sustainable activities here.
               </Text>
             </View>
+            <View style={styles.dateText}>
+            <Text>
+              Your date is
+            </Text>
+            <Text>
+              Your point is 2000 
+            </Text>
+
+            </View>
           </ImageBackground>
         </View>
         {categories.map(category => {
           return (
-            <View key={category.id}>
+            <View style={styles.content} key={category.id}>
               <View style={styles.topSection}>
                 <Image style={styles.image} source={image[category.name]} />
                 <Text style={styles.section}>{category.name}</Text>
