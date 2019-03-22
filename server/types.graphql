@@ -9,7 +9,7 @@ type User @model {
   point: Int @defaultValue(value:"0")
   isActive: Boolean @defaultValue(value: "false")
   quizScore: Int
-  ghPoint:Int @defaultValue(value:"0")
+  ghPoint: String! @migrationValue(value: "42")
 }
 
 type SchoolInfo @model {
