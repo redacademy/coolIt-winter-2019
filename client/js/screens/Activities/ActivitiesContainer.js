@@ -58,6 +58,7 @@ class ActivitiesContainer extends Component {
                 name
               }
               value
+              ghValue
             }
             allCategories {
               id
@@ -83,6 +84,7 @@ class ActivitiesContainer extends Component {
           if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return <Text>{error}</Text>;
           let currentPoint = data.allUsers[0].point;
+          let currentGHPoint = data.allUsers[0].point;
           let dayPoint = data.allActivityLogs
             .map(a => a.activity.value)
             .reduce((arr, cur) => {
