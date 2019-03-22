@@ -27,6 +27,7 @@ const ActivitiesStack = createStackNavigator(
     Activities: ActivitiesScreen
   },
   {
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -46,7 +47,8 @@ const ImpactStack = createStackNavigator(
   {
     Impact: ImpactScreen
   },
-  {headerMode: "none",
+  {
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })

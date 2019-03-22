@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Account from "./Account";
 import PropTypes from "prop-types";
 

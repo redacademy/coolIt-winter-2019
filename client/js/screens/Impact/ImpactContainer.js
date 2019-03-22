@@ -1,17 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, AsyncStorage } from "react-native";
+import { View, Text, AsyncStorage, ActivityIndicator } from "react-native";
 import Impact from "./Impact";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-
-const USER_INFO = gql`
-  query USER($id: ID!) {
-    allUsers(filter: { id: $id }) {
-      id
-      email
-    }
-  }
-`;
+// import { Query } from "react-apollo";
+// import gql from "graphql-tag";
 
 export default class ImpactContainer extends Component {
   constructor(props) {
@@ -20,7 +11,6 @@ export default class ImpactContainer extends Component {
       userID: null
     };
   }
-
   render() {
     return (
       <View>
