@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Activities from "./Activities";
-import {ActivityIndicator} from "react-native";
-import {Query} from "react-apollo";
+import { ActivityIndicator, AsyncStorage } from "react-native";
+import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
 import styles from "./styles";
@@ -17,13 +17,39 @@ const imageRelation = {
   Toxic: require("../../assets/icons/toxic.png"),
   "Community Actions": require("../../assets/icons/community.png")
 };
-
 class ActivitiesContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: null,
+      userId: null
+    };
+  }
+  componentDidMount = () => {
+    AsyncStorage.getItem("id").then(value => {
+      const today = new Date();
+      today.setHours(0);
+      today.setMinutes(0);
+      today.setSeconds(0);
+      today.setMilliseconds(0);
+      this.setState({ date: today, userId: value });
+    });
+  };
+  dateChangeHandler = getNextDay => {
+    console.log("pressed");
+    let ms;
+    getNextDay
+      ? (ms = this.state.date.getTime() + 86400000)
+      : (ms = this.state.date.getTime() - 86400000);
+
+    let newDay = new Date(ms);
+    this.setState({ date: newDay });
+  };
   render() {
     return (
       <Query
         query={gql`
-          {
+          query Activities($id: ID!, $date: DateTime!) {
             allActivities {
               id
               name
@@ -31,23 +57,44 @@ class ActivitiesContainer extends Component {
               category {
                 name
               }
+              value
             }
             allCategories {
               id
               name
             }
+            allActivityLogs(
+              filter: { user: { id: $id }, AND: { date: $date } }
+            ) {
+              id
+              activity {
+                name
+                value
+              }
+            }
+            allUsers(filter: { id: $id }) {
+              point
+            }
           }
         `}
+        variables={{ id: this.state.userId, date: this.state.date }}
       >
-        {({loading, error, data}) => {
+        {({ loading, error, data, refetch }) => {
           if (loading) return <ActivityIndicator style={styles.loader} />;
-          if (error) return console.log(error);
+          if (error) return <Text>{error}</Text>;
+          let currentPoint = data.allUsers[0].point;
+
           return (
             <Activities
               navigation={this.props.navigation}
+              date={this.state.date}
+              dateChangeHandler={this.dateChangeHandler}
               data={data.allActivities}
               categories={data.allCategories}
               image={imageRelation}
+              filteredActivity={data.allActivityLogs}
+              refetch={refetch}
+              currentPoint={currentPoint}
             />
           );
         }}

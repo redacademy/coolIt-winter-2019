@@ -4,13 +4,33 @@ import {
   View,
   TouchableHighlight,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
+import { withNavigation } from "react-navigation";
 import PropTypes from "prop-types";
+import { graphql, compose } from "react-apollo";
+import gql from "graphql-tag";
 
-const ActivityModal = ({data, navigation}) => (
+const ADD_ACTIVITY = gql`
+  mutation Authenticate($userId: ID!, $date: DateTime!, $activityId: ID!) {
+    createActivityLog(userId: $userId, date: $date, activityId: $activityId) {
+      id
+    }
+  }
+`;
+const ADD_POINT = gql`
+  mutation Authenticate($id: ID!, $point: Int!) {
+    updateUser(id: $id, point: $point) {
+      id
+      point
+    }
+  }
+`;
+
+const ActivityModal = ({ data, navigation, addActivity, addPoint }) => (
   <View style={styles.container}>
     <TouchableHighlight
       onPress={() => {
@@ -25,11 +45,21 @@ const ActivityModal = ({data, navigation}) => (
           <Text style={styles.name}>{data.name}</Text>
         </View>
         <Text style={styles.description}>{data.description}</Text>
-        {data.category.name !== "Community Actions" ? (
+        {data.added ? null : data.category.name !== "Community Actions" ? (
           <TouchableOpacity
             style={styles.buttonContainer}
-            onPress={() => {
-              console.log("activity added");
+            onPress={async () => {
+              const userId = await AsyncStorage.getItem("id");
+
+              await addActivity({
+                variables: { date: data.date, userId, activityId: data.id }
+              });
+              await addPoint({
+                variables: { id: userId, point: data.currentPoint + data.value }
+              });
+
+              await data.refetch();
+              navigation.goBack();
             }}
           >
             <Ionicons
@@ -54,4 +84,12 @@ ActivityModal.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
-export default ActivityModal;
+export default compose(
+  graphql(ADD_ACTIVITY, {
+    name: "addActivity"
+  }),
+  graphql(ADD_POINT, {
+    name: "addPoint"
+  }),
+  withNavigation
+)(ActivityModal);

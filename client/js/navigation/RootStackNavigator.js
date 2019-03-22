@@ -44,7 +44,7 @@ const OnboardingStack = createStackNavigator(
     Activity: Activities
   },
   {
-    headerMode: 'none',
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -58,7 +58,7 @@ const LoginStack = createStackNavigator(
     Activity: Activities
   },
   {
-    headerMode: 'none',
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })

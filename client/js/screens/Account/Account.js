@@ -1,4 +1,5 @@
 import React from "react";
+import { withNavigation } from "react-navigation";
 import {
   View,
   Text,
@@ -9,7 +10,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-const Account = ({navigation}) => {
+const Account = ({ navigation }) => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
     navigation.navigate("Auth");

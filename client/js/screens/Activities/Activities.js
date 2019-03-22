@@ -10,11 +10,26 @@ import {
 } from "react-native";
 import styles from "./styles";
 import PropTypes from "prop-types";
-
-const Activities = ({data, categories, image, navigation}) => {
+import DateDisplay from "../../components/DateDisplay";
+const Activities = ({
+  data,
+  navigation,
+  date,
+  categories,
+  dateChangeHandler,
+  image,
+  filteredActivity,
+  refetch,
+  currentPoint
+}) => {
+  const filtered = filteredActivity.map(filteredActivity => {
+    return filteredActivity.activity.name;
+  });
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.topContainer}>
+    <View>
+      <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
+      <ScrollView style={styles.container}>
+        <View style={styles.topContainer} />
         <View style={styles.top}>
           <ImageBackground
             source={require("../../assets/images/background2-top.png")}
@@ -41,11 +56,17 @@ const Activities = ({data, categories, image, navigation}) => {
                     return activities.category.name === category.name;
                   })
                   .map(activity => {
-                    return (
+                    return !filtered.includes(activity.name) ? (
                       <TouchableHighlight
                         onPress={() => {
                           navigation.navigate("Activity", {
-                            data: activity
+                            data: {
+                              ...activity,
+                              date,
+                              refetch,
+                              added: false,
+                              currentPoint
+                            }
                           });
                         }}
                         key={activity.id}
@@ -54,6 +75,29 @@ const Activities = ({data, categories, image, navigation}) => {
                         style={styles.buttonContainer}
                       >
                         <View style={styles.items}>
+                          <Text style={styles.title}>{activity.name}</Text>
+                        </View>
+                      </TouchableHighlight>
+                    ) : (
+                      <TouchableHighlight
+                        onPress={() => {
+                          navigation.navigate("Activity", {
+                            data: {
+                              ...activity,
+                              date,
+                              refetch,
+                              added: true
+                            }
+                          });
+                        }}
+                        key={activity.id}
+                        activeOpacity={0.5}
+                        underlayColor={"#e6e6e6"}
+                        style={styles.buttonContainer}
+                      >
+                        <View
+                          style={{ ...styles.items, backgroundColor: "green" }}
+                        >
                           <Text style={styles.title}>{activity.name}</Text>
                         </View>
                       </TouchableHighlight>
@@ -72,8 +116,8 @@ const Activities = ({data, categories, image, navigation}) => {
             style={styles.valley}
           />
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

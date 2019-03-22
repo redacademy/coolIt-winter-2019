@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text, AsyncStorage } from "react-native";
+import { View, Text } from "react-native";
 
-const Accounts = props => {
+const Impact = ({ data }) => {
   return (
     <View>
+      <Text>{data.allUsers[0].point}</Text>
       <Text> Hi im impact</Text>
     </View>
   );
 };
 
-export default Accounts;
+export default Impact;
