@@ -20,7 +20,6 @@ const Activities = ({
   image,
   filteredActivity,
   refetch,
-  totalPoint,
   currentPoint
 }) => {
   const filtered = filteredActivity.map(filteredActivity => {
@@ -60,14 +59,12 @@ const Activities = ({
                     return !filtered.includes(activity.name) ? (
                       <TouchableHighlight
                         onPress={() => {
-                          console.log(totalPoint);
                           navigation.navigate("Activity", {
                             data: {
                               ...activity,
                               date,
                               refetch,
                               added: false,
-                              totalPoint,
                               currentPoint
                             }
                           });
@@ -89,8 +86,7 @@ const Activities = ({
                               ...activity,
                               date,
                               refetch,
-                              added: true,
-                              totalPoint
+                              added: true
                             }
                           });
                         }}

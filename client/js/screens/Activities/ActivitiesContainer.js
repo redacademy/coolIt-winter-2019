@@ -17,28 +17,7 @@ const imageRelation = {
   Toxic: require("../../assets/icons/toxic.png"),
   "Community Actions": require("../../assets/icons/community.png")
 };
-const ALL_ACTIVITIES = gql`
-  query Activities($id: ID!, $date: DateTime!) {
-    allActivities {
-      id
-      name
-      description
-      category {
-        name
-      }
-    }
-    allCategories {
-      id
-      name
-    }
-    allActivityLogs(filter: { user: { id: $id }, AND: { date: $date } }) {
-      id
-      activity {
-        name
-      }
-    }
-  }
-`;
+
 class ActivitiesContainer extends Component {
   constructor(props) {
     super(props);
@@ -47,15 +26,15 @@ class ActivitiesContainer extends Component {
       userId: null
     };
   }
-  componentDidMount = async () => {
-    const userId = await AsyncStorage.getItem("id");
-    const today = new Date();
-    today.setHours(0);
-    today.setMinutes(0);
-    today.setSeconds(0);
-    today.setMilliseconds(0);
-    console.log(today);
-    this.setState({ date: today, userId });
+  componentDidMount = () => {
+    AsyncStorage.getItem("id").then(value => {
+      const today = new Date();
+      today.setHours(0);
+      today.setMinutes(0);
+      today.setSeconds(0);
+      today.setMilliseconds(0);
+      this.setState({ date: today, userId: value });
+    });
   };
   dateChangeHandler = getNextDay => {
     console.log("pressed");
@@ -104,17 +83,8 @@ class ActivitiesContainer extends Component {
         {({ loading, error, data, refetch }) => {
           if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return console.log(error);
-          let totalPoint = 0;
-          let pointArray = data.allActivityLogs.map(a => a.activity.value);
           let currentPoint = data.allUsers[0].point;
-          if (pointArray.length > 1) {
-            console.log("okay");
-            totalPoint = pointArray.reduce((arr, cur) => {
-              return arr + cur;
-            });
-          }
 
-          refetch();
           return (
             <Activities
               navigation={this.props.navigation}
@@ -125,7 +95,6 @@ class ActivitiesContainer extends Component {
               image={imageRelation}
               filteredActivity={data.allActivityLogs}
               refetch={refetch}
-              totalPoint={totalPoint}
               currentPoint={currentPoint}
             />
           );

@@ -1,15 +1,13 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-const Accounts = ({ data }) => {
+const Impact = ({ data }) => {
   return (
     <View>
-      <Text>
-        {data.email},{data.point}
-      </Text>
+      <Text>{data.allUsers[0].point}</Text>
       <Text> Hi im impact</Text>
     </View>
   );
 };
 
-export default Accounts;
+export default Impact;
