@@ -36,7 +36,7 @@ export default class ImpactContainer extends Component {
           if (data.allUsers) {
             return (
               <View>
-                <Impact data={data} />
+                <Impact data={data} navigation={this.props.navigation} />
               </View>
             );
           }

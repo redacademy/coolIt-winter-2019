@@ -151,7 +151,7 @@ class CarbonQuiz extends Component {
   renderViewPagerPage = section => {
     const disabledSubmit =
       this.state.userSelection.length === 25 ? false : true;
-    const handleSubmit = this.handleSubmit();
+
     return (
       <View>
         <ScrollView>
