@@ -2,7 +2,10 @@ export const colors = {
   white: "#fff",
   black: "#000",
   blue: '#3A61AE',
-  green: '#3B5327'
+  green: '#3B5327',
+  lightGreen: "#96a687",
+  disabled: "#dee0db",
+  red: 'red'
 };
 
 export const fonts = {

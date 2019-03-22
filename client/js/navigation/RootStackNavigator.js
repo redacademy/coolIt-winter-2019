@@ -7,7 +7,8 @@ import NavigationLayout from "./NavigationLayout";
 import ActivityModal from "../screens/ActivityModal";
 import JoinUs from "../screens/JoinUs";
 import AuthLoadingScreen from "../screens/AutheticationLoadingScreen";
-import { sharedNavigationOptions } from "./config";
+import {sharedNavigationOptions} from "./config";
+import DisconnectModal from "../screens/DisconnectModal";
 import Activities from "../screens/Activities";
 import LogIn from "../screens/LogIn";
 import Landing from "../screens/Landing";
@@ -21,7 +22,8 @@ import BeginChallenge from "../screens/BeginChallenge";
 const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout,
-    Activity: ActivityModal
+    Activity: ActivityModal,
+    Disconnect: DisconnectModal
   },
   {
     mode: "modal",

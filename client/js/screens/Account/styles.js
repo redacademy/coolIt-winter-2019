@@ -27,14 +27,23 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 1,
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    paddingTop: 25,
+    marginTop: 25
   },
   valley: {
-    resizeMode: "cover"
+    resizeMode: "cover",
+    paddingTop: 25,
+    marginTop: 25
   },
   container: {
-    height: Dimensions.get("window").height
+    height: Dimensions.get("window").height,
+    paddingTop: 25
   },
+  contentContainer: {
+    paddingTop: 25
+  },
+
   buttonSeparator: {
     height: 1,
     backgroundColor: "#e6e6e6",

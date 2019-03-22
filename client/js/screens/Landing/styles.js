@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   flexText: {
     alignItems: "center",
     flex: 0.7,
-    justifyContent: "space-between"
+    justifyContent: "space-around"
   },
   background: {
     width: "100%",

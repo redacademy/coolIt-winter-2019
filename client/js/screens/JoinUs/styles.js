@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import {StyleSheet} from "react-native";
+import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
   container: {
@@ -40,15 +40,22 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    width: '70%',
+    minWidth: "70%",
     padding: 5,
     paddingLeft: 15,
     fontSize: 18
   },
   button: {
-    width: '40%',
+    width: "40%",
     alignSelf: "center",
     backgroundColor: colors.green,
+    borderRadius: 13,
+    marginTop: 15
+  },
+  disabled: {
+    width: "40%",
+    alignSelf: "center",
+    backgroundColor: colors.disabled,
     borderRadius: 13,
     marginTop: 15
   },
@@ -65,6 +72,19 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     height: 40,
     width: 40
+  },
+  error: {
+    color: colors.red,
+    fontFamily: fonts.light,
+    fontSize: 12,
+    fontWeight: 'normal',
+    paddingLeft: 15
+  },
+  errorMessage: {
+    color: colors.red,
+    fontFamily: fonts.light,
+    fontSize: 12,
+    fontWeight: 'normal'
   }
 });
 

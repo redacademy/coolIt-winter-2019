@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  ImageBackground,
   TouchableOpacity,
+  ImageBackground,
   TextInput,
   AsyncStorage
 } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
-// import PropTypes from "prop-types";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { withNavigation } from "react-navigation";
@@ -41,6 +40,26 @@ class ProgramCode extends Component {
   }
   static navigationOptions = {
     title: "Please enter your program information"
+  };
+
+  validate = values => {
+    const errors = {};
+    if (!values.school) {
+      errors.school = "School name is required";
+    }
+    if (!values.teacher) {
+      errors.teacher = "Teacher name is required";
+    }
+    if (!values.division) {
+      errors.division = "Division is required";
+    }
+    if (!values.grade) {
+      errors.grade = "Grade info is required";
+    }
+    if (!values.code) {
+      errors.code = "Program code is required";
+    }
+    return errors;
   };
 
   render() {
@@ -79,63 +98,103 @@ class ProgramCode extends Component {
               console.log(e);
             }
           }}
-          render={({ handleSubmit, value, reset }) => (
-            <View style={styles.flexContent}>
-              <Field name="school">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.form}
-                    editable={true}
-                    {...input}
-                    placeholder="School"
-                    onChangeText={text => this.setState({ text })}
-                  />
-                )}
-              </Field>
-              <Field name="teacher">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.form}
-                    editable={true}
-                    {...input}
-                    placeholder="Teacher"
-                    onChangeText={text => this.setState({ text })}
-                  />
-                )}
-              </Field>
-              <Field name="division">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.formShort}
-                    editable={true}
-                    {...input}
-                    placeholder="Division"
-                    onChangeText={text => this.setState({ text })}
-                  />
-                )}
-              </Field>
-              <Field name="grade">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.formShort}
-                    editable={true}
-                    {...input}
-                    placeholder="Grade"
-                    onChangeText={text => this.setState({ text })}
-                  />
-                )}
-              </Field>
-              <Field name="code">
-                {({ input, meta }) => (
-                  <TextInput
-                    style={styles.formShort}
-                    editable={true}
-                    {...input}
-                    placeholder="Code"
-                    onChangeText={text => this.setState({ text })}
-                  />
-                )}
-              </Field>
+          validate={this.validate}
+          render={({ handleSubmit, pristine, invalid }) => (
+            <View  style={styles.container}>
+              <View style={styles.flexContent}>
+                <Field name="school">
+                  {({ input, meta }) => (
+                    <View>
+                      <TextInput
+                        style={styles.form}
+                        editable={true}
+                        {...input}
+                        placeholder="School"
+                        onChangeText={text => this.setState({ text })}
+                      />
+                      <Text style={styles.error}>
+                        {meta.error && meta.touched && meta.error}
+                      </Text>
+                    </View>
+                  )}
+                </Field>
+                <Field name="teacher">
+                  {({ input, meta }) => (
+                    <View>
+                      <TextInput
+                        style={styles.form}
+                        editable={true}
+                        {...input}
+                        placeholder="Teacher"
+                        onChangeText={text => this.setState({ text })}
+                      />
+                      <Text style={styles.error}>
+                        {meta.error && meta.touched && meta.error}
+                      </Text>
+                    </View>
+                  )}
+                </Field>
+                <Field name="division">
+                  {({ input, meta }) => (
+                    <View>
+                      <TextInput
+                        style={styles.formShort}
+                        editable={true}
+                        {...input}
+                        placeholder="Division"
+                        onChangeText={text => this.setState({ text })}
+                      />
+                      <Text style={styles.error}>
+                        {meta.error && meta.touched && meta.error}
+                      </Text>
+                    </View>
+                  )}
+                </Field>
+                <Field name="grade">
+                  {({ input, meta }) => (
+                    <View>
+                      <TextInput
+                        style={styles.formShort}
+                        editable={true}
+                        {...input}
+                        placeholder="Grade"
+                        onChangeText={text => this.setState({ text })}
+                      />
+                      <Text style={styles.error}>
+                        {meta.error && meta.touched && meta.error}
+                      </Text>
+                    </View>
+                  )}
+                </Field>
+                <Field name="code">
+                  {({ input, meta }) => (
+                    <View>
+                      <TextInput
+                        style={styles.formShort}
+                        editable={true}
+                        {...input}
+                        placeholder="Code"
+                        onChangeText={text => this.setState({ text })}
+                      />
+                      <Text style={styles.error}>
+                        {meta.error && meta.touched && meta.error}
+                      </Text>
+                    </View>
+                  )}
+                </Field>
+              </View>
+              <View>
+                <TouchableOpacity
+                  onPress={handleSubmit}
+                  disabled={pristine || invalid}
+                  style={styles.button}
+                >
+                  <Text style={styles.buttonText}>Continue</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {this.props.navigation.navigate("AccountCreated")}}>
+                  <Text style={styles.skipText}>Skip</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         />
@@ -143,23 +202,7 @@ class ProgramCode extends Component {
           <ImageBackground
             source={require("../../assets/images/background2-bottom.png")}
             style={styles.bottom}
-          >
-            <TouchableOpacity
-              onPress={() => {
-                handleSubmit;
-              }}
-              style={styles.button}
-            >
-              <Text style={styles.buttonText}>Continue</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                handleSubmit;
-              }}
-            >
-              <Text style={styles.skipText}>Skip</Text>
-            </TouchableOpacity>
-          </ImageBackground>
+          />
         </View>
       </View>
     );

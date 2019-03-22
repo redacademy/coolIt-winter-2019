@@ -9,12 +9,11 @@ import {
   Image
 } from "react-native";
 import { Form, Field } from "react-final-form";
-import { colors } from "../../config/styles";
-import { withNavigation } from "react-navigation";
 import styles from "./styles";
-// import PropTypes from "prop-types";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
+import { FORM_ERROR } from "final-form";
+import { withNavigation } from "react-navigation";
 
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
@@ -24,6 +23,7 @@ const AUTHENTICATE_USER = gql`
     }
   }
 `;
+
 class JoinUs extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +31,22 @@ class JoinUs extends Component {
   }
   static navigationOptions = {
     title: "Please sign up"
+  };
+
+  validate = values => {
+    const errors = {};
+    if (!values.name) {
+      errors.name = "Name is required";
+    }
+    if (!values.email || values.email === "") {
+      errors.email = "Email is required";
+    } else if (/.*@.*\..*/.test(values.email) === false) {
+      errors.email = "The email format is invalid";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    }
+    return errors;
   };
 
   render() {
@@ -68,49 +84,90 @@ class JoinUs extends Component {
 
               this.props.navigation.navigate("ProgramCode");
             } catch (e) {
-              console.log(e);
+              return {
+                [FORM_ERROR]: "Email is invalid or already registered."
+              };
             }
           }}
-          render={({ handleSubmit, value, reset }) => (
+          validate={this.validate}
+          render={({
+            handleSubmit,
+            pristine,
+            invalid,
+            hasSubmitErrors,
+            submitError
+          }) => (
             <View style={styles.flexContent}>
               <Text style={styles.text}>Join us</Text>
               <Field name="name">
                 {({ input, meta }) => (
-                  <TextInput
-                    style={styles.form}
-                    editable={true}
-                    {...input}
-                    placeholder="Name"
-                    onChangeText={text => this.setState({ text })}
-                  />
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="Name"
+                      onChangeText={text => this.setState({ text })}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
               <Field name="email">
                 {({ input, meta }) => (
-                  <TextInput
-                    style={styles.form}
-                    editable={true}
-                    {...input}
-                    placeholder="Email"
-                    onChangeText={text => this.setState({ text })}
-                  />
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="Email"
+                      onChangeText={text => this.setState({ text })}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
               <Field name="password">
                 {({ input, meta }) => (
-                  <TextInput
-                    style={styles.form}
-                    editable={true}
-                    {...input}
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    onChangeText={text => this.setState({ text })}
-                  />
+                  <View>
+                    <TextInput
+                      style={styles.form}
+                      editable={true}
+                      {...input}
+                      placeholder="Password"
+                      secureTextEntry={true}
+                      onChangeText={text => this.setState({ text })}
+                    />
+                    <Text style={styles.error}>
+                      {meta.error && meta.touched && meta.error}
+                    </Text>
+                  </View>
                 )}
               </Field>
-              <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-                <Text style={styles.buttonText}>Join</Text>
-              </TouchableOpacity>
+              {!pristine && !invalid ? (
+                <TouchableOpacity
+                  onPress={handleSubmit}
+                  style={styles.button}
+                  disabled={pristine || invalid}
+                >
+                  <Text style={styles.buttonText}>Join</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {}}
+                  style={styles.disabled}
+                  disabled={pristine || invalid}
+                >
+                  <Text style={styles.buttonText}>Join</Text>
+                </TouchableOpacity>
+              )}
+              {hasSubmitErrors && (
+                <Text style={styles.errorMessage}>{submitError}</Text>
+              )}
             </View>
           )}
         />
@@ -120,7 +177,6 @@ class JoinUs extends Component {
             style={styles.bottom}
           />
         </View>
-        {/* <DateDisplay /> */}
       </View>
     );
   }
