@@ -68,4 +68,4 @@ const Account = ({ navigation }) => {
   );
 };
 
-export default withNavigation(Account);
+export default Account;
