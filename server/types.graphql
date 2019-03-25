@@ -5,10 +5,11 @@ type User @model {
   name: String
   schoolInfo: SchoolInfo @relation(name: "SchoolUsers")
   programCode: String
-  activityLog: [Date!]! @relation(name:"UserActivities")
+  activityLog: [ActivityLog!]! @relation(name:"UserActivityLogs")
   point: Int @defaultValue(value:"0")
   isActive: Boolean @defaultValue(value: "false")
   quizScore: Int
+  ghPoint:Int @defaultValue(value:"0")
 }
 
 type SchoolInfo @model {
@@ -21,21 +22,21 @@ type SchoolInfo @model {
   programCode: String!
 }
 
-type Date @model {
+type ActivityLog @model {
   id: ID! @isUnique
-  user: User! @relation(name:"UserActivities")
+  user: User! @relation(name:"UserActivityLogs")
   date: DateTime!
-  activities: [Activity!]! @relation(name:"DateActivities")
+  activity: Activity! @relation(name:"ActivityActivityLogs")
 }
 
 type Activity @model {
   id: ID! @isUnique
   value: Int!
+  ghValue: String @defaultValue(value:"0")
   name: String!
   description: String!
-  date: Date @relation(name:"DateActivities")
+  activityLog: [ActivityLog!]! @relation(name:"ActivityActivityLogs")
   category: Category! @relation(name:"CategoryActivities")
-  
 }
 
 type Category @model {

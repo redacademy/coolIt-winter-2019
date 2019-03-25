@@ -35,7 +35,9 @@ const Landing = props => {
             </Text>
           </View>
           <TouchableOpacity
-            onPress={() => navigate("JoinUs")}
+            onPress={() =>
+              !props.checked ? navigate("JoinUs") : navigate("ProgramCode")
+            }
             style={styles.joinUs}
           >
             <Text style={styles.buttonText}>Join us</Text>

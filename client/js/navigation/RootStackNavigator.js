@@ -7,7 +7,7 @@ import NavigationLayout from "./NavigationLayout";
 import ActivityModal from "../screens/ActivityModal";
 import JoinUs from "../screens/JoinUs";
 import AuthLoadingScreen from "../screens/AutheticationLoadingScreen";
-import {sharedNavigationOptions} from "./config";
+import { sharedNavigationOptions } from "./config";
 import DisconnectModal from "../screens/DisconnectModal";
 import Activities from "../screens/Activities";
 import LogIn from "../screens/LogIn";
@@ -18,12 +18,14 @@ import TakeQuiz from "../screens/TakeQuiz";
 import CarbonQuiz from "../screens/CarbonQuiz";
 import Score from "../screens/Score";
 import BeginChallenge from "../screens/BeginChallenge";
+// import DeactivateModal from "../screens/DeactivateModal";
 
 const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout,
     Activity: ActivityModal,
     Disconnect: DisconnectModal
+    //     Deactivate: DeactivateModal
   },
   {
     mode: "modal",
@@ -44,7 +46,7 @@ const OnboardingStack = createStackNavigator(
     Activity: Activities
   },
   {
-    headerMode: 'none',
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -58,7 +60,7 @@ const LoginStack = createStackNavigator(
     Activity: Activities
   },
   {
-    headerMode: 'none',
+    headerMode: "none",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -75,7 +77,7 @@ export default createAppContainer(
       Login: LoginStack
     },
     {
-      initialRouteName: "AuthLoading"
+      initialRouteName: "Auth"
     }
   )
 );

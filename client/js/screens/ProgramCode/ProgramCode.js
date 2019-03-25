@@ -72,7 +72,7 @@ class ProgramCode extends Component {
           >
             <Text style={styles.text}>If you are already</Text>
             <Text style={styles.text}>part of the Cool It! Program,</Text>
-            <Text style={styles.text}>Please provide:</Text>
+            <Text style={styles.textLast}>Please provide:</Text>
           </ImageBackground>
         </View>
         <Form
@@ -81,8 +81,8 @@ class ProgramCode extends Component {
               this.setState({ loading: true });
               const result = await this.props.loginMutation({
                 variables: {
-                  division: value.division,
-                  grade: value.grade,
+                  division: parseInt(value.division),
+                  grade: parseInt(value.grade),
                   programCode: value.programCode,
                   school: value.school,
                   teacher: value.teacher
@@ -99,8 +99,12 @@ class ProgramCode extends Component {
             }
           }}
           validate={this.validate}
-          render={({ handleSubmit, pristine, invalid }) => (
-            <View  style={styles.container}>
+          render={({
+            handleSubmit,
+            pristine,
+            invalid
+          }) => (
+            <View style={styles.innerContainer}>
               <View style={styles.flexContent}>
                 <Field name="school">
                   {({ input, meta }) => (
@@ -166,7 +170,7 @@ class ProgramCode extends Component {
                     </View>
                   )}
                 </Field>
-                <Field name="code">
+                <Field name="programCode">
                   {({ input, meta }) => (
                     <View>
                       <TextInput
@@ -184,14 +188,28 @@ class ProgramCode extends Component {
                 </Field>
               </View>
               <View>
+                {!pristine && !invalid ? (
+                  <TouchableOpacity
+                    onPress={handleSubmit}
+                    disabled={pristine || invalid}
+                    style={styles.button}
+                  >
+                    <Text style={styles.buttonText}>Continue</Text>
+                  </TouchableOpacity>
+                ) : (
+                  <TouchableOpacity
+                    onPress={() => {}}
+                    disabled={pristine || invalid}
+                    style={styles.disabled}
+                  >
+                    <Text style={styles.buttonText}>Continue</Text>
+                  </TouchableOpacity>
+                )}
                 <TouchableOpacity
-                  onPress={handleSubmit}
-                  disabled={pristine || invalid}
-                  style={styles.button}
+                  onPress={() => {
+                    this.props.navigation.navigate("AccountCreated");
+                  }}
                 >
-                  <Text style={styles.buttonText}>Continue</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => {this.props.navigation.navigate("AccountCreated")}}>
                   <Text style={styles.skipText}>Skip</Text>
                 </TouchableOpacity>
               </View>
@@ -212,6 +230,6 @@ class ProgramCode extends Component {
 // ProgramCode.propTypes = {};
 
 export default compose(
-  graphql(AUTHENTICATE_USER),
+  graphql(AUTHENTICATE_USER, { name: "loginMutation" }),
   withNavigation
 )(ProgramCode);

@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-const Account = ({navigation}) => {
+const Account = ({ navigation }) => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
     navigation.navigate("Auth");
@@ -44,7 +44,12 @@ const Account = ({navigation}) => {
           <View style={styles.buttonSeparator} />
 
           <View style={styles.buttonSeparator} />
-          <TouchableOpacity onPress={() => {}} style={styles.logIn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Deactivate");
+            }}
+            style={styles.logIn}
+          >
             <Text style={styles.buttonText}>Deactivate Account</Text>
           </TouchableOpacity>
           <View style={styles.buttonSeparator} />
