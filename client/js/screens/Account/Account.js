@@ -1,5 +1,4 @@
 import React from "react";
-import { withNavigation } from "react-navigation";
 import {
   View,
   Text,
@@ -45,7 +44,12 @@ const Account = ({ navigation }) => {
           <View style={styles.buttonSeparator} />
 
           <View style={styles.buttonSeparator} />
-          <TouchableOpacity onPress={() => {}} style={styles.logIn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Deactivate");
+            }}
+            style={styles.logIn}
+          >
             <Text style={styles.buttonText}>Deactivate Account</Text>
           </TouchableOpacity>
           <View style={styles.buttonSeparator} />

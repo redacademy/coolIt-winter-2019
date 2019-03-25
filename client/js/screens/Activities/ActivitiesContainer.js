@@ -83,6 +83,11 @@ class ActivitiesContainer extends Component {
           if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return <Text>{error}</Text>;
           let currentPoint = data.allUsers[0].point;
+          let dayPoint = data.allActivityLogs
+            .map(a => a.activity.value)
+            .reduce((arr, cur) => {
+              return arr + cur;
+            }, 0);
 
           return (
             <Activities
@@ -95,6 +100,7 @@ class ActivitiesContainer extends Component {
               filteredActivity={data.allActivityLogs}
               refetch={refetch}
               currentPoint={currentPoint}
+              dayPoint={dayPoint}
             />
           );
         }}

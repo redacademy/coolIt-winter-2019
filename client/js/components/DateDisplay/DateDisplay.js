@@ -1,9 +1,9 @@
 import React from "react";
-import {Text, View, TouchableOpacity} from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import moment from "moment";
 import Icon from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
-import {colors} from "../../config/styles";
+import { colors } from "../../config/styles";
 
 export const DateDisplay = props => {
   return (
@@ -21,7 +21,7 @@ export const DateDisplay = props => {
         />
       </TouchableOpacity>
       <Text style={styles.dateDisplay}>
-        {moment(props.date).format("LLLL")}
+        {moment(props.date).format("dddd, MMMM Do")}
       </Text>
       <TouchableOpacity
         onPress={() => {

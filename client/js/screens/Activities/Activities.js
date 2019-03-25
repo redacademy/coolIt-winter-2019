@@ -21,7 +21,8 @@ const Activities = ({
   image,
   filteredActivity,
   refetch,
-  currentPoint
+  currentPoint,
+  dayPoint
 }) => {
   const filtered = filteredActivity.map(filteredActivity => {
     return filteredActivity.activity.name;
@@ -44,7 +45,7 @@ const Activities = ({
             <View style={styles.dateText}>
               <DateDisplay date={date} dateChangeHandler={dateChangeHandler} />
               <Text style={styles.pointDisplay}>
-                Points earned: {currentPoint}{" "}
+                Points earned: {dayPoint}{" "}
               </Text>
             </View>
           </ImageBackground>

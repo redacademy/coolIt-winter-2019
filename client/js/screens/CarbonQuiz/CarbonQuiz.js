@@ -4,13 +4,23 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
-  ImageBackground
+  ImageBackground,
+  AsyncStorage
 } from "react-native";
 import { ViewPager } from "rn-viewpager";
 import styles from "./styles";
 import QuizSection from "../../components/QuizSection";
 import StepIndicator from "react-native-step-indicator";
-import { withNavigation } from "react-navigation";
+import { graphql, compose } from "react-apollo";
+import gql from "graphql-tag";
+
+const UPDATE_QUIZSCORE = gql`
+  mutation updateQuizScore($id: ID!, $quizScore: Int!) {
+    updateUser(id: $id, quizScore: $quizScore) {
+      id
+    }
+  }
+`;
 
 const StepIndicatorStyles = {
   stepIndicatorSize: 30,
@@ -70,12 +80,21 @@ class CarbonQuiz extends Component {
     }
   };
 
-  handleSubmit = () => {
-    let initialValue = 0;
-    return this.state.userSelection.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.point,
-      initialValue
-    );
+  handleSubmit = async () => {
+    try {
+      let initialValue = 0;
+      let totalScore = this.state.userSelection.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.point,
+        initialValue
+      );
+      let userId = await AsyncStorage.getItem("id");
+
+      this.props.updateQuizScore({
+        variables: { id: userId, quizScore: totalScore }
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   render() {
@@ -202,4 +221,6 @@ class CarbonQuiz extends Component {
   };
 }
 
-export default withNavigation(CarbonQuiz);
+export default compose(graphql(UPDATE_QUIZSCORE, { name: "updateQuizScore" }))(
+  CarbonQuiz
+);

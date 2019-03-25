@@ -1,12 +1,12 @@
 import React from "react";
-import {Text, ScrollView, View, FlatList, Image} from "react-native";
+import { Text, ScrollView, View, FlatList, Image } from "react-native";
 import styles from "./styles";
 import PropTypes from "prop-types";
-import {colors} from "../../config/styles";
+import { colors } from "../../config/styles";
 
 const alternateColors = [colors.white, "#96a687"];
 
-const Heroes = ({data}) => {
+const Heroes = ({ data }) => {
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <View style={styles.container}>
@@ -18,7 +18,7 @@ const Heroes = ({data}) => {
           <FlatList
             style={styles.list}
             data={data}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <View
                 style={{
                   backgroundColor:
