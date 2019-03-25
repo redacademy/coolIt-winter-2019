@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 18,
     fontFamily: fonts.light,
-    padding: 3
+    padding: 3,
+    marginTop: 2
   },
   point: {
     padding: 3,
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
   itemSeparator: {
     height: 5,
     backgroundColor: colors.green,
-    paddingTop: 5,
+    marginTop: 25,
     width: "70%"
   },
   itemBottomSeparator: {
@@ -59,19 +60,24 @@ const styles = StyleSheet.create({
     width: "70%",
     position: "absolute",
     right: 0,
-    top: 60
+    top: 70,
+    marginTop: 25
   },
 
   mainContent: {
-    paddingTop: 15
+    paddingTop: 25,
+    marginTop: 25
   },
 
   bottom: {
     flex: 1,
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    paddingTop: 25,
+    marginTop: 25
   },
   valley: {
-    resizeMode: "cover"
+    resizeMode: "cover",
+    marginTop: 25
   },
   container: {
     height: Dimensions.get("window").height
