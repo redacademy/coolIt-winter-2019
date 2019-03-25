@@ -24,7 +24,7 @@ type SchoolInfo @model {
 
 type ActivityLog @model {
   id: ID! @isUnique
-  user: User! @relation(name:"UserActivityLogs")
+  user: User @relation(name:"UserActivityLogs")
   date: DateTime!
   activity: Activity! @relation(name:"ActivityActivityLogs")
 }
