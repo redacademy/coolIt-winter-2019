@@ -32,7 +32,7 @@ class HeroesContainer extends Component {
       >
         {({loading, error, data}) => {
           if (loading) return <ActivityIndicator />;
-          if (error) return console.log(error);
+          if (error) return <Text>{error}</Text>;
 
           const currentStudent = data.allUsers.filter(
             a => a.id === this.state.userID

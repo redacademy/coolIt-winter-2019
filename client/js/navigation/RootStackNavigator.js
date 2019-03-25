@@ -18,14 +18,14 @@ import TakeQuiz from "../screens/TakeQuiz";
 import CarbonQuiz from "../screens/CarbonQuiz";
 import Score from "../screens/Score";
 import BeginChallenge from "../screens/BeginChallenge";
-// import DeactivateModal from "../screens/DeactivateModal";
+import DeactivateModal from "../screens/DeactivateModal";
 
 const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout,
     Activity: ActivityModal,
     Disconnect: DisconnectModal,
-//     Deactivate: DeactivateModal
+    Deactivate: DeactivateModal
   },
   {
     mode: "modal",
@@ -73,11 +73,10 @@ export default createAppContainer(
       AuthLoading: AuthLoadingScreen,
       App: AppStack,
       Auth: OnboardingStack,
-
       Login: LoginStack
     },
     {
-      initialRouteName: "App"
+      initialRouteName: "Auth"
     }
   )
 );
