@@ -11,7 +11,7 @@ const USER_INFO = gql`
       email
       point
       ghPoint
-      createdAt
+      quizScore
     }
   }
 `;
@@ -34,7 +34,7 @@ export default class ImpactContainer extends Component {
         {({ loading, error, data, refetch }) => {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>error</Text>;
-          console.log(data.allUsers[0]);
+
           if (data.allUsers) {
             return (
               <View>
