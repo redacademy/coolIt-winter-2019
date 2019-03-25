@@ -3,7 +3,8 @@ import Heroes from "./Heroes";
 import PropTypes from "prop-types";
 import { Query, compose, graphql } from "react-apollo";
 import gql from "graphql-tag";
-import { ActivityIndicator, AsyncStorage, Text } from "react-native";
+import { AsyncStorage, Text } from "react-native";
+import FullScreenLoader from "../../components/FullScreenLoader";
 
 class HeroesContainer extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class HeroesContainer extends Component {
         `}
       >
         {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator />;
+          if (loading) return <FullScreenLoader style={styles.loader} />;
           if (error) return console.log(error);
 
           const currentStudent = data.allUsers.filter(
