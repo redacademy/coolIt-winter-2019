@@ -30,33 +30,37 @@ export default class ImpactContainer extends Component {
     });
   };
   render() {
-    return (
-      <Query query={USER_INFO} variables={{ id: this.state.userID }}>
-        {({ loading, error, data, refetch }) => {
-          if (loading) return <ActivityIndicator />;
-          if (error) return <Text>error</Text>;
+    if (this.state.userID) {
+      return (
+        <Query query={USER_INFO} variables={{ id: this.state.userID }}>
+          {({ loading, error, data, refetch }) => {
+            if (loading) return <ActivityIndicator />;
+            if (error) return <Text>error</Text>;
 
-          if (data.allUsers) {
-            let b = moment(data.allUsers[0].createdAt, "DD/MM/YYYY");
-            let today = new Date();
-            let date = moment(today, "DD/MM/YYYY");
-            let days = b.diff(date, "days");
-            if (!days) {
-              days = 1;
+            if (data.allUsers) {
+              let b = moment(data.allUsers[0].createdAt, "DD/MM/YYYY");
+              let today = new Date();
+              let date = moment(today, "DD/MM/YYYY");
+              let days = b.diff(date, "days");
+              if (!days) {
+                days = 1;
+              }
+
+              return (
+                <View>
+                  <Impact data={data.allUsers[0]} days={days} />
+                </View>
+              );
             }
-
-            return (
-              <View>
-                <Impact data={data.allUsers[0]} days={days} />
-              </View>
-            );
-          }
-          if (!data.allUsers) {
-            refetch();
-            return <ActivityIndicator />;
-          }
-        }}
-      </Query>
-    );
+            if (!data.allUsers) {
+              refetch();
+              return <ActivityIndicator />;
+            }
+          }}
+        </Query>
+      );
+    } else {
+      return <ActivityIndicator />;
+    }
   }
 }

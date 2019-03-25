@@ -16,26 +16,11 @@ class AccountContainer extends Component {
     this.setState({ id });
   };
   render() {
-    return (
-      <Query
-        query={gql`
-          query users($id: ID!) {
-            allUsers(filter: { id: $id }) {
-              id
-              programCode
-            }
-          }
-        `}
-        variables={{ id: this.state.id }}
-      >
-        {({ loading, error, data, refetch }) => {
-          if (loading) return <ActivityIndicator />;
-          if (error) return <Text>{error}</Text>;
-
-          return <Account navigation={this.props.navigation} data={data} />;
-        }}
-      </Query>
-    );
+    if (this.state.id) {
+      return <Account navigation={this.props.navigation} />;
+    } else {
+      return <ActivityIndicator />;
+    }
   }
 }
 

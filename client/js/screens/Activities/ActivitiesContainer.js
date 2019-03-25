@@ -36,85 +36,86 @@ class ActivitiesContainer extends Component {
     });
   };
   dateChangeHandler = getNextDay => {
-    console.log("pressed");
     let ms;
     getNextDay
       ? (ms = this.state.date.getTime() + 86400000)
       : (ms = this.state.date.getTime() - 86400000);
-
     let newDay = new Date(ms);
     this.setState({ date: newDay });
   };
   render() {
-    return (
-      <Query
-        query={gql`
-          query Activities($id: ID!, $date: DateTime!) {
-            allActivities {
-              id
-              name
-              description
-              category {
+    if (this.state.userId) {
+      return (
+        <Query
+          query={gql`
+            query ActivityLogs($id: ID!, $date: DateTime!) {
+              allActivities {
+                id
                 name
-              }
-              value
-              ghValue
-            }
-            allCategories {
-              id
-              name
-            }
-            allActivityLogs(
-              filter: { user: { id: $id }, AND: { date: $date } }
-            ) {
-              id
-              activity {
-                name
+                description
+                category {
+                  name
+                }
                 value
+                ghValue
+              }
+              allCategories {
+                id
+                name
+              }
+              allActivityLogs(
+                filter: { user: { id: $id }, AND: { date: $date } }
+              ) {
+                id
+                activity {
+                  name
+                  value
+                }
+              }
+              allUsers(filter: { id: $id }) {
+                point
+                ghPoint
               }
             }
-            allUsers(filter: { id: $id }) {
-              point
-              ghPoint
+          `}
+          variables={{ id: this.state.userId, date: this.state.date }}
+        >
+          {({ loading, error, data, refetch }) => {
+            if (loading) return <ActivityIndicator style={styles.loader} />;
+            if (error) return <Text>{error}</Text>;
+            if (data.allUsers) {
+              let currentPoint = data.allUsers[0].point;
+              let currentGHPoint = data.allUsers[0].ghPoint;
+              let dayPoint = data.allActivityLogs
+                .map(a => a.activity.value)
+                .reduce((arr, cur) => {
+                  return arr + cur;
+                }, 0);
+              return (
+                <Activities
+                  navigation={this.props.navigation}
+                  date={this.state.date}
+                  dateChangeHandler={this.dateChangeHandler}
+                  data={data.allActivities}
+                  categories={data.allCategories}
+                  image={imageRelation}
+                  filteredActivity={data.allActivityLogs}
+                  refetch={refetch}
+                  currentPoint={currentPoint}
+                  dayPoint={dayPoint}
+                  currentGHPoint={currentGHPoint}
+                />
+              );
+            } else {
+              refetch();
+              return <Text>{error}</Text>;
             }
-          }
-        `}
-        variables={{ id: this.state.userId, date: this.state.date }}
-      >
-        {({ loading, error, data, refetch }) => {
-          if (loading) return <ActivityIndicator style={styles.loader} />;
-          if (error) return <Text>{error}</Text>;
-
-          if (data.allUsers) {
-            let currentPoint = data.allUsers[0].point;
-            let currentGHPoint = data.allUsers[0].ghPoint;
-            let dayPoint = data.allActivityLogs
-              .map(a => a.activity.value)
-              .reduce((arr, cur) => {
-                return arr + cur;
-              }, 0);
-            return (
-              <Activities
-                navigation={this.props.navigation}
-                date={this.state.date}
-                dateChangeHandler={this.dateChangeHandler}
-                data={data.allActivities}
-                categories={data.allCategories}
-                image={imageRelation}
-                filteredActivity={data.allActivityLogs}
-                refetch={refetch}
-                currentPoint={currentPoint}
-                dayPoint={dayPoint}
-                currentGHPoint={currentGHPoint}
-              />
-            );
-          } else {
-            refetch();
-            return <Text>{error}</Text>;
-          }
-        }}
-      </Query>
-    );
+          }}
+        </Query>
+      );
+    } else {
+      return <ActivityIndicator style={styles.loader} />;
+    }
   }
 }
 
