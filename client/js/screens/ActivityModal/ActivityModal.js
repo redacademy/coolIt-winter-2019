@@ -10,7 +10,7 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 import PropTypes from "prop-types";
-import {graphql, compose} from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 
 const ADD_ACTIVITY = gql`
@@ -21,15 +21,15 @@ const ADD_ACTIVITY = gql`
   }
 `;
 const ADD_POINT = gql`
-  mutation Authenticate($id: ID!, $point: Int!) {
-    updateUser(id: $id, point: $point) {
+  mutation Authenticate($id: ID!, $point: Int!, $ghPoint: String!) {
+    updateUser(id: $id, point: $point, ghPoint: $ghPoint) {
       id
       point
     }
   }
 `;
 
-const ActivityModal = ({data, navigation, addActivity, addPoint}) => (
+const ActivityModal = ({ data, navigation, addActivity, addPoint }) => (
   <View style={styles.container}>
     {data.category.name !== "Community Actions" ? (
       <TouchableHighlight
@@ -55,10 +55,19 @@ const ActivityModal = ({data, navigation, addActivity, addPoint}) => (
               const userId = await AsyncStorage.getItem("id");
 
               await addActivity({
-                variables: {date: data.date, userId, activityId: data.id}
+                variables: { date: data.date, userId, activityId: data.id }
               });
+
+              console.log(data.currentGHPoint);
+
               await addPoint({
-                variables: {id: userId, point: data.currentPoint + data.value}
+                variables: {
+                  id: userId,
+                  point: data.currentPoint + data.value,
+                  ghPoint: (
+                    parseFloat(data.ghValue) + parseFloat(data.currentGHPoint)
+                  ).toString()
+                }
               });
 
               await data.refetch();

@@ -9,7 +9,7 @@ type User @model {
   point: Int @defaultValue(value:"0")
   isActive: Boolean @defaultValue(value: "false")
   quizScore: Int
-  ghPoint:Int @defaultValue(value:"0")
+  ghPoint: String! @migrationValue(value: "42") @defaultValue(value:"0")
 }
 
 type SchoolInfo @model {
@@ -24,7 +24,7 @@ type SchoolInfo @model {
 
 type ActivityLog @model {
   id: ID! @isUnique
-  user: User! @relation(name:"UserActivityLogs")
+  user: User @relation(name:"UserActivityLogs")
   date: DateTime!
   activity: Activity! @relation(name:"ActivityActivityLogs")
 }

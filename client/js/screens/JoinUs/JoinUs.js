@@ -72,10 +72,12 @@ class JoinUs extends Component {
         <Form
           onSubmit={async value => {
             try {
+              console.log(this.props.signupMutation);
               this.setState({ loading: true });
-              const result = await this.props.loginMutation({
+              const result = await this.props.signupMutation({
                 variables: { email: value.email, password: value.password }
               });
+              console.log(result.data.signupUser);
 
               const user = result.data.signupUser;
 
@@ -84,6 +86,7 @@ class JoinUs extends Component {
 
               this.props.navigation.navigate("ProgramCode");
             } catch (e) {
+              console.log(e);
               return {
                 [FORM_ERROR]: "Email is invalid or already registered."
               };
