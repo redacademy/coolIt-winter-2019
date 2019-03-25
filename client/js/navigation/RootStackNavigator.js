@@ -7,7 +7,7 @@ import NavigationLayout from "./NavigationLayout";
 import ActivityModal from "../screens/ActivityModal";
 import JoinUs from "../screens/JoinUs";
 import AuthLoadingScreen from "../screens/AutheticationLoadingScreen";
-import { sharedNavigationOptions } from "./config";
+import {sharedNavigationOptions} from "./config";
 import DisconnectModal from "../screens/DisconnectModal";
 import Activities from "../screens/Activities";
 import LogIn from "../screens/LogIn";
@@ -47,7 +47,7 @@ const OnboardingStack = createStackNavigator(
   },
   {
     headerMode: "none",
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation)
     })
   }
@@ -61,7 +61,7 @@ const LoginStack = createStackNavigator(
   },
   {
     headerMode: "none",
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation)
     })
   }
@@ -71,8 +71,8 @@ export default createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoadingScreen,
-      Auth: AppStack,
-      App: OnboardingStack,
+      App: AppStack,
+      Auth: OnboardingStack,
       Login: LoginStack
     },
     {

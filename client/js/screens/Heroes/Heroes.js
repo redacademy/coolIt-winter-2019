@@ -11,10 +11,11 @@ const Heroes = ({data}) => {
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <View style={styles.container}>
         <View style={styles.mainContent}>
+        <View style={styles.contentTop}>
           <View style={styles.itemSeparator} />
           <Text style={styles.description}>Heroes</Text>
           <View style={styles.itemBottomSeparator} />
-
+          </View>
           <FlatList
             style={styles.list}
             data={data}
@@ -41,6 +42,7 @@ const Heroes = ({data}) => {
           />
         </View>
         <View style={styles.bottom}>
+        <View style={styles.bottomBox}/>
           <Image
             source={require("../../assets/images/valley.png")}
             style={styles.valley}

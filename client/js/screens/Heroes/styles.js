@@ -2,6 +2,12 @@ import {StyleSheet, Dimensions} from "react-native";
 import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
+  container: {
+    height: Dimensions.get("window").height - 30,
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-between"
+  },
   description: {
     fontSize: 26,
     fontWeight: "400",
@@ -63,24 +69,15 @@ const styles = StyleSheet.create({
     top: 70,
     marginTop: 25
   },
-
   mainContent: {
-    paddingTop: 25,
-    marginTop: 25
+    paddingTop: 25
   },
-
+  contentTop: {
+    paddingTop: 25
+  },
   bottom: {
     flex: 1,
-    justifyContent: "space-around",
-    paddingTop: 25,
-    marginTop: 25
-  },
-  valley: {
-    resizeMode: "cover",
-    marginTop: 25
-  },
-  container: {
-    height: Dimensions.get("window").height
+    justifyContent: "space-around"
   }
 });
 
