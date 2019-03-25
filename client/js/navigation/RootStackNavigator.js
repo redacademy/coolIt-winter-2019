@@ -73,11 +73,10 @@ export default createAppContainer(
       AuthLoading: AuthLoadingScreen,
       App: AppStack,
       Auth: OnboardingStack,
-
       Login: LoginStack
     },
     {
-      initialRouteName: "App"
+      initialRouteName: "Auth"
     }
   )
 );
