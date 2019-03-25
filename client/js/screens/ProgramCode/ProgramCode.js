@@ -78,22 +78,23 @@ class ProgramCode extends Component {
         <Form
           onSubmit={async value => {
             try {
-              this.setState({ loading: true });
-              const result = await this.props.loginMutation({
-                variables: {
-                  division: value.division,
-                  grade: value.grade,
-                  programCode: value.programCode,
-                  school: value.school,
-                  teacher: value.teacher
-                }
-              });
+              console.log(value);
+              // this.setState({ loading: true });
+              // const result = await this.props.loginMutation({
+              //   variables: {
+              //     division: value.division,
+              //     grade: parseInt(value.grade),
+              //     programCode: value.programCode,
+              //     school: value.school,
+              //     teacher: value.teacher
+              //   }
+              // });
 
-              const user = result.data.createSchoolInfo;
+              // const user = result.data.createSchoolInfo;
 
-              await AsyncStorage.setItem("id", user.id);
+              // await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("App");
+              // this.props.navigation.navigate("App");
             } catch (e) {
               console.log(e);
             }

@@ -34,7 +34,9 @@ class Impact extends Component {
             <Text style={styles.metricSubtitle}> Total Points </Text>
           </View>
           <View style={styles.metric2}>
-            <Text style={styles.metricTitle}>{user.ghPoint}</Text>
+            <Text style={styles.metricTitle}>
+              {user.ghPoint / this.props.days}
+            </Text>
             <Text style={styles.metricSubtitle}>daily average</Text>
             <Text style={styles.metricSubtitle2}>greenhouse gas saved</Text>
           </View>
