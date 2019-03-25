@@ -14,7 +14,7 @@ class PlanetContainer extends Component {
       const a = Math.floor(point / 200);
       this.setState({icon: a});
     };
-    getPrizesAmount(1000);
+    getPrizesAmount(3000);
   }
 
   render() {
@@ -36,12 +36,28 @@ class PlanetContainer extends Component {
       require("../../assets/icons/mountain.png")
     ];
 
+    const contentIcons = [
+      require("../../assets/icons/bigtree.png"),
+      require("../../assets/icons/circle-flower.png"),
+      require("../../assets/icons/circle-mountain.png"),
+      require("../../assets/icons/circle-tree.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png"),
+      require("../../assets/icons/lock.png")
+    ];
+
     const mapIcons = icons.slice(0, this.state.icon);
 
-    return <Planet data={mapIcons} />;
+    return <Planet data={mapIcons} icons={contentIcons} />;
   }
 }
-
-PlanetContainer.propTypes = {};
 
 export default PlanetContainer;
