@@ -22,16 +22,24 @@ const CalculationModal = props => {
           }}
           style={styles.backButton}
         >
-          <Ionicons name="ios-close" size={30} color="blue" />
+          <Ionicons
+            style={styles.icon}
+            name="ios-close"
+            size={30}
+            color="blue"
+          />
         </TouchableHighlight>
-        <Image source={require("../../assets/images/check-icon.png")} />
-        <View style={styles.textGrouup}>
-          <Text> You have saved </Text>
-          <Text> 50 greenhouse gases </Text>
+        <Image
+          source={require("../../assets/images/check-icon.png")}
+          style={styles.checkmark}
+        />
+        <View style={styles.textGroup1}>
+          <Text style={styles.text}> You have saved </Text>
+          <Text style={styles.text}> 50 greenhouse gases </Text>
         </View>
-        <View>
-          <Text> Check out our new </Text>
-          <Text> reward on the Planet page! </Text>
+        <View style={styles.textGroup2}>
+          <Text style={styles.text}> Check out our new </Text>
+          <Text style={styles.text}> reward on the Planet page! </Text>
         </View>
       </View>
     </ImageBackground>

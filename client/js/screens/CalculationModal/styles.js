@@ -9,19 +9,24 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "#ffffff",
-    height: "40%",
+    height: "45%",
     width: "80%",
     borderRadius: 20
   },
-  textGroup: {
+  textGroup1: {
     paddingTop: 20
   },
-  backButton: {
-    width: "10%"
+  textGroup2: {
+    paddingVertical: 20
   },
-  icon: {
-    marginRight: "85vh"
-  }
+  backButton: {
+    width: "10%",
+    alignSelf: "flex-start",
+    paddingBottom: "15%",
+    paddingLeft: "4%"
+  },
+  checkmark: { paddingBottom: 20 },
+  text: { textAlign: "center", fontSize: 18 }
 });
 
 export default styles;
