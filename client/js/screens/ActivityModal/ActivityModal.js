@@ -57,13 +57,16 @@ const ActivityModal = ({ data, navigation, addActivity, addPoint }) => (
               await addActivity({
                 variables: { date: data.date, userId, activityId: data.id }
               });
-              console.log(data.ghValue);
-              console.log(data);
+
+              console.log(data.currentGHPoint);
+
               await addPoint({
                 variables: {
                   id: userId,
                   point: data.currentPoint + data.value,
-                  ghPoint: data.currentGHPoint + data.ghValue
+                  ghPoint: (
+                    parseFloat(data.ghValue) + parseFloat(data.currentGHPoint)
+                  ).toString()
                 }
               });
 
