@@ -1,17 +1,20 @@
-import {StyleSheet} from "react-native";
+import {StyleSheet, Dimensions} from "react-native";
 
 const styles = StyleSheet.create({
   image: {
-    // height: 100,
-    // width: 50,
-    resizeMode: "contain"
+    resizeMode: "contain",
+    padding: 20,
+    marginTop: 20
   },
   imageContainer: {
-    padding: 25
+    padding: 20
   },
   background: {
-    width: 380,
-    height: 420
+    height: Dimensions.get("window").height / 2,
+    width: Dimensions.get("window").width
+  },
+  iconImage: {
+    padding: 12
   }
 });
 

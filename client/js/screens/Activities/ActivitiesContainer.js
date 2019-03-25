@@ -59,6 +59,7 @@ class ActivitiesContainer extends Component {
                 name
               }
               value
+              ghValue
             }
             allCategories {
               id
@@ -75,6 +76,7 @@ class ActivitiesContainer extends Component {
             }
             allUsers(filter: { id: $id }) {
               point
+              ghPoint
             }
           }
         `}
@@ -84,6 +86,7 @@ class ActivitiesContainer extends Component {
           if (loading) return <FullScreenLoader style={styles.loader} />;
           if (error) return <Text>{error}</Text>;
           let currentPoint = data.allUsers[0].point;
+          let currentGHPoint = data.allUsers[0].ghPoint;
           let dayPoint = data.allActivityLogs
             .map(a => a.activity.value)
             .reduce((arr, cur) => {
@@ -102,6 +105,7 @@ class ActivitiesContainer extends Component {
               refetch={refetch}
               currentPoint={currentPoint}
               dayPoint={dayPoint}
+              currentGHPoint={currentGHPoint}
             />
           );
         }}

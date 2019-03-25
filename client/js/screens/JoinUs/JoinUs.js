@@ -71,10 +71,12 @@ class JoinUs extends Component {
         <Form
           onSubmit={async value => {
             try {
+              console.log(this.props.signupMutation);
               this.setState({ loading: true });
-              const result = await this.props.loginMutation({
+              const result = await this.props.signupMutation({
                 variables: { email: value.email, password: value.password }
               });
+              console.log(result.data.signupUser);
 
               const user = result.data.signupUser;
 
@@ -83,6 +85,7 @@ class JoinUs extends Component {
 
               this.props.navigation.navigate("AccountCreated");
             } catch (e) {
+              console.log(e);
               return {
                 [FORM_ERROR]: "Email is already registered."
               };
@@ -171,6 +174,6 @@ class JoinUs extends Component {
   }
 }
 
-export default compose(graphql(AUTHENTICATE_USER, { name: "loginMutation" }))(
+export default compose(graphql(AUTHENTICATE_USER, { name: "signupMutation" }))(
   JoinUs
 );
