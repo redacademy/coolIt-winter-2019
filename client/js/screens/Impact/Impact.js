@@ -35,7 +35,7 @@ class Impact extends Component {
           </View>
           <View style={styles.metric2}>
             <Text style={styles.metricTitle}>
-              {user.ghPoint / this.props.days}
+              {(user.ghPoint / this.props.days).toFixed(3)}
             </Text>
             <Text style={styles.metricSubtitle}>daily average</Text>
             <Text style={styles.metricSubtitle2}>greenhouse gas saved</Text>

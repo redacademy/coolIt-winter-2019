@@ -51,8 +51,10 @@ export default class ImpactContainer extends Component {
               </View>
             );
           }
-          refetch();
-          return <ActivityIndicator />;
+          if (!data.allUsers) {
+            refetch();
+            return <ActivityIndicator />;
+          }
         }}
       </Query>
     );

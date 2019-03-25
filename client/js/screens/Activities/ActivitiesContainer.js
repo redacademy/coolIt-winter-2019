@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Activities from "./Activities";
-import { ActivityIndicator, AsyncStorage } from "react-native";
+import { ActivityIndicator, AsyncStorage, Text } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
@@ -84,29 +84,34 @@ class ActivitiesContainer extends Component {
         {({ loading, error, data, refetch }) => {
           if (loading) return <ActivityIndicator style={styles.loader} />;
           if (error) return <Text>{error}</Text>;
-          let currentPoint = data.allUsers[0].point;
-          let currentGHPoint = data.allUsers[0].ghPoint;
-          let dayPoint = data.allActivityLogs
-            .map(a => a.activity.value)
-            .reduce((arr, cur) => {
-              return arr + cur;
-            }, 0);
 
-          return (
-            <Activities
-              navigation={this.props.navigation}
-              date={this.state.date}
-              dateChangeHandler={this.dateChangeHandler}
-              data={data.allActivities}
-              categories={data.allCategories}
-              image={imageRelation}
-              filteredActivity={data.allActivityLogs}
-              refetch={refetch}
-              currentPoint={currentPoint}
-              dayPoint={dayPoint}
-              currentGHPoint={currentGHPoint}
-            />
-          );
+          if (data.allUsers) {
+            let currentPoint = data.allUsers[0].point;
+            let currentGHPoint = data.allUsers[0].ghPoint;
+            let dayPoint = data.allActivityLogs
+              .map(a => a.activity.value)
+              .reduce((arr, cur) => {
+                return arr + cur;
+              }, 0);
+            return (
+              <Activities
+                navigation={this.props.navigation}
+                date={this.state.date}
+                dateChangeHandler={this.dateChangeHandler}
+                data={data.allActivities}
+                categories={data.allCategories}
+                image={imageRelation}
+                filteredActivity={data.allActivityLogs}
+                refetch={refetch}
+                currentPoint={currentPoint}
+                dayPoint={dayPoint}
+                currentGHPoint={currentGHPoint}
+              />
+            );
+          } else {
+            refetch();
+            return <Text>{error}</Text>;
+          }
         }}
       </Query>
     );
