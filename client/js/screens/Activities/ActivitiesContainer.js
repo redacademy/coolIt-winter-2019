@@ -38,16 +38,15 @@ class ActivitiesContainer extends Component {
   dateChangeHandler = getNextDay => {
     let ms;
     const today = new Date();
-    console.log(today >= this.state.date);
+    today.setHours(0);
+    today.setMinutes(0);
+    today.setSeconds(0);
+    today.setMilliseconds(0);
     if (getNextDay === 0) {
-      today.setHours(0);
-      today.setMinutes(0);
-      today.setSeconds(0);
-      today.setMilliseconds(0);
       this.setState({ date: today });
     } else {
       getNextDay == 1
-        ? today >= this.state.date
+        ? today <= this.state.date
           ? (ms = this.state.date)
           : (ms = this.state.date.getTime() + 86400000)
         : (ms = this.state.date.getTime() - 86400000);
