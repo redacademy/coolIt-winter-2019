@@ -1,9 +1,13 @@
-import {StyleSheet} from "react-native";
-import {colors, fonts} from "../../config/styles";
+import { StyleSheet } from "react-native";
+import { colors, fonts } from "../../config/styles";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
     height: "100%",
+    width: "100%"
+  },
+  innerContainer: {
+    height: "45%",
     width: "100%"
   },
   bottom: {
@@ -16,7 +20,7 @@ const styles = StyleSheet.create({
   },
   top: {
     width: "100%",
-    height: "90%",
+    height: "100%",
     justifyContent: "flex-end"
   },
   backgroundTop: {
@@ -33,14 +37,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: fonts.light,
     alignSelf: "flex-start",
-    paddingLeft: 35
+    paddingLeft: 40
+  },
+  textLast: {
+    fontSize: 18,
+    fontFamily: fonts.light,
+    alignSelf: "flex-start",
+    paddingLeft: 40,
+    paddingBottom: 20
   },
   form: {
     borderStyle: "solid",
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    minWidth: "70%",
+    minWidth: "84%",
     padding: 5,
     paddingLeft: 15,
     fontSize: 16,
@@ -64,6 +75,13 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     marginTop: 15
   },
+  disabled: {
+    width: "40%",
+    alignSelf: "center",
+    backgroundColor: colors.disabled,
+    borderRadius: 13,
+    marginTop: 15
+  },
   buttonText: {
     alignSelf: "center",
     fontFamily: "Arial",
@@ -81,28 +99,17 @@ const styles = StyleSheet.create({
     paddingBottom: 8
   },
   error: {
-    color: colors.green,
+    color: colors.red,
     fontFamily: fonts.light,
-    fontSize: 14,
-    paddingLeft: 12
+    fontSize: 12,
+    fontWeight: "normal",
+    paddingLeft: 15
   },
   errorMessage: {
-    color: colors.green,
+    color: colors.red,
     fontFamily: fonts.light,
-    fontSize: 16
-  },
-  buttonContainer: {
-    width: '45%',
-    backgroundColor: colors.green,
-    borderRadius: 15,
-    marginBottom: 25,
-    marginTop: 25,
-    marginHorizontal: 5,
-    padding: 5
-  },
-  buttonAligner: {
-    flexDirection: "row",
-    flexWrap: "wrap"
+    fontSize: 12,
+    fontWeight: "normal"
   }
 });
 export default styles;
