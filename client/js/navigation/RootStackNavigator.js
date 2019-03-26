@@ -5,6 +5,7 @@ import {
 } from "react-navigation";
 import NavigationLayout from "./NavigationLayout";
 import ActivityModal from "../screens/ActivityModal";
+import CalculationModal from "../screens/CalculationModal";
 import JoinUs from "../screens/JoinUs";
 import AuthLoadingScreen from "../screens/AutheticationLoadingScreen";
 import { sharedNavigationOptions } from "./config";
@@ -24,8 +25,8 @@ const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout,
     Activity: ActivityModal,
-    Disconnect: DisconnectModal,
-    Delete: DeleteModal
+    Calculation: CalculationModal,
+    Disconnect: DisconnectModal
   },
   {
     mode: "modal",
