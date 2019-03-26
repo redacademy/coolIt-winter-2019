@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   error: {
-    color: colors.green,
+    color: colors.red,
     fontFamily: fonts.light,
     fontSize: 16,
     paddingLeft: 10,
     marginBottom: 15,
   },
   errorMessage: {
-    color: colors.green,
+    color: colors.red,
     fontFamily: fonts.light,
     fontSize: 16,
     paddingLeft: 20
