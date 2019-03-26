@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {
   View,
   Text,
@@ -7,9 +7,9 @@ import {
   TextInput,
   AsyncStorage
 } from "react-native";
-import { Form, Field } from "react-final-form";
+import {Form, Field} from "react-final-form";
 import styles from "./styles";
-import { graphql, compose } from "react-apollo";
+import {graphql, compose} from "react-apollo";
 import gql from "graphql-tag";
 
 const AUTHENTICATE_USER = gql`
@@ -35,7 +35,7 @@ const AUTHENTICATE_USER = gql`
 class ProgramCode extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: "", loading: false };
+    this.state = {text: "", loading: false};
   }
   static navigationOptions = {
     title: "Please enter your program information"
@@ -77,7 +77,7 @@ class ProgramCode extends Component {
         <Form
           onSubmit={async value => {
             try {
-              this.setState({ loading: true });
+              this.setState({loading: true});
               const result = await this.props.loginMutation({
                 variables: {
                   division: parseInt(value.division),
@@ -88,28 +88,24 @@ class ProgramCode extends Component {
                 }
               });
 
-              // const user = result.data.createSchoolInfo;
-
-              // await AsyncStorage.setItem("id", user.id);
-
               this.props.navigation.navigate("AccountCreated");
             } catch (e) {
               console.log(e);
             }
           }}
           validate={this.validate}
-          render={({ handleSubmit, pristine, invalid }) => (
+          render={({handleSubmit, pristine, invalid}) => (
             <View style={styles.innerContainer}>
               <View style={styles.flexContent}>
                 <Field name="school">
-                  {({ input, meta }) => (
+                  {({input, meta}) => (
                     <View>
                       <TextInput
                         style={styles.form}
                         editable={true}
                         {...input}
                         placeholder="School"
-                        onChangeText={text => this.setState({ text })}
+                        onChangeText={text => this.setState({text})}
                       />
                       <Text style={styles.error}>
                         {meta.error && meta.touched && meta.error}
@@ -118,14 +114,14 @@ class ProgramCode extends Component {
                   )}
                 </Field>
                 <Field name="teacher">
-                  {({ input, meta }) => (
+                  {({input, meta}) => (
                     <View>
                       <TextInput
                         style={styles.form}
                         editable={true}
                         {...input}
                         placeholder="Teacher"
-                        onChangeText={text => this.setState({ text })}
+                        onChangeText={text => this.setState({text})}
                       />
                       <Text style={styles.error}>
                         {meta.error && meta.touched && meta.error}
@@ -134,14 +130,15 @@ class ProgramCode extends Component {
                   )}
                 </Field>
                 <Field name="division">
-                  {({ input, meta }) => (
+                  {({input, meta}) => (
                     <View>
                       <TextInput
                         style={styles.formShort}
                         editable={true}
+                        maxLength={4}
                         {...input}
                         placeholder="Division"
-                        onChangeText={text => this.setState({ text })}
+                        onChangeText={text => this.setState({text})}
                       />
                       <Text style={styles.error}>
                         {meta.error && meta.touched && meta.error}
@@ -150,14 +147,15 @@ class ProgramCode extends Component {
                   )}
                 </Field>
                 <Field name="grade">
-                  {({ input, meta }) => (
+                  {({input, meta}) => (
                     <View>
                       <TextInput
                         style={styles.formShort}
                         editable={true}
+                        maxLength={4}
                         {...input}
                         placeholder="Grade"
-                        onChangeText={text => this.setState({ text })}
+                        onChangeText={text => this.setState({text})}
                       />
                       <Text style={styles.error}>
                         {meta.error && meta.touched && meta.error}
@@ -166,14 +164,15 @@ class ProgramCode extends Component {
                   )}
                 </Field>
                 <Field name="programCode">
-                  {({ input, meta }) => (
+                  {({input, meta}) => (
                     <View>
                       <TextInput
                         style={styles.formShort}
                         editable={true}
+                        maxLength={4}
                         {...input}
                         placeholder="Code"
-                        onChangeText={text => this.setState({ text })}
+                        onChangeText={text => this.setState({text})}
                       />
                       <Text style={styles.error}>
                         {meta.error && meta.touched && meta.error}
@@ -224,6 +223,6 @@ class ProgramCode extends Component {
 
 // ProgramCode.propTypes = {};
 
-export default compose(graphql(AUTHENTICATE_USER, { name: "loginMutation" }))(
+export default compose(graphql(AUTHENTICATE_USER, {name: "loginMutation"}))(
   ProgramCode
 );
