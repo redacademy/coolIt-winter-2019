@@ -22,6 +22,7 @@ const AUTHENTICATE_USER = gql`
     }
   }
 `;
+
 class LogIn extends Component {
   constructor(props) {
     super(props);
@@ -128,13 +129,23 @@ class LogIn extends Component {
                   </View>
                 )}
               </Field>
-              <TouchableOpacity
-                onPress={handleSubmit}
-                style={styles.button}
-                disabled={pristine || invalid}
-              >
-                <Text style={styles.buttonText}>Log In</Text>
-              </TouchableOpacity>
+              {!pristine && !invalid ? (
+                <TouchableOpacity
+                  onPress={handleSubmit}
+                  disabled={pristine || invalid}
+                  style={styles.button}
+                >
+                  <Text style={styles.buttonText}>Log In</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {}}
+                  disabled={pristine || invalid}
+                  style={styles.disabled}
+                >
+                  <Text style={styles.buttonText}>Log In</Text>
+                </TouchableOpacity>
+              )}
               {hasSubmitErrors && (
                 <Text style={styles.errorMessage}>{submitError}</Text>
               )}

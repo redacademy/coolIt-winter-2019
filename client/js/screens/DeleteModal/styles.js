@@ -4,9 +4,9 @@ import {colors, fonts} from "../../config/styles";
 const styles = StyleSheet.create({
   scrollView: {
     flexDirection: "column",
+    alignItems: "center",
     height: Dimensions.get("window").height,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "center"
   },
   buttonAligner: {
     flexDirection: "row",
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16
   },
+
   buttonText: {
     alignSelf: "center",
     fontFamily: "Arial",
@@ -27,14 +28,36 @@ const styles = StyleSheet.create({
     paddingVertical: 10
   },
   disconnect: {
-    width: "35%",
+    width: "40%",
     backgroundColor: colors.white,
     borderRadius: 13,
     borderColor: colors.blue,
     borderWidth: 2,
-    marginHorizontal: 10
   },
-  
+  form: {
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderRadius: 25,
+    borderColor: colors.blue,
+    minWidth: "60%",
+    padding: 5,
+    paddingLeft: 25,
+    fontSize: 18
+  },
+  error: {
+    color: colors.red,
+    fontFamily: fonts.light,
+    fontSize: 16,
+    paddingLeft: 10,
+    marginBottom: 15,
+  },
+  errorMessage: {
+    color: colors.red,
+    fontFamily: fonts.light,
+    fontSize: 16,
+    paddingLeft: 20
+
+  }
 });
 
 export default styles;

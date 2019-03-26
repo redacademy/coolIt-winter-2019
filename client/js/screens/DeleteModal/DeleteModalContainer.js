@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import DeactivateModal from "./DeactivateModal";
+import React, {Component} from "react";
+import DeleteModal from "./DeleteModal";
 import PropTypes from "prop-types";
 
-export default class DeactivateModalContainer extends Component {
+export default class DeleteModalContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "" };
+    this.state = {email: "", password: ""};
   }
   emailInput = email => {
-    this.setState({ email });
+    this.setState({email});
   };
   passwordInput = password => {
-    this.setState({ password });
+    this.setState({password});
   };
   render() {
     return (
-      <DeactivateModal
+      <DeleteModal
         emailInput={this.emailInput}
         passwordInput={this.passwordInput}
         navigation={this.props.navigation}
@@ -26,6 +26,6 @@ export default class DeactivateModalContainer extends Component {
   }
 }
 
-DeactivateModalContainer.propTypes = {
+DeleteModalContainer.propTypes = {
   navigation: PropTypes.object.isRequired
 };
