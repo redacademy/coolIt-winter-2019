@@ -38,8 +38,8 @@ class AccountContainer extends Component {
         {({ loading, error, data, refetch }) => {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>{error}</Text>;
-
-          const currentStudent = data.allUsers.filter(
+          let currentStudent;
+          currentStudent = data.allUsers.filter(
             a => a.id === this.state.userID
           );
 

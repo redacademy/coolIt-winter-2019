@@ -8,13 +8,13 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   top: {
-  marginBottom: 25
+    marginBottom: 25
   },
   content: {
     marginBottom: 25
   },
   topBackground: {
-    width: "100%",
+    width: "100%"
   },
   impact: {
     width: "60%",
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
   dateText: {
     justifyContent: "center",
     alignItems: "center"
-
   },
   buttonText: {
     alignSelf: "center",
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
   title: {
     padding: 18,
     fontFamily: fonts.light,
-    fontSize: 14,
+    fontSize: 14
   },
   list: {
     backgroundColor: colors.lightGreen,
@@ -91,6 +90,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.light,
     fontWeight: "600"
+  },
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -8,13 +8,13 @@ import {
   TouchableOpacity,
   Image
 } from "react-native";
-import {Form, Field} from "react-final-form";
+import { Form, Field } from "react-final-form";
 import styles from "./styles";
-import {graphql, compose} from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import {FORM_ERROR} from "final-form";
+import { FORM_ERROR } from "final-form";
 import Icon from "react-native-vector-icons/Ionicons";
-import {colors} from "../../config/styles";
+import { colors } from "../../config/styles";
 
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
@@ -28,7 +28,7 @@ const AUTHENTICATE_USER = gql`
 class JoinUs extends Component {
   constructor(props) {
     super(props);
-    this.state = {text: "", loading: false};
+    this.state = { text: "", loading: false };
   }
   static navigationOptions = {
     title: "Please sign up"
@@ -74,9 +74,9 @@ class JoinUs extends Component {
           onSubmit={async value => {
             try {
               console.log(this.props.signupMutation);
-              this.setState({loading: true});
+              this.setState({ loading: true });
               const result = await this.props.signupMutation({
-                variables: {email: value.email, password: value.password}
+                variables: { email: value.email, password: value.password }
               });
               console.log(result.data.signupUser);
 
@@ -104,7 +104,7 @@ class JoinUs extends Component {
             <View style={styles.flexContent}>
               <Text style={styles.text}>Join us</Text>
               <Field name="name">
-                {({input, meta}) => (
+                {({ input, meta }) => (
                   <View style={styles.messageBox}>
                     <View>
                       <TextInput
@@ -112,7 +112,7 @@ class JoinUs extends Component {
                         editable={true}
                         {...input}
                         placeholder="Name"
-                        onChangeText={text => this.setState({text})}
+                        onChangeText={text => this.setState({ text })}
                       />
                       <Text style={styles.error}>
                         {meta.error && meta.touched && meta.error}
@@ -130,7 +130,7 @@ class JoinUs extends Component {
                 )}
               </Field>
               <Field name="email">
-                {({input, meta}) => (
+                {({ input, meta }) => (
                   <View style={styles.messageBox}>
                     <View>
                       <TextInput
@@ -138,7 +138,7 @@ class JoinUs extends Component {
                         editable={true}
                         {...input}
                         placeholder="Email"
-                        onChangeText={text => this.setState({text})}
+                        onChangeText={text => this.setState({ text })}
                       />
                       <Text style={styles.error}>
                         {meta.error && meta.touched && meta.error}
@@ -156,7 +156,7 @@ class JoinUs extends Component {
                 )}
               </Field>
               <Field name="password">
-                {({input, meta}) => (
+                {({ input, meta }) => (
                   <View style={styles.messageBox}>
                     <View>
                       <TextInput
@@ -165,7 +165,7 @@ class JoinUs extends Component {
                         {...input}
                         placeholder="Password"
                         secureTextEntry={true}
-                        onChangeText={text => this.setState({text})}
+                        onChangeText={text => this.setState({ text })}
                       />
                       <Text style={styles.error}>
                         {meta.error && meta.touched && meta.error}
@@ -182,15 +182,15 @@ class JoinUs extends Component {
                   </View>
                 )}
               </Field>
-              {!pristine && !invalid ? (
-                <TouchableOpacity
-                  onPress={handleSubmit}
-                  style={styles.button}
-                  disabled={pristine || invalid}
-                >
-                  <Text style={styles.buttonText}>Join</Text>
-                </TouchableOpacity>
-              ) : (
+              {/* {!pristine && !invalid ? ( */}
+              <TouchableOpacity
+                onPress={handleSubmit}
+                style={styles.button}
+                disabled={pristine || invalid}
+              >
+                <Text style={styles.buttonText}>Join</Text>
+              </TouchableOpacity>
+              {/* ) : (
                 <TouchableOpacity
                   onPress={() => {}}
                   style={styles.disabled}
@@ -198,7 +198,7 @@ class JoinUs extends Component {
                 >
                   <Text style={styles.buttonText}>Join</Text>
                 </TouchableOpacity>
-              )}
+              )} */}
               {hasSubmitErrors && (
                 <Text style={styles.errorMessage}>{submitError}</Text>
               )}
@@ -216,6 +216,6 @@ class JoinUs extends Component {
   }
 }
 
-export default compose(graphql(AUTHENTICATE_USER, {name: "signupMutation"}))(
+export default compose(graphql(AUTHENTICATE_USER, { name: "signupMutation" }))(
   JoinUs
 );

@@ -4,8 +4,7 @@ import {
   Text,
   TouchableOpacity,
   ImageBackground,
-  TextInput,
-  AsyncStorage
+  TextInput
 } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
@@ -77,7 +76,8 @@ class ProgramCode extends Component {
         <Form
           onSubmit={async value => {
             try {
-              this.setState({ loading: true });
+              console.log(value);
+              // this.setState({ loading: true });
               const result = await this.props.loginMutation({
                 variables: {
                   division: parseInt(value.division),
@@ -173,7 +173,10 @@ class ProgramCode extends Component {
                         editable={true}
                         {...input}
                         placeholder="Code"
-                        onChangeText={text => this.setState({ text })}
+                        onChangeText={text => {
+                          this.setState({ text });
+                          console.log(this.state);
+                        }}
                       />
                       <Text style={styles.error}>
                         {meta.error && meta.touched && meta.error}
@@ -193,9 +196,9 @@ class ProgramCode extends Component {
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
-                    onPress={() => {}}
+                    onPress={handleSubmit}
                     disabled={pristine || invalid}
-                    style={styles.disabled}
+                    style={styles.button}
                   >
                     <Text style={styles.buttonText}>Continue</Text>
                   </TouchableOpacity>

@@ -93,7 +93,7 @@ class ActivitiesContainer extends Component {
           variables={{ id: this.state.userId, date: this.state.date }}
         >
           {({ loading, error, data, refetch }) => {
-            if (loading) return <ActivityIndicator style={styles.loader} />;
+            if (loading) return <FullScreenLoader style={styles.loader} />;
             if (error) return <Text>{error}</Text>;
             if (data.allUsers) {
               let currentPoint = data.allUsers[0].point;
