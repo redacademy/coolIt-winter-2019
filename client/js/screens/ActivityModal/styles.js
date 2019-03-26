@@ -1,43 +1,47 @@
-import {StyleSheet} from "react-native";
+import {StyleSheet, Dimensions} from "react-native";
 import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 20,
-    marginLeft: 20
+  scrollView: {
+    height: Dimensions.get("window").height,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
   },
-  icon: {
-    marginLeft: 20,
-    marginTop: 20
+  activityContainer: {
+    flexDirection: "row",
+    width: Dimensions.get("window").width,
+    justifyContent: "space-around"
   },
+  navigationButton: {
+    paddingVertical: 10,
+  },
+
   name: {
     fontSize: 24,
     textTransform: "uppercase",
     fontFamily: fonts.bold,
     fontWeight: "500",
-    textAlign: "center"
+    paddingVertical: 10,
+  
   },
   description: {
-    paddingTop: 25,
+    padding: 5,
     fontSize: 16,
     textAlign: "center",
     fontFamily: fonts.light,
     marginHorizontal: 10
   },
-  buttonContainer: {
-    marginTop: 25,
-    flex: 1,
-    alignItems: "center"
-  },
+
   dismiss: {
-    width: "60%",
     alignSelf: "center",
+    minWidth: "50%",
     backgroundColor: colors.green,
     borderRadius: 13,
-    marginBottom: 25,
-    marginTop: 25,
-    padding: 5
+    padding: 5,
+    marginVertical: 10
   },
+
   buttonText: {
     alignSelf: "center",
     fontFamily: "Arial",
@@ -45,10 +49,6 @@ const styles = StyleSheet.create({
     color: colors.white,
     paddingTop: 10,
     paddingBottom: 10
-  },
-  community:{
-    paddingBottom: 25,
-    marginBottom: 25
   }
 });
 
