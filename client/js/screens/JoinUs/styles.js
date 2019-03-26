@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   checkmark: {
     position: "absolute",
-    right: 10,
+    right: 40,
     top: 3
   },
   bottom: {
@@ -48,9 +48,10 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    minWidth: "70%",
+    minWidth: "85%",
+    maxWidth: "85%",
     padding: 5,
-    paddingLeft: 15,
+    marginLeft: 20,
     fontSize: 18,
     position: "relative"
   },
@@ -86,14 +87,14 @@ const styles = StyleSheet.create({
     color: colors.red,
     fontFamily: fonts.light,
     fontSize: 12,
-    fontWeight: 'normal',
-    paddingLeft: 15
+    fontWeight: "normal",
+    paddingLeft: 20
   },
   errorMessage: {
     color: colors.red,
     fontFamily: fonts.light,
     fontSize: 12,
-    fontWeight: 'normal'
+    fontWeight: "normal"
   }
 });
 
