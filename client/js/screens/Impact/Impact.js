@@ -19,7 +19,6 @@ class Impact extends Component {
 
   render() {
     const user = this.props.data;
-    console.log(user);
     const dateSelections = ["D", "W", "M", "Y"];
     return (
       <ScrollView>

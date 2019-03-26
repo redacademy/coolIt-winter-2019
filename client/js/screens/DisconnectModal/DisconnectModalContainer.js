@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 
 export default class DisconnectModalContainer extends Component {
   render() {
-    return <DisconnectModal navigation={this.props.navigation} />;
+    const data = this.props.navigation.getParam("data");
+    return <DisconnectModal data={data} navigation={this.props.navigation} />;
   }
 }
 

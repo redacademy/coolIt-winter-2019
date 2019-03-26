@@ -10,10 +10,9 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 import PropTypes from "prop-types";
-import {graphql, compose} from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { colors } from "../../config/styles";
-
 
 const ADD_ACTIVITY = gql`
   mutation Authenticate($userId: ID!, $date: DateTime!, $activityId: ID!) {
@@ -31,7 +30,7 @@ const ADD_POINT = gql`
   }
 `;
 
-const ActivityModal = ({data, navigation, addActivity, addPoint}) => (
+const ActivityModal = ({ data, navigation, addActivity, addPoint }) => (
   <View style={styles.container}>
     <View style={styles.info}>
       <ScrollView contentContainerStyle={styles.scrollView}>
@@ -42,7 +41,7 @@ const ActivityModal = ({data, navigation, addActivity, addPoint}) => (
                 onPress={() => {
                   navigation.goBack();
                 }}
-                underlayColor= {colors.white}
+                underlayColor={colors.white}
               >
                 <Ionicons
                   style={styles.icon}
@@ -71,7 +70,7 @@ const ActivityModal = ({data, navigation, addActivity, addPoint}) => (
                 const userId = await AsyncStorage.getItem("id");
 
                 await addActivity({
-                  variables: {date: data.date, userId, activityId: data.id}
+                  variables: { date: data.date, userId, activityId: data.id }
                 });
 
                 console.log(data.currentGHPoint);
@@ -94,7 +93,7 @@ const ActivityModal = ({data, navigation, addActivity, addPoint}) => (
                 style={styles.addIcon}
                 name="ios-add-circle-outline"
                 size={70}
-                color= {colors.green}
+                color={colors.green}
               />
             </TouchableOpacity>
           </View>

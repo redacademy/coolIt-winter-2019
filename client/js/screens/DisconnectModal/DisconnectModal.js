@@ -18,7 +18,7 @@ const DISCONNECT_ACCOUNT = gql`
     }
   }
 `;
-const DisconnectModal = ({ navigation, disconnect }) => {
+const DisconnectModal = ({ navigation, disconnect, data }) => {
   return (
     <View style={styles.container}>
       <View style={styles.modal}>
@@ -37,6 +37,7 @@ const DisconnectModal = ({ navigation, disconnect }) => {
                   try {
                     const userId = await AsyncStorage.getItem("id");
                     await disconnect({ variables: { id: userId } });
+                    data.refetch();
                     navigation.navigate("Account");
                   } catch (e) {
                     console.log(e);

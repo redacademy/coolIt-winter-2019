@@ -6,7 +6,8 @@ import gql from "graphql-tag";
 import NoProgramCode from "../../components/NoProgramCode";
 import { AsyncStorage, Text } from "react-native";
 import FullScreenLoader from "../../components/FullScreenLoader";
-import styles from './styles'
+
+import styles from "./styles";
 
 class HeroesContainer extends Component {
   constructor(props) {
