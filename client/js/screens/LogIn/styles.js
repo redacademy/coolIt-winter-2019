@@ -36,11 +36,12 @@ const styles = StyleSheet.create({
     paddingBottom: 15
   },
   form: {
+    minWidth: "85%",
+    maxWidth: "85%",
     borderStyle: "solid",
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    minWidth: "70%",
     padding: 5,
     paddingLeft: 15,
     fontSize: 18
@@ -77,14 +78,14 @@ const styles = StyleSheet.create({
     color: colors.red,
     fontFamily: fonts.light,
     fontSize: 12,
-    fontWeight: 'normal',
+    fontWeight: "normal",
     paddingLeft: 15
   },
   errorMessage: {
     color: colors.red,
     fontFamily: fonts.light,
     fontSize: 12,
-    fontWeight: 'normal'
+    fontWeight: "normal"
   }
 });
 
