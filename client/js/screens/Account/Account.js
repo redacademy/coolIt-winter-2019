@@ -8,18 +8,8 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
-import { graphql, compose } from "react-apollo";
-import gql from "graphql-tag";
-const USER_INFO = gql`
-  query UserInfo($id: ID!) {
-    allUsers(filter: { id: $id }) {
-      id
-      programCode
-    }
-  }
-`;
 
-const Account = ({ navigation, programCode }) => {
+const Account = ({ navigation }) => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
     navigation.navigate("Auth");
@@ -34,23 +24,22 @@ const Account = ({ navigation, programCode }) => {
         </View>
 
         <View style={styles.menu}>
-          {programCode ? (
-            <View>
-              <View style={styles.buttonSeparator} />
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("Disconnect");
-                }}
-                style={styles.logIn}
-              >
-                <Text style={styles.buttonText}>
-                  Disconnect My Account From The Cool It Program
-                </Text>
-              </TouchableOpacity>
+          <View>
+            <View style={styles.buttonSeparator} />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Disconnect");
+              }}
+              style={styles.logIn}
+            >
+              <Text style={styles.buttonText}>
+                Disconnect My Account From The Cool It Program
+              </Text>
+            </TouchableOpacity>
 
-              <View style={styles.buttonSeparator} />
-            </View>
-          ) : null}
+            <View style={styles.buttonSeparator} />
+          </View>
+
           <View style={styles.buttonSeparator} />
           <TouchableOpacity
             onPress={() => {
@@ -79,9 +68,4 @@ const Account = ({ navigation, programCode }) => {
   );
 };
 
-export default compose(
-  graphql(USER_INFO, {
-    options: ({ id }) => ({ variables: { id } }),
-    name: "userQuery"
-  })
-)(Account);
+export default Account;

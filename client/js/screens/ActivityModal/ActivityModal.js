@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   Text,
   View,
@@ -29,72 +29,90 @@ const ADD_POINT = gql`
   }
 `;
 
-const ActivityModal = ({ data, navigation, addActivity, addPoint }) => (
-  <View style={styles.container}>
-    {data.category.name !== "Community Actions" ? (
-      <TouchableHighlight
-        onPress={() => {
-          navigation.goBack();
-        }}
-      >
-        <Ionicons style={styles.icon} name="ios-close" size={30} color="blue" />
-      </TouchableHighlight>
-    ) : (
-      <View style={styles.community} />
-    )}
-    <View style={styles.info}>
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        <View style={styles.activityContainer}>
-          <Text style={styles.name}>{data.name}</Text>
-        </View>
-        <Text style={styles.description}>{data.description}</Text>
-        {data.added ? null : data.category.name !== "Community Actions" ? (
-          <TouchableOpacity
-            style={styles.buttonContainer}
-            onPress={async () => {
-              const userId = await AsyncStorage.getItem("id");
-
-              await addActivity({
-                variables: { date: data.date, userId, activityId: data.id }
-              });
-
-              console.log(data.currentGHPoint);
-
-              await addPoint({
-                variables: {
-                  id: userId,
-                  point: data.currentPoint + data.value,
-                  ghPoint: (
-                    parseFloat(data.ghValue) + parseFloat(data.currentGHPoint)
-                  ).toString()
-                }
-              });
-
-              await data.refetch();
+class ActivityModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: false };
+  }
+  render() {
+    let { data, navigation, addActivity, addPoint } = this.props;
+    return !this.state.loading ? (
+      <View style={styles.container}>
+        {data.category.name !== "Community Actions" ? (
+          <TouchableHighlight
+            onPress={() => {
               navigation.goBack();
             }}
           >
             <Ionicons
-              style={styles.addIcon}
-              name="ios-add-circle-outline"
-              size={70}
+              style={styles.icon}
+              name="ios-close"
+              size={30}
               color="blue"
             />
-          </TouchableOpacity>
+          </TouchableHighlight>
         ) : (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.goBack();
-            }}
-            style={styles.dismiss}
-          >
-            <Text style={styles.buttonText}>Dismiss</Text>
-          </TouchableOpacity>
+          <View style={styles.community} />
         )}
-      </ScrollView>
-    </View>
-  </View>
-);
+        <View style={styles.info}>
+          <ScrollView contentContainerStyle={styles.scrollView}>
+            <View style={styles.activityContainer}>
+              <Text style={styles.name}>{data.name}</Text>
+            </View>
+            <Text style={styles.description}>{data.description}</Text>
+            {data.added ? null : data.category.name !== "Community Actions" ? (
+              <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={async () => {
+                  this.setState({ loading: true });
+                  const userId = await AsyncStorage.getItem("id");
+
+                  await addActivity({
+                    variables: { date: data.date, userId, activityId: data.id }
+                  });
+
+                  await addPoint({
+                    variables: {
+                      id: userId,
+                      point: data.currentPoint + data.value,
+                      ghPoint: (
+                        parseFloat(data.ghValue) +
+                        parseFloat(data.currentGHPoint)
+                      ).toString()
+                    }
+                  });
+
+                  await data.refetch();
+
+                  navigation.goBack();
+                  this.setState({ loading: false });
+                }}
+              >
+                <Ionicons
+                  style={styles.addIcon}
+                  name="ios-add-circle-outline"
+                  size={70}
+                  color="blue"
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.goBack();
+                }}
+                style={styles.dismiss}
+              >
+                <Text style={styles.buttonText}>Dismiss</Text>
+              </TouchableOpacity>
+            )}
+          </ScrollView>
+        </View>
+      </View>
+    ) : (
+      <Text>Loading</Text>
+    );
+  }
+}
 
 ActivityModal.propTypes = {
   data: PropTypes.object.isRequired,

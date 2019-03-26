@@ -77,6 +77,7 @@ class LogIn extends Component {
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
+              console.log("In Login - Before navigate to Activities");
               this.props.navigation.navigate("Activities");
             } catch (e) {
               return {
