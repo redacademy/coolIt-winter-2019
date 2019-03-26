@@ -8,7 +8,7 @@ import ActivityModal from "../screens/ActivityModal";
 import CalculationModal from "../screens/CalculationModal";
 import JoinUs from "../screens/JoinUs";
 import AuthLoadingScreen from "../screens/AutheticationLoadingScreen";
-import {sharedNavigationOptions} from "./config";
+import { sharedNavigationOptions } from "./config";
 import DisconnectModal from "../screens/DisconnectModal";
 import Activities from "../screens/Activities";
 import LogIn from "../screens/LogIn";
@@ -26,7 +26,8 @@ const AppStack = createStackNavigator(
     Layout: NavigationLayout,
     Activity: ActivityModal,
     Calculation: CalculationModal,
-    Disconnect: DisconnectModal
+    Disconnect: DisconnectModal,
+    Delete: DeleteModal
   },
   {
     mode: "modal",
@@ -48,7 +49,7 @@ const OnboardingStack = createStackNavigator(
   },
   {
     headerMode: "none",
-    defaultNavigationOptions: ({navigation}) => ({
+    defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
   }
@@ -62,7 +63,7 @@ const LoginStack = createStackNavigator(
   },
   {
     headerMode: "none",
-    defaultNavigationOptions: ({navigation}) => ({
+    defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
   }
