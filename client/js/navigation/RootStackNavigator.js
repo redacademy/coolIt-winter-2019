@@ -5,6 +5,7 @@ import {
 } from "react-navigation";
 import NavigationLayout from "./NavigationLayout";
 import ActivityModal from "../screens/ActivityModal";
+import CalculationModal from "../screens/CalculationModal";
 import JoinUs from "../screens/JoinUs";
 import AuthLoadingScreen from "../screens/AutheticationLoadingScreen";
 import { sharedNavigationOptions } from "./config";
@@ -18,14 +19,14 @@ import TakeQuiz from "../screens/TakeQuiz";
 import CarbonQuiz from "../screens/CarbonQuiz";
 import Score from "../screens/Score";
 import BeginChallenge from "../screens/BeginChallenge";
-import DeactivateModal from "../screens/DeactivateModal";
+import DeleteModal from "../screens/DeleteModal";
 
 const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout,
     Activity: ActivityModal,
-    Disconnect: DisconnectModal,
-    Deactivate: DeactivateModal
+    Calculation: CalculationModal,
+    Disconnect: DisconnectModal
   },
   {
     mode: "modal",
@@ -36,8 +37,8 @@ const AppStack = createStackNavigator(
 const OnboardingStack = createStackNavigator(
   {
     Landing: Landing,
-    ProgramCode: ProgramCode,
     JoinUs: JoinUs,
+    ProgramCode: ProgramCode,
     AccountCreated: AccountCreated,
     TakeQuiz: TakeQuiz,
     CarbonQuiz: CarbonQuiz,

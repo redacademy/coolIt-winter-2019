@@ -121,7 +121,12 @@ const Activities = ({
             </View>
           );
         })}
-        <TouchableOpacity onPress={() => {}} style={styles.impact}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Calculation");
+          }}
+          style={styles.impact}
+        >
           <Text style={styles.buttonText}>Calculate My Impact</Text>
         </TouchableOpacity>
         <View style={styles.bottom}>
