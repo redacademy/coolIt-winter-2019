@@ -22,6 +22,7 @@ const AUTHENTICATE_USER = gql`
     }
   }
 `;
+
 class JoinUs extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +45,6 @@ class JoinUs extends Component {
     if (!values.password) {
       errors.password = "Password is required";
     }
-
     return errors;
   };
 
@@ -83,11 +83,11 @@ class JoinUs extends Component {
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("AccountCreated");
+              this.props.navigation.navigate("ProgramCode");
             } catch (e) {
               console.log(e);
               return {
-                [FORM_ERROR]: "Email is already registered."
+                [FORM_ERROR]: "Email is invalid or already registered."
               };
             }
           }}
@@ -150,13 +150,23 @@ class JoinUs extends Component {
                   </View>
                 )}
               </Field>
-              <TouchableOpacity
-                onPress={handleSubmit}
-                style={styles.button}
-                disabled={pristine || invalid}
-              >
-                <Text style={styles.buttonText}>Join</Text>
-              </TouchableOpacity>
+              {!pristine && !invalid ? (
+                <TouchableOpacity
+                  onPress={handleSubmit}
+                  style={styles.button}
+                  disabled={pristine || invalid}
+                >
+                  <Text style={styles.buttonText}>Join</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {}}
+                  style={styles.disabled}
+                  disabled={pristine || invalid}
+                >
+                  <Text style={styles.buttonText}>Join</Text>
+                </TouchableOpacity>
+              )}
               {hasSubmitErrors && (
                 <Text style={styles.errorMessage}>{submitError}</Text>
               )}
@@ -174,6 +184,6 @@ class JoinUs extends Component {
   }
 }
 
-export default compose(graphql(AUTHENTICATE_USER, { name: "signupMutation" }))(
+export default compose(graphql(AUTHENTICATE_USER, { name: "loginMutation" }))(
   JoinUs
 );

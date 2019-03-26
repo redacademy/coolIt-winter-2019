@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   flexText: {
     alignItems: "center",
     flex: 0.7,
-    justifyContent: "space-between"
+    justifyContent: "space-around"
   },
   background: {
     width: "100%",
@@ -27,12 +27,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.light,
     textAlign: "center",
     fontSize: 18
-  },
-  checkbox: {
-    fontFamily: fonts.light,
-    textAlign: "center",
-    fontSize: 14,
-    paddingLeft: 15
   },
   logo: {
     width: 212,
@@ -65,11 +59,6 @@ const styles = StyleSheet.create({
     color: colors.white,
     paddingTop: 10,
     paddingBottom: 10
-  },
-  flex: {
-    flex: 0,
-    flexDirection: "row",
-    justifyContent: "center"
   }
 });
 
