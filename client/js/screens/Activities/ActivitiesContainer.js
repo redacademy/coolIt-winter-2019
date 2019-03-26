@@ -5,6 +5,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
 import styles from "./styles";
+import FullScreenLoader from "../../components/FullScreenLoader";
 
 const imageRelation = {
   "Getting Around": require("../../assets/icons/bike.png"),

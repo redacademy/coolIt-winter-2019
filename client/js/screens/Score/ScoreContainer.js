@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Score from "./Score";
 import PropTypes from "prop-types";
 
-import { ActivityIndicator, AsyncStorage, Text } from "react-native";
+import { AsyncStorage, Text } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import CalculationLoader from "../../components/CalculationLoader";
 
 class ScoreContainer extends Component {
   constructor(props) {
@@ -32,8 +33,7 @@ class ScoreContainer extends Component {
         `}
       >
         {({ loading, error, data }) => {
-          console.log(data);
-          if (loading) return <ActivityIndicator />;
+          if (loading) return <CalculationLoader style={styles.loader} />;
           if (error) return <Text>{error}</Text>;
 
           return <Score data={data} />;
