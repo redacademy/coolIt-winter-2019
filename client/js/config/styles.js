@@ -7,7 +7,8 @@ export const colors = {
   disabled: "#dee0db",
   red: 'red',
   darkGreen: "#4F7627",
-  gray: "#D8D8D8"
+  gray: "#D8D8D8",
+  red: "#E74C3C"
 };
 
 export const fonts = {

@@ -46,11 +46,11 @@ const Account = ({ navigation }) => {
           <View style={styles.buttonSeparator} />
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Deactivate");
+              navigation.navigate("Delete");
             }}
             style={styles.logIn}
           >
-            <Text style={styles.buttonText}>Deactivate Account</Text>
+            <Text style={styles.buttonText}>Delete Account</Text>
           </TouchableOpacity>
           <View style={styles.buttonSeparator} />
 

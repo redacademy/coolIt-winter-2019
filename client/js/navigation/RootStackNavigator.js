@@ -18,14 +18,14 @@ import TakeQuiz from "../screens/TakeQuiz";
 import CarbonQuiz from "../screens/CarbonQuiz";
 import Score from "../screens/Score";
 import BeginChallenge from "../screens/BeginChallenge";
-import DeactivateModal from "../screens/DeactivateModal";
+import DeleteModal from "../screens/DeleteModal";
 
 const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout,
     Activity: ActivityModal,
     Disconnect: DisconnectModal,
-    Deactivate: DeactivateModal
+    Delete: DeleteModal
   },
   {
     mode: "modal",
