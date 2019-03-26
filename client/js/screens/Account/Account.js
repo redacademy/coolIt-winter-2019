@@ -9,11 +9,12 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-const Account = ({ navigation }) => {
+const Account = ({ navigation, currentStudent, refetch }) => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
     navigation.navigate("Auth");
   };
+  console.log(currentStudent);
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <View style={styles.container}>
@@ -24,22 +25,23 @@ const Account = ({ navigation }) => {
         </View>
 
         <View style={styles.menu}>
-          <View>
-            <View style={styles.buttonSeparator} />
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Disconnect");
-              }}
-              style={styles.logIn}
-            >
-              <Text style={styles.buttonText}>
-                Disconnect My Account From The Cool It Program
-              </Text>
-            </TouchableOpacity>
+          {currentStudent[0].programCode ? (
+            <View>
+              <View style={styles.buttonSeparator} />
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Disconnect", { data: { refetch } });
+                }}
+                style={styles.logIn}
+              >
+                <Text style={styles.buttonText}>
+                  Disconnect My Account From The Cool It Program
+                </Text>
+              </TouchableOpacity>
 
-            <View style={styles.buttonSeparator} />
-          </View>
-
+              <View style={styles.buttonSeparator} />
+            </View>
+          ) : null}
           <View style={styles.buttonSeparator} />
           <TouchableOpacity
             onPress={() => {
