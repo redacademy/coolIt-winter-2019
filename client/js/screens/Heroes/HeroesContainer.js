@@ -5,7 +5,7 @@ import { Query, compose, graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { AsyncStorage, Text } from "react-native";
 import FullScreenLoader from "../../components/FullScreenLoader";
-
+import styles from "./styles";
 class HeroesContainer extends Component {
   constructor(props) {
     super(props);
