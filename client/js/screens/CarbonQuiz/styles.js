@@ -61,12 +61,14 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 0,
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    paddingBottom: 30
   },
   singleButtonContainer: {
     flex: 0,
     flexDirection: "row",
-    justifyContent: "center"
+    justifyContent: "center",
+    paddingBottom: 30
   }
 });
 

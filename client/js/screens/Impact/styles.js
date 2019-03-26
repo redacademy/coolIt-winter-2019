@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
   buttonText: { width: "100%", textAlign: "center" },
   buttonTextSelected: { width: "100%", textAlign: "center", color: "#ffffff" },
-  footerContainer: { paddingTop: 20 },
+  footerContainer: { paddingTop: 25, height: "100%" },
   footerContent: {
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -102,12 +102,13 @@ const styles = StyleSheet.create({
   footerIcons: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "30%"
+    width: "30%",
+    paddingBottom: "20%"
   },
   footerText: {
     fontSize: 16,
     color: "#ffffff",
-    paddingBottom: 8
+    paddingBottom: 15
   },
   graph: {
     height: 220,

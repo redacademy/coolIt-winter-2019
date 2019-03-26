@@ -5,7 +5,8 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  ImageBackground
+  ImageBackground,
+  Linking
 } from "react-native";
 import styles from "./styles";
 
@@ -153,7 +154,7 @@ class Impact extends Component {
         <View style={styles.footerContainer}>
           <ImageBackground
             source={require("../../assets/images/impact/buttomBanner.png")}
-            style={{ width: "100%", height: 170 }}
+            style={{ width: "100%", height: "45%" }}
           >
             <View style={styles.footerContent}>
               <Text style={styles.footerTitle}>Share</Text>
@@ -161,15 +162,31 @@ class Impact extends Component {
                 Share Your Impact With Friends
               </Text>
               <View style={styles.footerIcons}>
-                <Image
-                  source={require("../../assets/images/impact/facebook.png")}
-                />
-                <Image
-                  source={require("../../assets/images/impact/twitter.png")}
-                />
-                <Image
-                  source={require("../../assets/images/impact/email.png")}
-                />
+                <TouchableOpacity
+                  onPress={() =>
+                    Linking.openURL("https://www.facebook.com/BCSEA/")
+                  }
+                >
+                  <Image
+                    source={require("../../assets/images/impact/facebook.png")}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => Linking.openURL("https://twitter.com/BCSEA")}
+                >
+                  <Image
+                    source={require("../../assets/images/impact/twitter.png")}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    Linking.openURL("https://www.bcsea.org/join-community")
+                  }
+                >
+                  <Image
+                    source={require("../../assets/images/impact/email.png")}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
           </ImageBackground>
