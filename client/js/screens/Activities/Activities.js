@@ -22,6 +22,7 @@ const Activities = ({
   filteredActivity,
   refetch,
   currentPoint,
+  currentGHPoint,
   dayPoint
 }) => {
   const filtered = filteredActivity.map(filteredActivity => {
@@ -72,7 +73,8 @@ const Activities = ({
                               date,
                               refetch,
                               added: false,
-                              currentPoint
+                              currentPoint,
+                              currentGHPoint
                             }
                           });
                         }}

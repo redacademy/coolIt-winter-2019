@@ -3,7 +3,7 @@ import { View, Text, ActivityIndicator, ImageBackground } from "react-native";
 import styles from "./styles";
 import { colors } from "../../config/styles";
 
-export default class FullScreenLoader extends Component {
+export default class CalculationLoader extends Component {
   render() {
     return (
       <View>
@@ -17,7 +17,7 @@ export default class FullScreenLoader extends Component {
               size="large"
               color={colors.green}
             />
-            <Text style={styles.text}>Loading...</Text>
+            <Text style={styles.text}>Calculating your results!</Text>
           </View>
         </ImageBackground>
       </View>

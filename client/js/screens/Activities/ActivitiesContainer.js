@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Activities from "./Activities";
-import { ActivityIndicator, AsyncStorage } from "react-native";
+import { AsyncStorage } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
 import styles from "./styles";
+import FullScreenLoader from "../../components/FullScreenLoader";
 
 const imageRelation = {
   "Getting Around": require("../../assets/icons/bike.png"),
@@ -58,6 +59,7 @@ class ActivitiesContainer extends Component {
                 name
               }
               value
+              ghValue
             }
             allCategories {
               id
@@ -74,15 +76,17 @@ class ActivitiesContainer extends Component {
             }
             allUsers(filter: { id: $id }) {
               point
+              ghPoint
             }
           }
         `}
         variables={{ id: this.state.userId, date: this.state.date }}
       >
         {({ loading, error, data, refetch }) => {
-          if (loading) return <ActivityIndicator style={styles.loader} />;
+          if (loading) return <FullScreenLoader style={styles.loader} />;
           if (error) return <Text>{error}</Text>;
           let currentPoint = data.allUsers[0].point;
+          let currentGHPoint = data.allUsers[0].ghPoint;
           let dayPoint = data.allActivityLogs
             .map(a => a.activity.value)
             .reduce((arr, cur) => {
@@ -101,6 +105,7 @@ class ActivitiesContainer extends Component {
               refetch={refetch}
               currentPoint={currentPoint}
               dayPoint={dayPoint}
+              currentGHPoint={currentGHPoint}
             />
           );
         }}

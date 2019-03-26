@@ -19,7 +19,7 @@ import TakeQuiz from "../screens/TakeQuiz";
 import CarbonQuiz from "../screens/CarbonQuiz";
 import Score from "../screens/Score";
 import BeginChallenge from "../screens/BeginChallenge";
-// import DeactivateModal from "../screens/DeactivateModal";
+import DeleteModal from "../screens/DeleteModal";
 
 const AppStack = createStackNavigator(
   {
@@ -37,8 +37,8 @@ const AppStack = createStackNavigator(
 const OnboardingStack = createStackNavigator(
   {
     Landing: Landing,
-    ProgramCode: ProgramCode,
     JoinUs: JoinUs,
+    ProgramCode: ProgramCode,
     AccountCreated: AccountCreated,
     TakeQuiz: TakeQuiz,
     CarbonQuiz: CarbonQuiz,
@@ -74,11 +74,10 @@ export default createAppContainer(
       AuthLoading: AuthLoadingScreen,
       App: AppStack,
       Auth: OnboardingStack,
-
       Login: LoginStack
     },
     {
-      initialRouteName: "App"
+      initialRouteName: "Auth"
     }
   )
 );

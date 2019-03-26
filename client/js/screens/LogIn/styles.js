@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   bottom: {
     width: "100%",
-    height: "95%"
+    height: "90%"
   },
   backgroundBottom: {
     flex: 1,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   top: {
     width: "100%",
-    height: "95%"
+    height: "90%"
   },
   backgroundTop: {
     flex: 1,
@@ -52,6 +52,13 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     marginTop: 15
   },
+  disabled: {
+    width: "40%",
+    alignSelf: "center",
+    backgroundColor: colors.disabled,
+    borderRadius: 13,
+    marginTop: 15
+  },
   buttonText: {
     alignSelf: "center",
     fontFamily: fonts.light,
@@ -67,14 +74,17 @@ const styles = StyleSheet.create({
     width: 40
   },
   error: {
-    color: colors.green,
+    color: colors.red,
     fontFamily: fonts.light,
-    fontSize: 16
+    fontSize: 12,
+    fontWeight: 'normal',
+    paddingLeft: 15
   },
   errorMessage: {
-    color: colors.green,
+    color: colors.red,
     fontFamily: fonts.light,
-    fontSize: 16
+    fontSize: 12,
+    fontWeight: 'normal'
   }
 });
 
