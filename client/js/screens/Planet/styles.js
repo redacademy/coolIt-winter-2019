@@ -6,26 +6,23 @@ const styles = StyleSheet.create({
   },
   background: {
     height: Dimensions.get("window").height / 2,
-    width: Dimensions.get("window").width
+    width: Dimensions.get("window").width,
+    position: "relative"
   },
   iconImage: {
     padding: 12
   },
-  baby: { paddingLeft: "45%", marginTop: "25%", resizeMode: "contain" },
+  baby: { position: "absolute", left: 50, top: 140 },
   flower: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "flex-start",
-    resizeMode: "contain",
-    marginLeft: "20%"
+    position: "absolute",
+    left: 320,
+    top: 140
   },
-  mountain: { paddingLeft: "60%", marginTop: "5%", resizeMode: "contain" },
+  mountain: { position: "absolute", left: 120, top: 260 },
   tree: {
-    flexDirection: "row",
-    width: "70%",
-    justifyContent: "flex-end",
-    resizeMode: "contain",
-    marginTop: "20%"
+    position: "absolute",
+    left: 280,
+    top: 250
   }
 });
 
