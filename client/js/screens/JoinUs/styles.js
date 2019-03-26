@@ -7,6 +7,14 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%"
   },
+  messageBox: {
+    flexDirection: "row"
+  },
+  checkmark: {
+    position: "absolute",
+    right: 10,
+    top: 3
+  },
   bottom: {
     width: "100%",
     height: "95%"
@@ -43,7 +51,8 @@ const styles = StyleSheet.create({
     minWidth: "70%",
     padding: 5,
     paddingLeft: 15,
-    fontSize: 18
+    fontSize: 18,
+    position: "relative"
   },
   button: {
     width: "40%",
