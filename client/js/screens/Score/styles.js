@@ -3,8 +3,8 @@ import { colors, fonts, spacing } from "../../config/styles";
 
 const styles = StyleSheet.create({
   screen: {
-    alignSelf: 'center',
-    justifyContent: 'center'
+    alignSelf: "center",
+    justifyContent: "center"
   },
   background: {
     width: "100%",
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     top: "42%",
     left: "35%",
     fontFamily: fonts.light,
-    fontWeight: 'bold', 
+    fontWeight: "bold",
     fontSize: 42
   },
   great: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     paddingBottom: 25
   },
   button: {
-    width: '100%',
+    width: "100%",
     alignSelf: "center",
     backgroundColor: colors.green,
     borderRadius: 13
@@ -59,14 +59,19 @@ const styles = StyleSheet.create({
     color: colors.white,
     paddingTop: 8,
     paddingBottom: 8,
-    paddingRight: spacing.single*6,
-    paddingLeft: spacing.single*6
+    paddingRight: spacing.single * 6,
+    paddingLeft: spacing.single * 6
   },
   flex: {
     alignItems: "center",
     flex: 0.8,
     justifyContent: "space-around",
-    width: '80%'
+    width: "80%"
+  },
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 

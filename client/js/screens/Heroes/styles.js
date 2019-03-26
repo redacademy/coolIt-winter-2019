@@ -1,5 +1,5 @@
-import {StyleSheet, Dimensions} from "react-native";
-import {colors, fonts} from "../../config/styles";
+import { StyleSheet, Dimensions } from "react-native";
+import { colors, fonts } from "../../config/styles";
 
 const styles = StyleSheet.create({
   description: {
@@ -75,6 +75,11 @@ const styles = StyleSheet.create({
   },
   container: {
     height: Dimensions.get("window").height
+  },
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
