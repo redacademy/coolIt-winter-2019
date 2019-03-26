@@ -10,7 +10,7 @@ export const DateDisplay = props => {
     <View style={styles.date}>
       <TouchableOpacity
         onPress={() => {
-          props.dateChangeHandler(false);
+          props.dateChangeHandler(-1);
         }}
       >
         <Icon
@@ -20,12 +20,19 @@ export const DateDisplay = props => {
           color={colors.gray}
         />
       </TouchableOpacity>
-      <Text style={styles.dateDisplay}>
-        {moment(props.date).format("dddd, MMMM Do")}
-      </Text>
       <TouchableOpacity
         onPress={() => {
-          props.dateChangeHandler(true);
+          props.dateChangeHandler(0);
+        }}
+      >
+        <Text style={styles.dateDisplay}>
+          {moment(props.date).format("dddd, MMMM Do")}
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => {
+          props.dateChangeHandler(1);
         }}
       >
         <Icon

@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-const Account = ({ navigation }) => {
+const Account = ({ navigation, data }) => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
     navigation.navigate("Auth");
@@ -25,12 +25,6 @@ const Account = ({ navigation }) => {
 
         <View style={styles.menu}>
           <View style={styles.buttonSeparator} />
-          <TouchableOpacity onPress={() => {}} style={styles.logIn}>
-            <Text style={styles.buttonText}>Change Password</Text>
-          </TouchableOpacity>
-          <View style={styles.buttonSeparator} />
-
-          <View style={styles.buttonSeparator} />
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("Disconnect");
@@ -41,8 +35,8 @@ const Account = ({ navigation }) => {
               Disconnect My Account From The Cool It Program
             </Text>
           </TouchableOpacity>
-          <View style={styles.buttonSeparator} />
 
+          <View style={styles.buttonSeparator} />
           <View style={styles.buttonSeparator} />
           <TouchableOpacity
             onPress={() => {
@@ -53,7 +47,6 @@ const Account = ({ navigation }) => {
             <Text style={styles.buttonText}>Delete Account</Text>
           </TouchableOpacity>
           <View style={styles.buttonSeparator} />
-
           <View style={styles.buttonSeparator} />
           <TouchableOpacity onPress={_signOutAsync} style={styles.logIn}>
             <Text style={styles.buttonText}>Log out </Text>

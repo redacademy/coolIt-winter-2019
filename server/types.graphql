@@ -9,7 +9,9 @@ type User @model {
   point: Int @defaultValue(value:"0")
   isActive: Boolean @defaultValue(value: "false")
   quizScore: Int
+  createdAt: DateTime! # read-only
   ghPoint: String! @migrationValue(value: "42") @defaultValue(value:"0")
+  
 }
 
 type SchoolInfo @model {

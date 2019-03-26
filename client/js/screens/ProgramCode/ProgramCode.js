@@ -88,9 +88,9 @@ class ProgramCode extends Component {
                 }
               });
 
-              const user = result.data.createSchoolInfo;
+              // const user = result.data.createSchoolInfo;
 
-              await AsyncStorage.setItem("id", user.id);
+              // await AsyncStorage.setItem("id", user.id);
 
               this.props.navigation.navigate("AccountCreated");
             } catch (e) {
