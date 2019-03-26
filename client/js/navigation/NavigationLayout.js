@@ -35,6 +35,7 @@ const HeroesStack = createStackNavigator(
     Heroes: HeroesScreen
   },
   {
+    headerMode: "none",
     defaultNavigationOptions: ({navigation}) => ({
       ...sharedNavigationOptions(navigation)
     })

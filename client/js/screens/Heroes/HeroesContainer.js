@@ -1,19 +1,22 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Heroes from "./Heroes";
 import PropTypes from "prop-types";
-import { Query, compose, graphql } from "react-apollo";
+import {Query, compose, graphql} from "react-apollo";
 import gql from "graphql-tag";
+import NoProgramCode from "../../components/NoProgramCode";
 import { AsyncStorage, Text } from "react-native";
 import FullScreenLoader from "../../components/FullScreenLoader";
+
 import styles from "./styles";
+
 class HeroesContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = { userID: null };
+    this.state = {userID: null};
   }
   componentDidMount = () => {
     AsyncStorage.getItem("id").then(value => {
-      this.setState({ userID: value });
+      this.setState({userID: value});
     });
   };
   render() {
@@ -38,7 +41,7 @@ class HeroesContainer extends Component {
             a => a.id === this.state.userID
           );
           if (!currentStudent[0].programCode) {
-            return <Text> you are no in any program</Text>;
+            return <NoProgramCode />;
           }
           const listOfStudents = data.allUsers.filter(
             a => a.programCode === currentStudent[0].programCode
