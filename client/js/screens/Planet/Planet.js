@@ -1,9 +1,14 @@
 import React from "react";
-import {ScrollView, View, Image, FlatList, ImageBackground} from "react-native";
+import {
+  ScrollView,
+  View,
+  Image,
+  FlatList,
+  ImageBackground
+} from "react-native";
 import styles from "./styles";
 
-const Planet = ({data, icons}) => {
-  
+const Planet = ({ icons }) => {
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <View style={styles.mainContent}>
@@ -11,32 +16,31 @@ const Planet = ({data, icons}) => {
           source={require("../../assets/images/earth.png")}
           style={styles.background}
         >
-          <FlatList
-            style={styles.list}
-            data={data}
-            numColumns={4}
-            renderItem={({item}) => {
-              return (
-                <View style={styles.items}>
-                  <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={item} />
-                  </View>
-                </View>
-              );
-            }}
-            keyExtractor={index => "" + index}
+          <Image
+            source={require("../../assets/icons/baby-tree.png")}
+            style={styles.baby}
+          />
+          <Image
+            source={require("../../assets/icons/flower.png")}
+            style={styles.flower}
+          />
+          <Image
+            source={require("../../assets/icons/mountain.png")}
+            style={styles.mountain}
+          />
+          <Image
+            source={require("../../assets/icons/tree.png")}
+            style={styles.tree}
           />
         </ImageBackground>
         <FlatList
           style={styles.list}
           data={icons}
           numColumns={5}
-          renderItem={({item}) => {
+          renderItem={({ item }) => {
             return (
-              <View style={styles.items}>
-                <View style={styles.iconImage}>
-                  <Image style={styles.image} source={item} />
-                </View>
+              <View style={styles.iconImage}>
+                <Image style={styles.image} source={item} />
               </View>
             );
           }}
