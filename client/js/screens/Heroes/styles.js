@@ -1,7 +1,13 @@
-import { StyleSheet, Dimensions } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import {StyleSheet, Dimensions} from "react-native";
+import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
+  container: {
+    height: Dimensions.get("window").height - 30,
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-between"
+  },
   description: {
     fontSize: 26,
     fontWeight: "400",
@@ -32,7 +38,8 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 18,
     fontFamily: fonts.light,
-    padding: 3
+    padding: 3,
+    marginTop: 2
   },
   point: {
     padding: 3,
@@ -50,7 +57,7 @@ const styles = StyleSheet.create({
   itemSeparator: {
     height: 5,
     backgroundColor: colors.green,
-    paddingTop: 5,
+    marginTop: 25,
     width: "70%"
   },
   itemBottomSeparator: {
@@ -59,22 +66,18 @@ const styles = StyleSheet.create({
     width: "70%",
     position: "absolute",
     right: 0,
-    top: 60
+    top: 70,
+    marginTop: 25
   },
-
   mainContent: {
-    paddingTop: 15
+    paddingTop: 25
   },
-
+  contentTop: {
+    paddingTop: 25
+  },
   bottom: {
     flex: 1,
     justifyContent: "space-around"
-  },
-  valley: {
-    resizeMode: "cover"
-  },
-  container: {
-    height: Dimensions.get("window").height
   },
   loader: {
     flex: 1,
