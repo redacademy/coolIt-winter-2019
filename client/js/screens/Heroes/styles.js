@@ -78,6 +78,11 @@ const styles = StyleSheet.create({
   bottom: {
     flex: 1,
     justifyContent: "space-around"
+  },
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 

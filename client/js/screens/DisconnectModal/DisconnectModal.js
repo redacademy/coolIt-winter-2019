@@ -24,10 +24,12 @@ const DisconnectModal = ({ navigation, disconnect }) => {
       <View style={styles.modal}>
         <View style={styles.info}>
           <ScrollView contentContainerStyle={styles.scrollView}>
+          <View style={styles.top}>
             <Text style={styles.header}>
               Are you sure you want to disconnect your account from the Cool It!
               Program?
             </Text>
+            </View>
             <View style={styles.buttonAligner}>
               <TouchableOpacity
                 style={styles.disconnect}
