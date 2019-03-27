@@ -24,40 +24,44 @@ class AccountContainer extends Component {
     });
   };
   render() {
-    return (
-      <Query
-        query={gql`
-          query User {
-            allUsers {
-              id
-              programCode
+    if (!this.state.userID) {
+      return <FullScreenLoader />;
+    } else {
+      return (
+        <Query
+          query={gql`
+            query User {
+              allUsers {
+                id
+                programCode
+              }
             }
-          }
-        `}
-      >
-        {({ loading, error, data, refetch }) => {
-          if (loading) return <FullScreenLoader />;
-          if (error) return <Text>{error}</Text>;
-          console.log("here");
-          if (!this.state.userID) {
-            refetch();
-            return <FullScreenLoader />;
-          } else {
-            let currentStudent = data.allUsers.filter(
-              a => a.id === this.state.userID
-            );
-            console.log(currentStudent);
-            return (
-              <Account
-                navigation={this.props.navigation}
-                currentStudent={currentStudent}
-                refetch={refetch}
-              />
-            );
-          }
-        }}
-      </Query>
-    );
+          `}
+        >
+          {({ loading, error, data, refetch }) => {
+            if (loading) return <FullScreenLoader />;
+            if (error) return <Text>{error}</Text>;
+            console.log("here");
+            if (!this.state.userID) {
+              refetch();
+              return <FullScreenLoader />;
+            } else {
+              let currentStudent = data.allUsers.filter(
+                a => a.id === this.state.userID
+              );
+              console.log(currentStudent);
+              return (
+                <Account
+                  navigation={this.props.navigation}
+                  currentStudent={currentStudent}
+                  refetch={refetch}
+                />
+              );
+            }
+          }}
+        </Query>
+      );
+    }
   }
 }
 
