@@ -20,25 +20,33 @@ class ScoreContainer extends Component {
   };
 
   render() {
-    return (
-      <Query
-        variables={{ id: this.state.userId }}
-        query={gql`
-          query quizScore($id: ID!) {
-            allUsers(filter: { id: $id }) {
-              quizScore
+    if (!this.state.userId) {
+      return <CalculationLoader style={styles.loader} />;
+    } else {
+      return (
+        <Query
+          query={gql`
+            query quizScore($id: ID!) {
+              allUsers(filter: { id: $id }) {
+                quizScore
+              }
             }
-          }
-        `}
-      >
-        {({ loading, error, data }) => {
-          if (loading) return <CalculationLoader style={styles.loader} />;
-          if (error) return <Text>{error}</Text>;
-
-          return <Score data={data} />;
-        }}
-      </Query>
-    );
+          `}
+          variables={{ id: this.state.userId }}
+        >
+          {({ loading, error, data, refetch }) => {
+            if (loading) return <CalculationLoader style={styles.loader} />;
+            if (error) return <Text>{error}</Text>;
+            if (!data.allUsers) {
+              refetch();
+              return <CalculationLoader style={styles.loader} />;
+            } else {
+              return <Score data={data} />;
+            }
+          }}
+        </Query>
+      );
+    }
   }
 }
 
