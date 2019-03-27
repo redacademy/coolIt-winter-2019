@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textTransform: "uppercase",
     fontFamily: fonts.light,
-    textAlign: "center"
+    textAlign: "center",
+    paddingHorizontal: 20
   },
 
   itemSeparator: {

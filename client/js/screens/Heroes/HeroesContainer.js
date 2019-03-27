@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import Heroes from "./Heroes";
 import PropTypes from "prop-types";
-import {Query, compose, graphql} from "react-apollo";
+import {Query} from "react-apollo";
 import gql from "graphql-tag";
 import NoProgramCode from "../../components/NoProgramCode";
-import { AsyncStorage, Text } from "react-native";
+import {AsyncStorage, Text} from "react-native";
 import FullScreenLoader from "../../components/FullScreenLoader";
-
 import styles from "./styles";
 
 class HeroesContainer extends Component {
@@ -33,7 +32,7 @@ class HeroesContainer extends Component {
           }
         `}
       >
-        {({ loading, error, data }) => {
+        {({loading, error, data}) => {
           if (loading) return <FullScreenLoader style={styles.loader} />;
           if (error) return <Text>{error}</Text>;
 
