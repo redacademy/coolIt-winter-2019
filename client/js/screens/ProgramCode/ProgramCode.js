@@ -43,20 +43,8 @@ class ProgramCode extends Component {
 
   validate = values => {
     const errors = {};
-    if (!values.school) {
-      errors.school = "School name is required";
-    }
-    if (!values.teacher) {
-      errors.teacher = "Teacher name is required";
-    }
-    if (!values.division) {
-      errors.division = "Division is required";
-    }
-    if (!values.grade) {
-      errors.grade = "Grade info is required";
-    }
-    if (!values.code) {
-      errors.code = "Program code is required";
+    if (!values.programCode) {
+      errors.programCode = "Program code is required";
     }
     return errors;
   };
@@ -107,9 +95,6 @@ class ProgramCode extends Component {
                         placeholder="School"
                         onChangeText={text => this.setState({text})}
                       />
-                      <Text style={styles.error}>
-                        {meta.error && meta.touched && meta.error}
-                      </Text>
                     </View>
                   )}
                 </Field>
@@ -123,9 +108,6 @@ class ProgramCode extends Component {
                         placeholder="Teacher"
                         onChangeText={text => this.setState({text})}
                       />
-                      <Text style={styles.error}>
-                        {meta.error && meta.touched && meta.error}
-                      </Text>
                     </View>
                   )}
                 </Field>
@@ -140,9 +122,6 @@ class ProgramCode extends Component {
                         placeholder="Division"
                         onChangeText={text => this.setState({text})}
                       />
-                      <Text style={styles.error}>
-                        {meta.error && meta.touched && meta.error}
-                      </Text>
                     </View>
                   )}
                 </Field>
@@ -157,9 +136,6 @@ class ProgramCode extends Component {
                         placeholder="Grade"
                         onChangeText={text => this.setState({text})}
                       />
-                      <Text style={styles.error}>
-                        {meta.error && meta.touched && meta.error}
-                      </Text>
                     </View>
                   )}
                 </Field>
@@ -171,7 +147,7 @@ class ProgramCode extends Component {
                         editable={true}
                         maxLength={4}
                         {...input}
-                        placeholder="Code"
+                        placeholder="Program Code"
                         onChangeText={text => this.setState({text})}
                       />
                       <Text style={styles.error}>

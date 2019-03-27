@@ -63,9 +63,8 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    minWidth: "36%",
+    minWidth: "35%",
     padding: 5,
-    paddingLeft: 10,
     fontSize: 16,
     margin: 10
   },
@@ -74,7 +73,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: colors.green,
     borderRadius: 13,
-    marginTop: 15
   },
   disabled: {
     width: "40%",
