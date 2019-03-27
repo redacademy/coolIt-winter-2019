@@ -19,40 +19,44 @@ class HeroesContainer extends Component {
     });
   };
   render() {
-    return (
-      <Query
-        query={gql`
-          query User {
-            allUsers {
-              id
-              programCode
-              name
-              point
+    if (!this.state.userID) {
+      return <FullScreenLoader style={styles.loader} />;
+    } else {
+      return (
+        <Query
+          query={gql`
+            query User {
+              allUsers {
+                id
+                programCode
+                name
+                point
+              }
             }
-          }
-        `}
-      >
-        {({ loading, error, data }) => {
-          if (loading) return <FullScreenLoader style={styles.loader} />;
-          if (error) return <Text>{error}</Text>;
+          `}
+        >
+          {({ loading, error, data }) => {
+            if (loading) return <FullScreenLoader style={styles.loader} />;
+            if (error) return <Text>{error}</Text>;
 
-          const currentStudent = data.allUsers.filter(
-            a => a.id === this.state.userID
-          );
-          if (!currentStudent[0].programCode) {
-            return <NoProgramCode />;
-          }
-          const listOfStudents = data.allUsers.filter(
-            a => a.programCode === currentStudent[0].programCode
-          );
-          const sortedList = listOfStudents
-            .sort((a, b) => b.point - a.point)
-            .slice(0, 5);
+            const currentStudent = data.allUsers.filter(
+              a => a.id === this.state.userID
+            );
+            if (!currentStudent[0].programCode) {
+              return <NoProgramCode />;
+            }
+            const listOfStudents = data.allUsers.filter(
+              a => a.programCode === currentStudent[0].programCode
+            );
+            const sortedList = listOfStudents
+              .sort((a, b) => b.point - a.point)
+              .slice(0, 5);
 
-          return <Heroes data={sortedList} />;
-        }}
-      </Query>
-    );
+            return <Heroes data={sortedList} />;
+          }}
+        </Query>
+      );
+    }
   }
 }
 

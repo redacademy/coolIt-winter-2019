@@ -145,7 +145,16 @@ const Activities = ({
 
 Activities.propTypes = {
   data: PropTypes.array.isRequired,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+  categories: PropTypes.array.isRequired,
+  dateChangeHandler: PropTypes.func.isRequired,
+  image: PropTypes.object.isRequired,
+  filteredActivity: PropTypes.array.isRequired,
+  refetch: PropTypes.func.isRequired,
+  currentPoint: PropTypes.number.isRequired,
+  currentGHPoint: PropTypes.string.isRequired,
+  dayPoint: PropTypes.number.isRequired
 };
 
 export default Activities;

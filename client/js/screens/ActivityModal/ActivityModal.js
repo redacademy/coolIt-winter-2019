@@ -86,7 +86,6 @@ class ActivityModal extends Component {
                     });
 
                     console.log(data.currentGHPoint);
-
                     await addPoint({
                       variables: {
                         id: userId,
@@ -134,7 +133,9 @@ class ActivityModal extends Component {
 
 ActivityModal.propTypes = {
   data: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  addActivity: PropTypes.func.isRequired,
+  addPoint: PropTypes.func.isRequired
 };
 
 export default compose(

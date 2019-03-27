@@ -24,7 +24,7 @@ const AUTHENTICATE_USER = gql`
     }
   }
 `;
-
+import PropTypes from "prop-types";
 class JoinUs extends Component {
   constructor(props) {
     super(props);
@@ -74,6 +74,7 @@ class JoinUs extends Component {
           onSubmit={async value => {
             try {
               this.setState({ loading: true });
+              console.log(value);
               const result = await this.props.signupMutation({
                 variables: { email: value.email, password: value.password }
               });
@@ -84,7 +85,7 @@ class JoinUs extends Component {
               await AsyncStorage.setItem("id", user.id);
 
               this.props.navigation.navigate("ProgramCode", {
-                data: { id: user.id }
+                data: { id: user.id, name: value.name }
               });
             } catch (e) {
               return {
@@ -214,6 +215,10 @@ class JoinUs extends Component {
     );
   }
 }
+JoinUs.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  signupMutation: PropTypes.func.isRequired
+};
 
 export default compose(graphql(AUTHENTICATE_USER, { name: "signupMutation" }))(
   JoinUs

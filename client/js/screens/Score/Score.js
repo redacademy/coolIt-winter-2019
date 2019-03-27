@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 import { withNavigation } from "react-navigation";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const Score = props => {
   let { navigate } = props.navigation;
@@ -47,6 +47,8 @@ const Score = props => {
   );
 };
 
-// Score.propTypes = {};
+Score.propTypes = {
+  data: PropTypes.object.isRequired
+};
 
 export default withNavigation(Score);

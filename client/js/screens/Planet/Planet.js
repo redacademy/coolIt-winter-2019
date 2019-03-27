@@ -7,6 +7,7 @@ import {
   ImageBackground
 } from "react-native";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const Planet = ({ icons }) => {
   return (
@@ -50,5 +51,7 @@ const Planet = ({ icons }) => {
     </ScrollView>
   );
 };
-
+Planet.propTypes = {
+  icons: PropTypes.array.isRequired
+};
 export default Planet;
