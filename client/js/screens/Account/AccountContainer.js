@@ -24,9 +24,7 @@ class AccountContainer extends Component {
     });
   };
   render() {
-    if (!this.state.userID) {
-      return <FullScreenLoader />;
-    } else {
+    if (this.state.userID) {
       return (
         <Query
           query={gql`
@@ -41,7 +39,7 @@ class AccountContainer extends Component {
           {({ loading, error, data, refetch }) => {
             if (loading) return <FullScreenLoader />;
             if (error) return <Text>{error}</Text>;
-            console.log("here");
+
             if (!this.state.userID) {
               refetch();
               return <FullScreenLoader />;
@@ -49,7 +47,7 @@ class AccountContainer extends Component {
               let currentStudent = data.allUsers.filter(
                 a => a.id === this.state.userID
               );
-              console.log(currentStudent);
+
               return (
                 <Account
                   navigation={this.props.navigation}
@@ -61,6 +59,8 @@ class AccountContainer extends Component {
           }}
         </Query>
       );
+    } else {
+      return <FullScreenLoader />;
     }
   }
 }

@@ -77,8 +77,7 @@ class ProgramCode extends Component {
           onSubmit={async value => {
             try {
               this.setState({ loading: true });
-              console.log(this.props.data.id);
-              console.log(value);
+
               let result = await this.props.schoolInfoMutation({
                 variables: {
                   id: this.props.data.id,
@@ -90,7 +89,6 @@ class ProgramCode extends Component {
                   name: this.props.data.name
                 }
               });
-              console.log(result);
 
               this.props.navigation.navigate("AccountCreated");
             } catch (e) {
