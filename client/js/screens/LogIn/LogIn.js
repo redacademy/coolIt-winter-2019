@@ -84,6 +84,7 @@ class LogIn extends Component {
               this.props.navigation.navigate("Activities");
               this.setState({ loading: false });
             } catch (e) {
+              this.setState({ loading: false });
               return {
                 [FORM_ERROR]: "Incorrect email and/or password"
               };

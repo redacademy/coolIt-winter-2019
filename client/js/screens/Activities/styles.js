@@ -80,21 +80,12 @@ const styles = StyleSheet.create({
   topSection: {
     flexDirection: "row",
     paddingLeft: 25,
-    alignItems: 'flex-end'
+    alignItems: "flex-end"
   },
   pointDisplay: {
     fontSize: 16,
     fontFamily: fonts.light,
-<<<<<<< HEAD
-    fontWeight: "600"
-  },
-  loader: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-=======
-    fontWeight: 'normal'
->>>>>>> develop
+    fontWeight: "normal"
   }
 });
 

@@ -83,7 +83,9 @@ class JoinUs extends Component {
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("ProgramCode");
+              this.props.navigation.navigate("ProgramCode", {
+                data: { id: user.id }
+              });
             } catch (e) {
               return {
                 [FORM_ERROR]: "Email is invalid or already registered."
