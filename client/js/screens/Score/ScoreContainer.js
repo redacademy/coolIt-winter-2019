@@ -6,6 +6,7 @@ import { AsyncStorage, Text } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import CalculationLoader from "../../components/CalculationLoader";
+import styles from "./styles";
 
 class ScoreContainer extends Component {
   constructor(props) {

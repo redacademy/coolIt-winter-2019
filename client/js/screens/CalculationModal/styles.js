@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../config/styles";
 
 const styles = StyleSheet.create({
   modalContainer: {
@@ -29,7 +28,8 @@ const styles = StyleSheet.create({
   text: { textAlign: "center", fontSize: 18 },
   container: { flexDirection: "column", justifyContent: "space-around" },
   spacer: { height: "30%", width: "100%" },
-  background: { width: "100%", height: "100%" }
+  background: { width: "100%", height: "110%" },
+  icon: { height: 35 }
 });
 
 export default styles;
