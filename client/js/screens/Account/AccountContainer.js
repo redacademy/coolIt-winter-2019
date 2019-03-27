@@ -4,10 +4,6 @@ import PropTypes from "prop-types";
 import { AsyncStorage, Text } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-
-import { AsyncStorage, Text } from "react-native";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
 import FullScreenLoader from "../../components/FullScreenLoader";
 
 class AccountContainer extends Component {
