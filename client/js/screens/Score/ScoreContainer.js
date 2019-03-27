@@ -38,9 +38,6 @@ class ScoreContainer extends Component {
           {({ loading, error, data, refetch }) => {
             if (loading) return <CalculationLoader style={styles.loader} />;
             if (error) return <Text>{error}</Text>;
-            {
-              console.log(this.state.userId);
-            }
             if (!data.allUsers[0].quizScore) {
               refetch();
               return <CalculationLoader style={styles.loader} />;

@@ -34,19 +34,10 @@ class AccountContainer extends Component {
             if (loading) return <FullScreenLoader />;
             if (error) return <Text>{error}</Text>;
             if (!data.allUsers) {
-              // let currentStudent = data.allUsers.filter(
-              //   a => a.id === this.state.userID
-              // );
-              // console.log(currentStudent);
               refetch();
               return <FullScreenLoader />;
             } else {
               console.log(data.allUsers);
-
-              // let currentStudent = data.allUsers.filter(
-              //   a => a.id === this.state.userID
-              // );
-              // console.log(currentStudent);
 
               return (
                 <Account
