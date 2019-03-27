@@ -4,7 +4,7 @@ type User @model {
   password: String!
   name: String
   schoolInfo: SchoolInfo @relation(name: "SchoolUsers")
-  programCode: String
+  programCode: String 
   activityLog: [ActivityLog!]! @relation(name:"UserActivityLogs")
   point: Int @defaultValue(value:"0")
   isActive: Boolean @defaultValue(value: "false")

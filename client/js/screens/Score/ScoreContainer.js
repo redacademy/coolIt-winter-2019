@@ -28,6 +28,7 @@ class ScoreContainer extends Component {
           query={gql`
             query quizScore($id: ID!) {
               allUsers(filter: { id: $id }) {
+                id
                 quizScore
               }
             }
@@ -37,7 +38,7 @@ class ScoreContainer extends Component {
           {({ loading, error, data, refetch }) => {
             if (loading) return <CalculationLoader style={styles.loader} />;
             if (error) return <Text>{error}</Text>;
-            if (!data.allUsers) {
+            if (!data.allUsers[0].quizScore) {
               refetch();
               return <CalculationLoader style={styles.loader} />;
             } else {

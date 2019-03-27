@@ -24,7 +24,7 @@ const Account = ({ navigation, currentStudent, refetch }) => {
           <Text style={styles.description}>Account</Text>
           <View style={styles.itemBottomSeparator} />
           <View style={styles.menu}>
-            {currentStudent[0].programCode ? (
+            {currentStudent.programCode ? (
               <View>
                 <View style={styles.buttonSeparator} />
                 <TouchableOpacity
@@ -71,7 +71,7 @@ const Account = ({ navigation, currentStudent, refetch }) => {
 };
 Account.propTypes = {
   navigation: PropTypes.object.isRequired,
-  currentStudent: PropTypes.array.isRequired,
+  currentStudent: PropTypes.object.isRequired,
   refetch: PropTypes.func.isRequired
 };
 

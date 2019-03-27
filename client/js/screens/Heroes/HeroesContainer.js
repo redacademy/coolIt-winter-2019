@@ -19,9 +19,7 @@ class HeroesContainer extends Component {
     });
   };
   render() {
-    if (!this.state.userID) {
-      return <FullScreenLoader style={styles.loader} />;
-    } else {
+    if (this.state.userID) {
       return (
         <Query
           query={gql`
@@ -35,27 +33,38 @@ class HeroesContainer extends Component {
             }
           `}
         >
-          {({ loading, error, data }) => {
+          {({ loading, error, data, refetch }) => {
             if (loading) return <FullScreenLoader style={styles.loader} />;
             if (error) return <Text>{error}</Text>;
+            if (!data.allUsers[0]) {
+              refetch();
+              return <FullScreenLoader style={styles.loader} />;
+            } else {
+              let currentStudent = data.allUsers.filter(
+                a => a.id === this.state.userID
+              );
+              if (currentStudent[0]) {
+                if (!currentStudent[0].programCode) {
+                  return <NoProgramCode />;
+                }
+                const listOfStudents = data.allUsers.filter(
+                  a => a.programCode === currentStudent[0].programCode
+                );
+                const sortedList = listOfStudents
+                  .sort((a, b) => b.point - a.point)
+                  .slice(0, 5);
 
-            const currentStudent = data.allUsers.filter(
-              a => a.id === this.state.userID
-            );
-            if (!currentStudent[0].programCode) {
-              return <NoProgramCode />;
+                return <Heroes data={sortedList} />;
+              } else {
+                refetch();
+                return <FullScreenLoader style={styles.loader} />;
+              }
             }
-            const listOfStudents = data.allUsers.filter(
-              a => a.programCode === currentStudent[0].programCode
-            );
-            const sortedList = listOfStudents
-              .sort((a, b) => b.point - a.point)
-              .slice(0, 5);
-
-            return <Heroes data={sortedList} />;
           }}
         </Query>
       );
+    } else {
+      return <FullScreenLoader style={styles.loader} />;
     }
   }
 }

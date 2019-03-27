@@ -21,30 +21,28 @@ class AccountContainer extends Component {
       return (
         <Query
           query={gql`
-            query User {
-              allUsers {
+            query User($id: ID!) {
+              allUsers(filter: { id: $id }) {
                 id
                 programCode
               }
             }
           `}
+          variables={{ id: this.state.userID }}
         >
           {({ loading, error, data, refetch }) => {
             if (loading) return <FullScreenLoader />;
             if (error) return <Text>{error}</Text>;
-
-            if (!this.state.userID) {
+            if (!data.allUsers) {
               refetch();
               return <FullScreenLoader />;
             } else {
-              let currentStudent = data.allUsers.filter(
-                a => a.id === this.state.userID
-              );
+              console.log(data.allUsers);
 
               return (
                 <Account
                   navigation={this.props.navigation}
-                  currentStudent={currentStudent}
+                  currentStudent={data.allUsers[0]}
                   refetch={refetch}
                 />
               );
