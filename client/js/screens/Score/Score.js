@@ -11,7 +11,6 @@ import { withNavigation } from "react-navigation";
 // import PropTypes from "prop-types";
 
 const Score = props => {
-  console.log(props);
   let { navigate } = props.navigation;
   return (
     <ImageBackground
