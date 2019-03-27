@@ -71,7 +71,7 @@ const Account = ({ navigation, currentStudent, refetch }) => {
 };
 Account.propTypes = {
   navigation: PropTypes.object.isRequired,
-  currentStudent: PropTypes.array.isRequired,
+  currentStudent: PropTypes.object.isRequired,
   refetch: PropTypes.func.isRequired
 };
 
