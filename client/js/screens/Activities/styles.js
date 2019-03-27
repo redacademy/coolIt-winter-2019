@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   topBackground: {
-    width: "100%",
+    width: "100%"
   },
   impact: {
     width: "60%",
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
   dateText: {
     justifyContent: "center",
     alignItems: "center"
-
   },
   buttonText: {
     alignSelf: "center",
@@ -51,13 +50,11 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   headerAction: {
-    paddingTop: 25,
     fontFamily: fonts.light
   },
   section: {
     textTransform: "uppercase",
     fontFamily: fonts.light,
-    fontWeight: "500",
     fontSize: 16,
     paddingLeft: 10
   },
@@ -82,15 +79,13 @@ const styles = StyleSheet.create({
   },
   topSection: {
     flexDirection: "row",
-    paddingTop: 25,
-    paddingBottom: 10,
-    paddingLeft: 25
+    paddingLeft: 25,
+    alignItems: 'flex-end'
   },
   pointDisplay: {
-    paddingTop: 10,
     fontSize: 16,
     fontFamily: fonts.light,
-    fontWeight: "600"
+    fontWeight: 'normal'
   }
 });
 

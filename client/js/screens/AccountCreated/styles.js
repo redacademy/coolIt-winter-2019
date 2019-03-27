@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     height: 100
   },
   flexContent: {
-    flex: 1,
+    flex: 1.25,
     alignItems: "center",
     justifyContent: "space-around"
   },
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
   },
   created: {
     fontFamily: fonts.light,
-    fontSize: 20
+    fontSize: 20,
+    paddingBottom: 15
   },
   button: {
     width: "40%",
