@@ -86,7 +86,6 @@ class ActivityModal extends Component {
                     });
 
                     console.log(data.currentGHPoint);
-
                     await addPoint({
                       variables: {
                         id: userId,

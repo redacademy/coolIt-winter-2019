@@ -19,9 +19,11 @@ const ADD_SCHOOL_INFO = gql`
     $school: String
     $teacher: String
     $id: ID!
+    $name: String
   ) {
     updateUser(
       id: $id
+      name: $name
       programCode: $programCode
       schoolInfo: {
         division: $division
@@ -33,6 +35,7 @@ const ADD_SCHOOL_INFO = gql`
     ) {
       id
       programCode
+      name
       schoolInfo {
         programCode
       }
@@ -74,8 +77,7 @@ class ProgramCode extends Component {
           onSubmit={async value => {
             try {
               this.setState({ loading: true });
-              console.log(this.props.data.id);
-              console.log(value);
+
               let result = await this.props.schoolInfoMutation({
                 variables: {
                   id: this.props.data.id,
@@ -83,10 +85,10 @@ class ProgramCode extends Component {
                   grade: parseInt(value.grade),
                   programCode: value.programCode,
                   school: value.school,
-                  teacher: value.teacher
+                  teacher: value.teacher,
+                  name: this.props.data.name
                 }
               });
-              console.log(result);
 
               this.props.navigation.navigate("AccountCreated");
             } catch (e) {

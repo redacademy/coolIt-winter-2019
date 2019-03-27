@@ -81,8 +81,8 @@ class LogIn extends Component {
               await AsyncStorage.setItem("id", user.id);
 
               console.log("In Login - Before navigate to Activities");
-              this.props.navigation.navigate("Activities");
               this.setState({ loading: false });
+              this.props.navigation.navigate("Activities");
             } catch (e) {
               this.setState({ loading: false });
               return {
@@ -96,7 +96,8 @@ class LogIn extends Component {
             pristine,
             invalid,
             hasSubmitErrors,
-            submitError
+            submitError,
+            form
           }) => (
             <View style={styles.flexContent}>
               <Text style={styles.text}>Log In</Text>
