@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 import { withNavigation } from "react-navigation";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const BeginChallenge = props => {
   let { navigate } = props.navigation;
@@ -41,7 +41,10 @@ const BeginChallenge = props => {
                 savings and effort required.
               </Text>
             </View>
-            <TouchableOpacity onPress={() => navigate('Activities')} style={styles.button}>
+            <TouchableOpacity
+              onPress={() => navigate("Activities")}
+              style={styles.button}
+            >
               <Text style={styles.buttonText}>Let's begin</Text>
             </TouchableOpacity>
           </View>
@@ -57,6 +60,8 @@ const BeginChallenge = props => {
   );
 };
 
-// BeginChallenge.propTypes = {};
+BeginChallenge.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(BeginChallenge);

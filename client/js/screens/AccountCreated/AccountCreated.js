@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import { withNavigation } from "react-navigation";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const AccountCreated = props => {
   let { navigate } = props.navigation;
@@ -38,6 +38,8 @@ const AccountCreated = props => {
   );
 };
 
-// AccountCreated.propTypes = {};
+AccountCreated.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(AccountCreated);

@@ -13,6 +13,7 @@ import styles from "./styles";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { FORM_ERROR } from "final-form";
+import PropTypes from "prop-types";
 
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
@@ -162,6 +163,10 @@ class LogIn extends Component {
     );
   }
 }
+LogIn.propTypes = {
+  loginMutation: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 
 export default compose(graphql(AUTHENTICATE_USER, { name: "loginMutation" }))(
   LogIn

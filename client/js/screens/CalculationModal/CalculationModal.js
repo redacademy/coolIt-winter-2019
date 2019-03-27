@@ -7,6 +7,7 @@ import {
   ImageBackground
 } from "react-native";
 import styles from "./styles";
+import PropTypes from "prop-types";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 const CalculationModal = props => {
@@ -49,5 +50,7 @@ const CalculationModal = props => {
     </ImageBackground>
   );
 };
-
+CalculationModal.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 export default CalculationModal;

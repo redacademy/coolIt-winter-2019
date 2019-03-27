@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 class QuizOptions extends Component {
   constructor(props) {
@@ -39,5 +40,10 @@ class QuizOptions extends Component {
     });
   }
 }
+QuizOptions.propTypes = {
+  data: PropTypes.array.isRequired,
+  userSelectionHandler: PropTypes.func.isRequired,
+  question: PropTypes.string.isRequired
+};
 
 export default QuizOptions;
