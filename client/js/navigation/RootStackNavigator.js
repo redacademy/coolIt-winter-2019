@@ -26,7 +26,8 @@ const AppStack = createStackNavigator(
     Layout: NavigationLayout,
     Activity: ActivityModal,
     Calculation: CalculationModal,
-    Disconnect: DisconnectModal
+    Disconnect: DisconnectModal,
+    Delete: DeleteModal
   },
   {
     mode: "modal",

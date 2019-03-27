@@ -2,17 +2,30 @@ import {StyleSheet, Dimensions} from "react-native";
 import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
+  container: {
+    height: Dimensions.get("window").height - 80,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    paddingTop: 20
+  },
   description: {
     fontSize: 26,
     fontWeight: "400",
     textAlign: "center",
-    fontFamily: fonts.bold
+    fontFamily: fonts.bold,
+    paddingBottom: 10
+  },
+  mainContent: {
+    paddingTop: 25
+  },
+  menu: {
+    paddingVertical: 20
   },
   itemSeparator: {
     height: 5,
     backgroundColor: colors.green,
-    paddingTop: 5,
-    width: "70%"
+    width: "70%",
+    marginTop: 25
   },
   itemBottomSeparator: {
     height: 5,
@@ -20,30 +33,8 @@ const styles = StyleSheet.create({
     width: "70%",
     position: "absolute",
     right: 0,
-    top: 70
+    top: 100
   },
-  mainContent: {
-    paddingTop: 25
-  },
-  bottom: {
-    flex: 1,
-    justifyContent: "space-around",
-    paddingTop: 25,
-    marginTop: 25
-  },
-  valley: {
-    resizeMode: "cover",
-    paddingTop: 25,
-    marginTop: 25
-  },
-  container: {
-    height: Dimensions.get("window").height,
-    paddingTop: 25
-  },
-  contentContainer: {
-    paddingTop: 25
-  },
-
   buttonSeparator: {
     height: 1,
     backgroundColor: "#e6e6e6",
@@ -54,9 +45,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     fontFamily: fonts.light,
     padding: 12
-  },
-  menu: {
-    paddingTop: 25
   }
 });
 

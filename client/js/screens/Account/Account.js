@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-const Account = ({ navigation, currentStudent, refetch }) => {
+const Account = ({navigation, currentStudent, refetch}) => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
     navigation.navigate("Auth");
@@ -22,41 +22,40 @@ const Account = ({ navigation, currentStudent, refetch }) => {
           <View style={styles.itemSeparator} />
           <Text style={styles.description}>Account</Text>
           <View style={styles.itemBottomSeparator} />
-        </View>
+          <View style={styles.menu}>
+            {currentStudent[0].programCode ? (
+              <View>
+                <View style={styles.buttonSeparator} />
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("Disconnect", {data: {refetch}});
+                  }}
+                  style={styles.logIn}
+                >
+                  <Text style={styles.buttonText}>
+                    Disconnect My Account From The Cool It Program
+                  </Text>
+                </TouchableOpacity>
 
-        <View style={styles.menu}>
-          {currentStudent[0].programCode ? (
-            <View>
-              <View style={styles.buttonSeparator} />
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("Disconnect", { data: { refetch } });
-                }}
-                style={styles.logIn}
-              >
-                <Text style={styles.buttonText}>
-                  Disconnect My Account From The Cool It Program
-                </Text>
-              </TouchableOpacity>
-
-              <View style={styles.buttonSeparator} />
-            </View>
-          ) : null}
-          <View style={styles.buttonSeparator} />
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("Delete");
-            }}
-            style={styles.logIn}
-          >
-            <Text style={styles.buttonText}>Delete Account</Text>
-          </TouchableOpacity>
-          <View style={styles.buttonSeparator} />
-          <View style={styles.buttonSeparator} />
-          <TouchableOpacity onPress={_signOutAsync} style={styles.logIn}>
-            <Text style={styles.buttonText}>Log out </Text>
-          </TouchableOpacity>
-          <View style={styles.buttonSeparator} />
+                <View style={styles.buttonSeparator} />
+              </View>
+            ) : null}
+            <View style={styles.buttonSeparator} />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Delete");
+              }}
+              style={styles.logIn}
+            >
+              <Text style={styles.buttonText}>Delete Account</Text>
+            </TouchableOpacity>
+            <View style={styles.buttonSeparator} />
+            <View style={styles.buttonSeparator} />
+            <TouchableOpacity onPress={_signOutAsync} style={styles.logIn}>
+              <Text style={styles.buttonText}>Log out </Text>
+            </TouchableOpacity>
+            <View style={styles.buttonSeparator} />
+          </View>
         </View>
 
         <View style={styles.bottom}>
