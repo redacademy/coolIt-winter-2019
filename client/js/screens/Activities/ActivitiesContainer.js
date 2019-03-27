@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Activities from "./Activities";
-import { ActivityIndicator, AsyncStorage, Text } from "react-native";
+import { AsyncStorage, Text } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
@@ -82,6 +82,7 @@ class ActivitiesContainer extends Component {
                 activity {
                   name
                   value
+                  ghValue
                 }
               }
               allUsers(filter: { id: $id }) {
@@ -93,7 +94,7 @@ class ActivitiesContainer extends Component {
           variables={{ id: this.state.userId, date: this.state.date }}
         >
           {({ loading, error, data, refetch }) => {
-            if (loading) return <ActivityIndicator style={styles.loader} />;
+            if (loading) return <FullScreenLoader style={styles.loader} />;
             if (error) return <Text>{error}</Text>;
             if (data.allUsers) {
               let currentPoint = data.allUsers[0].point;
@@ -102,6 +103,11 @@ class ActivitiesContainer extends Component {
                 .map(a => a.activity.value)
                 .reduce((arr, cur) => {
                   return arr + cur;
+                }, 0);
+              let dayGHPoint = data.allActivityLogs
+                .map(a => a.activity.ghValue)
+                .reduce((arr, cur) => {
+                  return parseFloat(arr) + parseFloat(cur);
                 }, 0);
               return (
                 <Activities
@@ -116,17 +122,17 @@ class ActivitiesContainer extends Component {
                   currentPoint={currentPoint}
                   dayPoint={dayPoint}
                   currentGHPoint={currentGHPoint}
+                  dayGHPoint={dayGHPoint}
                 />
               );
             } else {
-              refetch();
               return <Text>{error}</Text>;
             }
           }}
         </Query>
       );
     } else {
-      return <ActivityIndicator style={styles.loader} />;
+      return <FullScreenLoader style={styles.loader} />;
     }
   }
 }

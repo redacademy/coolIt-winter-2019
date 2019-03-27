@@ -3,6 +3,7 @@ import ProgramCode from "./ProgramCode";
 
 export default class ProgramCodeContainer extends Component {
   render() {
-    return <ProgramCode navigation={this.props.navigation} />;
+    let data = this.props.navigation.getParam("data");
+    return <ProgramCode data={data} navigation={this.props.navigation} />;
   }
 }

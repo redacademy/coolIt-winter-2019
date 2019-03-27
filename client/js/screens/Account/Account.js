@@ -9,12 +9,12 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-const Account = ({navigation, currentStudent, refetch}) => {
+const Account = ({ navigation, currentStudent, refetch }) => {
   _signOutAsync = async () => {
     await AsyncStorage.clear();
     navigation.navigate("Auth");
   };
-  console.log(currentStudent);
+
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <View style={styles.container}>
@@ -28,7 +28,7 @@ const Account = ({navigation, currentStudent, refetch}) => {
                 <View style={styles.buttonSeparator} />
                 <TouchableOpacity
                   onPress={() => {
-                    navigation.navigate("Disconnect", {data: {refetch}});
+                    navigation.navigate("Disconnect", { data: { refetch } });
                   }}
                   style={styles.logIn}
                 >
