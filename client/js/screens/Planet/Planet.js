@@ -45,7 +45,7 @@ const Planet = ({ icons }) => {
               </View>
             );
           }}
-          keyExtractor={index => "" + index}
+          keyExtractor={(item, index) => "" + index}
         />
       </View>
     </ScrollView>

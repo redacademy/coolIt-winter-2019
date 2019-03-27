@@ -12,22 +12,31 @@ import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
 
-const AUTHENTICATE_USER = gql`
-  mutation Authenticate(
+const ADD_SCHOOL_INFO = gql`
+  mutation AddSchoolInfo(
     $division: Int
     $grade: Int
     $programCode: String!
     $school: String
     $teacher: String
+    $id: ID!
   ) {
-    createSchoolInfo(
-      division: $division
-      grade: $grade
+    updateUser(
+      id: $id
       programCode: $programCode
-      school: $school
-      teacher: $teacher
+      schoolInfo: {
+        division: $division
+        grade: $grade
+        programCode: $programCode
+        school: $school
+        teacher: $teacher
+      }
     ) {
       id
+      programCode
+      schoolInfo {
+        programCode
+      }
     }
   }
 `;
@@ -66,8 +75,10 @@ class ProgramCode extends Component {
           onSubmit={async value => {
             try {
               this.setState({ loading: true });
-              const result = await this.props.loginMutation({
+
+              let result = await this.props.schoolInfoMutation({
                 variables: {
+                  id: this.props.data.id,
                   division: parseInt(value.division),
                   grade: parseInt(value.grade),
                   programCode: value.programCode,
@@ -168,9 +179,9 @@ class ProgramCode extends Component {
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
-                    onPress={() => {}}
+                    onPress={handleSubmit}
                     disabled={pristine || invalid}
-                    style={styles.disabled}
+                    style={styles.button}
                   >
                     <Text style={styles.buttonText}>Continue</Text>
                   </TouchableOpacity>
@@ -202,6 +213,6 @@ ProgramCode.propTypes = {
   loginMutation: PropTypes.func.isRequired
 };
 
-export default compose(graphql(AUTHENTICATE_USER, { name: "loginMutation" }))(
-  ProgramCode
-);
+export default compose(
+  graphql(ADD_SCHOOL_INFO, { name: "schoolInfoMutation" })
+)(ProgramCode);

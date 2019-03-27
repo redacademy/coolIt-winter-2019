@@ -23,7 +23,8 @@ const Activities = ({
   refetch,
   currentPoint,
   currentGHPoint,
-  dayPoint
+  dayPoint,
+  dayGHPoint
 }) => {
   const filtered = filteredActivity.map(filteredActivity => {
     return filteredActivity.activity.name;
@@ -123,7 +124,9 @@ const Activities = ({
         })}
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Calculation");
+            navigation.navigate("Calculation", {
+              data: { dayGHPoint }
+            });
           }}
           style={styles.impact}
         >

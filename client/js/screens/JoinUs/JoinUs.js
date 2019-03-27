@@ -83,7 +83,9 @@ class JoinUs extends Component {
               await AsyncStorage.setItem("token", user.token);
               await AsyncStorage.setItem("id", user.id);
 
-              this.props.navigation.navigate("ProgramCode");
+              this.props.navigation.navigate("ProgramCode", {
+                data: { id: user.id }
+              });
             } catch (e) {
               return {
                 [FORM_ERROR]: "Email is invalid or already registered."
@@ -179,15 +181,15 @@ class JoinUs extends Component {
                   </View>
                 )}
               </Field>
-              {!pristine && !invalid ? (
-                <TouchableOpacity
-                  onPress={handleSubmit}
-                  style={styles.button}
-                  disabled={pristine || invalid}
-                >
-                  <Text style={styles.buttonText}>Join</Text>
-                </TouchableOpacity>
-              ) : (
+              {/* {!pristine && !invalid ? ( */}
+              <TouchableOpacity
+                onPress={handleSubmit}
+                style={styles.button}
+                disabled={pristine || invalid}
+              >
+                <Text style={styles.buttonText}>Join</Text>
+              </TouchableOpacity>
+              {/* ) : (
                 <TouchableOpacity
                   onPress={() => {}}
                   style={styles.disabled}
@@ -195,7 +197,7 @@ class JoinUs extends Component {
                 >
                   <Text style={styles.buttonText}>Join</Text>
                 </TouchableOpacity>
-              )}
+              )} */}
               {hasSubmitErrors && (
                 <Text style={styles.errorMessage}>{submitError}</Text>
               )}

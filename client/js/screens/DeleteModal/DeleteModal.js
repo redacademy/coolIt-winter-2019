@@ -9,10 +9,10 @@ import {
 } from "react-native";
 import styles from "./styles";
 import PropTypes from "prop-types";
-import {graphql, compose} from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import {Form, Field} from "react-final-form";
-import {FORM_ERROR} from "final-form";
+import { Form, Field } from "react-final-form";
+import { FORM_ERROR } from "final-form";
 
 const DELETE_USER = gql`
   mutation delete($id: ID!) {
@@ -69,12 +69,12 @@ const DeleteModal = ({
                 onSubmit={async () => {
                   try {
                     const result = await authenticate({
-                      variables: {email, password}
+                      variables: { email, password }
                     });
 
                     if (result) {
                       await disconnect({
-                        variables: {id: result.data.authenticateUser.id}
+                        variables: { id: result.data.authenticateUser.id }
                       });
                       await AsyncStorage.clear();
                       navigation.navigate("Auth");
@@ -95,7 +95,7 @@ const DeleteModal = ({
                 }) => (
                   <View style={styles.flexContent}>
                     <Field name="email">
-                      {({input, meta}) => (
+                      {({ input, meta }) => (
                         <View>
                           <TextInput
                             style={styles.form}
@@ -111,7 +111,7 @@ const DeleteModal = ({
                       )}
                     </Field>
                     <Field name="password">
-                      {({input, meta}) => (
+                      {({ input, meta }) => (
                         <View>
                           <TextInput
                             style={styles.form}
@@ -168,6 +168,6 @@ DeleteModal.propTypes = {
 };
 
 export default compose(
-  graphql(DELETE_USER, {name: "disconnect"}),
-  graphql(AUTHENTICATE_USER, {name: "authenticate"})
+  graphql(DELETE_USER, { name: "disconnect" }),
+  graphql(AUTHENTICATE_USER, { name: "authenticate" })
 )(DeleteModal);

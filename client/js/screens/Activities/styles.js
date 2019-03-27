@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   top: {
-  marginBottom: 25
+    marginBottom: 25
   },
   content: {
     marginBottom: 25
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   title: {
     padding: 18,
     fontFamily: fonts.light,
-    fontSize: 14,
+    fontSize: 14
   },
   list: {
     backgroundColor: colors.lightGreen,
@@ -80,12 +80,12 @@ const styles = StyleSheet.create({
   topSection: {
     flexDirection: "row",
     paddingLeft: 25,
-    alignItems: 'flex-end'
+    alignItems: "flex-end"
   },
   pointDisplay: {
     fontSize: 16,
     fontFamily: fonts.light,
-    fontWeight: 'normal'
+    fontWeight: "normal"
   }
 });
 
