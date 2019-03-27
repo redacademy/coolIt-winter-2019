@@ -6,14 +6,15 @@ import {
   AsyncStorage,
   TextInput,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  ActivityIndicator
 } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { FORM_ERROR } from "final-form";
-
+import FullScreenLoader from "../../components/FullScreenLoader";
 const AUTHENTICATE_USER = gql`
   mutation Authenticate($email: String!, $password: String!) {
     authenticateUser(email: $email, password: $password) {
@@ -48,6 +49,7 @@ class LogIn extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.state.loading ? <FullScreenLoader /> : null}
         <View style={styles.backgroundTop}>
           <ImageBackground
             source={require("../../assets/images/background2-top.png")}
@@ -80,6 +82,7 @@ class LogIn extends Component {
 
               console.log("In Login - Before navigate to Activities");
               this.props.navigation.navigate("Activities");
+              this.setState({ loading: false });
             } catch (e) {
               return {
                 [FORM_ERROR]: "Incorrect email and/or password"
