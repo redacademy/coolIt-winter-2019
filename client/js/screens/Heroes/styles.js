@@ -3,7 +3,7 @@ import { colors, fonts } from "../../config/styles";
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get("window").height - 30,
+    height: Dimensions.get("window").height - 80,
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between"
@@ -75,10 +75,7 @@ const styles = StyleSheet.create({
   contentTop: {
     paddingTop: 25
   },
-  bottom: {
-    flex: 1,
-    justifyContent: "space-around"
-  },
+  
   loader: {
     flex: 1,
     justifyContent: "center",

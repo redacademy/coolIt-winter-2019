@@ -1,25 +1,25 @@
 import React from "react";
-import {Text, ScrollView, View, FlatList, Image} from "react-native";
+import { Text, ScrollView, View, FlatList, Image } from "react-native";
 import styles from "./styles";
 import PropTypes from "prop-types";
-import {colors} from "../../config/styles";
+import { colors } from "../../config/styles";
 
 const alternateColors = [colors.white, "#96a687"];
 
-const Heroes = ({data}) => {
+const Heroes = ({ data }) => {
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <View style={styles.container}>
         <View style={styles.mainContent}>
-        <View style={styles.contentTop}>
-          <View style={styles.itemSeparator} />
-          <Text style={styles.description}>Heroes</Text>
-          <View style={styles.itemBottomSeparator} />
+          <View style={styles.contentTop}>
+            <View style={styles.itemSeparator} />
+            <Text style={styles.description}>Heroes</Text>
+            <View style={styles.itemBottomSeparator} />
           </View>
           <FlatList
             style={styles.list}
             data={data}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <View
                 style={{
                   backgroundColor:
@@ -42,7 +42,7 @@ const Heroes = ({data}) => {
           />
         </View>
         <View style={styles.bottom}>
-        <View style={styles.bottomBox}/>
+          <View style={styles.bottomBox} />
           <Image
             source={require("../../assets/images/valley.png")}
             style={styles.valley}

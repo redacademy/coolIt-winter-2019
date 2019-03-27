@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Heroes from "./Heroes";
 import PropTypes from "prop-types";
-import { Query, compose, graphql } from "react-apollo";
+import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import NoProgramCode from "../../components/NoProgramCode";
 import { AsyncStorage, Text } from "react-native";

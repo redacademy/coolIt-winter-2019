@@ -39,16 +39,17 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    minWidth: "60%",
+    minWidth: "90%",
+    maxWidth: "90%",
+    marginLeft: 15,
     padding: 5,
-    paddingLeft: 25,
     fontSize: 18
   },
   error: {
     color: colors.red,
     fontFamily: fonts.light,
     fontSize: 16,
-    paddingLeft: 10,
+    paddingLeft: 15,
     marginBottom: 15,
   },
   errorMessage: {

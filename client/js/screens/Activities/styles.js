@@ -50,13 +50,11 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   headerAction: {
-    paddingTop: 25,
     fontFamily: fonts.light
   },
   section: {
     textTransform: "uppercase",
     fontFamily: fonts.light,
-    fontWeight: "500",
     fontSize: 16,
     paddingLeft: 10
   },
@@ -81,20 +79,22 @@ const styles = StyleSheet.create({
   },
   topSection: {
     flexDirection: "row",
-    paddingTop: 25,
-    paddingBottom: 10,
-    paddingLeft: 25
+    paddingLeft: 25,
+    alignItems: 'flex-end'
   },
   pointDisplay: {
-    paddingTop: 10,
     fontSize: 16,
     fontFamily: fonts.light,
+<<<<<<< HEAD
     fontWeight: "600"
   },
   loader: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+=======
+    fontWeight: 'normal'
+>>>>>>> develop
   }
 });
 
