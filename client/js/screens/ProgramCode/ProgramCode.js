@@ -10,6 +10,7 @@ import { Form, Field } from "react-final-form";
 import styles from "./styles";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
+import PropTypes from "prop-types";
 
 const ADD_SCHOOL_INFO = gql`
   mutation AddSchoolInfo(
@@ -211,7 +212,10 @@ class ProgramCode extends Component {
   }
 }
 
-// ProgramCode.propTypes = {};
+ProgramCode.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  loginMutation: PropTypes.func
+};
 
 export default compose(
   graphql(ADD_SCHOOL_INFO, { name: "schoolInfoMutation" })

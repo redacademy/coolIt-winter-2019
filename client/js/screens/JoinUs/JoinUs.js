@@ -24,7 +24,7 @@ const AUTHENTICATE_USER = gql`
     }
   }
 `;
-
+import PropTypes from "prop-types";
 class JoinUs extends Component {
   constructor(props) {
     super(props);
@@ -215,6 +215,10 @@ class JoinUs extends Component {
     );
   }
 }
+JoinUs.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  signupMutation: PropTypes.func.isRequired
+};
 
 export default compose(graphql(AUTHENTICATE_USER, { name: "signupMutation" }))(
   JoinUs

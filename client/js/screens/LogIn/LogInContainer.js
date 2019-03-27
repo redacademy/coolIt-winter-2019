@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import LogIn from "./LogIn";
+import PropTypes from "prop-types";
 
-export default class LogInContainer extends Component {
-  render() {
-    return <LogIn navigation={this.props.navigation} />;
-  }
-}
+const LogInContainer = props => {
+  return <LogIn navigation={props.navigation} />;
+};
+LogInContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
+export default LogInContainer;

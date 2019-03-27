@@ -9,6 +9,7 @@ import {
   Linking
 } from "react-native";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 class Impact extends Component {
   constructor(props) {
@@ -196,4 +197,8 @@ class Impact extends Component {
   }
 }
 
+Impact.propTypes = {
+  data: PropTypes.object.isRequired,
+  days: PropTypes.number.isRequired
+};
 export default Impact;

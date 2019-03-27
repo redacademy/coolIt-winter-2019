@@ -4,6 +4,7 @@ import moment from "moment";
 import Icon from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 import { colors } from "../../config/styles";
+import PropTypes from "prop-types";
 
 export const DateDisplay = props => {
   return (
@@ -44,4 +45,9 @@ export const DateDisplay = props => {
       </TouchableOpacity>
     </View>
   );
+};
+
+DateDisplay.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
+  dateChangeHandler: PropTypes.func.isRequired
 };
