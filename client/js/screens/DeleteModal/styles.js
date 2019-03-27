@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     minWidth: "90%",
     maxWidth: "90%",
     marginLeft: 15,
+    paddingLeft: 15,
     padding: 5,
     fontSize: 18
   },

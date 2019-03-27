@@ -180,9 +180,9 @@ class ProgramCode extends Component {
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
-                    onPress={handleSubmit}
+                    onPress={() => {}}
                     disabled={pristine || invalid}
-                    style={styles.button}
+                    style={styles.disabled}
                   >
                     <Text style={styles.buttonText}>Continue</Text>
                   </TouchableOpacity>

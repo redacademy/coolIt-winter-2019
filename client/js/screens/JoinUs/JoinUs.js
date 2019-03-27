@@ -181,7 +181,7 @@ class JoinUs extends Component {
                   </View>
                 )}
               </Field>
-              {/* {!pristine && !invalid ? ( */}
+              {!pristine && !invalid ? (
               <TouchableOpacity
                 onPress={handleSubmit}
                 style={styles.button}
@@ -189,7 +189,7 @@ class JoinUs extends Component {
               >
                 <Text style={styles.buttonText}>Join</Text>
               </TouchableOpacity>
-              {/* ) : (
+              ) : (
                 <TouchableOpacity
                   onPress={() => {}}
                   style={styles.disabled}
@@ -197,7 +197,7 @@ class JoinUs extends Component {
                 >
                   <Text style={styles.buttonText}>Join</Text>
                 </TouchableOpacity>
-              )} */}
+              )} 
               {hasSubmitErrors && (
                 <Text style={styles.errorMessage}>{submitError}</Text>
               )}

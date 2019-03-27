@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    minWidth: "85%",
-    maxWidth: "85%",
+    minWidth: "89%",
+    maxWidth: "89%",
     padding: 5,
     paddingLeft: 15,
     fontSize: 16,
@@ -63,8 +63,9 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 25,
     borderColor: colors.blue,
-    minWidth: "35%",
+    minWidth: "39%",
     padding: 5,
+    paddingLeft: 15,
     fontSize: 16,
     margin: 10
   },
@@ -78,8 +79,7 @@ const styles = StyleSheet.create({
     width: "40%",
     alignSelf: "center",
     backgroundColor: colors.disabled,
-    borderRadius: 13,
-    marginTop: 15
+    borderRadius: 13
   },
   buttonText: {
     alignSelf: "center",

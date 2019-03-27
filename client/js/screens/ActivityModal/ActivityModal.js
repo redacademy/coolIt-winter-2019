@@ -14,6 +14,7 @@ import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { colors } from "../../config/styles";
 import FullScreenLoader from "../../components/FullScreenLoader";
+
 const ADD_ACTIVITY = gql`
   mutation Authenticate($userId: ID!, $date: DateTime!, $activityId: ID!) {
     createActivityLog(userId: $userId, date: $date, activityId: $activityId) {

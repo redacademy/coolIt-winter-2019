@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { colors } from "../../config/styles";
 
 const CalculationModal = props => {
   let data = props.navigation.getParam("data");
@@ -30,7 +31,7 @@ const CalculationModal = props => {
               style={styles.icon}
               name="ios-close"
               size={30}
-              color="blue"
+              color={colors.green}
             />
           </TouchableOpacity>
           <Image
@@ -40,11 +41,11 @@ const CalculationModal = props => {
           <View style={styles.textGroup1}>
             <Text style={styles.text}> You have saved </Text>
             <Text style={styles.text}>
-              {data.dayGHPoint.toFixed(3)} greenhouse gases
+              {data.dayGHPoint.toFixed(3)} greenhouse gases!
             </Text>
           </View>
           <View style={styles.textGroup2}>
-            <Text style={styles.text}> Check out our new </Text>
+            <Text style={styles.text}> Check out your new </Text>
             <Text style={styles.text}> reward on the Planet page! </Text>
           </View>
         </View>

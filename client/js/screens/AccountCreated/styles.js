@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   bottom: {
     width: "100%",
-    height: "75%"
+    height: "80%"
   },
   backgroundBottom: {
     flex: 1,
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   top: {
     width: "100%",
-    height: "75%"
+    height: "80%"
   },
   backgroundTop: {
     flex: 1,
