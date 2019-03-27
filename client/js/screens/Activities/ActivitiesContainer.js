@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Activities from "./Activities";
-import { ActivityIndicator, AsyncStorage, Text } from "react-native";
+import { AsyncStorage, Text } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
@@ -132,7 +132,7 @@ class ActivitiesContainer extends Component {
         </Query>
       );
     } else {
-      return <ActivityIndicator style={styles.loader} />;
+      return <FullScreenLoader style={styles.loader} />;
     }
   }
 }

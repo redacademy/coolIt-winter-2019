@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, AsyncStorage, ActivityIndicator } from "react-native";
+import { View, Text, AsyncStorage } from "react-native";
 import Impact from "./Impact";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
@@ -35,7 +35,7 @@ export default class ImpactContainer extends Component {
       return (
         <Query query={USER_INFO} variables={{ id: this.state.userID }}>
           {({ loading, error, data, refetch }) => {
-            if (loading) return <ActivityIndicator />;
+            if (loading) return <FullScreenLoader />;
             if (error) return <Text>error</Text>;
 
             if (data.allUsers) {
@@ -55,7 +55,7 @@ export default class ImpactContainer extends Component {
             }
             if (!data.allUsers) {
               refetch();
-              return <ActivityIndicator />;
+              return <FullScreenLoader />;
             }
           }}
         </Query>

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Account from "./Account";
 import PropTypes from "prop-types";
-import { ActivityIndicator, AsyncStorage, Text } from "react-native";
+import { AsyncStorage, Text } from "react-native";
 import { graphql, compose, Query } from "react-apollo";
 import gql from "graphql-tag";
-
+import FullScreenLoader from "../../components/FullScreenLoader";
 const USER_INFO = gql`
   query UserInfo($id: ID!) {
     allUsers(filter: { id: $id }) {
@@ -36,7 +36,7 @@ class AccountContainer extends Component {
         `}
       >
         {({ loading, error, data, refetch }) => {
-          if (loading) return <ActivityIndicator />;
+          if (loading) return <FullScreenLoader />;
           if (error) return <Text>{error}</Text>;
 
           currentStudent = data.allUsers.filter(
