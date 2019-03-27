@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
     marginTop: 2
   },
   point: {
-    padding: 3,
+    paddingVertical: 3,
     fontWeight: "bold",
     fontSize: 16,
     fontFamily: fonts.light,
-    left: 20
+    right: 10
   },
   pointLabel: {
     fontSize: 15,
