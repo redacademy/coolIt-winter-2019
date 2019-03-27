@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { TouchableOpacity, View, Text } from "react-native";
-
+import { View, Text } from "react-native";
+import PropTypes from "prop-types";
 import styles from "./styles";
 import QuizOptions from "../QuizOptions/QuizOptions";
 
@@ -33,3 +33,7 @@ export default class QuizSection extends Component {
     );
   }
 }
+QuizSection.propTypes = {
+  data: PropTypes.array.isRequired,
+  userSelectionHandler: PropTypes.func.isRequired
+};

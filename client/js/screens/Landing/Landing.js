@@ -6,13 +6,13 @@ import {
   ImageBackground,
   TouchableOpacity
 } from "react-native";
-import CheckBox from "react-native-check-box";
 import styles from "./styles";
 import { withNavigation } from "react-navigation";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const Landing = props => {
   let { navigate } = props.navigation;
+
   return (
     <View>
       <ImageBackground
@@ -60,6 +60,9 @@ const Landing = props => {
   );
 };
 
-// Landing.propTypes = {};
+Landing.propTypes = {
+  checked: PropTypes.bool.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(Landing);

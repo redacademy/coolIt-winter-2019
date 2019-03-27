@@ -13,6 +13,7 @@ import QuizSection from "../../components/QuizSection";
 import StepIndicator from "react-native-step-indicator";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
+import PropTypes from "prop-types";
 
 const UPDATE_QUIZSCORE = gql`
   mutation updateQuizScore($id: ID!, $quizScore: Int!) {
@@ -221,6 +222,11 @@ class CarbonQuiz extends Component {
   };
 }
 
+CarbonQuiz.propTypes = {
+  data: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+  updateQuizScore: PropTypes.func.isRequired
+};
 export default compose(graphql(UPDATE_QUIZSCORE, { name: "updateQuizScore" }))(
   CarbonQuiz
 );

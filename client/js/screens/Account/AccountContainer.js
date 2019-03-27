@@ -2,17 +2,10 @@ import React, { Component } from "react";
 import Account from "./Account";
 import PropTypes from "prop-types";
 import { AsyncStorage, Text } from "react-native";
-import { graphql, compose, Query } from "react-apollo";
+import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import FullScreenLoader from "../../components/FullScreenLoader";
-const USER_INFO = gql`
-  query UserInfo($id: ID!) {
-    allUsers(filter: { id: $id }) {
-      id
-      programCode
-    }
-  }
-`;
+
 class AccountContainer extends Component {
   constructor(props) {
     super(props);
@@ -64,9 +57,7 @@ class AccountContainer extends Component {
     }
   }
 }
-
-// HeroesContainer.propTypes = {
-//   navigation: PropTypes.object.isRequired
-// };
-
+AccountContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 export default AccountContainer;

@@ -17,7 +17,7 @@ const USER_INFO = gql`
     }
   }
 `;
-
+import PropTypes from "prop-types";
 export default class ImpactContainer extends Component {
   constructor(props) {
     super(props);
@@ -65,3 +65,7 @@ export default class ImpactContainer extends Component {
     }
   }
 }
+
+ImpactContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};

@@ -133,7 +133,9 @@ class ActivityModal extends Component {
 
 ActivityModal.propTypes = {
   data: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  addActivity: PropTypes.func.isRequired,
+  addPoint: PropTypes.func.isRequired
 };
 
 export default compose(

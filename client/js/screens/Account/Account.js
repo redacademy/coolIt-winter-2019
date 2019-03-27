@@ -8,6 +8,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const Account = ({ navigation, currentStudent, refetch }) => {
   _signOutAsync = async () => {
@@ -67,6 +68,11 @@ const Account = ({ navigation, currentStudent, refetch }) => {
       </View>
     </ScrollView>
   );
+};
+Account.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  currentStudent: PropTypes.array.isRequired,
+  refetch: PropTypes.func.isRequired
 };
 
 export default Account;
