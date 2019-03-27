@@ -119,7 +119,6 @@ class ActivitiesContainer extends Component {
                 />
               );
             } else {
-              refetch();
               return <Text>{error}</Text>;
             }
           }}
