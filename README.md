@@ -4,7 +4,7 @@ The Cool It! Climate Leadership Training program develops and empowers young sus
 
 Our team has built a native iOS app in a two and a half week timeframe to help students track their GHG savings in real time.  Users are able to keep track of their progress over time and compete against their classmates to get the top spot on the Heroes screen.  Features include an onboarding quiz to establish current GHG emissions, a user friendly screen where the can input their daily eco-friendly activities, and prizes that can be unlocked as points are accumulated.  
 
-## Make Gif and add here when app complete
+![](CoolIt_Gif.gif)
 
 ## Technologies Used
 `Must Have`
