@@ -2,10 +2,10 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   selected: {
-    borderColor: "#4aae4f",
+    borderColor: "#3b5327",
     paddingTop: 15,
     paddingBottom: 15,
-    borderWidth: 0.5,
+    borderWidth: 1.5,
     borderRadius: 10,
     marginBottom: 10
   },
