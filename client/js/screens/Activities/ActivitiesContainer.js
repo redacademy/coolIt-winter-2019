@@ -56,6 +56,7 @@ class ActivitiesContainer extends Component {
     }
   };
   render() {
+    console.disableYellowBox = true;
     if (this.state.userId) {
       return (
         <Query
