@@ -4,19 +4,19 @@
       "question": "When travelling to school I mostly:",
       "options": [
         {
-          "option": "a. walk or bike",
+          "option": "a. Walk or bike",
           "points": 1
         },
         {
-          "option": "b. bus / skytrain",
+          "option": "b. Bus / skytrain",
           "points": 2
         },
         {
-          "option": "c. carpool",
+          "option": "c. Carpool",
           "points": 4
         },
         {
-          "option": "d. drive alone",
+          "option": "d. Drive alone",
           "points": 6
         }
       ]
@@ -25,19 +25,19 @@
       "question": "When travelling to other places I mostly:",
       "options": [
         {
-          "option": "a. walk or bike",
+          "option": "a. Walk or bike",
           "points": 1
         },
         {
-          "option": "b. bus / skytrain",
+          "option": "b. Bus / skytrain",
           "points": 2
         },
         {
-          "option": "c. carpool",
+          "option": "c. Carpool",
           "points": 4
         },
         {
-          "option": "d. drive alone",
+          "option": "d. Drive alone",
           "points": 6
         }
       ]
@@ -46,32 +46,32 @@
       "question": "When waiting to pick someone up in our car, we:",
       "options": [
         {
-          "option": "a. turn the engine off",
+          "option": "a. Turn the engine off",
           "points": 1
         },
         {
-          "option": "b. sometimes leave it running",
+          "option": "b. Sometimes leave it running",
           "points": 2
         },
         {
-          "option": "c. always leave it running",
+          "option": "c. Always leave it running",
           "points": 4
         }
       ]
     },
     {
-      "question": "When I am cold at home, I",
+      "question": "When I am cold at home, I:",
       "options": [
         {
           "option": "a. Put on my sweater and/or socks",
           "points": 1
         },
         {
-          "option": "b. turn the heat up 1 degree",
+          "option": "b. Turn the heat up 1 degree",
           "points": 2
         },
         {
-          "option": "c. turn the heat up 2-4 degrees",
+          "option": "c. Turn the heat up 2-4 degrees",
           "points": 4
         },
         {
@@ -101,11 +101,11 @@
       "question": "At night, we:",
       "options": [
         {
-          "option": "a. draw our curtains closed to conserve heat",
+          "option": "a. Draw our curtains closed to conserve heat",
           "points": 1
         },
         {
-          "option": "b. sometimes draw our curtains closed",
+          "option": "b. Sometimes draw our curtains closed",
           "points": 2
         },
         {
@@ -115,27 +115,27 @@
       ]
     },
     {
-      "question": "When we wash our clothes the washing machine is mostly set to",
+      "question": "When we wash our clothes the washing machine is mostly set to:",
       "options": [
         {
-          "option": "a. cold water",
+          "option": "a. Cold water",
           "points": 1
         },
         {
-          "option": "b. warm water",
+          "option": "b. Warm water",
           "points": 2
         },
         {
-          "option": "c. hot water",
+          "option": "c. Hot water",
           "points": 3
         }
       ]
     },
     {
-      "question": "In spring summer and fall we often dry our clothes",
+      "question": "In spring, summer, and fall we often dry our clothes:",
       "options": [
         {
-          "option": "a. on a clothes-line or drying rack ",
+          "option": "a. On a clothes-line or drying rack ",
           "points": 1
         },
         {
@@ -156,11 +156,11 @@
           "points": 1
         },
         {
-          "option": "b. rarely, but only organic and/or local",
+          "option": "b. Rarely, but only organic and/or local",
           "points": 2
         },
         {
-          "option": "c. 3-4 days per week ",
+          "option": "c. 3-4 days per week",
           "points": 3
         },
         {
@@ -170,7 +170,7 @@
       ]
     },
     {
-      "question": "When shoppin gfor food we buy BC or local region grown",
+      "question": "When shopping for food we buy BC or local region grown:",
       "options": [
         {
           "option": "a. Only",
@@ -191,7 +191,7 @@
       ]
     },
     {
-      "question": "We _______ grown our own food (vegetables/fruit)",
+      "question": "We _______ grow our own food (vegetables/fruit)",
       "options": [
         {
           "option": "a. Always",
@@ -208,7 +208,7 @@
       ]
     },
     {
-      "question": "When i wash myself i have a:",
+      "question": "When I wash myself I have a:",
       "options": [
         {
           "option": "a. Short shower(< 3 minutes)",
@@ -219,7 +219,7 @@
           "points": 2
         },
         {
-          "option": "c. Long shower (8 minutes +) ",
+          "option": "c. Long shower (8 minutes +)",
           "points": 3
         },
         {
@@ -229,24 +229,24 @@
       ]
     },
     {
-      "question": "When brushing my teeth I ",
+      "question": "When brushing my teeth I:",
       "options": [
         {
-          "option": "a. Only turn water on to web my brush and rinse it at the end",
+          "option": "a. Only turn water on to wet my brush and rinse it at the end",
           "points": 1
         },
         {
-          "option": "b. turn it on and off sometimes",
+          "option": "b. Turn it on and off sometimes",
           "points": 2
         },
         {
-          "option": "c. leave the tap running",
+          "option": "c. Leave the tap running",
           "points": 3
         }
       ]
     },
     {
-      "question": "We have a (or several)",
+      "question": "We have a (or several):",
       "options": [
         {
           "option": "a. Low flow showerhead",
@@ -259,7 +259,7 @@
       ]
     },
     {
-      "question": "When packing school lunch/snacks the containers are",
+      "question": "When packing school lunches/snacks the containers are:",
       "options": [
         {
           "option": "a. Always reused",
@@ -276,7 +276,7 @@
       ]
     },
     {
-      "question": "At home we recycle - paper, tin, glass, plastic & refundables",
+      "question": "At home we recycle - paper, tin, glass, plastic & refundables:",
       "options": [
         {
           "option": "a. Always",
@@ -297,7 +297,7 @@
       ]
     },
     {
-      "question": "When I have used one side of writing and printer paper, I ",
+      "question": "When I have used one side of writing and printer paper, I:",
       "options": [
         {
           "option": "a. Reuse back of paper and then recycle it ",
@@ -314,7 +314,7 @@
       ]
     },
     {
-      "question": "We _______ our kitchen fruit/vegetable/food left overs after making a meal ",
+      "question": "We _______ our kitchen fruit/vegetable/food left overs after making a meal.",
       "options": [
         {
           "option": "a. Regularly compost (worm-bin / curb-size pickup / backyard compost)",
@@ -331,7 +331,7 @@
       ]
     },
     {
-      "question": "______ of the bulbs in my home are LED or CFL",
+      "question": "______ of the bulbs in my home are LED or CFL.",
       "options": [
         {
           "option": "a. All",
@@ -352,7 +352,7 @@
       ]
     },
     {
-      "question": "When I leave my room or my home, I ______ turn off lights and electronics",
+      "question": "When I leave my room or my home, I ______ turn off lights and electronics.",
       "options": [
         {
           "option": "a. Always",
@@ -373,7 +373,7 @@
       ]
     },
     {
-      "question": "To reduce energy waste in our home, several electronics are plugged into a powerbar, which is turned off",
+      "question": "To reduce energy waste in our home, several electronics are plugged into a powerbar, which is turned off:",
       "options": [
         {
           "option": "a. Automatically (on a timer) or regularly",
@@ -384,7 +384,7 @@
           "points": 2
         },
         {
-          "option": "c. rarely",
+          "option": "c. Rarely",
           "points": 3
         },
         {
@@ -394,41 +394,41 @@
       ]
     },
     {
-      "question": "When our electronics (kitchen appliances, cel-smartphones, electric tools) reach the end of their life, we",
+      "question": "When our electronics (kitchen appliances, cell-smartphones, electric tools) reach the end of their life, we:",
       "options": [
         {
-          "option": "a. recycle them locally",
+          "option": "a. Recycle them locally",
           "points": 1
         },
         {
-          "option": "b. sometimes recycle them",
+          "option": "b. Sometimes recycle them",
           "points": 2
         },
         {
-          "option": "c. throw them out",
+          "option": "c. Throw them out",
           "points": 3
         }
       ]
     },
     {
-      "question": "We buy 100% biodegradable, organic and non-toxic kitchen, bathroom and laundry cleaning products",
+      "question": "We buy 100% biodegradable, organic and non-toxic kitchen, bathroom and laundry cleaning products:",
       "options": [
         {
-          "option": "a. always",
+          "option": "a. Always",
           "points": 1
         },
         {
-          "option": "b. sometimes",
+          "option": "b. Sometimes",
           "points": 2
         },
         {
-          "option": "c. never",
+          "option": "c. Never",
           "points": 3
         }
       ]
     },
     {
-      "question": "We have an Energy Star - Dishwasher, Laundry Machine, Fridge",
+      "question": "We have an Energy Star - Dishwasher, Laundry Machine, Fridge:",
       "options": [
         {
           "option": "a. All three",
@@ -443,13 +443,13 @@
           "points": 3
         },
         {
-          "option": "d. none",
+          "option": "d. None",
           "points": 4
         }
       ]
     },
     {
-      "question": "We remind each other at home, to conserve energy, water and resources",
+      "question": "We remind each other at home, to conserve energy, water and resources:",
       "options": [
         {
           "option": "a. Regularly",
