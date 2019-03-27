@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   itemSeparator: {
     height: 5,
     backgroundColor: colors.green,
-    paddingTop: 5,
+    marginTop: 25,
     width: "70%"
   },
   itemBottomSeparator: {
@@ -14,19 +14,20 @@ const styles = StyleSheet.create({
     width: "70%",
     position: "absolute",
     right: 0,
-    top: 60
+    top: 95,
+    marginTop: 25
   },
-  headerContainer: { marginTop: 60 },
+  headerContainer: {
+    paddingTop: 50
+  },
   description: {
     fontSize: 26,
     fontWeight: "400",
     textAlign: "center",
-    fontFamily: fonts.bold,
-    paddingTop: 10
+    fontFamily: fonts.bold
   },
   metricsContainer: {
     paddingTop: 45,
-
     flexDirection: "row",
     justifyContent: "space-around"
   },
