@@ -82,6 +82,7 @@ class ActivitiesContainer extends Component {
                 activity {
                   name
                   value
+                  ghValue
                 }
               }
               allUsers(filter: { id: $id }) {
@@ -103,6 +104,11 @@ class ActivitiesContainer extends Component {
                 .reduce((arr, cur) => {
                   return arr + cur;
                 }, 0);
+              let dayGHPoint = data.allActivityLogs
+                .map(a => a.activity.ghValue)
+                .reduce((arr, cur) => {
+                  return parseFloat(arr) + parseFloat(cur);
+                }, 0);
               return (
                 <Activities
                   navigation={this.props.navigation}
@@ -116,6 +122,7 @@ class ActivitiesContainer extends Component {
                   currentPoint={currentPoint}
                   dayPoint={dayPoint}
                   currentGHPoint={currentGHPoint}
+                  dayGHPoint={dayGHPoint}
                 />
               );
             } else {

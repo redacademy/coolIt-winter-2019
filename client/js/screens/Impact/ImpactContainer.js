@@ -4,6 +4,7 @@ import Impact from "./Impact";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import moment from "moment";
+import FullScreenLoader from "../../components/FullScreenLoader";
 const USER_INFO = gql`
   query USER($id: ID!) {
     allUsers(filter: { id: $id }) {
@@ -60,7 +61,7 @@ export default class ImpactContainer extends Component {
         </Query>
       );
     } else {
-      return <ActivityIndicator />;
+      return <FullScreenLoader />;
     }
   }
 }

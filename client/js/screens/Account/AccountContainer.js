@@ -38,7 +38,7 @@ class AccountContainer extends Component {
         {({ loading, error, data, refetch }) => {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>{error}</Text>;
-          let currentStudent;
+
           currentStudent = data.allUsers.filter(
             a => a.id === this.state.userID
           );
@@ -46,7 +46,7 @@ class AccountContainer extends Component {
           return (
             <Account
               navigation={this.props.navigation}
-              currentStudent={currentStudent}
+              currentStudent={currentStudent[0]}
               refetch={refetch}
             />
           );

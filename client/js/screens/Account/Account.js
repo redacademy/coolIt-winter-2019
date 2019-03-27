@@ -14,7 +14,7 @@ const Account = ({ navigation, currentStudent, refetch }) => {
     await AsyncStorage.clear();
     navigation.navigate("Auth");
   };
-  console.log(currentStudent);
+
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <View style={styles.container}>
@@ -25,7 +25,7 @@ const Account = ({ navigation, currentStudent, refetch }) => {
         </View>
 
         <View style={styles.menu}>
-          {currentStudent[0].programCode ? (
+          {currentStudent.programCode ? (
             <View>
               <View style={styles.buttonSeparator} />
               <TouchableOpacity

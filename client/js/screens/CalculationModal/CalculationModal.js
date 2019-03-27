@@ -3,13 +3,15 @@ import {
   View,
   Text,
   Image,
-  TouchableHighlight,
+  TouchableOpacity,
   ImageBackground
 } from "react-native";
 import styles from "./styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 const CalculationModal = props => {
+  let data = props.navigation.getParam("data");
+
   return (
     <ImageBackground
       source={require("../../assets/images/calculationBG.png")}
@@ -18,7 +20,7 @@ const CalculationModal = props => {
       <View style={styles.container}>
         <View style={styles.spacer} />
         <View style={styles.modalContainer}>
-          <TouchableHighlight
+          <TouchableOpacity
             onPress={() => {
               props.navigation.goBack();
             }}
@@ -30,14 +32,16 @@ const CalculationModal = props => {
               size={30}
               color="blue"
             />
-          </TouchableHighlight>
+          </TouchableOpacity>
           <Image
             source={require("../../assets/images/check-icon.png")}
             style={styles.checkmark}
           />
           <View style={styles.textGroup1}>
             <Text style={styles.text}> You have saved </Text>
-            <Text style={styles.text}> 50 greenhouse gases </Text>
+            <Text style={styles.text}>
+              {data.dayGHPoint.toFixed(3)} greenhouse gases
+            </Text>
           </View>
           <View style={styles.textGroup2}>
             <Text style={styles.text}> Check out our new </Text>
