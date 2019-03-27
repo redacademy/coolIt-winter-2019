@@ -48,7 +48,7 @@ const Score = props => {
 };
 
 Score.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.object.isRequired
 };
 
 export default withNavigation(Score);

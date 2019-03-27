@@ -210,7 +210,7 @@ class ProgramCode extends Component {
 
 ProgramCode.propTypes = {
   navigation: PropTypes.object.isRequired,
-  loginMutation: PropTypes.func.isRequired
+  loginMutation: PropTypes.func
 };
 
 export default compose(
