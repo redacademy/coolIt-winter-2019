@@ -41,6 +41,7 @@ class AccountContainer extends Component {
           console.log("here");
           if (!this.state.userID) {
             refetch();
+            return <FullScreenLoader />;
           } else {
             let currentStudent = data.allUsers.filter(
               a => a.id === this.state.userID
