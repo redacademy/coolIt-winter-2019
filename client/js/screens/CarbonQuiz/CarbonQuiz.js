@@ -180,7 +180,7 @@ class CarbonQuiz extends Component {
                   this.viewPager.setPage(this.state.currentPage - 1);
                 }}
               >
-                <Text style={styles.buttonText}>back</Text>
+                <Text style={styles.buttonText}>Back</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={disabledSubmit ? styles.disabledButton : styles.button}
@@ -190,7 +190,7 @@ class CarbonQuiz extends Component {
                 }}
                 disabled={disabledSubmit}
               >
-                <Text style={styles.buttonText}>submit</Text>
+                <Text style={styles.buttonText}>Submit</Text>
               </TouchableOpacity>
             </View>
           ) : (
@@ -211,7 +211,7 @@ class CarbonQuiz extends Component {
                   this.viewPager.setPage(this.state.currentPage + 1);
                 }}
               >
-                <Text style={styles.buttonText}>next</Text>
+                <Text style={styles.buttonText}>Next</Text>
               </TouchableOpacity>
             </View>
           )}
