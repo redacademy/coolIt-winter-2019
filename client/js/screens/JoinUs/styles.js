@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     minWidth: "85%",
     maxWidth: "85%",
     padding: 5,
+    paddingLeft: 15,
     marginLeft: 20,
     fontSize: 18,
     position: "relative"

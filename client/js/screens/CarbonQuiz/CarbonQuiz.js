@@ -181,7 +181,7 @@ class CarbonQuiz extends Component {
                   this.viewPager.setPage(this.state.currentPage - 1);
                 }}
               >
-                <Text style={styles.buttonText}>back</Text>
+                <Text style={styles.buttonText}>Back</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={disabledSubmit ? styles.disabledButton : styles.button}
