@@ -1,23 +1,17 @@
-import {StyleSheet} from "react-native";
-import {fonts, colors} from "../../config/styles";
+import {StyleSheet, Dimensions} from "react-native";
+import {fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
   date: {
     flexDirection: "row",
-    flexWrap: "wrap"
-  },
-  leftIcon: {
-      paddingRight: 25
-  },
-  rightIcon: {
-      paddingLeft: 25
+    justifyContent: "space-around",
+    width: Dimensions.get("window").width
   },
   dateDisplay: {
-      fontSize: 18,
-      fontFamily: fonts.light,
-      fontWeight: '200'
+    fontSize: 18,
+    fontFamily: fonts.light,
+    fontWeight: "200"
   }
-
 });
 
 export default styles;
