@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Planet from "./Planet";
+import PropTypes from "prop-types";
 
 class PlanetContainer extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class PlanetContainer extends Component {
   componentDidMount() {
     const getPrizesAmount = point => {
       const a = Math.floor(point / 200);
-      this.setState({ icon: a });
+      this.setState({icon: a});
     };
     getPrizesAmount(3000);
   }
@@ -36,10 +37,12 @@ class PlanetContainer extends Component {
       require("../../assets/icons/lock.png")
     ];
 
-    // const mapIcons = icons.slice(0, this.state.icon);
-
     return <Planet icons={contentIcons} />;
   }
 }
+
+PlanetContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default PlanetContainer;

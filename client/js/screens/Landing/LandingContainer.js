@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Landing from "./Landing";
+import PropTypes from "prop-types";
 
 export default class LandingContainer extends Component {
   constructor(props) {
@@ -19,3 +20,7 @@ export default class LandingContainer extends Component {
     );
   }
 }
+
+LandingContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};

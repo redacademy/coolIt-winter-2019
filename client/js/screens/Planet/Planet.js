@@ -1,15 +1,9 @@
 import React from "react";
-import {
-  ScrollView,
-  View,
-  Image,
-  FlatList,
-  ImageBackground
-} from "react-native";
+import {ScrollView, View, Image, FlatList, ImageBackground} from "react-native";
 import styles from "./styles";
 import PropTypes from "prop-types";
 
-const Planet = ({ icons }) => {
+const Planet = ({icons}) => {
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <View style={styles.mainContent}>
@@ -38,14 +32,14 @@ const Planet = ({ icons }) => {
           style={styles.list}
           data={icons}
           numColumns={5}
-          renderItem={({ item }) => {
+          renderItem={({item}) => {
             return (
               <View style={styles.iconImage}>
                 <Image style={styles.image} source={item} />
               </View>
             );
           }}
-          keyExtractor={(item, index) => "" + index}
+          keyExtractor={index => "" + index}
         />
       </View>
     </ScrollView>

@@ -47,7 +47,8 @@ const Score = props => {
 };
 
 Score.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 
 export default Score;

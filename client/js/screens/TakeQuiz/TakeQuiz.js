@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const TakeQuiz = props => {
   let {navigate} = props.navigation;
@@ -49,6 +49,8 @@ const TakeQuiz = props => {
   );
 };
 
-// TakeQuiz.propTypes = {};
+TakeQuiz.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default TakeQuiz;
