@@ -7,11 +7,10 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
-import { withNavigation } from "react-navigation";
 import PropTypes from "prop-types";
 
 const Landing = props => {
-  let { navigate } = props.navigation;
+  let {navigate} = props.navigation;
 
   return (
     <View>
@@ -65,4 +64,4 @@ Landing.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
-export default withNavigation(Landing);
+export default Landing;

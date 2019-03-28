@@ -7,11 +7,10 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
-import { withNavigation } from "react-navigation";
 import PropTypes from "prop-types";
 
 const Score = props => {
-  let { navigate } = props.navigation;
+  let {navigate} = props.navigation;
   return (
     <ImageBackground
       source={require("../../assets/images/background.png")}
@@ -51,4 +50,4 @@ Score.propTypes = {
   data: PropTypes.object.isRequired
 };
 
-export default withNavigation(Score);
+export default Score;

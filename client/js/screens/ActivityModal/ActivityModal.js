@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {
   Text,
   View,
@@ -10,9 +10,9 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 import PropTypes from "prop-types";
-import { graphql, compose } from "react-apollo";
+import {graphql, compose} from "react-apollo";
 import gql from "graphql-tag";
-import { colors } from "../../config/styles";
+import {colors} from "../../config/styles";
 import FullScreenLoader from "../../components/FullScreenLoader";
 
 const ADD_ACTIVITY = gql`
@@ -34,10 +34,10 @@ const ADD_POINT = gql`
 class ActivityModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { loading: false };
+    this.state = {loading: false};
   }
   render() {
-    let { data, navigation, addActivity, addPoint } = this.props;
+    let {data, navigation, addActivity, addPoint} = this.props;
     return !this.state.loading ? (
       <View style={styles.container}>
         <View style={styles.info}>
@@ -75,7 +75,7 @@ class ActivityModal extends Component {
                 <TouchableOpacity
                   style={styles.buttonContainer}
                   onPress={async () => {
-                    this.setState({ loading: true });
+                    this.setState({loading: true});
                     const userId = await AsyncStorage.getItem("id");
 
                     await addActivity({
@@ -86,7 +86,6 @@ class ActivityModal extends Component {
                       }
                     });
 
-                    console.log(data.currentGHPoint);
                     await addPoint({
                       variables: {
                         id: userId,
@@ -100,7 +99,7 @@ class ActivityModal extends Component {
 
                     await data.refetch();
                     navigation.goBack();
-                    this.setState({ loading: false });
+                    this.setState({loading: false});
                   }}
                 >
                   <Ionicons
