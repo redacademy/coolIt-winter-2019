@@ -1,25 +1,18 @@
-import {
-  createStackNavigator,
-  createBottomTabNavigator
-} from "react-navigation";
+import {createStackNavigator, createBottomTabNavigator} from "react-navigation";
 import React from "react";
 import AccountScreen from "../screens/Account";
 import ActivitiesScreen from "../screens/Activities";
 import HeroesScreen from "../screens/Heroes";
 import ImpactScreen from "../screens/Impact";
 import PlanetScreen from "../screens/Planet";
-import { Image } from "react-native";
-import { sharedNavigationOptions } from "./config";
+import {Image} from "react-native";
 
 const AccountStack = createStackNavigator(
   {
     Account: AccountScreen
   },
   {
-    headerMode: "none",
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    headerMode: "none"
   }
 );
 const ActivitiesStack = createStackNavigator(
@@ -27,10 +20,7 @@ const ActivitiesStack = createStackNavigator(
     Activities: ActivitiesScreen
   },
   {
-    headerMode: "none",
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    headerMode: "none"
   }
 );
 const HeroesStack = createStackNavigator(
@@ -38,10 +28,7 @@ const HeroesStack = createStackNavigator(
     Heroes: HeroesScreen
   },
   {
-    headerMode: "none",
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    headerMode: "none"
   }
 );
 const ImpactStack = createStackNavigator(
@@ -49,10 +36,7 @@ const ImpactStack = createStackNavigator(
     Impact: ImpactScreen
   },
   {
-    headerMode: "none",
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    headerMode: "none"
   }
 );
 const PlanetStack = createStackNavigator(
@@ -60,10 +44,7 @@ const PlanetStack = createStackNavigator(
     Planet: PlanetScreen
   },
   {
-    headerMode: "none",
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    headerMode: "none"
   }
 );
 
@@ -76,9 +57,9 @@ export default createBottomTabNavigator(
     Account: AccountStack
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
-        const { routeName } = navigation.state;
+    defaultNavigationOptions: ({navigation}) => ({
+      tabBarIcon: ({focused}) => {
+        const {routeName} = navigation.state;
 
         let iconUrl;
 

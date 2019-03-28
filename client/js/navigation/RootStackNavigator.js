@@ -8,7 +8,6 @@ import ActivityModal from "../screens/ActivityModal";
 import CalculationModal from "../screens/CalculationModal";
 import JoinUs from "../screens/JoinUs";
 import AuthLoadingScreen from "../screens/AutheticationLoadingScreen";
-import { sharedNavigationOptions } from "./config";
 import DisconnectModal from "../screens/DisconnectModal";
 import Activities from "../screens/Activities";
 import LogIn from "../screens/LogIn";
@@ -48,10 +47,7 @@ const OnboardingStack = createStackNavigator(
     Activity: Activities
   },
   {
-    headerMode: "none",
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    headerMode: "none"
   }
 );
 
@@ -62,10 +58,7 @@ const LoginStack = createStackNavigator(
     Activity: Activities
   },
   {
-    headerMode: "none",
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    headerMode: "none"
   }
 );
 
