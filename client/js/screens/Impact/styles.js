@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
   metric: {
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    bottom: 8
   },
   metric2: {
     flexDirection: "column",

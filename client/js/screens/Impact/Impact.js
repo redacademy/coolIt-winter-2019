@@ -38,8 +38,8 @@ class Impact extends Component {
             <Text style={styles.metricTitle}>
               {(user.ghPoint / this.props.days).toFixed(3)}
             </Text>
-            <Text style={styles.metricSubtitle}>daily average</Text>
-            <Text style={styles.metricSubtitle2}>greenhouse gas saved</Text>
+            <Text style={styles.metricSubtitle}>Daily Average</Text>
+            <Text style={styles.metricSubtitle2}>greenhouse gases saved</Text>
           </View>
           <View style={styles.metric}>
             <Text style={styles.metricTitle}>{user.quizScore}</Text>
