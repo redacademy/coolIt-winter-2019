@@ -1,12 +1,14 @@
-import { StyleSheet, Dimensions } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import {StyleSheet} from "react-native";
+import {colors, fonts} from "../../config/styles";
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get("window").height - 80,
-    flex: 1,
+    height: "100%",
     flexDirection: "column",
     justifyContent: "space-between"
+  },
+  bottomBox: {
+    height: "43%"
   },
   description: {
     fontSize: 26,
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   contentTop: {
     paddingTop: 25
   },
-  
+
   loader: {
     flex: 1,
     justifyContent: "center",
