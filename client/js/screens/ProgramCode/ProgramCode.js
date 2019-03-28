@@ -215,7 +215,7 @@ class ProgramCode extends Component {
 ProgramCode.propTypes = {
   navigation: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
-  loginMutation: PropTypes.func.isRequired
+  schoolInfoMutation: PropTypes.func.isRequired
 };
 
 export default compose(graphql(ADD_SCHOOL_INFO, {name: "schoolInfoMutation"}))(
