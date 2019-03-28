@@ -1,17 +1,17 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import {Text, View, TouchableOpacity} from "react-native";
 import moment from "moment";
 import Icon from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
-import { colors } from "../../config/styles";
+import {colors} from "../../config/styles";
 import PropTypes from "prop-types";
 
-export const DateDisplay = props => {
+export const DateDisplay = ({dateChangeHandler, date}) => {
   return (
     <View style={styles.date}>
       <TouchableOpacity
         onPress={() => {
-          props.dateChangeHandler(-1);
+          dateChangeHandler(-1);
         }}
       >
         <Icon
@@ -23,17 +23,17 @@ export const DateDisplay = props => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          props.dateChangeHandler(0);
+          dateChangeHandler(0);
         }}
       >
         <Text style={styles.dateDisplay}>
-          {moment(props.date).format("dddd, MMMM Do")}
+          {moment(date).format("dddd, MMMM Do YYYY")}
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => {
-          props.dateChangeHandler(1);
+          dateChangeHandler(1);
         }}
       >
         <Icon

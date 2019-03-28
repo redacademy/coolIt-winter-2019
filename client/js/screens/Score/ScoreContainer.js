@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Score from "./Score";
 import PropTypes from "prop-types";
-import { AsyncStorage, Text } from "react-native";
-import { Query } from "react-apollo";
+import {AsyncStorage, Text} from "react-native";
+import {Query} from "react-apollo";
 import gql from "graphql-tag";
 import CalculationLoader from "../../components/CalculationLoader";
 import styles from "./styles";
@@ -15,7 +15,7 @@ class ScoreContainer extends Component {
   }
   componentDidMount = () => {
     AsyncStorage.getItem("id").then(value => {
-      this.setState({ userId: value });
+      this.setState({userId: value});
     });
   };
 
@@ -27,22 +27,22 @@ class ScoreContainer extends Component {
         <Query
           query={gql`
             query quizScore($id: ID!) {
-              allUsers(filter: { id: $id }) {
+              allUsers(filter: {id: $id}) {
                 id
                 quizScore
               }
             }
           `}
-          variables={{ id: this.state.userId }}
+          variables={{id: this.state.userId}}
         >
-          {({ loading, error, data, refetch }) => {
+          {({loading, error, data, refetch}) => {
             if (loading) return <CalculationLoader style={styles.loader} />;
             if (error) return <Text>{error}</Text>;
             if (!data.allUsers[0].quizScore) {
               refetch();
               return <CalculationLoader style={styles.loader} />;
             } else {
-              return <Score data={data} />;
+              return <Score data={data} navigation={this.props.navigation} />;
             }
           }}
         </Query>

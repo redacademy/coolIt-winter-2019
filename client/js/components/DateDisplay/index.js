@@ -1,2 +1,2 @@
-import { DateDisplay } from "./DateDisplay";
+import {DateDisplay} from "./DateDisplay";
 export default DateDisplay;

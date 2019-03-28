@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around"
   },
   navigationButton: {
-    paddingVertical: 10,
+    paddingVertical: 10
   },
 
   name: {
@@ -22,8 +22,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontFamily: fonts.bold,
     fontWeight: "500",
-    paddingVertical: 10,
-  
+    paddingVertical: 10
   },
   description: {
     padding: 5,

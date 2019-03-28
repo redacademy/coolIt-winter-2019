@@ -7,11 +7,10 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
-import { withNavigation } from "react-navigation";
 import PropTypes from "prop-types";
 
 const BeginChallenge = props => {
-  let { navigate } = props.navigation;
+  let {navigate} = props.navigation;
   return (
     <ImageBackground
       source={require("../../assets/images/background.png")}
@@ -64,4 +63,4 @@ BeginChallenge.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
-export default withNavigation(BeginChallenge);
+export default BeginChallenge;
